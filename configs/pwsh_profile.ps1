@@ -2,17 +2,22 @@ function mklink ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
-
-function less($cmdlet) {
-    Invoke-Expression $cmdlet | out-host -paging
-}
-
-$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 Set-Alias vim nvim
 
+
+# TODO(gr3yknigh1): Test `Write-Host` and installation
+# --- Oh My Posh
+if (-not (Get-Module -ListAvailable -Name oh-my-posh)) {
+	Install-Module oh-my-posh -Scope CurrentUser
+	Write-Host "Install Nerd font: https://www.nerdfonts.com/font-downloads"
+}
+
+if (-not (Get-Module -ListAvailable -Name posh-git)) {
+	Install-Module posh-git -Scope CurrentUser
+}
+
 Import-Module oh-my-posh
-Set-PoshPrompt -Theme craver
 Import-Module posh-git
 
-clear
+Set-PoshPrompt -Theme star
 
