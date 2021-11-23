@@ -2,8 +2,16 @@ function mklink ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
+
 Set-Alias vim nvim
 
+# --- Completion
+
+Import-Module PSReadLine
+Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
+
+
+# --- Terminal Icons
 <#
 # --- Terminal Icons
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
@@ -13,8 +21,10 @@ if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
 Import-Module Terminal-Icons
 #>
 
+
 # TODO(gr3yknigh1): Test `Write-Host` and installation
 # --- Oh My Posh
+
 if (-not (Get-Module -ListAvailable -Name oh-my-posh)) {
 	Install-Module oh-my-posh -Scope CurrentUser
 	
