@@ -3,28 +3,25 @@ function mklink ($target, $link) {
 }
 
 
-Set-Alias vim nvim
-
 # --- Completion
-
 Import-Module PSReadLine
 Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 
 
-# --- Terminal Icons
-<#
+# --- PowerColorLS
+if (-not (Get-Module -ListAvailable -Name PowerColorLS)) {
+	Install-Module -Name PowerColorLS -Repository PSGallery -Scope CurrentUser
+}
+
+Import-Module PowerColorLS
+
 # --- Terminal Icons
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
 	Install-Module Terminal-Icons -Scope CurrentUser
 }
-
 Import-Module Terminal-Icons
-#>
 
-
-# TODO(gr3yknigh1): Test `Write-Host` and installation
 # --- Oh My Posh
-
 if (-not (Get-Module -ListAvailable -Name oh-my-posh)) {
 	Install-Module oh-my-posh -Scope CurrentUser
 	
@@ -38,5 +35,9 @@ if (-not (Get-Module -ListAvailable -Name posh-git)) {
 Import-Module oh-my-posh
 Import-Module posh-git
 
-Set-PoshPrompt -Theme star
+Set-PoshPrompt -Theme stelbent.minimal
 
+
+# --- Aliasing
+Set-Alias vim nvim
+Set-Alias ls PowerColorLS 
