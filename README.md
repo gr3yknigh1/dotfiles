@@ -2,7 +2,7 @@
 
 This repo contains all my personal configuration in different programs.
 
-## Program list
+## Provided config files
 
 - Pwsh (powerhsell)
 
