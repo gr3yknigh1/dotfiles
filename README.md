@@ -4,5 +4,5 @@ This repo contains all my personal configuration in different programs.
 
 ## Provided config files
 
-- Pwsh (powerhsell)
+-  `pwsh` (powershell)
 
