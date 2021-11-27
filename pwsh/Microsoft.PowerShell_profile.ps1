@@ -1,4 +1,5 @@
 Set-Variable -Name NVIMINIT -Value C:\Users\gr3yknigh1\AppData\Local\nvim\init.vim
+Set-Variable -Name WTPROFILE -Value C:\Users\gr3yknigh1\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 
 function Install-Vim-Plug {
 	iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
