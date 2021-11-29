@@ -50,10 +50,8 @@
         "list": 
         [
             {
-                "backgroundImage": "C:\\Users\\gr3yknigh1\\Pictures\\Wallpapers\\caio-silva-b1BK-BsiJGI-unsplash.jpg",
-                "backgroundImageOpacity": 0.23999999999999999,
                 "colorScheme": "Vintage",
-                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe -nologo",
+                "commandline": "pwsh -nologo",
                 "font": 
                 {
                     "face": "JetBrainsMono Nerd Font Mono"
@@ -63,36 +61,6 @@
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore",
                 "startingDirectory": "/Dev"
-            },
-            {
-                "commandline": "powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
-            },
-            {
-                "commandline": "cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
-                "name": "Git Bash",
-                "source": "Git"
-            },
-            {
-                "commandline": "wsl.exe",
-                "guid": "{a5dfdfac-e724-4bf0-b5bc-5e1db5d0efff}",
-                "icon": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.11.2921.0_x64__8wekyb3d8bbwe\\ProfileIcons\\{9acb9455-ca41-5af7-950f-6bca1bc9722f}.scale-100.png",
-                "name": "Ubuntu"
             }
         ]
     },
