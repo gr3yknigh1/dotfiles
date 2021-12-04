@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.import": true,
+			"**/.mono": true,
+			"**/*.import": true,
+			"**/*.png": true,
+			"**/*.sln": true,
+			"**/*.csproj": true,
+			"**/*.tres": true,
+			"**/*.tscn": true,
+		},
+	}
+}
