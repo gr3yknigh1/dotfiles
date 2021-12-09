@@ -16,17 +16,17 @@ Import-Module PSReadLine
 Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 
 
-# --- PowerColorLS
-if (-not (Get-Module -ListAvailable -Name PowerColorLS)) {
-	Install-Module -Name PowerColorLS -Repository PSGallery -Scope CurrentUser
-}
-Import-Module PowerColorLS
-
 # --- Terminal Icons
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
 	Install-Module Terminal-Icons -Scope CurrentUser
 }
 Import-Module Terminal-Icons
+
+# --- PowerColorLS
+if (-not (Get-Module -ListAvailable -Name PowerColorLS)) {
+	Install-Module -Name PowerColorLS -Repository PSGallery -Scope CurrentUser
+}
+Import-Module PowerColorLS
 
 # --- Oh My Posh
 if (-not (Get-Module -ListAvailable -Name oh-my-posh)) {
