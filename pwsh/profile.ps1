@@ -53,3 +53,5 @@ Set-Alias l PowerColorLS
 Set-Alias e nvim
 Set-Alias g git
 Set-Alias p python
+Set-Alias v neovide
+
