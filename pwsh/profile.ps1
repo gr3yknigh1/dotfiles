@@ -1,7 +1,3 @@
-# --- Variables
-Set-Variable -Name NVIMINIT -Value C:\Users\gr3yknigh1\AppData\Local\nvim\init.vim
-Set-Variable -Name WTPROFILE -Value C:\Users\gr3yknigh1\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-
 
 # --- Funtions
 function Install-Vim-Plug {
@@ -45,13 +41,14 @@ if (-not (Get-Module -ListAvailable -Name posh-git)) {
 Import-Module oh-my-posh
 Import-Module posh-git
 
-Set-PoshPrompt -Theme ys
+Set-PoshPrompt -Theme star
 
 
 # --- Aliasing
-Set-Alias l PowerColorLS 
+Set-Alias ls PowerColorLS 
+Set-Alias l PowerColorLS
 Set-Alias e nvim
 Set-Alias g git
 Set-Alias p python
 Set-Alias v neovide
-
+Set-Alias w "~\workspace\pwd.py\build\pwd.py-0.1.0\pwd.py-0.1.0.exe"
