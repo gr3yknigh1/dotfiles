@@ -1,6 +1,5 @@
 set nocompatible
 
-
 call plug#begin('~/.vim/plugged')
 
 " Nerdtree
@@ -14,6 +13,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'morhetz/gruvbox'
 Plug 'Badacadabra/vim-archery'
+Plug 'agude/vim-eldar'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -34,10 +34,20 @@ Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
-colorscheme lucius
+colorscheme eldar
+
+let NERDTreeShowHidden=1
 
 " Tabs
 set expandtab
 set tabstop=4
 retab
 set shiftwidth=4
+
+" Keybindings
+nmap <C-t><C-x> :sp term://pwsh <Enter>
+nmap <C-t><C-y> :vsp term://pwsh <Enter>
+tnoremap <ESC> <c-\><c-n>
+
+set splitbelow
+set splitright
