@@ -7,6 +7,7 @@ function mklink ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
+# TODO(g3k1): create in `dotfiles` separate script which will install all modules
 function Try-Import-Module {
 
     param (
