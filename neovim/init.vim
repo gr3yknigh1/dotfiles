@@ -34,7 +34,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
-colorscheme eldar
+" colorscheme eldar
 
 let NERDTreeShowHidden=1
 
@@ -45,9 +45,15 @@ retab
 set shiftwidth=4
 
 " Keybindings
-nmap <C-t><C-x> :sp term://pwsh <Enter>
-nmap <C-t><C-y> :vsp term://pwsh <Enter>
+nmap <C-t><C-x> :sp term://zsh <Enter>
+nmap <C-t><C-y> :vsp term://zsh <Enter>
 tnoremap <ESC> <c-\><c-n>
+autocmd TermOpen * :set nonumber norelativenumber
 
 set splitbelow
 set splitright
+
+" Numbers (relative)
+set relativenumber
+set rnu
+
