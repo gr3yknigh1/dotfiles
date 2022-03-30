@@ -1,5 +1,7 @@
 [core]
-	autocrlf = true
+    autocrlf = false
+    editor = nvim
+    commentChar = ";"
 [user]
 	email = gr3yknigh1@gmail.com
 	name = Ilya Akkuzin
