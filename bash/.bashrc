@@ -141,4 +141,4 @@ alias e="nvim"
 alias g="git"
 alias c="clear"
 alias cls="clear"
-. "$HOME/.cargo/env"
+
