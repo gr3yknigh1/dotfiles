@@ -34,7 +34,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
-" colorscheme eldar
+colorscheme eldar
 
 let NERDTreeShowHidden=1
 
@@ -49,6 +49,9 @@ nmap <C-t><C-x> :sp term://zsh <Enter>
 nmap <C-t><C-y> :vsp term://zsh <Enter>
 tnoremap <ESC> <c-\><c-n>
 autocmd TermOpen * :set nonumber norelativenumber
+
+" Nerdtree mapping
+nmap <C-b> :NERDTreeToggle <Enter>
 
 set splitbelow
 set splitright
