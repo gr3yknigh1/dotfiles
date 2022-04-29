@@ -11,5 +11,6 @@
             }
         }
     },
+    "jedi.executable.command": "~/.local/bin/jedi-language-server",
     "suggest.noselect": false
 }
