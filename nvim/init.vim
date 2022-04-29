@@ -1,4 +1,15 @@
+" --- GENERAL ---
+
+" File formats
+
+set encoding=utf-8
+set fileformat=unix
+
+" Mouse
+
 set mouse=a
+
+" Tabs
 
 set expandtab
 set tabstop=4
@@ -8,15 +19,25 @@ set autoindent
 
 set scrolloff=7
 
-set fileformat=unix
+" View
 
 set nowrap
-set encoding=utf-8
 
 set nocompatible
 
-" copy and paste
-vmap <C-y> "+y
+" Splitting
+
+set splitbelow
+set splitright
+
+" Line numbers
+
+set relativenumber
+set rnu
+
+
+" --- PLUGINS ---
+
 
 call plug#begin('~/.vim/plugged')
 
@@ -41,30 +62,56 @@ Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
+
+" --- Apperience ---
+
+
 colorscheme eldar
 
-let NERDTreeShowHidden=1
 
-" Keybindings
-nmap <C-t><C-x> :sp term://bash <Enter>
-nmap <C-t><C-y> :vsp term://bash <Enter>
+" --- PLUGIN'S CONFIGURATIONS ---
+
+
+" -- NERDTree
+
+let NERDTreeShowHidden=1
+nmap <C-b> :NERDTreeToggle <Enter>
+
+" -- COC
+
+" goto definition
+
+nmap <silent> gd <Plug>(coc-definition)
+
+" open definition in a split window
+nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
+
+
+" --- KEYBINDINGS ---
+
+
+" Terminal splitting
+nmap <C-t><C-x> :sp term://$SHELL <Enter>
+nmap <C-t><C-y> :vsp term://$SHELL <Enter>
 tnoremap <ESC> <c-\><c-n>
 autocmd TermOpen * :set nonumber norelativenumber
 
-" Nerdtree mapping
-nmap <C-b> :NERDTreeToggle <Enter>
-
-set splitbelow
-set splitright
-
-" Numbers (relative)
-set relativenumber
-set rnu
-
+" Pane scrolling
 nmap <Tab> <C-w>w
 nmap <S-Tab> <C-w>W
 
+" Pane resizing
 nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" Pane switching
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" copy and paste
+vmap <C-y> "+y
+
