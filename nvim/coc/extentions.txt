@@ -1,0 +1,8 @@
+coc-json
+coc-html
+coc-json
+coc-git
+coc-vimlsp
+coc-omnisharp
+coc-ccls
+coc-jedi
