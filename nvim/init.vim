@@ -1,4 +1,22 @@
+set mouse=a
+
+set expandtab
+set tabstop=4
+retab
+set shiftwidth=4
+set autoindent
+
+set scrolloff=7
+
+set fileformat=unix
+
+set nowrap
+set encoding=utf-8
+
 set nocompatible
+
+" copy and paste
+vmap <C-y> "+y
 
 call plug#begin('~/.vim/plugged')
 
@@ -17,17 +35,6 @@ Plug 'agude/vim-eldar'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-eslint'
-Plug 'neoclide/coc-git'
-Plug 'neoclide/coc-html'
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc-yaml'
-Plug 'fannheyward/coc-markdownlint'
-Plug 'fannheyward/coc-rust-analyzer'
-Plug 'voldikss/coc-cmake'
-Plug 'pappasam/coc-jedi'
-Plug 'coc-extensions/coc-omnisharp'
 
 " Etc
 Plug 'editorconfig/editorconfig-vim'
@@ -38,15 +45,9 @@ colorscheme eldar
 
 let NERDTreeShowHidden=1
 
-" Tabs
-set expandtab
-set tabstop=4
-retab
-set shiftwidth=4
-
 " Keybindings
-nmap <C-t><C-x> :sp term://zsh <Enter>
-nmap <C-t><C-y> :vsp term://zsh <Enter>
+nmap <C-t><C-x> :sp term://bash <Enter>
+nmap <C-t><C-y> :vsp term://bash <Enter>
 tnoremap <ESC> <c-\><c-n>
 autocmd TermOpen * :set nonumber norelativenumber
 
@@ -60,3 +61,10 @@ set splitright
 set relativenumber
 set rnu
 
+nmap <Tab> <C-w>w
+nmap <S-Tab> <C-w>W
+
+nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
