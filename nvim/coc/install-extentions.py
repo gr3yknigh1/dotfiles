@@ -27,6 +27,7 @@ def format_list(ls: list, sep=" ", end="") -> str:
 extentions: list[str] = get_extentions()
 editor: str | None = None
 
+
 if shutil.which("nvim"):
     editor = "nvim"
 elif shutil.which("vim"):
@@ -34,5 +35,9 @@ elif shutil.which("vim"):
 else:
     raise FileExistsError("nvim or vim not in PATH")
 
-print(f"{editor} -c 'CocInstall -sync {format_list(extentions)}|q'")
+
+formated_ext_list = format_list(extentions)
+cmd = f"{editor} -c 'CocInstall -sync {formated_ext_list}|q'"
+
+print(cmd)
 
