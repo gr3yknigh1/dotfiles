@@ -87,12 +87,13 @@ nmap <C-b> :NERDTreeToggle <Enter>
 nmap <silent> gd <Plug>(coc-definition)
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Space>rn <Plug>(coc-rename)
 
 " open definition in a split window
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
 let g:coc_global_extensions = ['coc-json', 'coc-git']
+
 
 " --- KEYBINDINGS ---
 
@@ -112,6 +113,10 @@ nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+set winminwidth=0
+nmap <Leader><C-h> <C-W>h500<C-W>>             
+nmap <Leader><C-l> <C-W>l500<C-W>>
 
 " Pane switching
 map <C-j> <C-W>j
