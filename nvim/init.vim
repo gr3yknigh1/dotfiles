@@ -41,7 +41,6 @@ set rnu
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 
 " Nerdtree
@@ -62,6 +61,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Etc
 Plug 'editorconfig/editorconfig-vim'
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
@@ -94,6 +94,12 @@ nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
 let g:coc_global_extensions = ['coc-json', 'coc-git']
 
+
+" -- Comment
+
+lua << EOF
+require('Comment').setup()
+EOF
 
 " --- KEYBINDINGS ---
 
