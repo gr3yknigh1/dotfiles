@@ -1,4 +1,3 @@
-# Stole from: https://github.com/tmcdonell/config-alacritty
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
 # Any items in the `env` entry below will be added as
@@ -41,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -52,10 +51,10 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Maximized
 
   # Background opacity
-  opacity: 1.0
+  opacity: 1
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
@@ -132,78 +131,42 @@ draw_bold_text_with_bright_colors: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: true
 
-# Colors
+# Base16 Nova - alacritty color config
+# George Essig (https://github.com/gessig), Trevor D. Miller (https://trevordmiller.com)
 colors:
-
-  # Tomorrow (https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-tomorrow.yml)
   # Default colors
   primary:
-    background: '0xffffff'
-    foreground: '0x4d4d4c'
+    background: '0x3c4c55'
+    foreground: '0xc5d4dd'
+
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xffffff'
-    cursor: '0x4d4d4c'
+    text: '0x3c4c55'
+    cursor: '0xc5d4dd'
+
   # Normal colors
   normal:
-    black:   '0xffffff'
-    red:     '0xc82829'
-    green:   '0x718c00'
-    yellow:  '0xeab700'
-    blue:    '0x4271ae'
-    magenta: '0x8959a8'
-    cyan:    '0x3e999f'
-    white:   '0x4d4d4c'
+    black:   '0x3c4c55'
+    red:     '0x83afe5'
+    green:   '0x7fc1ca'
+    yellow:  '0xa8ce93'
+    blue:    '0x83afe5'
+    magenta: '0x9a93e1'
+    cyan:    '0xf2c38f'
+    white:   '0xc5d4dd'
+
   # Bright colors
   bright:
-    black:   '0x8e908c'
-    red:     '0xf5871f'
-    green:   '0xe0e0e0'
-    yellow:  '0xd6d6d6'
-    blue:    '0x969896'
-    magenta: '0x282a2e'
-    cyan:    '0xa3685a'
-    white:   '0x1d1f21'
+    black:   '0x899ba6'
+    red:     '0x7fc1ca'
+    green:   '0x556873'
+    yellow:  '0x6a7d89'
+    blue:    '0x899ba6'
+    magenta: '0x899ba6'
+    cyan:    '0xf2c38f'
+    white:   '0x556873'
 
-  # # Tomorrow Night (https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-tomorrow-night.yml)
-  # # Default colors
-  # primary:
-  #   background: '0x1d1f21'
-  #   foreground: '0xc5c8c6'
-  # # Colors the cursor will use if `custom_cursor_colors` is true
-  # cursor:
-  #   text: '0x1d1f21'
-  #   cursor: '0xc5c8c6'
-  # # Normal colors
-  # normal:
-  #   black:   '0x1d1f21'
-  #   red:     '0xcc6666'
-  #   green:   '0xb5bd68'
-  #   yellow:  '0xf0c674'
-  #   blue:    '0x81a2be'
-  #   magenta: '0xb294bb'
-  #   cyan:    '0x8abeb7'
-  #   white:   '0xc5c8c6'
-  # # Bright colors
-  # bright:
-  #   black:   '0x969896'
-  #   red:     '0xde935f'
-  #   green:   '0x282a2e'
-  #   yellow:  '0x373b41'
-  #   blue:    '0xb4b7b4'
-  #   magenta: '0xe0e0e0'
-  #   cyan:    '0xa3685a'
-  #   white:   '0xffffff'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  # indexed_colors: []
+draw_bold_text_with_bright_colors: false
 
 # Visual Bell
 #
@@ -495,7 +458,7 @@ debug:
 # You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
-  program: /usr/local/bin/fish
+  program: /usr/bin/fish
   args:
     - --command=tmux
 
