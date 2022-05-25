@@ -2,6 +2,8 @@
 
 " File formats
 
+syntax enable
+filetype plugin indent on
 set encoding=utf-8
 set fileformat=unix
 
@@ -43,6 +45,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'liuchengxu/vim-clap'
 
+" Telescope
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " Nerdtree
 
 Plug 'scrooloose/nerdtree'
@@ -62,6 +70,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Etc
 Plug 'editorconfig/editorconfig-vim'
 Plug 'numToStr/Comment.nvim'
+Plug 'khaveesh/vim-fish-syntax'
 
 call plug#end()
 
@@ -74,6 +83,13 @@ colorscheme eldar
 
 " --- PLUGIN'S CONFIGURATIONS ---
 
+" -- Telescope
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " -- NERDTree
 
@@ -134,12 +150,12 @@ map <C-l> <C-W>l
 vmap <C-y> "+y
 
 let g:mapleader="\<Space>"
-let g:dashboard_default_executive = 'clap'
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+" let g:dashboard_default_executive = 'clap'
+" nmap <Leader>ss :<C-u>SessionSave<CR>
+" nmap <Leader>sl :<C-u>SessionLoad<CR>
+" nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+" nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+" nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+" nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+" nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+" nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
