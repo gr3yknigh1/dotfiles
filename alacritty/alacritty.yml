@@ -51,10 +51,10 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Fullscreen
 
   # Background opacity
-  opacity: 1
+  opacity: 0.95
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
@@ -93,7 +93,7 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 14.0
+  size: 25.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -354,13 +354,13 @@ key_bindings:
   - { key: Delete,                        chars: "\x1b[3~"                     }
 
     # shortcuts for tmux. the leader key is control-b (0x02)
-  - { key: W,        mods: Command,       chars: "\x02&"                       }  # close tab (kill)
-  - { key: T,        mods: Command,       chars: "\x02c"                       }  # new tab
-  - { key: RBracket, mods: Command|Shift, chars: "\x02n"                       }  # select next tab
-  - { key: LBracket, mods: Command|Shift, chars: "\x02p"                       }  # select previous tab
-  - { key: RBracket, mods: Command,       chars: "\x02o"                       }  # select next pane
-  - { key: LBracket, mods: Command,       chars: "\x02;"                       }  # select last (previously used) pane
-  - { key: F,        mods: Command,       chars: "\x02/"                       }  # search (upwards) (see tmux.conf)
+  # - { key: W,        mods: Command,       chars: "\x02&"                       }  # close tab (kill)
+  # - { key: T,        mods: Command,       chars: "\x02c"                       }  # new tab
+  # - { key: RBracket, mods: Command|Shift, chars: "\x02n"                       }  # select next tab
+  # - { key: LBracket, mods: Command|Shift, chars: "\x02p"                       }  # select previous tab
+  # - { key: RBracket, mods: Command,       chars: "\x02o"                       }  # select next pane
+  # - { key: LBracket, mods: Command,       chars: "\x02;"                       }  # select last (previously used) pane
+  # - { key: F,        mods: Command,       chars: "\x02/"                       }  # search (upwards) (see tmux.conf)
 
 mouse:
   # Click settings
