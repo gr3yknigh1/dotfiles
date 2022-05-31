@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import sys
 import shutil
+import argparse
 
 
 def get_extentions() -> list[str]:
@@ -24,20 +25,30 @@ def format_list(ls: list, sep=" ", end="") -> str:
     return result
 
 
-extentions: list[str] = get_extentions()
-editor: str | None = None
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-d", "--dry-run", action="store_true", dest="is_dry_run")
+    args = parser.parse_args()
+    is_dry_run = args.is_dry_run
+
+    extentions: list[str] = get_extentions()
+    editor: str | None = None
 
 
-if shutil.which("nvim"):
-    editor = "nvim"
-elif shutil.which("vim"):
-    editor = "vim"
-else:
-    raise FileExistsError("nvim or vim not in PATH")
+    if shutil.which("nvim"):
+        editor = "nvim"
+    elif shutil.which("vim"):
+        editor = "vim"
+    else:
+        raise FileExistsError("nvim or vim not in PATH")
+
+    formated_ext_list = format_list(extentions)
+    cmd = f"{editor} -c 'CocInstall -sync {formated_ext_list}|q'"
+    action = print if is_dry_run else os.system
+
+    return action(cmd)
 
 
-formated_ext_list = format_list(extentions)
-cmd = f"{editor} -c 'CocInstall -sync {formated_ext_list}|q'"
-
-print(cmd)
+if __name__ == "__main__":
+    raise SystemExit(main())
 
