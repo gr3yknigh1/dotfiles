@@ -54,7 +54,7 @@ window:
   startup_mode: Fullscreen
 
   # Background opacity
-  opacity: 0.95
+  opacity: 1
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
@@ -93,7 +93,7 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 25.0
+  size: 20.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -298,7 +298,7 @@ bell:
 key_bindings:
   - { key: V,        mods: Command,       action: Paste                        }
   - { key: C,        mods: Command,       action: Copy                         }
-  - { key: Q,        mods: Command,       action: Quit                         }
+  - { key: Q,        mods: Control,       action: Quit                         }
   - { key: N,        mods: Command,       action: SpawnNewInstance             }
   - { key: Return,   mods: Command,       action: ToggleFullscreen             }
 
@@ -465,7 +465,7 @@ debug:
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
   program: /usr/bin/fish
-  # args:
-  #   - --command=tmux
+  args:
+    - --command=tmux-start
 
 # vim: nospell
