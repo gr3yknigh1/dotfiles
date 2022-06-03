@@ -78,7 +78,7 @@ call plug#end()
 " --- Apperience ---
 
 
-colorscheme eldar
+colorscheme gruvbox
 
 
 " --- PLUGIN'S CONFIGURATIONS ---
@@ -86,10 +86,10 @@ colorscheme eldar
 " -- Telescope
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nmap <Space>ff <cmd>Telescope find_files<cr>
+nmap <Space>fg <cmd>Telescope live_grep<cr>
+nmap <Space>fb <cmd>Telescope buffers<cr>
+nmap <Space>fh <cmd>Telescope help_tags<cr>
 
 " -- NERDTree
 
