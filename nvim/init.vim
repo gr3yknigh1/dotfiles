@@ -63,6 +63,7 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'morhetz/gruvbox'
 Plug 'Badacadabra/vim-archery'
 Plug 'agude/vim-eldar'
+Plug 'arcticicestudio/nord-vim'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -78,8 +79,7 @@ call plug#end()
 " --- Apperience ---
 
 
-colorscheme gruvbox
-
+colorscheme nord
 
 " --- PLUGIN'S CONFIGURATIONS ---
 
@@ -148,6 +148,7 @@ map <C-l> <C-W>l
 
 " copy and paste
 vmap <C-y> "+y
+nmap <C-p> "+p
 
 let g:mapleader="\<Space>"
 " let g:dashboard_default_executive = 'clap'
