@@ -30,6 +30,13 @@ set $wallpapers     "$pictures/wallpapers"
 # exec --no-startup-id setxkbmap -layout us,ru
 # exec --no-startup-id setxkbmap -option $layout_toggle
 
+# brightness
+
+set $brightness_step 50
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +$brightness_step
+bindsym XF86MonBrightnessDown exec brightnessctl set $brightness_step-
+
 # --- idk
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
