@@ -23,16 +23,12 @@ set $wallpapers     "$pictures/wallpapers"
 # exec xinput set-prop $touchpad_name "libinput Tapping Enabled" 1
 # exec xinput set-prop $touchpad_name "libinput Natural Scrolling Enabled" 1
 
-# --- background
-set $wallpaper "$wallpapers/daniel-leone-v7daTKlZzaw-unsplash [modded].jpg"
-
-exec --no-startup-id feh --no-fehbg --bg-fill $wallpaper
-
 # --- layouts and layout toggle
-set $layout_toggle 'grp:win_space_toggle'
-
-exec --no-startup-id setxkbmap -layout us,ru
-exec --no-startup-id setxkbmap -option $layout_toggle
+# moved to ~/.xinitrc
+# set $layout_toggle 'grp:win_space_toggle'
+#
+# exec --no-startup-id setxkbmap -layout us,ru
+# exec --no-startup-id setxkbmap -option $layout_toggle
 
 # --- idk
 # Start XDG autostart .desktop files using dex. See also
@@ -212,6 +208,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
+
     i3bar_command i3bar --transparency
     font pango:Iosevka 12
 
