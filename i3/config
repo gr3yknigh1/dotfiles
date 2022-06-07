@@ -1,6 +1,6 @@
 # --- main
 
-set $browser   	min
+set $browser   	firefox
 set $term      	alacritty
 
 set $mod Mod4
@@ -232,9 +232,10 @@ bar {
     }
 }
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
 gaps inner 20
+# border_radius 5
 
 # Picom
 exec_always --no-startup-id picom &
