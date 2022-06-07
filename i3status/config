@@ -7,24 +7,16 @@ general {
         interval = 10
 }
 
-/* order += "ipv6" */
 order += "disk /"
-/* order += "run_watch DHCP" */
-/* order += "run_watch VPNC" */
 order += "path_exists VPN"
-order += "wireless wlp1s0"
+order += "wireless wlan0"
 order += "battery 0"
-/* order += "cpu_temperature 0" */
 order += "memory"
 order += "load"
-order += "tztime local"
-/* order += "tztime berlin" */
+order += "tztime moscow"
 
-/* keyboard layout { */
-/*     format = "xkblayout-state print '%s'" */
-/* } */
 
-wireless wlp1s0 {
+wireless wlan0 {
         format_up = "W: (%quality at %essid, %bitrate) %ip"
         format_down = "W: down"
 }
@@ -51,24 +43,14 @@ path_exists VPN {
         path = "/proc/sys/net/ipv4/conf/tun0"
 }
 
-tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
-        hide_if_equals_localtime = true
-}
-
-tztime berlin {
+tztime moscow {
         format = "%Y-%m-%d %H:%M:%S %Z"
-        timezone = "Europe/Berlin"
+        timezone = "Europe/Moscow"
 }
 
 load {
         format = "%5min"
 }
-
-/* cpu_temperature 0 { */
-/*         format = "T: %degrees °C" */
-/*         path = "/sys/devices/platform/coretemp.0/temp1_input" */
-/* } */
 
 memory {
         format = "%used"
