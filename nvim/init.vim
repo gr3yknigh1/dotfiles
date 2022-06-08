@@ -1,5 +1,10 @@
 " --- GENERAL ---
 
+let g:lazygit_use_neovim_remote = 0
+if has('nvim') && executable('nvr')
+  let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
+
 let g:mapleader="\<Space>"
 
 " File formats
@@ -74,6 +79,7 @@ Plug 'khaveesh/vim-fish-syntax'
 " Etc
 Plug 'editorconfig/editorconfig-vim'
 Plug 'numToStr/Comment.nvim'
+Plug 'kdheepak/lazygit.nvim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -132,9 +138,9 @@ nmap <Leader>- :split<Enter>
 " Terminal splitting
 nmap <C-t>\ :vsplit term://$SHELL <Enter><S-a>
 nmap <C-t>- :split term://$SHELL <Enter><S-a>
-tnoremap <ESC> <c-\><c-n>
+tmap <Leader><ESC> <c-\><c-n>
 nmap <Leader><C-t> :tabnew term://$SHELL<Enter><S-a>
-autocmd TermOpen * :set nonumber norelativenumber
+autocmd TermOpen * :set nonumber norelativenumber 
 
 " Pane scrolling
 nmap <Tab> <C-w>w
@@ -162,19 +168,21 @@ vmap <C-y> "+y
 nmap <C-p> "+p
 
 " tabs
-nmap <Leader>t :tabnew<Enter>
-nmap <Leader>w :tabclose<Enter>
-nmap <Leader><Tab> :tabnext<Enter>
-nmap <Leader><S-Tab> :tabprevious<Enter>
+nmap <silent><Leader>t :tabnew<Enter>
+nmap <silent><Leader>w :tabclose<Enter>
+nmap <silent><Leader><Tab> :tabnext<Enter>
+nmap <silent><Leader><S-Tab> :tabprevious<Enter>
 
 " noh 
-nmap <Leader>h :noh<Enter>
+nmap <silent><Leader>h :noh<Enter>
 
 " python interpreter
-nmap <Leader>i :tabnew term://python3<Enter><S-a>
+nmap <silent><Leader>i :tabnew term://python3<Enter><S-a>
 
 " lazygit
+" nmap <silent> <leader>gg :LazyGit<CR>
 nmap <Leader>g :tabnew term://lazygit<Enter><S-a>
+
 
 " Airline
 
