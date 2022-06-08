@@ -59,7 +59,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
-" Colorthemes
+" Apperience
 
 Plug 'jonathanfilip/vim-lucius'
 Plug 'morhetz/gruvbox'
@@ -67,19 +67,22 @@ Plug 'Badacadabra/vim-archery'
 Plug 'agude/vim-eldar'
 Plug 'arcticicestudio/nord-vim'
 
-" Coc
+" Syntaxing & languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'khaveesh/vim-fish-syntax'
 
 " Etc
 Plug 'editorconfig/editorconfig-vim'
 Plug 'numToStr/Comment.nvim'
-Plug 'khaveesh/vim-fish-syntax'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 
 " --- Apperience ---
-
 
 colorscheme nord
 
@@ -88,10 +91,10 @@ colorscheme nord
 " -- Telescope
 
 " Find files using Telescope command-line sugar.
-nmap <Space>ff <cmd>Telescope find_files<cr>
-nmap <Space>fg <cmd>Telescope live_grep<cr>
-nmap <Space>fb <cmd>Telescope buffers<cr>
-nmap <Space>fh <cmd>Telescope help_tags<cr>
+nmap <Leader>ff <cmd>Telescope find_files<cr>
+nmap <Leader>fg <cmd>Telescope live_grep<cr>
+nmap <Leader>fb <cmd>Telescope buffers<cr>
+nmap <Leader>fh <cmd>Telescope help_tags<cr>
 
 " -- NERDTree
 
@@ -123,13 +126,14 @@ EOF
 
 " Window splitting
 
-nmap <Leader>\ :vs<Enter>
-nmap <Leader>- :sp<Enter>
+nmap <Leader>\ :vsplit<Enter>
+nmap <Leader>- :split<Enter>
 
 " Terminal splitting
-nmap <C-t><C-x> :sp term://$SHELL <Enter>
-nmap <C-t><C-y> :vsp term://$SHELL <Enter>
+nmap <C-t>\ :vsplit term://$SHELL <Enter><S-a>
+nmap <C-t>- :split term://$SHELL <Enter><S-a>
 tnoremap <ESC> <c-\><c-n>
+nmap <Leader><C-t> :tabnew term://$SHELL<Enter><S-a>
 autocmd TermOpen * :set nonumber norelativenumber
 
 " Pane scrolling
@@ -161,7 +165,24 @@ nmap <C-p> "+p
 nmap <Leader>t :tabnew<Enter>
 nmap <Leader>w :tabclose<Enter>
 nmap <Leader><Tab> :tabnext<Enter>
-nmap <Leader><S><Tab> :tabprevious<Enter>
+nmap <Leader><S-Tab> :tabprevious<Enter>
 
 " noh 
 nmap <Leader>h :noh<Enter>
+
+" python interpreter
+nmap <Leader>i :tabnew term://python3<Enter><S-a>
+
+" lazygit
+nmap <Leader>g :tabnew term://lazygit<Enter><S-a>
+
+" Airline
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" let g:airline_theme='nord_minimal'
+
+
