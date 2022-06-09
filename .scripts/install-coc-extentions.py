@@ -6,9 +6,9 @@ import shutil
 import argparse
 
 
-def get_extentions() -> list[str]:
+def get_extentions(path: str) -> list[str]:
     buf: str = ""
-    with open("./extentions.txt") as f:
+    with open(path) as f:
        buf = f.read() 
     return buf.splitlines()
 
@@ -27,11 +27,13 @@ def format_list(ls: list, sep=" ", end="") -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("extentions", dest="ext_path")
     parser.add_argument("-d", "--dry-run", action="store_true", dest="is_dry_run")
     args = parser.parse_args()
     is_dry_run = args.is_dry_run
+    list_path = args.ext_path
 
-    extentions: list[str] = get_extentions()
+    extentions: list[str] = get_extentions(list_path)
     editor: str | None = None
 
 
