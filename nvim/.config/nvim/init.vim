@@ -97,10 +97,18 @@ colorscheme nord
 " -- Telescope
 
 " Find files using Telescope command-line sugar.
-nmap <Leader>ff <cmd>Telescope find_files<cr>
+nmap <Leader>ff <cmd>Telescope find_files hidden=true<cr>
 nmap <Leader>fg <cmd>Telescope live_grep<cr>
 nmap <Leader>fb <cmd>Telescope buffers<cr>
 nmap <Leader>fh <cmd>Telescope help_tags<cr>
+
+lua << EOF
+require('telescope').setup{
+    defaults = {
+        file_ignore_patterns = { "^./.git/", "^node_modules/", "^vendor/" },
+    }
+}
+EOF
 
 " -- NERDTree
 
@@ -188,6 +196,7 @@ nmap <Leader>g :tabnew term://lazygit<Enter><S-a>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
