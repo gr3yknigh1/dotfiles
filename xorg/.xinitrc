@@ -1,4 +1,4 @@
-feh --no-fehbg --bg-fill ~/images/wallpapers/nord-mountains-amir-matin-pour-unsplash-modded.png
+feh --no-fehbg --bg-fill ~/images/wallpapers/arch-wallpaper.png
 
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:win_space_toggle'
