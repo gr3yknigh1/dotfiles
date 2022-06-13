@@ -1,11 +1,6 @@
 " --- GENERAL ---
 
-let g:lazygit_use_neovim_remote = 0
-if has('nvim') && executable('nvr')
-  let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
-endif
-
-let g:mapleader="\<Space>"
+let g:mapleader="\\"
 
 " File formats
 
@@ -79,7 +74,6 @@ Plug 'khaveesh/vim-fish-syntax'
 " Etc
 Plug 'editorconfig/editorconfig-vim'
 Plug 'numToStr/Comment.nvim'
-Plug 'kdheepak/lazygit.nvim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -186,6 +180,7 @@ nmap <silent><Leader>h :noh<Enter>
 
 " python interpreter
 nmap <silent><Leader>i :tabnew term://python3<Enter><S-a>
+nmap <silent><Leader>r :tabnew term://python3 %<Enter><S-a>
 
 " lazygit
 " nmap <silent> <leader>gg :LazyGit<CR>
