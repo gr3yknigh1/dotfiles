@@ -1,7 +1,8 @@
 # --- main
 
-set $browser   	firefox
+set $browser   	vivaldi-stable
 set $term      	alacritty
+set $explorer   ranger
 
 set $mod Mod4
 
@@ -67,12 +68,13 @@ floating_modifier $mod
 # --- run browser & terminal 
 bindsym $mod+Return exec $term
 bindsym $mod+b      exec $browser
+bindsym $mod+o      exec $term --command $explorer
 
 # --- screenshots
 # to file
-bindsym Print       exec --no-startup-id maim           "$screenshots/$(date)"
-bindsym $mod+Print  exec --no-startup-id maim --window  $(xdotool getactivewindow) "$screenshots/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select  "$screenshots/$(date)"
+bindsym Print       exec --no-startup-id maim           "~/wallpapers/screenshots/$(date)"
+bindsym $mod+Print  exec --no-startup-id maim --window  $(xdotool getactivewindow) "~/wallpapers/screenshots/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select  "~/wallpapers/screenshots/$(date)"
 
 # clipboard screenshots
 bindsym Ctrl+Print          exec --no-startup-id maim | xclip -selection clipboard -t image/png
@@ -234,8 +236,7 @@ bar {
 
 for_window [class="^.*"] border pixel 0
 
-gaps inner 20
-# border_radius 5
+gaps inner 10
 
 # Picom
 exec_always --no-startup-id picom &
