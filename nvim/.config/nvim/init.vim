@@ -141,7 +141,7 @@ nmap <Leader>- :split<Enter>
 nmap <C-t>\ :vsplit term://$SHELL <Enter><S-a>
 nmap <C-t>- :split term://$SHELL <Enter><S-a>
 tmap <Leader><ESC> <c-\><c-n>
-nmap <Leader><C-t> :tabnew term://$SHELL<Enter><S-a>
+nmap <Leader>t :tabnew term://$SHELL<Enter><S-a>
 autocmd TermOpen * :set nonumber norelativenumber 
 
 " Pane scrolling
@@ -170,22 +170,24 @@ vmap <C-y> "+y
 nmap <C-p> "+p
 
 " tabs
-nmap <silent><Leader>t :tabnew<Enter>
-nmap <silent><Leader>w :tabclose<Enter>
+nmap <silent><Leader><C-t> :tabnew<Enter>
+nmap <silent><Leader><C-w> :tabclose<Enter>
 nmap <silent><Leader><Tab> :tabnext<Enter>
 nmap <silent><Leader><S-Tab> :tabprevious<Enter>
 
 " noh 
-nmap <silent><Leader>h :noh<Enter>
+nmap <silent><Leader>n :noh<Enter>
 
 " python interpreter
 nmap <silent><Leader>i :tabnew term://python3<Enter><S-a>
-nmap <silent><Leader>r :tabnew term://python3 %<Enter><S-a>
+nmap <silent><Leader>p :tabnew term://python3 %<Enter><S-a>
 
 " lazygit
 " nmap <silent> <leader>gg :LazyGit<CR>
-nmap <Leader>g :tabnew term://lazygit<Enter><S-a>
+nmap <Leader>l :tabnew term://lazygit<Enter><S-a>
 
+" ranger
+nmap <Leader>r :tabnew term://ranger<Enter><S-a>
 
 " Airline
 
