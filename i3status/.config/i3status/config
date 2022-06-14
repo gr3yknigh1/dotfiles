@@ -7,8 +7,8 @@ general {
         interval = 10
 }
 
-order += "disk /"
 order += "wireless wlan0"
+order += "disk /"
 order += "battery 0"
 order += "memory"
 order += "cpu_usage"
@@ -62,7 +62,7 @@ memory {
 }
 
 disk "/" {
-        format = " %free (Porn Folder)"
+        format = " %free"
 }
 
 read_file uptime {
