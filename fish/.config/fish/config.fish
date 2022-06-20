@@ -1,15 +1,45 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 end
 
+# -- EDITOR
 set EDITOR "nvim"
-
-alias cat="bat"
-alias ls="exa --icons --group-directories-first"
-alias l="exa -1 --icons --group-directories-first"
-alias ll="exa -l --icons --group-directories-first"
-alias la="exa -a --icons --group-directories-first"
-alias lla="exa -la --icons --group-directories-first"
-alias lt="exa -T --icons --group-directories-first"
-
 alias e=$EDITOR
+
+# -- CAT
+alias cat="bat"
+
+# -- LS
+set LS_ALL true
+
+function ls
+    set -f LS_ALL_CHAR
+    if $LS_ALL
+        set -f LS_ALL_CHAR "-a"
+    end
+    exa $LS_ALL_CHAR --icons --group-directories-first
+end
+
+function l
+    set -f LS_ALL_CHAR
+    if $LS_ALL
+        set -f LS_ALL_CHAR "-a"
+    end
+    exa $LS_ALL_CHAR -1 --icons --group-directories-first
+end
+
+function ll
+    set -f LS_ALL_CHAR
+    if $LS_ALL
+        set -f LS_ALL_CHAR "-a"
+    end
+    exa $LS_ALL_CHAR -l --icons --group-directories-first
+end
+
+function lt
+    set -f LS_ALL_CHAR
+    if $LS_ALL
+        set -f LS_ALL_CHAR "-a"
+    end
+    exa $LS_ALL_CHAR -T --icons --group-directories-first
+end
+
