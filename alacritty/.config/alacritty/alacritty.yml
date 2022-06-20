@@ -19,8 +19,8 @@ window:
   # Specified in number of columns/lines, not pixels. If both are zero this
   # setting is ignored.
   dimensions:
-    columns: 100
-    lines: 85
+    columns: 120
+    lines: 40
 
   # Window padding (changes require restart)
   #
@@ -40,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -54,7 +54,7 @@ window:
   startup_mode: Windowed
 
   # Background opacity
-  opacity: 1
+  opacity: 0.95
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
@@ -70,8 +70,8 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: Iosevka
-    style: Light
+    family: "Iosevka"
+    style: Regular
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: Retina
@@ -93,7 +93,7 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 9.0
+  size: 10
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
