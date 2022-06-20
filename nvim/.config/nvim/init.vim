@@ -1,6 +1,12 @@
 " --- GENERAL ---
 
 let g:mapleader="\\"
+set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
+set list
+
+nnoremap <leader>w :set list!<CR>
+" inoremap <F5> <C-o>:set list!<CR>
+" cnoremap <F5> <C-c>:set list!<CR>map <leader>h :set list
 
 " File formats
 
@@ -88,6 +94,10 @@ colorscheme nord
 
 " --- PLUGIN'S CONFIGURATIONS ---
 
+au FileType gitcommit let b:EditorConfig_disable = 1
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
+
 " -- Telescope
 
 " Find files using Telescope command-line sugar.
@@ -117,7 +127,6 @@ nmap <silent>gd <Plug>(coc-definition)
 
 " Symbol renaming.
 nmap <Leader>rn <Plug>(coc-rename)
-
 " open definition in a split window
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
@@ -142,7 +151,7 @@ nmap <C-t>\ :vsplit term://$SHELL <Enter><S-a>
 nmap <C-t>- :split term://$SHELL <Enter><S-a>
 tmap <Leader><ESC> <c-\><c-n>
 nmap <Leader>t :tabnew term://$SHELL<Enter><S-a>
-autocmd TermOpen * :set nonumber norelativenumber 
+autocmd TermOpen * :set nonumber norelativenumber
 
 " Pane scrolling
 nmap <Tab> <C-w>w
@@ -155,7 +164,7 @@ nmap <S-Tab> <C-w>W
 "nnoremap <silent><Leader>< :exe vertical resize  . (winwidth(0) * 2/3)<CR>
 
 set winminwidth=0
-nmap <Leader><C-h> <C-W>h500<C-W>>             
+nmap <Leader><C-h> <C-W>h500<C-W>>
 nmap <Leader><C-l> <C-W>l500<C-W>>
 
 " Pane switching
@@ -175,6 +184,9 @@ nmap <silent><Leader><C-w> :tabclose<Enter>
 nmap <silent><Leader><Tab> :tabnext<Enter>
 nmap <silent><Leader><S-Tab> :tabprevious<Enter>
 
+nmap <silent><leader><BS> :bprevious<cr>
+nmap <silent><leader><S-BS> :bnext<cr>
+
 " noh 
 nmap <silent><Leader>n :noh<Enter>
 
@@ -193,10 +205,8 @@ nmap <Leader>r :tabnew term://ranger<Enter><S-a>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " let g:airline_theme='nord_minimal'
-
-
