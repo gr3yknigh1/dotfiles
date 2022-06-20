@@ -27,11 +27,11 @@ def format_list(ls: list, sep=" ", end="") -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("extentions", dest="ext_path")
+    parser.add_argument("extentions")
     parser.add_argument("-d", "--dry-run", action="store_true", dest="is_dry_run")
     args = parser.parse_args()
     is_dry_run = args.is_dry_run
-    list_path = args.ext_path
+    list_path = args.extentions
 
     extentions: list[str] = get_extentions(list_path)
     editor: str | None = None
