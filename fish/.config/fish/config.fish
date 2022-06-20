@@ -16,7 +16,7 @@ function ls
     if $LS_ALL
         set -f LS_ALL_CHAR "-a"
     end
-    exa $LS_ALL_CHAR --icons --group-directories-first
+    exa $LS_ALL_CHAR --icons --group-directories-first $argv
 end
 
 function l
@@ -24,7 +24,7 @@ function l
     if $LS_ALL
         set -f LS_ALL_CHAR "-a"
     end
-    exa $LS_ALL_CHAR -1 --icons --group-directories-first
+    exa $LS_ALL_CHAR -1 --icons --group-directories-first $argv
 end
 
 function ll
@@ -32,7 +32,7 @@ function ll
     if $LS_ALL
         set -f LS_ALL_CHAR "-a"
     end
-    exa $LS_ALL_CHAR -l --icons --group-directories-first
+    exa $LS_ALL_CHAR -l --icons --group-directories-first $argv
 end
 
 function lt
@@ -40,6 +40,6 @@ function lt
     if $LS_ALL
         set -f LS_ALL_CHAR "-a"
     end
-    exa $LS_ALL_CHAR -T --icons --group-directories-first
+    exa $LS_ALL_CHAR -T --icons --group-directories-first $argv
 end
 
