@@ -2,7 +2,7 @@
 
 let g:mapleader="\\"
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
-set list
+" set list
 
 nnoremap <leader>w :set list!<CR>
 " inoremap <F5> <C-o>:set list!<CR>
