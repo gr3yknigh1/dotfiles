@@ -40,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -54,7 +54,7 @@ window:
   startup_mode: Maximized
 
   # Background opacity
-  opacity: 0.9
+  opacity: 1
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
@@ -93,7 +93,7 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 10
+  size: 14
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
