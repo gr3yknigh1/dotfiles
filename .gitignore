@@ -1,3 +1,2 @@
-nvim/.local/share/nvim/shada/*
-nvim/.local/share/nvim/telescope_history
-nvim/.local/share/nvim/swap/*
+nvim/.local/*
+!nvim/.local/share/nvim/site/autoload/plug.vim
