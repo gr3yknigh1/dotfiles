@@ -8,38 +8,8 @@ alias e=$EDITOR
 # -- CAT
 alias cat="bat"
 
-# -- LS
-set LS_ALL true
-
-function ls
-    set -f LS_ALL_CHAR
-    if $LS_ALL
-        set -f LS_ALL_CHAR "-a"
-    end
-    exa $LS_ALL_CHAR --icons --group-directories-first $argv
-end
-
-function l
-    set -f LS_ALL_CHAR
-    if $LS_ALL
-        set -f LS_ALL_CHAR "-a"
-    end
-    exa $LS_ALL_CHAR -1 --icons --group-directories-first $argv
-end
-
-function ll
-    set -f LS_ALL_CHAR
-    if $LS_ALL
-        set -f LS_ALL_CHAR "-a"
-    end
-    exa $LS_ALL_CHAR -l --icons --group-directories-first $argv
-end
-
-function lt
-    set -f LS_ALL_CHAR
-    if $LS_ALL
-        set -f LS_ALL_CHAR "-a"
-    end
-    exa $LS_ALL_CHAR -T --icons --group-directories-first $argv
-end
+alias ls="exa $LS_ALL_CHAR --icons --group-directories-first $argv"
+alias l1="exa $LS_ALL_CHAR -1 --icons --group-directories-first $argv"
+alias ll="exa $LS_ALL_CHAR -l --icons --group-directories-first $argv"
+alias lt="exa $LS_ALL_CHAR -T --icons --group-directories-first $argv"
 
