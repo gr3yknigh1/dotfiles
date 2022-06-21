@@ -183,6 +183,8 @@ nmap <silent><Leader><C-t> :tabnew<Enter>
 nmap <silent><Leader><C-w> :tabclose<Enter>
 nmap <silent><Leader><Tab> :tabnext<Enter>
 nmap <silent><Leader><S-Tab> :tabprevious<Enter>
+tmap <silent><Leader><Tab> <leader><ESC>:tabnext<Enter>
+tmap <silent><Leader><S-Tab> <leader><ESC>:tabprevious<Enter>
 
 nmap <silent><leader><BS> :bprevious<cr>
 nmap <silent><leader><S-BS> :bnext<cr>
@@ -196,10 +198,10 @@ nmap <silent><Leader>p :tabnew term://python3 %<Enter><S-a>
 
 " lazygit
 " nmap <silent> <leader>gg :LazyGit<CR>
-nmap <Leader>l :tabnew term://lazygit<Enter><S-a>
+" nmap <Leader>l :tabnew term://lazygit<Enter><S-a>
 
 " ranger
-nmap <Leader>r :tabnew term://ranger<Enter><S-a>
+" nmap <Leader>r :tabnew term://ranger<Enter><S-a>
 
 " Airline
 
@@ -209,4 +211,3 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-" let g:airline_theme='nord_minimal'
