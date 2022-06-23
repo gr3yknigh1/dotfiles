@@ -1,5 +1,7 @@
 " --- GENERAL ---
 
+lua require('basic')
+
 let g:mapleader="\\"
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
 " set list
@@ -14,6 +16,7 @@ syntax enable
 filetype plugin indent on
 set encoding=utf-8
 set fileformat=unix
+set wrap
 
 " Mouse
 
@@ -107,9 +110,15 @@ nmap <Leader>fb <cmd>Telescope buffers<cr>
 nmap <Leader>fh <cmd>Telescope help_tags<cr>
 
 lua << EOF
+local actions = require("telescope.actions")
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { "^./.git/", "^node_modules/", "^vendor/" },
+        file_ignore_patterns = { "^.git/", "^node_modules/", "^vendor/" },
+        mappings = {
+          i = {
+            ["<esc>"] = actions.close
+          },
+        }
     }
 }
 EOF
@@ -123,12 +132,15 @@ nmap <C-b> :NERDTreeToggle <Enter>
 
 " goto definition
 
-nmap <silent>gd <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
 " Symbol renaming.
 nmap <Leader>rn <Plug>(coc-rename)
 " open definition in a split window
-nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
 let g:coc_global_extensions = ['coc-json', 'coc-git']
 
@@ -188,6 +200,8 @@ tmap <silent><Leader><S-Tab> <leader><ESC>:tabprevious<Enter>
 
 nmap <silent><leader><BS> :bprevious<cr>
 nmap <silent><leader><S-BS> :bnext<cr>
+
+nmap <silent><leader><C-d> :bd<cr>
 
 " noh 
 nmap <silent><Leader>n :noh<Enter>
