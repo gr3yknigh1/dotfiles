@@ -88,6 +88,11 @@ Plug 'numToStr/Comment.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Folding
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
+Plug 'sar/lspconfig.nvim'
+
 call plug#end()
 
 
@@ -113,7 +118,7 @@ lua << EOF
 local actions = require("telescope.actions")
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { "^.git/", "^node_modules/", "^vendor/" },
+        file_ignore_patterns = { "**/.git/", "**/node_modules/" },
         mappings = {
           i = {
             ["<esc>"] = actions.close
@@ -221,7 +226,33 @@ nmap <silent><Leader>p :tabnew term://python3 %<Enter><S-a>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+" Folding
+
+lua << EOF
+vim.wo.foldcolumn = '1'
+vim.wo.foldlevel = 99 -- feel free to decrease the value
+vim.wo.foldenable = true
+
+-- option 2: nvim lsp as LSP client
+-- tell the server the capability of foldingRange
+-- nvim hasn't added foldingRange to default capabilities, users must add it manually
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+local language_servers = { 'ccls', 'csharp-ls' } -- like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities,
+        other_fields = ...
+    })
+end
+--
+
+-- require('ufo').setup()
+EOF
