@@ -70,7 +70,7 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "Iosevka"
     style: Regular
     # family: "Fira Code"
     # family: "Source Code Pro"
@@ -78,14 +78,14 @@ font:
 
   # The bold font face
   bold:
-    family: "JetBrainsMono Nerd Font"
+    family: "Iosevka"
     style: Medium
     # family: "Fira Code"
     # family: "Source Code Pro"
 
   # The italic font face
   italic:
-    family: "JetBrainsMono Nerd Font"
+    family: "Iosevka"
     style: "Light Italic"
     # style: "Light Oblique"
     # family: "Fira Code"
