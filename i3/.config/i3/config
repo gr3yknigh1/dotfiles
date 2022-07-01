@@ -18,10 +18,10 @@ set $wallpapers     "$HOME/Pictures/Wallpapers"
 
 # configured in /etc/X11/xorg.conf.d/touchpad-tap.conf
 # check [[i3 - touchpad configuration]]
-# set $touchpad_name "Synaptics TM3336-004"
-#
-# exec xinput set-prop $touchpad_name "libinput Tapping Enabled" 1
-# exec xinput set-prop $touchpad_name "libinput Natural Scrolling Enabled" 1
+set $touchpad_name "Synaptics TM3336-004"
+
+exec_always xinput set-prop $touchpad_name "libinput Tapping Enabled" 1
+exec_always xinput set-prop $touchpad_name "libinput Natural Scrolling Enabled" 1
 
 # --- layouts and layout toggle
 # moved to ~/.xinitrc
@@ -239,3 +239,6 @@ gaps inner 10
 
 # Picom
 exec_always --no-startup-id picom &
+
+# Network
+
