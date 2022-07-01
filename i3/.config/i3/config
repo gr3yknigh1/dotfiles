@@ -2,7 +2,7 @@
 
 set $browser   	min
 set $term      	alacritty
-set $explorer   lf
+set $explorer   ranger
 
 set $mod Mod4
 
@@ -10,10 +10,9 @@ font pango:Iosevka 9
 
 # --- paths
 
-set $home           "/home/$(USER)"
-set $pictures       "$home/pictures"
-set $screenshots    "$pictures/screenshots"
-set $wallpapers     "$pictures/wallpapers"
+set $pictures       "$HOME/Pictures"
+set $screenshots    "$HOME/Pictures/Screenshots"
+set $wallpapers     "$HOME/Pictures/Wallpapers"
 
 # --- tounchpad
 
@@ -71,9 +70,9 @@ bindsym $mod+o      exec $term --command $explorer
 
 # --- screenshots
 # to file
-bindsym Print       exec --no-startup-id maim           "~/wallpapers/screenshots/$(date)"
-bindsym $mod+Print  exec --no-startup-id maim --window  $(xdotool getactivewindow) "~/wallpapers/screenshots/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select  "~/wallpapers/screenshots/$(date)"
+bindsym Print       exec --no-startup-id maim           "$screenshots/$(date)"
+bindsym $mod+Print  exec --no-startup-id maim --window  $(xdotool getactivewindow) "$screenshots/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select  "$screenshots/$(date)"
 
 # clipboard screenshots
 bindsym Ctrl+Print          exec --no-startup-id maim | xclip -selection clipboard -t image/png
@@ -234,9 +233,9 @@ bar {
     }
 }
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
-gaps inner 0
+gaps inner 10
 
 # Picom
-# exec_always --no-startup-id picom &
+exec_always --no-startup-id picom &
