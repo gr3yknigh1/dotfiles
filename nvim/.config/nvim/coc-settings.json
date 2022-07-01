@@ -9,11 +9,6 @@
                     "directory": "/tmp/coc/"
                 }
             }
-        },
-        "csharp-ls": {
-          "command": "csharp-ls",
-          "filetypes": ["cs"],
-          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
         }
     },
     "jedi.executable.command": "~/.local/bin/jedi-language-server",
