@@ -17,7 +17,7 @@ order += "tztime moscow"
 
 wireless wlan0 {
         format_up = " %essid (%bitrate) :: %ip"
-        format_down = "睊down"
+        format_down = "睊 down"
 }
 
 ethernet eth0 {
