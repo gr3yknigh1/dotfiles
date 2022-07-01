@@ -98,7 +98,7 @@ colorscheme nord
 " --- PLUGIN'S CONFIGURATIONS ---
 
 au FileType gitcommit let b:EditorConfig_disable = 1
-let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_exec_path = '/usr/local/editorconfig'
 let g:EditorConfig_core_mode = 'external_command'
 
 " -- Telescope
@@ -113,7 +113,7 @@ lua << EOF
 local actions = require("telescope.actions")
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { "**/.git/", "**/node_modules/" },
+        file_ignore_patterns = { "**/.git/", "**/node_modules/", "**/.mono/", "**/.import/" },
         mappings = {
           i = {
             ["<esc>"] = actions.close
