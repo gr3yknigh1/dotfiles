@@ -468,7 +468,7 @@ debug:
   #   - INFO
   #   - DEBUG
   #   - TRACE
-  log_level: OFF
+  log_level: TRACE
 
   # Print all received window events.
   print_events: false
@@ -482,7 +482,8 @@ debug:
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
   program: /usr/bin/fish
-  # args:
-  #   - --command=tmux-start
+  args:
+    - --command=tmux-session-selector
+    - --command=fish
 
 # vim: nospell
