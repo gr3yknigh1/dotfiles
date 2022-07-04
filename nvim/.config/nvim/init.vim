@@ -83,6 +83,8 @@ Plug 'khaveesh/vim-fish-syntax'
 " Etc
 Plug 'editorconfig/editorconfig-vim'
 Plug 'numToStr/Comment.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -143,7 +145,8 @@ nmap <Leader>rn <Plug>(coc-rename)
 " open definition in a split window
 
 let g:coc_global_extensions = ['coc-json', 'coc-git']
-
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <leader>dy :CocCommand yank.clean<cr>
 
 " -- Comment
 
