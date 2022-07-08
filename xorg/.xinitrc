@@ -5,3 +5,4 @@ setxkbmap -option 'grp:win_space_toggle'
 
 udiskie &
 dhcpcd &
+picom &

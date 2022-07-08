@@ -250,7 +250,3 @@ bar {
 for_window [class="^.*"] border pixel 1
 
 gaps inner 0
-
-# Picom
-exec_always --no-startup-id picom &
-
