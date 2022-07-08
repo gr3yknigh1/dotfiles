@@ -75,6 +75,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Badacadabra/vim-archery'
 Plug 'agude/vim-eldar'
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 " Syntaxing & languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -95,7 +96,7 @@ call plug#end()
 
 " --- Apperience ---
 
-colorscheme nord
+colorscheme gruvbox
 
 " --- PLUGIN'S CONFIGURATIONS ---
 
