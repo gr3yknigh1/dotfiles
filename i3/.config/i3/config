@@ -14,22 +14,6 @@ set $pictures       "$HOME/Pictures"
 set $screenshots    "$HOME/Pictures/Screenshots"
 set $wallpapers     "$HOME/Pictures/Wallpapers"
 
-# --- tounchpad
-
-# configured in /etc/X11/xorg.conf.d/touchpad-tap.conf
-# check [[i3 - touchpad configuration]]
-set $touchpad_name "Synaptics TM3336-004"
-
-exec_always xinput set-prop $touchpad_name "libinput Tapping Enabled" 1
-exec_always xinput set-prop $touchpad_name "libinput Natural Scrolling Enabled" 1
-
-# --- layouts and layout toggle
-# moved to ~/.xinitrc
-# set $layout_toggle 'grp:win_space_toggle'
-#
-# exec --no-startup-id setxkbmap -layout us,ru
-# exec --no-startup-id setxkbmap -option $layout_toggle
-
 # brightness
 
 set $brightness_step 50
