@@ -465,8 +465,8 @@ debug:
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
   program: /usr/bin/fish
-  args:
-    - --command=tmux-session-selector
-    - --command=fish
+  # args:
+  #   - --command=tmux-session-selector
+  #   - --command=fish
 
 # vim: nospell
