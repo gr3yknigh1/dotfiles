@@ -216,9 +216,8 @@ nmap <silent><leader><C-d> :bd<cr>
 nmap <silent><Leader>n :noh<Enter>
 
 " python interpreter
-nmap <silent><Leader>i :tabnew term://python3<Enter><S-a>
-nmap <silent><Leader>p :tabnew term://python3 %<Enter><S-a>
-
+nmap <silent><Leader>I :tabnew term://python3<Enter><S-a>
+nmap <silent><Leader>P :tabnew term://python3 %<Enter><S-a>
 " lazygit
 " nmap <silent> <leader>gg :LazyGit<CR>
 " nmap <Leader>l :tabnew term://lazygit<Enter><S-a>
