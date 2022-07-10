@@ -147,6 +147,7 @@ nnoremap <leader><Space> :NERDTreeToggle<cr>
 nnoremap <leader>r :NERDTreeRefreshRoot<cr>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+let g:NERDTreeIgnore = ['.git', "^.import", ".mono"]
 
 if exists('g:loaded_webdevicons')
     call webdevicons#refresh()
