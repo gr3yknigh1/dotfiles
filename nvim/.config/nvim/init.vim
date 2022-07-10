@@ -143,7 +143,7 @@ EOF
 " -- NERDTree
 
 let NERDTreeShowHidden=1
-nmap <C-b> :NERDTreeToggle <Enter>
+nnoremap <leader><Space> :NERDTreeToggle<cr>
 
 " -- COC
 
