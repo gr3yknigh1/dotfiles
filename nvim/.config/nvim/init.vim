@@ -144,6 +144,13 @@ EOF
 
 let NERDTreeShowHidden=1
 nnoremap <leader><Space> :NERDTreeToggle<cr>
+nnoremap <leader>r :NERDTreeRefreshRoot<cr>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
 
 " -- COC
 
