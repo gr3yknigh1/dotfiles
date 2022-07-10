@@ -1,6 +1,10 @@
 if status is-interactive
 end
 
+
+alias cls="clear"
+alias lg="lazygit"
+
 # -- EDITOR
 set EDITOR "nvim"
 alias e=$EDITOR
