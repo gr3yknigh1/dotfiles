@@ -159,7 +159,7 @@ nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 nmap <Leader>rn <Plug>(coc-rename)
 " open definition in a split window
 
-let g:coc_global_extensions = ['coc-json', 'coc-git']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-yank']
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> <leader>dy :CocCommand yank.clean<cr>
 
