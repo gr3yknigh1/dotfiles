@@ -90,6 +90,10 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Puml
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'tyru/open-browser.vim'
 call plug#end()
 
 
