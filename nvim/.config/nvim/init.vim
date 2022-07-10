@@ -205,6 +205,7 @@ nmap <silent><Leader><Tab> :tabnext<Enter>
 nmap <silent><Leader><S-Tab> :tabprevious<Enter>
 tmap <silent><Leader><Tab> <leader><ESC>:tabnext<Enter>
 tmap <silent><Leader><S-Tab> <leader><ESC>:tabprevious<Enter>
+tmap <silent><leader>w <leader><esc>:q<cr>
 
 nmap <silent><leader><BS> :bprevious<cr>
 nmap <silent><leader><S-BS> :bnext<cr>
