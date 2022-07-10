@@ -187,16 +187,6 @@ autocmd TermOpen * :set nonumber norelativenumber
 nmap <Tab> <C-w>w
 nmap <S-Tab> <C-w>W
 
-" Pane resizing
-"nnoremap <silent><Leader>+ :exe resize  . (winheight(0) * 3/2)<CR>
-"nnoremap <silent><Leader>- :exe resize  . (winheight(0) * 2/3)<CR>
-"nnoremap <silent><Leader>> :exe vertical resize  . (winwidth(0) * 3/2)<CR>
-"nnoremap <silent><Leader>< :exe vertical resize  . (winwidth(0) * 2/3)<CR>
-
-set winminwidth=0
-nmap <Leader><C-h> <C-W>h500<C-W>>
-nmap <Leader><C-l> <C-W>l500<C-W>>
-
 " Pane switching
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
