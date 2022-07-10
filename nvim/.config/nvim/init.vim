@@ -115,12 +115,23 @@ lua << EOF
 local actions = require("telescope.actions")
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { "**/.git/", "**/node_modules/", "**/.mono/", "**/.import/" },
+        file_ignore_patterns = { ".git", "node_modules", ".mono", ".import" },
         mappings = {
           i = {
             ["<esc>"] = actions.close
           },
-        }
+        },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--ignore-file',
+          '.gitignore'
+        },
     }
 }
 EOF
