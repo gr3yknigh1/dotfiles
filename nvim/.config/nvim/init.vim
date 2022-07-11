@@ -12,6 +12,7 @@ source basic/tabs.vim
 source basic/panes.vim
 source basic/buffers.vim
 
+source plugins/airline.vim
 source plugins/coc.vim
 source plugins/comment.vim
 source plugins/editorconfig.vim
