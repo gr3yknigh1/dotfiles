@@ -24,10 +24,11 @@ vmap     <C-y> "+y
 nmap     <C-p> "+p
 
 " Deleting
-xnoremap d "_d
-vnoremap d "_d
-noremap d  "_d
-noremap dd Vd
+" xnoremap d "_d
+" vnoremap d "_d
+" noremap d  "_d
+" nmap dd Vd<CR>
+" vmap d Vd<CR>
 
 " No search highlight
 nmap <silent> <leader>n <cmd>noh<CR>
