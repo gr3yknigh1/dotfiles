@@ -1,0 +1,42 @@
+{
+    "pacman": [
+        "git", "git-lfs", "lazygit",
+        "cmake", "ccls",
+        "fish", "alacritty",
+        "vim", "neovim", "nano", "helix",
+        "npm", "nodejs",
+        "python",
+        "exa", "bat", "ripgrep", "fd",
+        "feh", "neofetch",
+        "ranger",
+        "stow", "curl", "xclip",
+        "min", "firefox",
+        "gimp",
+        "i3-gaps", "i3status", "i3lock", "i3blocks",
+        "xorg-xinput", "xorg-xinit",
+        "brightnessctl",
+        "emacs"
+    ],
+    "pip": [
+        "virtualfish",
+        "scons",
+        "jedi", "jedi-language-server",
+        "pynvim"
+    ],
+    "npm": [
+        "neovim",
+        "git-open"
+    ],
+    "omf": [
+        "nai"
+    ],
+    "stow": [
+        "xorg",
+        "i3", "i3exit", "i3status", "picom",
+        "git", "lazygit", 
+        "nvim", "tmux",
+        "fish",
+        "alacritty",
+        "screenkey"
+    ]
+}
