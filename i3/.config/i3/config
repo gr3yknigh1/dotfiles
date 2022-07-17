@@ -1,6 +1,6 @@
 # --- main
 
-set $browser   	min
+set $browser   	vivaldi-stable
 set $term      	alacritty
 set $explorer   ranger
 
