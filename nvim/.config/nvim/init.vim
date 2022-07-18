@@ -12,12 +12,13 @@ source ~/.config/nvim/basic/rendering.vim
 source ~/.config/nvim/basic/tabs.vim
 source ~/.config/nvim/basic/panes.vim
 source ~/.config/nvim/basic/buffers.vim
+" source ~/.config/nvim/basic/lsp.vim
 
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/comment.vim
 source ~/.config/nvim/plugins/editorconfig.vim
-source ~/.config/nvim/plugins/NERDTree.vim
+source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/telescope.vim
 
 
