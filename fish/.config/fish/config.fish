@@ -20,7 +20,8 @@ alias lt="exa $LS_ALL_CHAR -T --icons --group-directories-first $argv"
 # -- Tmux
 
 alias t="tmux"
-alias ta="tmux attach"
+alias tal="tmux attach"
+alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tkr="tmux kill-server"
 alias tks="tmux kill-session"
