@@ -3,7 +3,10 @@
 
 let g:mapleader = "\\"
 set nocompatible
+set shell=fish
 
+nmap <Leader>q <cmd>quit<CR>
+tmap <Leader>q <cmd>quit<CR>
 
 " --- Basic --- "
 
@@ -121,6 +124,8 @@ set scrolloff=7
 set relativenumber
 set rnu
 
+autocmd BufEnter *.* set relativenumber
+
 " Whitespace rendering
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
 set nolist
@@ -157,13 +162,22 @@ nnoremap <Leader>t- :split  term://$SHELL <CR><S-a>
 
 tnoremap <Leader><Esc> <C-\><C-n>
 
-autocmd TermOpen * :set nonumber norelativenumber 
+autocmd TermOpen * :set nonumber norelativenumber
+
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
 
 " Pane switching
 nnoremap <A-j> <C-W>j
-noremap <A-k> <C-W>k
+nnoremap <A-k> <C-W>k
 nnoremap <A-h> <C-W>h
 nnoremap <A-l> <C-W>l
+
+" Terminal pane switching
+tnoremap <A-j> <C-\><C-n><C-W>j
+tnoremap <A-k> <C-\><C-n><C-W>k
+tnoremap <A-h> <C-\><C-n><C-W>h
+tnoremap <A-l> <C-\><C-n><C-W>l
 
 
 " --- Buffers --- "
@@ -274,7 +288,6 @@ let g:EditorConfig_core_mode = 'external_command'
 
 " --- NERDTree --- "
 
-
 let g:NERDTreeHijackNetrw = 0 
 
 let NERDTreeShowHidden=1
@@ -346,5 +359,32 @@ nnoremap <Leader>I <cmd>tabnew term://python3<CR><S-a>
 nnoremap <Leader>P <cmd>tabnew term://python3 %<CR><S-a>
 nnoremap <Leader>p :tabnew term://python3 
 
-nmap <Leader><A-r> <cmd>source $MYVIMRC<CR>
+nmap <Leader><C-A-r> <cmd>source $MYVIMRC<CR>
+nmap <Leader><C-A-e> <cmd>edit   $MYVIMRC<CR>
+noremap <Leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
 
+"  --- Plug 'francoiscabrol/ranger.vim' --- "
+"
+"  List of commands:
+"
+"  :Ranger // open current file by default
+"  :RangerCurrentFile // Default Ranger behaviour
+"  :RangerCurrentDirectory
+"  :RangerWorkingDirectory
+"
+"  // open always in new tabs
+"  :RangerNewTab
+"  :RangerCurrentFileNewTab
+"  :RangerCurrentDirectoryNewTab
+"  :RangerWorkingDirectoryNewTab
+"
+"  // open tab, when existant or in new tab when not existant
+"  :RangerCurrentFileExistingOrNewTab
+"  :RangerCurrentDirectoryExistingOrNewTab
+"  :RangerWorkingDirectoryExistingOrNewTab
+
+noremap <Leader>f  <cmd>RangerNewTab<CR>
+noremap <Leader>f\ <cmd>split<CR><cmd>Ranger<CR>
+
+let g:ranger_command_override = 'ranger'
+let g:ranger_replace_netrw = 1 
