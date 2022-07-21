@@ -2,6 +2,7 @@
 
 set $browser   	vivaldi-stable
 set $term      	alacritty
+set $term_run   alacritty --command
 set $explorer   ranger
 
 set $mod Mod4
@@ -34,11 +35,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-
-# --- run browser & terminal 
 bindsym $mod+Return exec $term
-bindsym $mod+b      exec $browser
-bindsym $mod+o      exec $term --command $explorer
 
 # --- screenshots
 # to file
@@ -129,6 +126,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+
+bindsym $mod+r mode "resize"
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
@@ -143,7 +142,20 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+
+bindsym $mod+o mode "apps"
+mode "apps" {
+    bindsym $mod+Shift+q kill
+
+    bindsym $mod+o mode "default"
+    
+    bindsym $mod+b exec $browser
+    bindsym $mod+f exec $term_run $explorer
+
+    bindsym $mod+h exec $term_run htop
+    bindsym $mod+n exec obsidian
+}
+
 
 bar {
     status_command i3status
