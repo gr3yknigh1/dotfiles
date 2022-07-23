@@ -154,6 +154,8 @@ mode "apps" {
 
     bindsym $mod+h exec $term_run htop
     bindsym $mod+n exec obsidian
+
+    bindsym $mod+w exec bitwarden-desktop
 }
 
 
