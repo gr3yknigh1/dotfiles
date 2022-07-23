@@ -140,7 +140,7 @@ nnoremap <silent> <Leader><Tab>   <cmd>tabnext     <CR>
 nnoremap <silent> <Leader><S-Tab> <cmd>tabprevious <CR>
 
 " Terminal tabs
-" nmap <silent> <leader>t       :tabnew term://$SHELL<Enter><S-a>
+" nmap <silent> <leader>t       :tabnew term://$SHELL<Enter>
 
 tmap <silent> <leader><Tab>   <leader><ESC>:tabnext     <CR>
 tmap <silent> <leader><S-Tab> <leader><ESC>:tabprevious <CR>
@@ -157,8 +157,8 @@ nmap <leader>- :split  <CR>
 
 " Terminal panes
 
-nnoremap <Leader>t\ :vsplit term://$SHELL <CR><S-a>
-nnoremap <Leader>t- :split  term://$SHELL <CR><S-a>
+nnoremap <Leader>t\ :vsplit term://$SHELL <CR>
+nnoremap <Leader>t- :split  term://$SHELL <CR>
 
 tnoremap <Leader><Esc> <C-\><C-n>
 
@@ -355,8 +355,9 @@ EOF
 
 nnoremap <Leader>O :tabnew term://
 
-nnoremap <Leader>I <cmd>tabnew term://python3<CR><S-a>
-nnoremap <Leader>P <cmd>tabnew term://python3 %<CR><S-a>
+nnoremap <Leader>I <cmd>tabnew term://python3<CR>
+nnoremap <Leader>P <cmd>tabnew term://python3 %<CR>
+nnoremap <Leader>R <cmd>tabnew term://rustc % -o /tmp/a.out && /tmp/a.out<CR>
 nnoremap <Leader>p :tabnew term://python3 
 
 nmap <Leader><C-A-r> <cmd>source $MYVIMRC<CR>
