@@ -1,5 +1,8 @@
 " --- CONFIG --- "
 
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 let g:mapleader = "\\"
 set nocompatible
@@ -70,6 +73,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Badacadabra/vim-archery'
 Plug 'agude/vim-eldar'
 Plug 'arcticicestudio/nord-vim'
+Plug 'Mofiqul/dracula.nvim'
 
 " Syntaxing & languages
 Plug 'neovim/nvim-lspconfig'
@@ -111,7 +115,7 @@ call plug#end()
 syntax enable
 
 " Colorschemes
-colorscheme nord
+colorscheme dracula
 
 
 " --- Rendering --- "
@@ -192,7 +196,7 @@ nnoremap <silent> <leader><C-d>   <cmd>bd       <CR>
 
 " --- Airline --- "
 
-let g:airline_theme="nord"
+let g:airline_theme="base16_dracula"
 
 let g:airline_experimental = 0
 let g:airline_left_sep='>'
