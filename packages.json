@@ -8,13 +8,14 @@
         "fish", "alacritty",
         "vim", "neovim", "nano", "helix",
         "npm", "nodejs",
+	"tmux",
         "python",
         "exa", "bat", "ripgrep", "fd",
         "feh", "neofetch", "maim",
         "ranger", "screenkey",
         "stow", "curl", "xclip", "man",
         "zip", "unzip",
-        "min", "firefox",
+        "min", "firefox", "vivaldi",
         "vlc", "obs-studio", "xpdf",
         "libreoffice",
         "obsidian",
@@ -35,7 +36,8 @@
         "emacs",
         "noto-fonts", "noto-fonts-emoji", "noto-fonts-extra", "noto-fonts-cjk",
         "steam",
-        "bitwarden"
+        "bitwarden", "pass",
+	"picom"
     ],
     "pip": [
         "virtualfish",
