@@ -39,14 +39,14 @@ bindsym $mod+Return exec $term
 
 # --- screenshots
 # to file
-bindsym Print       exec --no-startup-id maim           "$screenshots/$(date)"
-bindsym $mod+Print  exec --no-startup-id maim --window  $(xdotool getactivewindow) "$screenshots/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select  "$screenshots/$(date)"
+bindsym Print       exec --no-startup-id maim -m 10           "$HOME/Pictures/Screenshots/$(date +"%d-%m-%y-%H-%M-%S").png"
+bindsym $mod+Print  exec --no-startup-id maim -m 10 --window  $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$screenshots/$(date +"%d-%m-%y-%H-%M-%S").png"
+bindsym Shift+Print exec --no-startup-id maim -m 10 --select  "$HOME/Pictures/Screenshots/$(date +"%d-%m-%y-%H-%M-%S").png"
 
 # clipboard screenshots
-bindsym Ctrl+Print          exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print     exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print    exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print          exec --no-startup-id maim -m 10 | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print     exec --no-startup-id maim -m 10 --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print    exec --no-startup-id maim -m 10 --select | xclip -selection clipboard -t image/png
 
 # --- kill focused window
 bindsym $mod+Shift+q kill
