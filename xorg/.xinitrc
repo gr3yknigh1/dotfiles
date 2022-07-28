@@ -1,4 +1,4 @@
-feh --no-fehbg --bg-fill ~/.dotfiles/wallpapers/dark-blue-gradient.jpg
+source ~/.wallpaper
 
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:win_space_toggle'
