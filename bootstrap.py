@@ -13,10 +13,10 @@ HOME_DIR = os.path.expanduser('~')
 with open("packages.json") as f:
     packages: dict = json.load(f)
 
-subprocess.run(["sudo", "pacman", "-Sy", *packages.get("pacman", [])])
-subprocess.run(["python", "-m", "ensurepip"])
-subprocess.run(["pip3", "install", "--upgrade", "pip"])
-subprocess.run(["pip", "install", *packages.get("pip", [])])
+# subprocess.run(["sudo", "pacman", "-Sy", *packages.get("pacman", [])])
+# subprocess.run(["python", "-m", "ensurepip"])
+subprocess.run(["python", "-m", "pip", "install", "--upgrade", "pip"])
+subprocess.run(["python", "-m", "pip", "install", *packages.get("pip", [])])
 subprocess.run(["sudo", "npm", "install", "--global", *packages.get("npm", [])])
 subprocess.run(["sh", f"{HOME_DIR}/.dotfiles/scripts/install-rustup.sh"])
 subprocess.run(["sh", f"{HOME_DIR}/.dotfiles/scripts/install-omf.sh"])
@@ -29,4 +29,4 @@ for pkg in packages.get("stow", []):
         "stow", "-S", pkg
         ])
 
-subprocess.run(["sh", f"{HOME_DIR}/.dotfiles/scripts/chsh2fish.sh"])
+# subprocess.run(["sh", f"{HOME_DIR}/.dotfiles/scripts/chsh2fish.sh"])
