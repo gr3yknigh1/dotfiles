@@ -76,7 +76,11 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'Mofiqul/dracula.nvim'
 
 " Syntaxing & languages
-Plug 'neovim/nvim-lspconfig'
+
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'williamboman/nvim-lsp-installer'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -107,6 +111,11 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 call plug#end()
+
+
+" --- Treesitter
+
+" source ~/.dotfiles/nvim/.config/nvim/treesitter.lua
 
 
 " --- Apperience --- "
@@ -192,7 +201,6 @@ nnoremap <silent> <leader><C-d>   <cmd>bd       <CR>
 
 
 " --- PLUGINS --- "
-
 
 " --- Airline --- "
 
