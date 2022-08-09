@@ -159,6 +159,9 @@ mode "apps" {
     bindsym $mod+n exec obsidian
 
     bindsym $mod+w exec bitwarden-desktop
+
+    bindsym $mod+d exec discord
+    bindsym $mod+t exec telegram-desktop
 }
 
 
