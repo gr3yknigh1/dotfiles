@@ -186,6 +186,11 @@ nnoremap <A-k> <C-W>k
 nnoremap <A-h> <C-W>h
 nnoremap <A-l> <C-W>l
 
+nnoremap <C-A-j> 10<C-W>+
+nnoremap <C-A-k> 10<C-W>-
+nnoremap <C-A-h> 10<C-W><
+nnoremap <C-A-l> 10<C-W>>
+
 " Terminal pane switching
 tnoremap <A-j> <C-\><C-n><C-W>j
 tnoremap <A-k> <C-\><C-n><C-W>k
