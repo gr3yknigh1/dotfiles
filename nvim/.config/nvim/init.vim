@@ -130,7 +130,7 @@ colorscheme dracula
 " --- Rendering --- "
 
 " Line wrapping
-set wrap
+set nowrap
 set scrolloff=7
 
 " Line numbers
