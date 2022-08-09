@@ -65,6 +65,9 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
+
 bindsym $mod+Ctrl+h move left  10 px
 bindsym $mod+Ctrl+j move down  10 px
 bindsym $mod+Ctrl+k move up    10 px
