@@ -195,3 +195,5 @@ bar {
 for_window [class="^.*"] border pixel 1
 
 gaps inner 0
+
+workspace 3 output HDMI-1
