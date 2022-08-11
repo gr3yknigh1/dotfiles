@@ -64,7 +64,7 @@ vim.opt.splitright = true
 -- Indentations
 local indent = 4
 vim.opt.tabstop = indent
-vim.opt.shiftwidth = indent
+vim.opt.shiftwidth = 2
 vim.opt.softtabstop = indent
 
 vim.opt.autoindent = true
@@ -151,18 +151,12 @@ nmap("<A-k>", "<C-W>k")
 nmap("<A-h>", "<C-W>h")
 nmap("<A-l>", "<C-W>l")
 
-local step = 1
-local step_mod = 10
+local step = 10
 
 nmap("<C-A-j>", string.format("%s<C-W>+", step))
 nmap("<C-A-k>", string.format("%s<C-W>-", step))
 nmap("<C-A-h>", string.format("%s<C-W><", step))
 nmap("<C-A-l>", string.format("%s<C-W>>", step))
-
-nmap("<C-S-A-j>", string.format("%s<C-W>+", step * step_mod))
-nmap("<C-S-A-k>", string.format("%s<C-W>-", step * step_mod))
-nmap("<C-S-A-h>", string.format("%s<C-W><", step * step_mod))
-nmap("<C-S-A-l>", string.format("%s<C-W>>", step * step_mod))
 
 nmap("<S-A-j>", "<C-W><S-j>")
 nmap("<S-A-k>", "<C-W><S-k>")
@@ -183,12 +177,19 @@ nmap("<Leader>t-", string.format("<cmd>split term://%s<CR>", shell))
 nmap("<Leader>o\\", ":vsplit term://")
 nmap("<Leader>o-", ":split term://")
 
+
+-- Moving lines
+nmap("<S-k>", "<S-v>xkP")
+nmap("<S-j>", "<S-v>xp")
+
 -- Buffers
 -- nmap("<Leader><BS>", "<cmd>bprevious<CR>")
 -- nmap("<Leader><S-BS>", "<cmd>bnext<CR>")
 -- nmap("<Leader><C-d>", "<cmd>bd<CR>")
 
 -- # Plugin's configuration # ---
+
+
 -- Telescope
 
 local tactions = require("telescope.actions")
@@ -220,7 +221,6 @@ nmap("<Leader>fg", tbuiltin.live_grep)
 nmap("<Leader>fb", tbuiltin.buffers)
 nmap("<Leader>fh", tbuiltin.help_tags)
 nmap("<Leader>fc", tbuiltin.commands)
-
 
 -- Lualine
 --
@@ -485,7 +485,7 @@ require'bufferline'.setup {
   animation = false,
 
   -- Enable/disable auto-hiding the tab bar when there is a single buffer
-  auto_hide = false,
+  auto_hide = true,
 
   -- Enable/disable current/total tabpages indicator (top right corner)
   tabpages = true,
@@ -741,10 +741,6 @@ require('nvim-autopairs').setup({
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
 
 local handlers = require('nvim-autopairs.completion.handlers')
 
@@ -785,7 +781,7 @@ cmp.event:on(
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "python" },
+  ensure_installed = { "c", "lua", "rust", "python", "html", "javascript", "css", "java" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
