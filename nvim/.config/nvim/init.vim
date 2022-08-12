@@ -80,7 +80,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Badacadabra/vim-archery'
 Plug 'agude/vim-eldar'
 Plug 'arcticicestudio/nord-vim'
-Plug 'Mofiqul/dracula.nvim'
+Plug 'morhetz/gruvbox'
 
 " Syntaxing & languages
 
@@ -131,7 +131,7 @@ call plug#end()
 syntax enable
 
 " Colorschemes
-colorscheme dracula
+colorscheme gruvbox
 
 
 " --- Rendering --- "
@@ -219,7 +219,7 @@ nnoremap <silent> <leader><C-d> <cmd>bdelete<CR>
 
 " --- Airline --- "
 
-let g:airline_theme="base16_dracula"
+let g:airline_theme="base16_gruvbox_dark_hard"
 
 let g:airline_experimental = 0
 let g:airline_left_sep='>'
