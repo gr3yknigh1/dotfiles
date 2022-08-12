@@ -8,8 +8,10 @@ let g:mapleader = "\\"
 set nocompatible
 set shell=fish
 
-nmap <silent> <Leader>q <cmd>quit<CR>
-tmap <silent> <Leader>q <cmd>quit<CR>
+nmap <silent> <Leader>q <cmd>q<CR>
+tmap <silent> <Leader>q <cmd>q<CR>
+nmap <silent> <Leader>Q <cmd>qa<CR>
+tmap <silent> <Leader>Q <cmd>qa<CR>
 
 " --- Basic --- "
 
