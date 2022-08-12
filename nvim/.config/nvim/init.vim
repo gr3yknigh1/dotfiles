@@ -43,6 +43,11 @@ nmap     <C-p> "+p
 " nmap dd Vd<CR>
 " vmap d Vd<CR>
 
+" Tabbing in Insert mode
+
+nmap <C-]> >>
+nmap <C-[> V<
+
 " No search highlight
 nnoremap <silent> <leader>n <cmd>noh<CR>
 
@@ -188,8 +193,8 @@ nnoremap <A-l> <C-W>l
 
 nnoremap <C-A-j> 10<C-W>+
 nnoremap <C-A-k> 10<C-W>-
-nnoremap <C-A-h> 10<C-W><
-nnoremap <C-A-l> 10<C-W>>
+nnoremap <C-A-h> 10<C-W>>
+nnoremap <C-A-l> 10<C-W><
 
 " Terminal pane switching
 tnoremap <A-j> <C-\><C-n><C-W>j
