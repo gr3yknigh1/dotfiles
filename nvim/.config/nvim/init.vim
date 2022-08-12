@@ -381,6 +381,7 @@ EOF
 " --- APPLICATIONS --- "
 
 nnoremap <Leader>O :tabnew term://
+nnoremap <Leader>o- :sp term://
 
 nnoremap <Leader>I <cmd>tabnew term://python3<CR>
 nnoremap <Leader>P <cmd>tabnew term://python3 %<CR>
