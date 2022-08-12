@@ -210,7 +210,10 @@ tnoremap <A-l> <C-\><C-n><C-W>l
 nnoremap <silent> <leader><BS>    <cmd>bprevious<CR>
 nnoremap <silent> <leader><S-BS>  <cmd>bnext    <CR>
 nnoremap <silent> <leader><C-d>   <cmd>bd       <CR>
+nnoremap <silent> <A-,>  <cmd>bprevious<CR>
+nnoremap <silent> <A-.>  <cmd>bnext<CR>
 
+nnoremap <silent> <leader><C-d> <cmd>bdelete<CR>
 
 " --- PLUGINS --- "
 
