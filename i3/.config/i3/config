@@ -132,16 +132,20 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 bindsym $mod+r mode "resize"
-mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
 
-        bindsym Shift+j resize shrink width 100 px or 100 ppt
-        bindsym Shift+k resize grow height 100 px or 100 ppt
-        bindsym Shift+l resize shrink height 100 px or 100 ppt
-        bindsym Shift+semicolon resize grow width 100 px or 100 ppt
+set $resize_step 2
+set $shift_resize_step 100
+
+mode "resize" {
+        bindsym j resize shrink width $resize_step px or $resize_step ppt
+        bindsym k resize grow height $resize_step px or $resize_step ppt
+        bindsym l resize shrink height $resize_step px or $resize_step ppt
+        bindsym semicolon resize grow width $resize_step px or $resize_step ppt
+
+        bindsym Shift+j resize shrink width $shift_resize_step px or $shift_resize_step ppt
+        bindsym Shift+k resize grow height $shift_resize_step px or $shift_resize_step ppt
+        bindsym Shift+l resize shrink height $shift_resize_step px or $shift_resize_step ppt
+        bindsym Shift+semicolon resize grow width $shift_resize_step px or $shift_resize_step ppt
 
         bindsym $mod+r mode "default"
 }
