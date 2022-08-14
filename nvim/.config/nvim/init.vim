@@ -8,10 +8,10 @@ let g:mapleader = "\\"
 set nocompatible
 set shell=fish
 
-nmap <silent> <Leader>q <cmd>q<CR>
-tmap <silent> <Leader>q <cmd>q<CR>
-nmap <silent> <Leader>Q <cmd>qa<CR>
-tmap <silent> <Leader>Q <cmd>qa<CR>
+nmap <silent> <leader>q <cmd>q<CR>
+tmap <silent> <leader>q <cmd>q<CR>
+nmap <silent> <leader>Q <cmd>qa<CR>
+tmap <silent> <leader>Q <cmd>qa<CR>
 
 nmap <silent> <C-s> <cmd>w<CR>
 
@@ -28,7 +28,7 @@ set mouse=a
 " Tabs
 retab
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set autoindent
 set expandtab
 
@@ -51,78 +51,65 @@ nmap     <C-p> "+p
 
 
 " No search highlight
-nnoremap <silent> <leader>n <cmd>noh<CR>
+nmap <silent> <leader>h <cmd>noh<CR>
 
 
 " --- Plugins --- "
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'liuchengxu/vim-clap'
+  Plug 'liuchengxu/vim-clap'
 
-" Telescope
+  " Telescope
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter'
 
-" Nerdtree
+  " Nerdtree
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
 
-" Colorschemes
+  " Colorschemes
 
-Plug 'jonathanfilip/vim-lucius'
-Plug 'morhetz/gruvbox'
-Plug 'Badacadabra/vim-archery'
-Plug 'agude/vim-eldar'
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'morhetz/gruvbox'
 
-" Syntaxing & languages
+  " Syntaxing & languages
 
-" Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'williamboman/nvim-lsp-installer'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
 
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+  Plug 'khaveesh/vim-fish-syntax'
+  Plug 'numToStr/Comment.nvim'
 
-Plug 'khaveesh/vim-fish-syntax'
-Plug 'numToStr/Comment.nvim'
+  " Etc
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
 
-" Etc
-Plug 'editorconfig/editorconfig-vim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+  " Airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  " Puml
+  Plug 'weirongxu/plantuml-previewer.vim'
+  Plug 'aklt/plantuml-syntax'
+  Plug 'tyru/open-browser.vim'
 
-" Puml
-Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'aklt/plantuml-syntax'
-Plug 'tyru/open-browser.vim'
-
-" Ranger
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
+  " Ranger
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'rbgrouleff/bclose.vim'
 
 call plug#end()
-
-
-" --- Treesitter
-
-" source ~/.dotfiles/nvim/.config/nvim/treesitter.lua
 
 
 " --- Apperience --- "
@@ -154,13 +141,14 @@ noremap <leader>w :set list!<CR>
 
 " --- Tabs --- "
 
-nnoremap <silent> <Leader><C-t>   <cmd>tabnew      <CR>
-nnoremap <silent> <Leader><C-w>   <cmd>tabclose    <CR>
-nnoremap <silent> <Leader><Tab>   <cmd>tabnext     <CR>
-nnoremap <silent> <Leader><S-Tab> <cmd>tabprevious <CR>
+nnoremap <silent> <leader><C-t>   <cmd>tabnew      <CR>
+nnoremap <silent> <leader><C-w>   <cmd>tabclose    <CR>
+nmap <silent> <Tab>   <cmd>tabnext     <CR>
+nmap <silent> <S-Tab> <cmd>tabprevious <CR>
 
 " Terminal tabs
-nnoremap <silent> <leader>tt <cmd>tabnew term://$SHELL<CR>
+nmap <silent> <leader>tt :term<CR>i
+
 
 tmap <silent> <leader><Tab>   <leader><ESC>:tabnext     <CR>
 tmap <silent> <leader><S-Tab> <leader><ESC>:tabprevious <CR>
@@ -177,10 +165,10 @@ nmap <leader>- :split  <CR>
 
 " Terminal panes
 
-nnoremap <Leader>t\ :vsplit term://$SHELL <CR>
-nnoremap <Leader>t- :split  term://$SHELL <CR>
+" nnoremap <leader>t\ :vsplit term://$SHELL <CR>
+" nnoremap <leader>t- :split  term://$SHELL <CR>
 
-tnoremap <Leader><Esc> <C-\><C-n>
+tnoremap <leader><Esc> <C-\><C-n>
 
 autocmd TermOpen * :set nonumber norelativenumber
 
@@ -380,17 +368,17 @@ EOF
 
 " --- APPLICATIONS --- "
 
-nnoremap <Leader>O :tabnew term://
-nnoremap <Leader>o- :sp term://
+" nnoremap <leader>O :tabnew term://
+" nnoremap <leader>o- :sp term://
 
-nnoremap <Leader>I <cmd>tabnew term://python3<CR>
-nnoremap <Leader>P <cmd>tabnew term://python3 %<CR>
-nnoremap <Leader>R <cmd>tabnew term://rustc % -o /tmp/a.out && /tmp/a.out<CR>
-nnoremap <Leader>p :tabnew term://python3 
+" nnoremap <leader>I <cmd>tabnew term://python3<CR>
+" nnoremap <leader>P <cmd>tabnew term://python3 %<CR>
+" nnoremap <leader>R <cmd>tabnew term://rustc % -o /tmp/a.out && /tmp/a.out<CR>
+" nnoremap <leader>p :tabnew term://python3 
 
-nmap <Leader><C-A-r> <cmd>source $MYVIMRC<CR>
-nmap <Leader><C-A-e> <cmd>edit   $MYVIMRC<CR>
-noremap <Leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
+" nmap <leader><C-A-r> <cmd>source $MYVIMRC<CR>
+" nmap <leader><C-A-e> <cmd>edit   $MYVIMRC<CR>
+" noremap <leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
 
 "  --- Plug 'francoiscabrol/ranger.vim' --- "
 "
@@ -412,8 +400,8 @@ noremap <Leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
 "  :RangerCurrentDirectoryExistingOrNewTab
 "  :RangerWorkingDirectoryExistingOrNewTab
 
-noremap <Leader>f  <cmd>RangerNewTab<CR>
-noremap <Leader>f\ <cmd>split<CR><cmd>Ranger<CR>
+noremap <leader>f  <cmd>RangerNewTab<CR>
+noremap <leader>f\ <cmd>split<CR><cmd>Ranger<CR>
 
 let g:ranger_command_override = 'ranger'
 let g:ranger_replace_netrw = 1 
