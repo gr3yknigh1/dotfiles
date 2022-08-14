@@ -160,7 +160,7 @@ nnoremap <silent> <Leader><Tab>   <cmd>tabnext     <CR>
 nnoremap <silent> <Leader><S-Tab> <cmd>tabprevious <CR>
 
 " Terminal tabs
-" nmap <silent> <leader>t       :tabnew term://$SHELL<Enter>
+nnoremap <silent> <leader>tt <cmd>tabnew term://$SHELL<CR>
 
 tmap <silent> <leader><Tab>   <leader><ESC>:tabnext     <CR>
 tmap <silent> <leader><S-Tab> <leader><ESC>:tabprevious <CR>
