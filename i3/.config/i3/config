@@ -148,6 +148,7 @@ mode "resize" {
         bindsym Shift+semicolon resize grow width $shift_resize_step px or $shift_resize_step ppt
 
         bindsym $mod+r mode "default"
+        bindsym Escape mode "default"
 }
 
 
