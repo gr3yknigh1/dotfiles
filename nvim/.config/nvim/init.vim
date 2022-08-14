@@ -49,8 +49,6 @@ nmap     <C-p> "+p
 
 " Tabbing in Insert mode
 
-nmap <C-]> >>
-nmap <C-[> V<
 
 " No search highlight
 nnoremap <silent> <leader>n <cmd>noh<CR>
