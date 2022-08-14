@@ -13,6 +13,8 @@ tmap <silent> <Leader>q <cmd>q<CR>
 nmap <silent> <Leader>Q <cmd>qa<CR>
 tmap <silent> <Leader>Q <cmd>qa<CR>
 
+nmap <silent> <C-s> <cmd>w<CR>
+
 " --- Basic --- "
 
 " File formats
