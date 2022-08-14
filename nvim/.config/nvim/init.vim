@@ -137,7 +137,7 @@ colorscheme gruvbox
 " --- Rendering --- "
 
 " Line wrapping
-set nowrap
+set wrap
 set scrolloff=7
 
 " Line numbers
