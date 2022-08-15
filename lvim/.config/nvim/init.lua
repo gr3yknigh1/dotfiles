@@ -76,37 +76,37 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin", "~/.vim/plugged")
 
-    Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'kyazdani42/nvim-web-devicons'
 
-    Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter'
 
-    -- LSPConfig
-    Plug 'neovim/nvim-lspconfig'
+  -- LSPConfig
+  Plug 'neovim/nvim-lspconfig'
 
-    -- Autocompletion
-    Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-    Plug 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-    Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-    Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
+  -- Autocompletion
+  Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  Plug 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
 
-    Plug 'windwp/nvim-autopairs'
+  Plug 'windwp/nvim-autopairs'
 
-    -- Colortheme
-    Plug "Mofiqul/dracula.nvim"
+  -- Colortheme
+  Plug "Mofiqul/dracula.nvim"
 
-    -- Telescope
-    Plug 'nvim-lua/plenary.nvim'
-    Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+  -- Telescope
+  Plug 'nvim-lua/plenary.nvim'
+  Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
 
-    -- Lualine
-    Plug 'nvim-lualine/lualine.nvim'
+  -- Lualine
+  Plug 'nvim-lualine/lualine.nvim'
 
-    -- Nvim tree
-    Plug 'kyazdani42/nvim-tree.lua'
+  -- Nvim tree
+  Plug 'kyazdani42/nvim-tree.lua'
 
-    -- Barbar
-    Plug 'romgrk/barbar.nvim'
+  -- Barbar
+  Plug 'romgrk/barbar.nvim'
 vim.call("plug#end")
 
 
