@@ -45,7 +45,6 @@ tmap <silent> <leader><C-w>    <cmd>exit<CR>
 " nnoremap <leader>t\ :vsplit term://$SHELL <CR>
 " nnoremap <leader>t- :split  term://$SHELL <CR>
 
-
 " -- Pane splitting
 nmap <leader>\ :vsplit <CR>
 nmap <leader>- :split  <CR>
@@ -53,7 +52,8 @@ nmap <leader>- :split  <CR>
 " Escape terminal
 tnoremap <leader><Esc> <C-\><C-n>
 
-" Open in terminal (Tabbed)
+" Open in terminal
+nmap <leader>o :term 
 " nnoremap <leader>O :tabnew term://
 " nnoremap <leader>o- :sp term://
 
@@ -67,3 +67,4 @@ tnoremap <leader><Esc> <C-\><C-n>
 " nmap <leader><C-A-r> <cmd>source $MYVIMRC<CR>
 " nmap <leader><C-A-e> <cmd>edit   $MYVIMRC<CR>
 " noremap <leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
+
