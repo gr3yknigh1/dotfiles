@@ -5,5 +5,4 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/colortheme.vim
 
 
-nmap <leader>o :term 
 
