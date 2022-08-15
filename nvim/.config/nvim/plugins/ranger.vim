@@ -18,8 +18,10 @@
 "  :RangerCurrentDirectoryExistingOrNewTab
 "  :RangerWorkingDirectoryExistingOrNewTab
 
-noremap <leader>f  <cmd>RangerNewTab<CR>
-noremap <leader>f\ <cmd>split<CR><cmd>Ranger<CR>
+noremap <leader>f  <cmd>Ranger<CR>
+noremap <leader>ft  <cmd>RangerNewTab<CR>
+noremap <leader>f- <cmd>split<CR><cmd>Ranger<CR>
+noremap <leader>f\ <cmd>vsplit<CR><cmd>Ranger<CR>
 
 let g:ranger_command_override = 'ranger'
 let g:ranger_replace_netrw = 1 
