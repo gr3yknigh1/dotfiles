@@ -1,6 +1,6 @@
 " -- Airline
 
-let g:airline_theme="base16_gruvbox_dark_hard"
+let g:airline_theme="nord"
 
 let g:airline_experimental = 0
 let g:airline_left_sep='>'
