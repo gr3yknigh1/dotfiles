@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'arcticicestudio/nord-vim'
   Plug 'morhetz/gruvbox'
+  Plug 'Mofiqul/dracula.nvim'
 
   " Syntaxing & languages
 
