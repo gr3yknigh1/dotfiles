@@ -1,6 +1,6 @@
 " -- Airline
 
-let g:airline_theme="nord"
+let g:airline_theme="base16_dracula"
 
 let g:airline_experimental = 0
 let g:airline_left_sep='>'
