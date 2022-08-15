@@ -136,13 +136,13 @@ autocmd BufEnter *.* set relativenumber
 " Whitespace rendering
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
 set nolist
-noremap <leader>w :set list!<CR>
+nmap <leader>R :set list!<CR>
 
 
 " --- Tabs --- "
 
-nnoremap <silent> <leader><C-t>   <cmd>tabnew      <CR>
-nnoremap <silent> <leader><C-w>   <cmd>tabclose    <CR>
+nnoremap <silent> <leader>t <cmd>tabnew   <CR>
+nnoremap <silent> <leader>w <cmd>tabclose <CR>
 nmap <silent> <Tab>   <cmd>tabnext     <CR>
 nmap <silent> <S-Tab> <cmd>tabprevious <CR>
 
@@ -176,21 +176,21 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " Pane switching
-nnoremap <A-j> <C-W>j
-nnoremap <A-k> <C-W>k
-nnoremap <A-h> <C-W>h
-nnoremap <A-l> <C-W>l
+nmap <A-j> <C-W>j
+nmap <A-k> <C-W>k
+nmap <A-h> <C-W>h
+nmap <A-l> <C-W>l
 
-nnoremap <C-A-j> 2<C-W>+
-nnoremap <C-A-k> 2<C-W>-
-nnoremap <C-A-h> 2<C-W>>
-nnoremap <C-A-l> 2<C-W><
+nmap <C-A-j> 2<C-W>+
+nmap <C-A-k> 2<C-W>-
+nmap <C-A-h> 2<C-W>>
+nmap <C-A-l> 2<C-W><
 
 " Terminal pane switching
-tnoremap <A-j> <C-\><C-n><C-W>j
-tnoremap <A-k> <C-\><C-n><C-W>k
-tnoremap <A-h> <C-\><C-n><C-W>h
-tnoremap <A-l> <C-\><C-n><C-W>l
+tmap <A-j> <C-\><C-n><C-W>j
+tmap <A-k> <C-\><C-n><C-W>k
+tmap <A-h> <C-\><C-n><C-W>h
+tmap <A-l> <C-\><C-n><C-W>l
 
 
 " --- Buffers --- "
@@ -368,6 +368,8 @@ EOF
 
 " --- APPLICATIONS --- "
 
+
+nmap <leader>o :term 
 " nnoremap <leader>O :tabnew term://
 " nnoremap <leader>o- :sp term://
 
