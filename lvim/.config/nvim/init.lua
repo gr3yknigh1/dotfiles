@@ -212,6 +212,11 @@ require('telescope').setup{
           '--ignore-file',
           '.gitignore'
         },
+    },
+    pickers = {
+        find_files = {
+            hidden = true
+        }
     }
 }
 
