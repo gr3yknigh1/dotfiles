@@ -1,0 +1,16 @@
+
+@theme "theme/dracula"
+
+configuration {
+ modi: [window, drun, ssh, combi ];
+ font: "Iosevka 16";
+ icon-theme: "Papirus";
+ combi-modi: [ window, drun, ssh ];
+}
+
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
+
