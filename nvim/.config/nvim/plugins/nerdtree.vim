@@ -3,9 +3,9 @@
 let g:NERDTreeHijackNetrw = 0 
 
 let NERDTreeShowHidden=1
-nmap <silent> <C-n> <cmd>NERDTreeFocus<CR>
-nmap <silent> <C-b> <cmd>NERDTreeToggle<CR>
-nmap <silent> <C-f> <cmd>NERDTreeFind<CR>
+nmap <silent> <leader>n <cmd>NERDTreeFocus<CR>
+nmap <silent> <leader><space> <cmd>NERDTreeToggle<CR>
+" nmap <silent> <C-f> <cmd>NERDTreeFind<CR>
 " nmap <leader>r :NERDTreeRefreshRoot<cr>
 
 let g:NERDTreeIgnore = ['.git', ".import", ".mono"]
