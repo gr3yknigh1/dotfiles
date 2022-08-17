@@ -76,7 +76,11 @@
         "bitwarden",
         "pass",
         "picom",
-        "thefuck"
+        "thefuck",
+        "papirus-icon-theme",
+        "rofi",
+        "polybar",
+        "tk"
     ],
     "pip": [
         "virtualfish",
