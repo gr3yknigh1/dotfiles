@@ -57,6 +57,11 @@ nmap <C-A-k> 2<C-W>-
 nmap <C-A-h> 2<C-W>>
 nmap <C-A-l> 2<C-W>< 
 
+" nmap <C-A-J> 10<C-W>+
+" nmap <C-A-K> 10<C-W>-
+" nmap <C-A-H> 10<C-W>>
+" nmap <C-A-L> 10<C-W>< 
+
 " Terminal pane switching
 tmap <A-j> <C-\><C-n><C-W>j
 tmap <A-k> <C-\><C-n><C-W>k
