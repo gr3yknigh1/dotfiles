@@ -8,6 +8,8 @@ let g:mapleader = "\\"
 set nocompatible
 set shell=fish
 
+set colorcolumn=80
+
 " File formats
 set encoding=utf-8
 set fileformat=unix
