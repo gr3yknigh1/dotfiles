@@ -68,3 +68,8 @@ nmap <leader>o :term
 " nmap <leader><C-A-e> <cmd>edit   $MYVIMRC<CR>
 " noremap <leader><C-A-e>\ <cmd>vsplit $MYVIMRC<CR>
 
+
+" -- Moving lines
+" nmap <A-k> VxkP
+" nmap <A-j> Vxp
+
