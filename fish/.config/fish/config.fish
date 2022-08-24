@@ -28,5 +28,3 @@ if [ $(tty) = "/dev/tty1" ]
     startx
 end
 
-
-thefuck --alias | source
