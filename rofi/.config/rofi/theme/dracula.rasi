@@ -50,7 +50,7 @@
 }
 #element.normal.urgent {
     background-color: @urgent-background;
-    text-color:       @urgent-foreground;
+    text-color:       @foreground;
 }
 #element.normal.active {
     background-color: @active-background;
