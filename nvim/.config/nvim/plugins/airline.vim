@@ -55,7 +55,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_alt_sep = ' | '
