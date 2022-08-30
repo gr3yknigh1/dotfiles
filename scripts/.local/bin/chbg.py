@@ -2,14 +2,16 @@
 import sys
 import os
 import os.path
+import argparse
 
 
 def main():
-    argv = sys.argv
-    if len(argv) != 2:
-        raise Exception("[Error]: Povide path to image")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("image")
 
-    image_path = os.path.abspath(argv[1])
+    image_path = os.path.abspath(
+        parser.parse_args().image
+    )
 
     if not os.path.exists(image_path):
         raise FileExistsError(f"File doesn't exists: {image_path}")
