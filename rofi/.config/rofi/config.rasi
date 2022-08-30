@@ -1,5 +1,5 @@
 
-@theme "theme/dracula"
+@theme "theme/nord"
 
 configuration {
  modi: [window, drun, ssh, combi ];
