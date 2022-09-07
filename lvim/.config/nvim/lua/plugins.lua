@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
   }
   -- Colorthemes
   use 'RRethy/nvim-base16'
+  vim.cmd('colorscheme base16-nord')
 
   -- Etc
   use 'glepnir/dashboard-nvim'
