@@ -5,17 +5,6 @@
 -- References
 --   - (DistroTube) https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/nvim/init.lua
 
-
-require('plugins')
-
--- Plugins
-require('dashboard-nvim')
-
--- Set color theme
-vim.cmd('colorscheme base16-nord')
-
--- # GENERAL # --
-
 local shell = "fish"
 
 vim.g.mapleader = "\\"
@@ -87,48 +76,51 @@ vim.opt.autoindent = true
 vim.opt.expandtab = true
 
 
--- # PLUGINS # --
-local Plug = vim.fn["plug#"]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd('packadd packer.nvim')
+    return true
+  end
+  return false
+end
 
-vim.call("plug#begin", "~/.vim/plugged")
+local packer_bootstrap = ensure_packer()
 
-  Plug 'kyazdani42/nvim-web-devicons'
+require('packer').startup(function(use)
 
-  Plug 'nvim-treesitter/nvim-treesitter'
+  use 'wbthomason/packer.nvim'
 
-  -- LSPConfig
-  Plug 'neovim/nvim-lspconfig'
+  -- Colorschemes
+  use "Mofiqul/dracula.nvim"
 
-  -- Autocompletion
-  Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  Plug 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
+  -- Tools
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
-  Plug 'windwp/nvim-autopairs'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-lualine/lualine.nvim'
+  use 'kyazdani42/nvim-tree.lua'
+  use 'romgrk/barbar.nvim'
 
-  -- Colortheme
-  Plug "Mofiqul/dracula.nvim"
+  -- Etc
+  use 'glepnir/dashboard-nvim'
 
-  -- Telescope
-  Plug 'nvim-lua/plenary.nvim'
-  Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 
-  -- Lualine
-  Plug 'nvim-lualine/lualine.nvim'
-
-  -- Nvim tree
-  Plug 'kyazdani42/nvim-tree.lua'
-
-  -- Barbar
-  Plug 'romgrk/barbar.nvim'
-vim.call("plug#end")
+end)
 
 
--- # APPERIENCE # --
+vim.cmd('colorscheme dracula')
 vim.cmd("syntax enable")
-vim.cmd("colorscheme dracula")
 
 
 -- # KEYBINDS # --
@@ -136,9 +128,6 @@ vnmap("<Leader>w", "<cmd>set list!<CR>")
 nmap("<Leader>n", "<cmd>noh<CR>")
 
 map({"t", "n"}, "<Leader>q", "<cmd>q<CR>")
-
--- Terminal
-tmap("<Leader><ESC>", "<C-\\><C-n>")
 
 
 -- Coping
@@ -167,6 +156,16 @@ nmap("<A-k>", "<C-W>k")
 nmap("<A-h>", "<C-W>h")
 nmap("<A-l>", "<C-W>l")
 
+-- Terminal
+nmap("<Leader>tt", "<cmd>term<CR>")
+tmap("<Leader><ESC>", "<C-\\><C-n>")
+
+-- Terminal pane switching
+tmap("<A-j>", "<C-\\><C-n><C-W>j")
+tmap("<A-k>", "<C-\\><C-n><C-W>k")
+tmap("<A-h>", "<C-\\><C-n><C-W>h")
+tmap("<A-l>", "<C-\\><C-n><C-W>l")
+
 local step = 10
 
 nmap("<C-A-j>", string.format("%s<C-W>+", step))
@@ -179,29 +178,10 @@ nmap("<S-A-k>", "<C-W><S-k>")
 nmap("<S-A-h>", "<C-W><S-h>")
 nmap("<S-A-l>", "<C-W><S-l>")
 
--- Terminal pane switching
-tmap("<A-j>", "<C-\\><C-n><C-W>j")
-tmap("<A-k>", "<C-\\><C-n><C-W>k")
-tmap("<A-h>", "<C-\\><C-n><C-W>h")
-tmap("<A-l>", "<C-\\><C-n><C-W>l")
-
-
--- Terminal panes
-nmap("<Leader>t\\", string.format("<cmd>vsplit term://%s<CR>", shell))
-nmap("<Leader>t-", string.format("<cmd>split term://%s<CR>", shell))
-
-nmap("<Leader>o\\", ":vsplit term://")
-nmap("<Leader>o-", ":split term://")
-
 
 -- Moving lines
 nmap("<S-k>", "<S-v>xkP")
 nmap("<S-j>", "<S-v>xp")
-
--- Buffers
--- nmap("<Leader><BS>", "<cmd>bprevious<CR>")
--- nmap("<Leader><S-BS>", "<cmd>bnext<CR>")
--- nmap("<Leader><C-d>", "<cmd>bd<CR>")
 
 -- # Plugin's configuration # ---
 
@@ -631,202 +611,34 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 -- :BarbarDisable - very bad command, should never be used
 
 
--- LSPConfig
 
-nmap('<space>e', vim.diagnostic.open_float)
-nmap('[d', vim.diagnostic.goto_prev)
-nmap(']d', vim.diagnostic.goto_next)
-nmap('<space>q', vim.diagnostic.setloclist)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local db = require('dashboard')
+local home = os.getenv('HOME')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
-
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-      ["rust-analyzer"] = {}
-    }
+db.default_banner = {
+'',
+' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+'',
+' [ TIP: To exit Neovim, just power off your computer. ] ',
+'',
 }
 
-
--- Nvim-Cmp
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'rust_analyzer', 'pyright', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- luasnip setup
-local luasnip = require 'luasnip'
-
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+db.preview_file_height = 11
+db.preview_file_width = 70
+db.custom_center = {
+  {
+    icon = '  ',
+    desc = 'Recent sessions',
+    shortcut = '',
+    action ='SessionLoad'
   },
 }
+db.custom_footer = { '', 'Join cult of vim, brother' }
+db.session_directory = "~/.config/nvim/session"
 
-require('nvim-autopairs').setup({
-    disable_filetype = { "TelescopePrompt" , "vim" },
-    disable_in_macro = false,  -- disable when recording or executing a macro
-    disable_in_visualblock = false, -- disable when insert after visual block mode
-    ignored_next_char = [=[[%w%%%'%[%"%.]]=],
-    enable_moveright = true,
-    enable_afterquote = true,  -- add bracket pairs after quote
-    enable_check_bracket_line = true,  --- check bracket in same line
-    enable_bracket_in_quote = true, --
-    break_undo = true, -- switch for basic rule break undo sequence
-    check_ts = false,
-    map_cr = true,
-    map_bs = true,  -- map the <BS> key
-    map_c_h = false,  -- Map the <C-h> key to delete a pair
-    map_c_w = false, -- map <c-w> to delete a pair if possible
-})
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
-
-local handlers = require('nvim-autopairs.completion.handlers')
-
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done({
-    filetypes = {
-      -- "*" is a alias to all filetypes
-      ["*"] = {
-        ["("] = {
-          kind = {
-            cmp.lsp.CompletionItemKind.Function,
-            cmp.lsp.CompletionItemKind.Method,
-          },
-          handler = handlers["*"]
-        }
-      },
-      lua = {
-        ["("] = {
-          kind = {
-            cmp.lsp.CompletionItemKind.Function,
-            cmp.lsp.CompletionItemKind.Method
-          },
-          ---@param char string
-          ---@param item item completion
-          ---@param bufnr buffer number
-          handler = function(char, item, bufnr)
-            print(vim.inspect{char, item, bufnr})
-          end
-        }
-      },
-      -- Disable for tex
-      tex = false
-    }
-  })
-)
-
-
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "python", "html", "javascript", "css", "java" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  -- List of parsers to ignore installing (for "all")
-  ignore_install = { "javascript" },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = { "c", "rust" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
