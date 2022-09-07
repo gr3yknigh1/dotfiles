@@ -625,7 +625,7 @@ db.default_banner = {
 ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
 ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
 '',
-' [ TIP: To exit Neovim, just power off your computer. ] ',
+' [ PRO TIP: To exit Neovim, just power off your computer. ] ',
 '',
 }
 
