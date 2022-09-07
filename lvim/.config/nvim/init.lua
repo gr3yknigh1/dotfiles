@@ -5,193 +5,32 @@
 -- References
 --   - (DistroTube) https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/nvim/init.lua
 
-local shell = "fish"
 
-vim.g.mapleader = "\\"
-vim.opt.shell = shell
+require("basic")
+require("packer-setup")
 
-if vim.fn.has("termguicolors") then vim.opt.termguicolors = true
-end
+require("keybindings")
 
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
-
--- # FUNCTIONS # --
-local function map(modes, keys, func, opts)
-    vim.keymap.set(modes, keys, func, opts)
-end
-
-local function nmap(keys, func, opts)
-    map("n", keys, func, opts)
-end
-
-local function vmap(keys, func, opts)
-    map("v", keys, func, opts)
-end
-
-local function vnmap(keys, func, opts)
-    map({"n", "v"}, keys, func, opts)
-end
-
-local function tmap(keys, func, opts)
-    map("t", keys, func, opts)
-end
-
-
--- # BASIC # --
--- File formats
-vim.opt.encoding="utf-8"
-vim.opt.fileformat="unix"
-
-
--- Wrapping
-vim.opt.wrap = true
-vim.opt.scrolloff = 7
-
-
--- Line numbers
-vim.opt.relativenumber = true
-vim.opt.rnu = true
-
--- Rendering whitespace
-vim.opt.listchars = { eol = "¶", trail = "~", space = "·", tab = ">~" }
-vim.opt.list = false
-
-
--- Mouse
-vim.opt.mouse = "a"
-
-
--- Splitting
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
-
--- Indentations
-local indent = 4
-vim.opt.tabstop = indent
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = indent
-
-vim.opt.autoindent = true
-vim.opt.expandtab = true
-
-
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd('packadd packer.nvim')
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-require('packer').startup(function(use)
-
-  use 'wbthomason/packer.nvim'
-
-  -- Colorschemes
-  use "Mofiqul/dracula.nvim"
-
-  -- Tools
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  use 'kyazdani42/nvim-web-devicons'
-  use 'nvim-lualine/lualine.nvim'
-  use 'kyazdani42/nvim-tree.lua'
-  use 'romgrk/barbar.nvim'
-
-  -- Etc
-  use 'glepnir/dashboard-nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-
-end)
-
-
-vim.cmd('colorscheme dracula')
+vim.cmd('colorscheme nord')
 vim.cmd("syntax enable")
 
 
--- # KEYBINDS # --
-vnmap("<Leader>w", "<cmd>set list!<CR>")
-nmap("<Leader>n", "<cmd>noh<CR>")
-
-map({"t", "n"}, "<Leader>q", "<cmd>q<CR>")
-
-
--- Coping
-vmap("<C-y>", '"+y')
-nmap("<C-p>", '"+p')
-
-
--- Tabs
-nmap("<Leader><C-t>", "<cmd>tabnew<CR>")
-nmap("<Leader><C-w>", "<cmd>tabclose<CR>")
-nmap("<Leader><Tab>", "<cmd>tabnext<CR>")
-nmap("<Leader><S-Tab>", "<cmd>tabprevious<CR>")
-
-tmap("<Leader><Tab>", "<Leader><ESC><cmd>tabnext<CR>")
-tmap("<Leader><S-Tab>", "<Leader><ESC><cmd>tabprevious<CR>")
-
-
--- Panes
-nmap("<Leader>\\", "<cmd>vsplit<CR>")
-nmap("<Leader>-", "<cmd>split<CR>")
-
-
--- Pane switching
-nmap("<A-j>", "<C-W>j")
-nmap("<A-k>", "<C-W>k")
-nmap("<A-h>", "<C-W>h")
-nmap("<A-l>", "<C-W>l")
-
--- Terminal
-nmap("<Leader>tt", "<cmd>term<CR>")
-tmap("<Leader><ESC>", "<C-\\><C-n>")
-
--- Terminal pane switching
-tmap("<A-j>", "<C-\\><C-n><C-W>j")
-tmap("<A-k>", "<C-\\><C-n><C-W>k")
-tmap("<A-h>", "<C-\\><C-n><C-W>h")
-tmap("<A-l>", "<C-\\><C-n><C-W>l")
-
-local step = 10
-
-nmap("<C-A-j>", string.format("%s<C-W>+", step))
-nmap("<C-A-k>", string.format("%s<C-W>-", step))
-nmap("<C-A-h>", string.format("%s<C-W><", step))
-nmap("<C-A-l>", string.format("%s<C-W>>", step))
-
-nmap("<S-A-j>", "<C-W><S-j>")
-nmap("<S-A-k>", "<C-W><S-k>")
-nmap("<S-A-h>", "<C-W><S-h>")
-nmap("<S-A-l>", "<C-W><S-l>")
-
-
--- Moving lines
-nmap("<S-k>", "<S-v>xkP")
-nmap("<S-j>", "<S-v>xp")
-
 -- # Plugin's configuration # ---
 
+utils = require("utils")
+
+map = utils.map
+nmap = utils.nmap
+vmap = utils.vmap
+vnmap = utils.vnmap
+tmap = utils.tmap
 
 -- Telescope
 
 local tactions = require("telescope.actions")
 require('telescope').setup{
     defaults = {
-        file_ignore_patterns = { ".git", "node_modules", ".mono", ".import" },
+        file_ignore_patterns = { "**/.git", "**/node_modules", "**/.mono", "**/.import" },
         mappings = {
           i = {
             ["<esc>"] = tactions.close
@@ -481,7 +320,7 @@ nmap("<Leader><Space>", "<cmd>NvimTreeToggle<CR>")
 
 -- Barbar
 
-require'bufferline'.setup {
+require("bufferline").setup {
   -- Enable/disable animations
   animation = false,
 
@@ -552,7 +391,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = '*',
   callback = function()
     if vim.bo.filetype == 'NvimTree' then
-      require'bufferline.state'.set_offset(31, 'FileTree')
+      require'bufferline.state'.set_offset(31, 'Files')
     end
   end
 })
@@ -609,9 +448,6 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
-
-
-
 
 local db = require('dashboard')
 local home = os.getenv('HOME')
