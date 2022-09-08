@@ -25,6 +25,9 @@ require('packer').startup(function(use)
   use "Mofiqul/dracula.nvim"
   use "shaunsingh/nord.nvim"
 
+  -- LSP
+  use "neovim/nvim-lspconfig"
+
   -- Tools
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
