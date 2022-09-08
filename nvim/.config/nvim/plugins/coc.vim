@@ -6,6 +6,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gv <cmd>vsp<CR><Plug>(coc-definition)<C-w>L
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Symbol renaming.
 nmap <silent> <leader>rn <Plug>(coc-rename)
 
