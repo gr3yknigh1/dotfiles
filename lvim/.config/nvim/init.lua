@@ -11,7 +11,7 @@ require("packer-setup")
 
 require("keybindings")
 
-vim.cmd('colorscheme nord')
+vim.cmd("colorscheme dracula")
 vim.cmd("syntax enable")
 
 
@@ -28,7 +28,7 @@ tmap = utils.tmap
 -- Telescope
 
 local tactions = require("telescope.actions")
-require('telescope').setup{
+require("telescope").setup{
     defaults = {
         file_ignore_patterns = { "**/.git", "**/node_modules", "**/.mono", "**/.import" },
         mappings = {
@@ -37,15 +37,15 @@ require('telescope').setup{
           },
         },
         vimgrep_arguments = {
-          'rg',
-          '--color=never',
-          '--no-heading',
-          '--with-filename',
-          '--line-number',
-          '--column',
-          '--smart-case',
-          '--ignore-file',
-          '.gitignore'
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--ignore-file",
+          ".gitignore"
         },
     },
     pickers = {
@@ -55,7 +55,7 @@ require('telescope').setup{
     }
 }
 
-local tbuiltin = require('telescope.builtin')
+local tbuiltin = require("telescope.builtin")
 nmap("<Leader>ff", tbuiltin.find_files)
 nmap("<Leader>fg", tbuiltin.live_grep)
 nmap("<Leader>fb", tbuiltin.buffers)
@@ -131,7 +131,7 @@ require('lualine').setup {
 
 -- Nvim Tree
 
-require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
+require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
     create_in_closed_folder = false,
     disable_netrw = false,
@@ -312,7 +312,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
             watcher = false,
         },
     },
-} -- END_DEFAULT_OPTS
+}) -- END_DEFAULT_OPTS
 
 
 nmap("<Leader><Space>", "<cmd>NvimTreeFocus<CR>")
@@ -339,12 +339,12 @@ require("bufferline").setup {
   clickable = true,
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'javascript'},
-  exclude_name = {'package.json'},
+  exclude_ft = {"javascript"},
+  exclude_name = {"package.json"},
 
   -- Enable/disable icons
-  -- if set to 'numbers', will show buffer index in the tabline
-  -- if set to 'both', will show buffer index and icons in the tabline
+  -- if set to "numbers", will show buffer index in the tabline
+  -- if set to "both", will show buffer index and icons in the tabline
   icons = true,
 
   -- If set, the icon color will follow its corresponding buffer
@@ -354,11 +354,11 @@ require("bufferline").setup {
   icon_custom_colors = false,
 
   -- Configure icons on the bufferline.
-  icon_separator_active = '▎',
-  icon_separator_inactive = '▎',
-  icon_close_tab = '',
-  icon_close_tab_modified = '●',
-  icon_pinned = '車',
+  icon_separator_active = "▎",
+  icon_separator_inactive = "▎",
+  icon_close_tab = "",
+  icon_close_tab_modified = "●",
+  icon_pinned = "車",
 
   -- If true, new buffers will be inserted at the start/end of the list.
   -- Default is to insert after current buffer.
@@ -380,27 +380,27 @@ require("bufferline").setup {
   -- New buffer letters are assigned in this order. This order is
   -- optimal for the qwerty keyboard layout but might need adjustement
   -- for other layouts.
-  letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+  letters = "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
 
   -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
   -- where X is the buffer number. But only a static string is accepted here.
   no_name_title = nil,
 }
 
-vim.api.nvim_create_autocmd('BufWinEnter', {
-  pattern = '*',
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*",
   callback = function()
-    if vim.bo.filetype == 'NvimTree' then
-      require'bufferline.state'.set_offset(31, 'Files')
+    if vim.bo.filetype == "NvimTree" then
+      require"bufferline.state".set_offset(31, "Files")
     end
   end
 })
 
-vim.api.nvim_create_autocmd('BufWinLeave', {
-  pattern = '*',
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*",
   callback = function()
-    if vim.fn.expand('<afile>'):match('NvimTree') then
-      require'bufferline.state'.set_offset(0)
+    if vim.fn.expand("<afile>"):match("NvimTree") then
+      require"bufferline.state".set_offset(0)
     end
   end
 })
@@ -409,26 +409,26 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
+map("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
 -- Re-order to previous/next
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
-map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
+map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
+map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
 -- Goto buffer in position...
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
+map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
+map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
+map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
+map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
+map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
+map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
+map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
+map("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
 -- Pin/unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 -- Close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
@@ -438,43 +438,43 @@ map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 --                 :BufferCloseBuffersLeft
 --                 :BufferCloseBuffersRight
 -- Magic buffer-picking mode
--- map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
+-- map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
 -- Sort automatically by...
-map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+map("n", "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
+map("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
+map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
+map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
 
-local db = require('dashboard')
-local home = os.getenv('HOME')
+local db = require("dashboard")
+local home = os.getenv("HOME")
 
 db.default_banner = {
-'',
-' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-'',
-' [ PRO TIP: To exit Neovim, just power off your computer. ] ',
-'',
+"",
+" ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+" ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+" ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+" ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+" ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+" ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+"",
+" [ PRO TIP: To exit Neovim, just power off your computer. ] ",
+"",
 }
 
 db.preview_file_height = 11
 db.preview_file_width = 70
 db.custom_center = {
   {
-    icon = '  ',
-    desc = 'Recent sessions',
-    shortcut = '',
-    action ='SessionLoad'
+    icon = "  ",
+    desc = "Recent sessions",
+    shortcut = "",
+    action ="SessionLoad"
   },
 }
-db.custom_footer = { '', 'Join cult of vim, brother' }
+db.custom_footer = { "", "Join cult of vim, brother" }
 db.session_directory = "~/.config/nvim/session"
 
