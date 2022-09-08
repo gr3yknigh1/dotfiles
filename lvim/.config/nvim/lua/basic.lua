@@ -13,7 +13,7 @@ local au = require("au")
 
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-vim.opt.colorcolumn="80"
+vim.opt.colorcolumn="0"
 
 
 -- File formats
@@ -22,7 +22,7 @@ vim.opt.fileformat="unix"
 
 
 -- Wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 7
 
 
