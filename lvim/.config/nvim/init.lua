@@ -10,6 +10,7 @@ require("basic")
 require("packer-setup")
 
 require("keybindings")
+require('lsp')
 
 vim.cmd("colorscheme dracula")
 vim.cmd("syntax enable")
