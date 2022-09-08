@@ -17,13 +17,10 @@ vim.cmd("syntax enable")
 
 -- # Plugin's configuration # ---
 
-utils = require("utils")
+local utils = require("utils")
 
-map = utils.map
-nmap = utils.nmap
-vmap = utils.vmap
-vnmap = utils.vnmap
-tmap = utils.tmap
+local map = utils.map
+local nmap = utils.nmap
 
 -- Telescope
 
