@@ -77,5 +77,5 @@ nmap("<C-A-l>", step .. "<C-W>>")
 
 
 -- Moving lines
-nmap("<S-k>", "<S-v>xkP")
-nmap("<S-j>", "<S-v>xp")
+-- nmap("<S-k>", "<S-v>xkP")
+-- nmap("<S-j>", "<S-v>xp")
