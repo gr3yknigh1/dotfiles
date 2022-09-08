@@ -1,6 +1,6 @@
 -- @gr3yknigh1
 -- 2022
--- 
+--
 -- Basic settings
 
 local shell = "fish"
