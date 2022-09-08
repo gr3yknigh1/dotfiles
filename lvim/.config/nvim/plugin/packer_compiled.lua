@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
