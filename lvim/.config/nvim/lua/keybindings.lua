@@ -15,7 +15,7 @@ tmap = utils.tmap
 vim.g.mapleader = "\\"
 
 vnmap("<Leader>R", "<cmd>set list!<CR>")
-nmap("<Leader>n", "<cmd>noh<CR>")
+nmap("<Leader>h", "<cmd>noh<CR>")
 
 map({"t", "n"}, "<Leader>q", "<cmd>q<CR>")
 
