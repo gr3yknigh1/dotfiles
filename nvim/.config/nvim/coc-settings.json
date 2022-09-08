@@ -9,6 +9,26 @@
                     "directory": "/tmp/coc/"
                 }
             }
+        },
+        "lua": {
+          "command": "/usr/bin/lua-language-server",
+          "args": [
+            "-E",
+            "/usr/bin/lua-language-server/main.lua"
+          ],
+          "filetypes": ["lua"],
+          "settings": {
+            "Lua": {
+              "workspace.library": {
+                "/usr/share/nvim/runtime/lua": true,
+                "/usr/share/nvim/runtime/lua/vim": true,
+                "/usr/share/nvim/runtime/lua/vim/lsp": true
+              },
+              "diagnostics": {
+                "globals": [ "vim" ]
+              }  
+            }
+          }
         }
     },
     "jedi.executable.command": "~/.local/bin/jedi-language-server",
