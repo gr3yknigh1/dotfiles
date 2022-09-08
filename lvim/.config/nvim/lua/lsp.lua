@@ -6,8 +6,8 @@ local map = utils.map
 local nmap = utils.nmap
 
 local custom_lsp_attach = function(client)
-  nmap('K', vim.lsp.buf.hover)
-  nmap('<c-]>', vim.lsp.buf.definition)
+  nmap('K', vim.lsp.buf.hover, { buffer = 0 })
+  nmap('gd', vim.lsp.buf.definition, { buffer = 0 })
 end
 
 
