@@ -5,7 +5,7 @@ local utils = require("utils")
 local map = utils.map
 local nmap = utils.nmap
 
-local custom_lsp_attach = function(client)
+local custom_lsp_attach = function()
   nmap('K', vim.lsp.buf.hover, { buffer = 0 })
   nmap('gd', vim.lsp.buf.definition, { buffer = 0 })
 end
