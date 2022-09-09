@@ -87,3 +87,7 @@ au.BufLeave = {
     vim.cmd("stopinsert")
   end
 }
+
+-- Folding
+
+vim.opt.foldmethod="expr"
