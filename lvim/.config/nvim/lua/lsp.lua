@@ -26,9 +26,13 @@ lspconfig['tsserver'].setup({
   on_attach = custom_lsp_attach
 })
 
-local system_name = "Linux"
-local sumneko_root_path = '/usr/bin/lua-language-server'
-local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
+lspconfig['pyright'].setup({
+  on_attach = custom_lsp_attach
+})
+
+-- local system_name = "Linux"
+local sumneko_root_path = "/usr/lib/lua-language-server"
+local sumneko_binary = "/usr/bin/lua-language-server"
 
 lspconfig['sumneko_lua'].setup({
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
