@@ -77,12 +77,41 @@ local lspconfig = require('lspconfig')
 --   "sumneko_lua"
 -- }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+    on_attach = custom_lsp_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    init_options = {
+      html = {
+        options = {
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
+
 lspconfig['tsserver'].setup({
   on_attach = custom_lsp_attach
 })
 
 lspconfig['jedi_language_server'].setup({
   on_attach = custom_lsp_attach
+})
+
+lspconfig['ccls'].setup({
+  on_attach = custom_lsp_attach,
+  init_options = {
+    compilationDatabaseDirectory = "build";
+    index = {
+      threads = 0;
+    };
+    clang = {
+      excludeArgs = { "-frounding-math"} ;
+    }
+  }
 })
 
 lspconfig['rust_analyzer'].setup({
