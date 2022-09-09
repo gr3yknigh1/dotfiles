@@ -10,7 +10,8 @@ require("basic")
 require("packer-setup")
 
 require("keybindings")
-require('lsp')
+require("lsp")
+require("treesitter-setup")
 
 vim.cmd("colorscheme nord")
 vim.cmd("syntax enable")
