@@ -6,15 +6,20 @@
 local shell = "fish"
 vim.opt.shell = shell
 
-if vim.fn.has("termguicolors") then vim.opt.termguicolors = true
-end
+vim.opt.termguicolors = true
+
+-- if vim.fn.has("termguicolors") then
+--   vim.opt.termguicolors = true
+-- end
 
 local au = require("au")
 
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-vim.opt.colorcolumn="0"
+vim.opt.colorcolumn="80"
 
+vim.opt.numberwidth = 2
+vim.opt.cursorline = true
 
 -- File formats
 vim.opt.encoding="utf-8"
@@ -22,7 +27,7 @@ vim.opt.fileformat="unix"
 
 
 -- Wrapping
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.scrolloff = 7
 
 
@@ -45,12 +50,17 @@ au.TermOpen = {
 }
 
 -- Rendering whitespace
-vim.opt.listchars = { 
-  eol = "¶", 
-  trail = "~", 
-  space = "·", 
-  tab = ">~" 
-}
+-- vim.opt.listchars = {
+--   eol = "¶",
+--   trail = "~",
+--   space = "·",
+--   tab = ">~"
+-- }
+
+-- vim.opt.listchars:append "space: "
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "trail:~"
+vim.opt.listchars:append "eol:↴"
 vim.opt.list = false
 
 
@@ -67,7 +77,7 @@ vim.opt.splitright = true
 local indent = 4
 vim.opt.tabstop = indent
 vim.opt.shiftwidth = 2
-vim.opt.softtabstop = indent
+vim.opt.softtabstop = -1
 
 vim.opt.autoindent = true
 vim.opt.expandtab = true
@@ -90,4 +100,4 @@ au.BufLeave = {
 
 -- Folding
 
-vim.opt.foldmethod="expr"
+-- vim.opt.foldmethod="expr"

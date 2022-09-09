@@ -30,6 +30,8 @@ require('packer').startup(function(use)
 
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
+  use "p00f/nvim-ts-rainbow"
+  -- use "lukas-reineke/indent-blankline.nvim"
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
@@ -61,6 +63,7 @@ require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'romgrk/barbar.nvim'
+  use 'gpanders/editorconfig.nvim'
 
   -- Etc
   use 'glepnir/dashboard-nvim'

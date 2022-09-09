@@ -3,7 +3,8 @@
 -- 
 -- Neovim's lua configuration
 -- References
---   - (DistroTube) https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/nvim/init.lua
+--   - (DistroTube) 
+--     https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/nvim/init.lua
 
 
 require("basic")
@@ -13,8 +14,6 @@ require("keybindings")
 require("lsp")
 require("treesitter-setup")
 
-vim.cmd("colorscheme nord")
-vim.cmd("syntax enable")
 
 
 -- Remappings for VSCode Neovim extention
@@ -39,12 +38,65 @@ local utils = require("utils")
 local map = utils.map
 local nmap = utils.nmap
 
+
+-- Nord colorscheme
+
+vim.g.nord_contrast = false
+vim.g.nord_borders = true
+vim.g.nord_cursorline_transparent = true
+vim.g.nord_disable_background = false
+vim.g.nord_enable_sidebar_background = true
+vim.g.nord_italic = true
+vim.g.nord_uniform_diff_background = true
+
+-- Indent Blanklines
+
+-- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75]]
+-- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B]]
+-- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379]]
+-- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2]]
+-- vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF]]
+-- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD]]
+
+-- require("indent_blankline").setup({
+--   space_char_blankline = " ",
+--   show_current_context = true,
+--   show_end_of_line = true,
+--   -- show_current_context_start = true,
+--   char_highlight_list = {
+--     "IndentBlanklineIndent1",
+--     "IndentBlanklineIndent2",
+--     "IndentBlanklineIndent3",
+--     "IndentBlanklineIndent4",
+--     "IndentBlanklineIndent5",
+--     "IndentBlanklineIndent6",
+--   },
+-- })
+
+-- Rainbow brackets
+
+require("nvim-treesitter.configs").setup {
+  highlight = {
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  }
+}
+
 -- Telescope
 
 local tactions = require("telescope.actions")
 require("telescope").setup{
     defaults = {
-        file_ignore_patterns = { "**/.git", "**/node_modules", "**/.mono", "**/.import" },
+        file_ignore_patterns = {
+          "**/.git",
+          "**/node_modules",
+          "**/.mono",
+          "**/.import",
+          "**/.ccls-cache/"
+        },
         mappings = {
           i = {
             ["<esc>"] = tactions.close
@@ -295,7 +347,14 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
                 enable = true,
                 chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 exclude = {
-                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                    filetype = {
+                      "notify",
+                      "packer",
+                      "qf",
+                      "diff",
+                      "fugitive",
+                      "fugitiveblame"
+                    },
                     buftype = { "nofile", "terminal", "help" },
                 },
             },
@@ -508,3 +567,6 @@ db.custom_center = {
 db.custom_footer = { "", "Join cult of vim, brother" }
 db.session_directory = "~/.config/nvim/session"
 
+
+vim.cmd("syntax enable")
+vim.cmd("colorscheme nord")
