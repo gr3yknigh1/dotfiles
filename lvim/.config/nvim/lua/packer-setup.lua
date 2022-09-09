@@ -28,6 +28,29 @@ require('packer').startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig"
 
+  -- Syntax (Treesitter)
+  use 'nvim-treesitter/nvim-treesitter'
+
+  -- Completion
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+
+  -- Snippets
+
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  -- Commenting
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
   -- Tools
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
