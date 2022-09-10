@@ -72,6 +72,10 @@ end
 
 local lspconfig = require('lspconfig')
 
+
+require('lspconfig').angularls.setup({
+  on_attach = custom_lsp_attach
+})
 -- local servers = {
 --   "tsserver",
 --   "sumneko_lua"
