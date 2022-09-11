@@ -79,3 +79,7 @@ nmap("<C-A-l>", step .. "<C-W>>")
 -- Moving lines
 -- nmap("<S-k>", "<S-v>xkP")
 -- nmap("<S-j>", "<S-v>xp")
+
+
+-- Seach selected
+vim.keymap.set("v", "/", "y/<C-r>0<cr>")
