@@ -1,3 +1,6 @@
+-- @gr3yknigh1
+-- 2022
+--
 -- Completions
 
 local cmp = require'cmp'
