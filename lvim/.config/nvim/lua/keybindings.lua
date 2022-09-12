@@ -3,13 +3,13 @@
 -- 
 -- Keybindings
 
-utils = require("utils")
+local utils = require("utils")
 
-map = utils.map
-nmap = utils.nmap
-vmap = utils.vmap
-vnmap = utils.vnmap
-tmap = utils.tmap
+local map = utils.map
+local nmap = utils.nmap
+local vmap = utils.vmap
+local vnmap = utils.vnmap
+local tmap = utils.tmap
 
 
 vim.g.mapleader = "\\"
