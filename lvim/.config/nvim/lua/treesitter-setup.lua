@@ -1,3 +1,7 @@
+-- @gr3yknigh1
+-- 2022
+-- 
+-- Treesitter
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
