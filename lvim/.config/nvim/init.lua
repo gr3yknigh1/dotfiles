@@ -565,7 +565,7 @@ db.custom_center = {
   },
 }
 db.custom_footer = { "", "Join cult of vim, brother" }
-db.session_directory = "~/.config/nvim/session"
+db.session_directory = home .. "/.config/nvim/session"
 
 
 vim.cmd("syntax enable")
