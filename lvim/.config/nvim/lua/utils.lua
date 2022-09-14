@@ -10,18 +10,18 @@ return {
   end),
 
   nmap = (function(keys, func, opts)
-    map("n", keys, func, opts)
+    vim.keymap.set("n", keys, func, opts)
   end),
 
   vmap = (function(keys, func, opts)
-    map("v", keys, func, opts)
+    vim.keymap.set("v", keys, func, opts)
   end),
 
   vnmap = (function(keys, func, opts)
-    map({"n", "v"}, keys, func, opts)
+    vim.keymap.set({"n", "v"}, keys, func, opts)
   end),
 
   tmap = (function(keys, func, opts)
-    map("t", keys, func, opts)
+    vim.keymap.set("t", keys, func, opts)
   end)
 }
