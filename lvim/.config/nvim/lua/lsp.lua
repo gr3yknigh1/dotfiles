@@ -104,7 +104,7 @@ lspconfig['tsserver'].setup({
   on_attach = custom_lsp_attach
 })
 
-lspconfig['jedi_language_server'].setup({
+lspconfig['pyright'].setup({
   on_attach = custom_lsp_attach
 })
 
