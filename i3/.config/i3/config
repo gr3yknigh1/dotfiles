@@ -1,10 +1,8 @@
 # --- main
 
 set $browser        vivaldi-stable
-set $term           alacritty
-set $term_run       alacritty --command
-set $explorer       ranger
-set $vscode_exec    code
+set $term           kitty 
+set $term_run       kitty
 
 set $mod Mod4
 
@@ -156,9 +154,9 @@ mode "apps" {
     bindsym $mod+o mode "default"
     
     bindsym $mod+b exec $browser
-    bindsym $mod+f exec $term_run $explorer
+    bindsym $mod+f exec $term_run ranger -T "File Explorer"
 
-    bindsym $mod+h exec $term_run htop
+    bindsym $mod+h exec $term_run htop -T "HTop"
     bindsym $mod+n exec obsidian
 
     bindsym $mod+w exec bitwarden-desktop
