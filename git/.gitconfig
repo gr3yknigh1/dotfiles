@@ -1,7 +1,19 @@
+[include]
+    path = ~/.config/delta/themes.gitconfig
 [core]
     autocrlf = false
     editor = nvim
     commentChar = ";"
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false
+[delta]
+    features = villsau
+    navigate = true
+    side-by-side = true 
+    line-numbers = true
 [user]
 	email = gr3yknigh1@gmail.com
 	name = Ilya Akkuzin
@@ -13,4 +25,8 @@
 [init]
 	defaultBranch = master
 [pull]
-	rebase = false
+    rebase = false
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
