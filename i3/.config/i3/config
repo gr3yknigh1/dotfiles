@@ -132,37 +132,37 @@ set $resize_step 2
 set $shift_resize_step 100
 
 mode "resize" {
-        bindsym j resize shrink width $resize_step px or $resize_step ppt
-        bindsym k resize grow height $resize_step px or $resize_step ppt
-        bindsym l resize shrink height $resize_step px or $resize_step ppt
-        bindsym semicolon resize grow width $resize_step px or $resize_step ppt
+  bindsym j resize shrink width $resize_step px or $resize_step ppt
+  bindsym k resize grow height $resize_step px or $resize_step ppt
+  bindsym l resize shrink height $resize_step px or $resize_step ppt
+  bindsym semicolon resize grow width $resize_step px or $resize_step ppt
 
-        bindsym Shift+j resize shrink width $shift_resize_step px or $shift_resize_step ppt
-        bindsym Shift+k resize grow height $shift_resize_step px or $shift_resize_step ppt
-        bindsym Shift+l resize shrink height $shift_resize_step px or $shift_resize_step ppt
-        bindsym Shift+semicolon resize grow width $shift_resize_step px or $shift_resize_step ppt
+  bindsym Shift+j resize shrink width $shift_resize_step px or $shift_resize_step ppt
+  bindsym Shift+k resize grow height $shift_resize_step px or $shift_resize_step ppt
+  bindsym Shift+l resize shrink height $shift_resize_step px or $shift_resize_step ppt
+  bindsym Shift+semicolon resize grow width $shift_resize_step px or $shift_resize_step ppt
 
-        bindsym $mod+r mode "default"
-        bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+  bindsym Escape mode "default"
 }
 
 
 bindsym $mod+o mode "apps"
 mode "apps" {
-    bindsym $mod+Shift+q kill
+  bindsym $mod+Shift+q kill
 
-    bindsym $mod+o mode "default"
-    
-    bindsym $mod+b exec $browser
-    bindsym $mod+f exec $term_run ranger -T "File Explorer"
+  bindsym $mod+o mode "default"
+  
+  bindsym $mod+b exec $browser
+  bindsym $mod+f exec $term_run ranger
 
-    bindsym $mod+h exec $term_run htop -T "HTop"
-    bindsym $mod+n exec obsidian
+  bindsym $mod+h exec $term_run htop
+  bindsym $mod+n exec obsidian
 
-    bindsym $mod+w exec bitwarden-desktop
+  bindsym $mod+w exec bitwarden-desktop
 
-    bindsym $mod+d exec discord
-    bindsym $mod+t exec telegram-desktop
+  bindsym $mod+d exec discord
+  bindsym $mod+t exec telegram-desktop
 }
 
 
