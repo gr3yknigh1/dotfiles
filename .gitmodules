@@ -1,3 +1,6 @@
 [submodule "wallpapers/gruvbox"]
 	path = wallpapers/gruvbox
 	url = https://github.com/vctrblck/gruvbox-wallpapers
+[submodule "wallpapers/nord-wallpapers"]
+	path = wallpapers/nord-wallpapers
+	url = https://github.com/iamdevnitesh/nord-wallpapers
