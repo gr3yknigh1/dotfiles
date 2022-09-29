@@ -5,6 +5,7 @@ set EDITOR "nvim"
 
 alias cls="clear"
 alias lg="lazygit"
+alias misha="gcc"
 
 alias e=$EDITOR
 
