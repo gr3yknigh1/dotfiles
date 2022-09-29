@@ -79,6 +79,14 @@ local lspconfig = require('lspconfig')
 require('lspconfig').angularls.setup({
   on_attach = custom_lsp_attach
 })
+
+lspconfig.pasls.setup({
+})
+
+
+require('lspconfig').gdscript.setup({
+  on_attach = custom_lsp_attach
+})
 -- local servers = {
 --   "tsserver",
 --   "sumneko_lua"
@@ -110,15 +118,6 @@ lspconfig['pyright'].setup({
 
 lspconfig['ccls'].setup({
   on_attach = custom_lsp_attach,
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    clang = {
-      excludeArgs = { "-frounding-math"} ;
-    }
-  }
 })
 
 lspconfig['rust_analyzer'].setup({

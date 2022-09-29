@@ -16,7 +16,7 @@ local au = require("au")
 
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-vim.opt.colorcolumn="80"
+vim.opt.colorcolumn="0"
 
 vim.opt.numberwidth = 2
 vim.opt.cursorline = true
@@ -61,6 +61,7 @@ au.TermOpen = {
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "trail:~"
 vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append "tab:>~"
 vim.opt.list = false
 
 
@@ -76,7 +77,7 @@ vim.opt.splitright = true
 -- Indentations
 local indent = 4
 vim.opt.tabstop = indent
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = indent
 vim.opt.softtabstop = -1
 
 vim.opt.autoindent = true
