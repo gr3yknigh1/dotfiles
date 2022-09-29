@@ -84,7 +84,7 @@ for char in art:
 
 coffee_cup = fg(*colors["brown"]) + '\ue61b ' + fg.rs
 laptop = fg.blue + '\uf821 ' + fg.rs
-sunset = fg.yellow + '\uf762 ' + fg.rs
+sunset = fg.yellow + '\ufa9a' + fg.rs
 night_star = fg.yellow + '\ue370 ' + fg.rs
 
 
