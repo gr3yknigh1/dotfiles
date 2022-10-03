@@ -116,7 +116,7 @@ lspconfig['pyright'].setup({
   on_attach = custom_lsp_attach
 })
 
-lspconfig['ccls'].setup({
+lspconfig['clangd'].setup({
   on_attach = custom_lsp_attach,
 })
 
