@@ -4,3 +4,6 @@
 [submodule "wallpapers/nord-wallpapers"]
 	path = wallpapers/nord-wallpapers
 	url = https://github.com/iamdevnitesh/nord-wallpapers
+[submodule "neofetch/.config/neofetch/themes"]
+	path = neofetch/.config/neofetch/themes
+	url = https://github.com/Chick2D/neofetch-themes
