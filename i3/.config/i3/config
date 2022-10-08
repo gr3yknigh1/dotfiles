@@ -161,6 +161,8 @@ mode "apps" {
 
   bindsym $mod+w exec bitwarden-desktop
 
+  bindsym $mod+e exec rofimoji
+
   bindsym $mod+d exec discord
   bindsym $mod+t exec telegram-desktop
 }
