@@ -95,7 +95,9 @@ require("telescope").setup{
           "**/node_modules",
           "**/.mono",
           "**/.import",
-          "**/.ccls-cache"
+          "**/.ccls-cache",
+          "**/.obsidian",
+          "**/.trash",
         },
         mappings = {
           i = {
