@@ -28,6 +28,8 @@ require('packer').startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig"
 
+  use "tpope/vim-fugitive"
+
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
