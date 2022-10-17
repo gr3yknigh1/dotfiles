@@ -27,7 +27,7 @@ vim.opt.fileformat="unix"
 
 
 -- Wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 7
 
 
