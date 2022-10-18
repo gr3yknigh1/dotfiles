@@ -23,7 +23,8 @@ require('packer').startup(function(use)
 
   -- Colorschemes
   use "Mofiqul/dracula.nvim"
-  use "shaunsingh/nord.nvim"
+  -- use "shaunsingh/nord.nvim"
+  use 'arcticicestudio/nord-vim'
 
   -- LSP
   use "neovim/nvim-lspconfig"
