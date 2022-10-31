@@ -76,6 +76,10 @@ end
 local lspconfig = require('lspconfig')
 
 
+lspconfig["hls"].setup({
+  on_attach = custom_lsp_attach
+})
+
 require('lspconfig').angularls.setup({
   on_attach = custom_lsp_attach
 })

@@ -1,6 +1,6 @@
 -- @gr3yknigh1
 -- 2022
--- 
+--
 -- Packer setup
 
 
@@ -34,7 +34,7 @@ require('packer').startup(function(use)
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
-  -- use "lukas-reineke/indent-blankline.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
@@ -61,6 +61,7 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
