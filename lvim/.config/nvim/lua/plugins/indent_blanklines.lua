@@ -6,7 +6,7 @@
 -- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2]]
 -- vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF]]
 -- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD]]
-
+--
 -- require("indent_blankline").setup({
 --   space_char_blankline = " ",
 --   show_current_context = true,
