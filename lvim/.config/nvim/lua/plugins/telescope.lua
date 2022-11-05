@@ -11,35 +11,31 @@ local tbuiltin  = require("telescope.builtin")
 telescope.setup({
   defaults = {
     file_ignore_patterns = {
-      -- "**/.git/*",
-      -- "**/node_modules/*",
-      -- "**/.mono/*",
-      -- ".egg-info",
-      -- "**/__pycache__/*",
-      -- "build/*"
+      ".git",
+      "^node_modules",
     },
     mappings = {
       i = {
         ["<esc>"] = tactions.close
       },
     },
-    vimgrep_arguments = {
-      'rg',
-      '--color=always',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-    }
+    -- vimgrep_arguments = {
+    --   'rg',
+    --   '--color=always',
+    --   '--no-heading',
+    --   '--with-filename',
+    --   '--line-number',
+    --   '--column',
+    --   '--smart-case',
+    --   '--ignore-file',
+    --   '.gitignore',
+    -- }
   }, -- defaults
 
   pickers = {
     find_files = {
-      find_command = { "fd", "--strip-cwd-prefix", "-t", "f"},
-
-      -- hidden = true,
-      -- no_ignore = true,
+      -- find_command = { "fd", "--strip-cwd-prefix", "-t", "f"},
+      hidden = true,
     }
   }, -- pickers
 
