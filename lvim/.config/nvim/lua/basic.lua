@@ -16,7 +16,7 @@ local au = require("au")
 
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-vim.opt.colorcolumn="0"
+vim.opt.colorcolumn="90"
 
 vim.opt.numberwidth = 2
 vim.opt.cursorline = true
