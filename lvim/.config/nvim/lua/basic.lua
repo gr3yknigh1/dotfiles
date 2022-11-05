@@ -51,18 +51,17 @@ au.TermOpen = {
 
 -- Rendering whitespace
 -- vim.opt.listchars = {
---   eol = "¶",
+--   eol = "↴",
 --   trail = "~",
 --   space = "·",
 --   tab = ">~"
 -- }
 
--- vim.opt.listchars:append "space: "
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "trail:~"
-vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append "eol:¶"
 vim.opt.listchars:append "tab:>~"
-vim.opt.list = false
+vim.opt.list = true
 
 
 -- Mouse
