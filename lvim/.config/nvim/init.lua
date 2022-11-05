@@ -2,9 +2,6 @@
 -- 2022
 --
 -- Neovim's lua configuration
--- References
---   - (DistroTube)
---     https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/nvim/init.lua
 
 
 require("basic")
@@ -14,6 +11,12 @@ require("keybindings")
 require("lsp")
 require("treesitter-setup")
 
+
+local utils = require("utils")
+local map = utils.map
+
+
+-- VSCode Neovim configuration
 -- Remappings for VSCode Neovim extention
 -- TODO:
 --   - [ ] Closing tabs
@@ -21,7 +24,6 @@ require("treesitter-setup")
 --   - [ ] Telescope integration
 if vim.fn.exists("g:vscode") == 1 then
   print("Hello from VSCode!")
-
   -- NOTE(gr3yknigh1): Doesn't working :c
   -- Dunno why
   vim.keymap.set('n', '<A-,>', '<cmd>tabprevious<cr>')
@@ -30,12 +32,18 @@ end
 
 
 -- Neovide configuration
--- @NOTE: Configuration documentation link
--- https://neovide.dev/configuration.html
+-- @NOTE Configuration documentation link
+-- @LINK https://neovide.dev/configuration.html
 if vim.fn.exists("g:neovide") and vim.g.neovide then
   print("Hello from Neovide!")
 
-  vim.opt.guifont = "Iosevka Nerd Font:h16"
+  local font_name = "Iosevka Nerd Font"
+  local font_size = 16
+  local function get_guifont()
+    return font_name .. ":h" .. tostring(font_size)
+  end
+
+  vim.opt.guifont = get_guifont()
 
   vim.g.neovide_scale_factor = 1.0
 
@@ -58,6 +66,15 @@ if vim.fn.exists("g:neovide") and vim.g.neovide then
   --   - ripple
   --   - wireframe
   vim.g.neovide_cursor_vfx_mode = "ripple"
+
+  map("n", "<C-=>", function()
+    font_size = font_size + 1;
+    vim.opt.guifont = get_guifont()
+  end)
+  map("n", "<C-->", function()
+    font_size = font_size - 1;
+    vim.opt.guifont = get_guifont()
+  end)
 end
 
 
