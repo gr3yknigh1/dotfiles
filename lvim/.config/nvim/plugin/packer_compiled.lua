@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vifm.vim"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/vifm.vim",
+    url = "https://github.com/vifm/vifm.vim"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/vim-fugitive",

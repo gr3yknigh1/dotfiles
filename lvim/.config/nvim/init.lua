@@ -9,8 +9,6 @@ require("packer-setup")
 
 require("keybindings")
 require("lsp")
-require("treesitter-setup")
-
 
 local utils = require("utils")
 local map = utils.map
@@ -84,15 +82,16 @@ end
 
 
 -- Plugins
--- require("plugins.barbar")
+require("plugins.packer")
+
 require("plugins.bufferline")
-require("plugins.db")
 require("plugins.indent_blanklines")
 require("plugins.lualine")
 require("plugins.nvim_tree")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.lazygit")
+require("plugins.db")
 
 -- Colorscheme
 

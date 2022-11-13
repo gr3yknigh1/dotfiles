@@ -33,6 +33,7 @@ require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use 'theHamsta/nvim-dap-virtual-text'
+
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
@@ -63,8 +64,10 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
+
   use { 'kdheepak/lazygit.nvim' }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  -- use { 'vifm/vifm.vim' }
 
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
