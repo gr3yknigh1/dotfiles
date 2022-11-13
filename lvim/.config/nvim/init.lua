@@ -92,7 +92,7 @@ require("plugins.lualine")
 require("plugins.nvim_tree")
 require("plugins.telescope")
 require("plugins.treesitter")
-
+require("plugins.lazygit")
 
 -- Colorscheme
 
