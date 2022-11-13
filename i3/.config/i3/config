@@ -1,25 +1,13 @@
-# --- main
-
-set $browser        vivaldi-stable
-set $term           kitty 
-set $term_run       kitty
-
-set $mod Mod4
+set $browser vivaldi-stable
+set $term    kitty
 
 font pango:Iosevka 9
 
-# --- paths
 
 set $pictures       "$HOME/Pictures"
 set $screenshots    "$HOME/Pictures/Screenshots"
 set $wallpapers     "$HOME/Pictures/Wallpapers"
 
-# brightness
-
-set $brightness_step 50
-
-bindsym XF86MonBrightnessUp exec brightnessctl set +$brightness_step
-bindsym XF86MonBrightnessDown exec brightnessctl set $brightness_step-
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -27,42 +15,25 @@ exec --no-startup-id nm-applet
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Use Mouse+$mod to drag floating windows to their wanted position
+set $mod Mod4
 floating_modifier $mod
 
 bindsym $mod+Return exec $term
-bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
 
-
-# --- Screenshots
-# to file
-bindsym Print       exec --no-startup-id maim -m 10           "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
-bindsym $mod+Print  exec --no-startup-id maim -m 10 --window  $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
-bindsym Shift+Print exec --no-startup-id maim -m 10 --select  "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
-
-# clipboard screenshots
-bindsym Ctrl+Print       exec --no-startup-id maim -m 10 | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print  exec --no-startup-id maim -m 10 --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim -m 10 --select | xclip -selection clipboard -t image/png
-
-# --- Window
-# kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+l exec i3exit suspend
+bindsym $mod+Shift+f floating toggle
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
 
-# change focus
+bindsym $mod+z focus mode_toggle
+
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 bindsym $mod+Ctrl+h move left  10 px
 bindsym $mod+Ctrl+j move down  10 px
@@ -83,10 +54,8 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+f floating toggle
-
 bindsym $mod+a focus parent
-# bindsym $mod+d focus child
+bindsym $mod+i focus child
 
 set $ws1 "1"
 set $ws2 "2"
@@ -127,23 +96,23 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 bindsym $mod+r mode "resize"
-
-set $resize_step 2
-set $shift_resize_step 100
-
 mode "resize" {
-  bindsym j resize shrink width $resize_step px or $resize_step ppt
-  bindsym k resize grow height $resize_step px or $resize_step ppt
-  bindsym l resize shrink height $resize_step px or $resize_step ppt
-  bindsym semicolon resize grow width $resize_step px or $resize_step ppt
+  bindsym $mod+Shift+q kill
 
-  bindsym Shift+j resize shrink width $shift_resize_step px or $shift_resize_step ppt
-  bindsym Shift+k resize grow height $shift_resize_step px or $shift_resize_step ppt
-  bindsym Shift+l resize shrink height $shift_resize_step px or $shift_resize_step ppt
-  bindsym Shift+semicolon resize grow width $shift_resize_step px or $shift_resize_step ppt
-
+  set $resize_step 2
+  set $shift_resize_step 100
   bindsym $mod+r mode "default"
   bindsym Escape mode "default"
+
+  bindsym $mod+h resize shrink width  $resize_step px or $resize_step ppt
+  bindsym $mod+j resize grow   height $resize_step px or $resize_step ppt
+  bindsym $mod+k resize shrink height $resize_step px or $resize_step ppt
+  bindsym $mod+l resize grow   width  $resize_step px or $resize_step ppt
+
+  bindsym $mod+Shift+h resize shrink width  $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+j resize grow   height $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+k resize shrink height $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+l resize grow   width  $shift_resize_step px or $shift_resize_step ppt
 }
 
 
@@ -152,51 +121,56 @@ mode "apps" {
   bindsym $mod+Shift+q kill
 
   bindsym $mod+o mode "default"
-  
-  bindsym $mod+b exec $browser
-  bindsym $mod+f exec $term_run ranger
+  bindsym Escape mode "default"
 
-  bindsym $mod+h exec $term_run htop
+  bindsym $mod+b exec $browser
   bindsym $mod+n exec obsidian
 
-  bindsym $mod+w exec bitwarden-desktop
+  bindsym $mod+p exec bitwarden-desktop
 
   bindsym $mod+e exec rofimoji
 
   bindsym $mod+d exec discord
   bindsym $mod+t exec telegram-desktop
+
+  bindsym $mod+w exec $term --title iwctl        --class fterm_app iwctl
+  bindsym $mod+l exec $term --title bluetoothctl --class fterm_app bluetoothctl
+  bindsym $mod+f exec $term --title vifm         --class fterm_app vifm
+  bindsym $mod+h exec $term --title htop         --class fterm_app htop
 }
 
 
-# bar {
-#     status_command i3status
-#     position bottom
-#
-#     tray_padding 0
-#
-#     i3bar_command i3bar --transparency
-#     font pango:Iosevka 12
-#
-#     workspace_buttons yes
-#     workspace_min_width 20
-#     binding_mode_indicator yes
-#     separator_symbol ":|:"
-#
-#     colors {
-#         background #00000000  # << add two digits for transparency
-#         statusline #ffffff
-#         separator #666666
-#
-#         focused_workspace  #4c7899 #285577 #ffffff
-#         active_workspace   #333333 #5f676a #ffffff
-#         inactive_workspace #333333 #222222 #888888
-#         urgent_workspace   #2f343a #900000 #ffffff
-#         binding_mode       #2f343a #900000 #ffffff
-#     }
-# }
+# Sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10% 
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-for_window [class="^.*"] border pixel 1
+# Brightness
+set $brightness_step 20
+bindsym XF86MonBrightnessUp   exec brightnessctl set +$brightness_step
+bindsym XF86MonBrightnessDown exec brightnessctl set  $brightness_step-
 
+# Screenshots
+bindsym Print            exec --no-startup-id maim -m 10           "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym $mod+Print       exec --no-startup-id maim -m 10 --window  $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym Shift+Print      exec --no-startup-id maim -m 10 --select  "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym Ctrl+Print       exec --no-startup-id maim -m 10 | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print  exec --no-startup-id maim -m 10 --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim -m 10 --select | xclip -selection clipboard -t image/png
+
+# Window rules
+for_window [class="^.*"] border pixel 2
+
+for_window [class="Bitwarden$"]                       floating enable, resize set 900px 600px;  move position center
+for_window [class="fterm_app$" title="iwctl$"]        floating enable, resize set 900px 600px;  move position center
+for_window [class="fterm_app$" title="bluetoothctl$"] floating enable, resize set 900px 600px;  move position center
+for_window [class="fterm_app$" title="vifm$"]         floating enable, resize set 900px 600px;  move position center
+for_window [class="fterm_app$" title="htop$"]         floating enable, resize set 1200px 600px; move position center
+
+# Gapping
 gaps inner 10
 
+# Multimonitor configuration
 workspace 3 output HDMI-1
+
