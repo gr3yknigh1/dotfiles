@@ -84,7 +84,7 @@ end
 
 
 -- Plugins
-require("plugins.barbar")
+-- require("plugins.barbar")
 require("plugins.bufferline")
 require("plugins.db")
 require("plugins.indent_blanklines")
