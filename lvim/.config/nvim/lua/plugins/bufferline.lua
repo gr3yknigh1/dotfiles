@@ -2,8 +2,7 @@ local utils = require("utils")
 
 local map = utils.map
 
-
-require("bufferline").setup {
+require("bufferline").setup({
   -- Enable/disable animations
   animation = true,
 
@@ -68,7 +67,7 @@ require("bufferline").setup {
   -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
   -- where X is the buffer number. But only a static string is accepted here.
   no_name_title = nil,
-}
+})
 
 
 local opts = { noremap = true, silent = true }
@@ -110,3 +109,23 @@ map("n", "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
 map("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
 map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
+
+
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_api = require('bufferline.api')
+
+local function get_tree_size()
+  return require'nvim-tree.view'.View.width
+end
+
+nvim_tree_events.subscribe('TreeOpen', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('Resize', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('TreeClose', function()
+  bufferline_api.set_offset(0)
+end)
