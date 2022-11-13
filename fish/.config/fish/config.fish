@@ -23,6 +23,8 @@ alias tls="tmux ls"
 alias tkr="tmux kill-server"
 alias tks="tmux kill-session"
 
+alias f="vifm"
+alias v="neovide"
 
 # start x-server
 if [ $(tty) = "/dev/tty1" ]
