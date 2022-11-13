@@ -382,6 +382,14 @@ filextype *.pro qtcreator %f &
 " Displaying pictures in terminal
 " fileviewer *.jpg,*.png shellpic %c
 
+" @TODO Remove?
+" Trying with w3m (NOT WORKING)
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+"          \ ~/.config/vifm/scripts/w3m/image_preview.sh %px %py %pw %ph %c
+"          \ %pc
+"          \ ~/.config/vifm/scripts/w3m/image_clear_bg.sh %px %py %pw %ph
+
+
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
 " settings).  By default all unknown files are opened with 'vi[x]cmd'
