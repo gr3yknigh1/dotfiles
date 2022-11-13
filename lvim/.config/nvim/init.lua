@@ -38,7 +38,8 @@ if vim.fn.exists("g:neovide") and vim.g.neovide then
   print("Hello from Neovide!")
 
   local font_name = "Iosevka Nerd Font"
-  local font_size = 16
+  local default_font_size = 11
+  local font_size = default_font_size
   local function get_guifont()
     return font_name .. ":h" .. tostring(font_size)
   end
@@ -73,6 +74,10 @@ if vim.fn.exists("g:neovide") and vim.g.neovide then
   end)
   map("n", "<C-->", function()
     font_size = font_size - 1;
+    vim.opt.guifont = get_guifont()
+  end)
+  map("n", "<C-0>", function()
+    font_size = default_font_size;
     vim.opt.guifont = get_guifont()
   end)
 end
