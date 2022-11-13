@@ -31,6 +31,10 @@ require('packer').startup(function(use)
 
   use "tpope/vim-fugitive"
 
+  -- Debugging
+  use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'theHamsta/nvim-dap-virtual-text'
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
