@@ -29,6 +29,8 @@ bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.co
 
 bindsym $mod+z focus mode_toggle
 
+bindsym Mod1+Tab focus next
+bindsym Mod1+Shift+Tab focus prev
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -116,8 +118,8 @@ mode "resize" {
 }
 
 
-bindsym $mod+o mode "apps"
-mode "apps" {
+bindsym $mod+o mode "launcher"
+mode "launcher" {
   bindsym $mod+Shift+q kill
 
   bindsym $mod+o mode "default"
@@ -133,10 +135,10 @@ mode "apps" {
   bindsym $mod+d exec discord
   bindsym $mod+t exec telegram-desktop
 
-  bindsym $mod+w exec $term --title iwctl        --class fterm_app iwctl
-  bindsym $mod+l exec $term --title bluetoothctl --class fterm_app bluetoothctl
-  bindsym $mod+f exec $term --title vifm         --class fterm_app vifm
-  bindsym $mod+h exec $term --title htop         --class fterm_app htop
+  bindsym $mod+w exec $term --title iwctl        iwctl
+  bindsym $mod+l exec $term --title bluetoothctl bluetoothctl
+  bindsym $mod+f exec $term --title vifm         vifm
+  bindsym $mod+h exec $term --title htop         htop
 }
 
 
@@ -160,13 +162,14 @@ bindsym Ctrl+$mod+Print  exec --no-startup-id maim -m 10 --window $(xdotool geta
 bindsym Ctrl+Shift+Print exec --no-startup-id maim -m 10 --select | xclip -selection clipboard -t image/png
 
 # Window rules
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] floating_border pixel 1
 
-for_window [class="Bitwarden$"]                       floating enable, resize set 900px 600px;  move position center
-for_window [class="fterm_app$" title="iwctl$"]        floating enable, resize set 900px 600px;  move position center
-for_window [class="fterm_app$" title="bluetoothctl$"] floating enable, resize set 900px 600px;  move position center
-for_window [class="fterm_app$" title="vifm$"]         floating enable, resize set 900px 600px;  move position center
-for_window [class="fterm_app$" title="htop$"]         floating enable, resize set 1200px 600px; move position center
+for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
+for_window [title="^iwctl$"]        floating enable, resize set 900px 600px,  move position center
+for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
+for_window [title="^vifm$"]         floating enable, resize set 900px 600px,  move position center
+for_window [title="^htop$"]         floating enable, resize set 1200px 600px, move position center
 
 # Gapping
 gaps inner 10
@@ -174,3 +177,29 @@ gaps inner 10
 # Multimonitor configuration
 workspace 3 output HDMI-1
 
+# Title align
+title_align center
+
+# Colors
+
+# Nord Theme
+set $background_color          #88C0D0
+set $inactive_background_color #2E3440
+set $text_color                #F5F5F5
+set $inactive_text_color       #D8DEE9
+set $urgent_background_color   #BF616A
+
+#                       border                     background                 text                       indicator
+client.focused          $background_color          $background_color          $inactive_background_color $background_color
+client.unfocused        $inactive_background_color $inactive_background_color $inactive_text_color       $inactive_background_color
+client.focused_inactive $inactive_background_color $inactive_background_color $inactive_text_color       $inactive_background_color
+client.urgent           $urgent_background_color   $urgent_background_color   $text_color                $urgent_background_color
+
+# # Default               border  backgr. text    indicator child_border
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
