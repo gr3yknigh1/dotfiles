@@ -5,10 +5,8 @@
 
 
 require("basic")
-require("packer-setup")
 
 require("keybindings")
-require("lsp")
 
 local utils = require("utils")
 local map = utils.map
@@ -83,6 +81,8 @@ end
 
 -- Plugins
 require("plugins.packer")
+
+require("lsp")
 
 require("plugins.bufferline")
 require("plugins.indent_blanklines")
