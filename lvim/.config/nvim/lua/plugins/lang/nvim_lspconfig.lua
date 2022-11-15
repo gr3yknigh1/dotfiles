@@ -3,24 +3,7 @@
 --
 -- LSP's configurations
 
--- @NOTE I dunno is that properly implemented
--- @TODO Check how table references works in lua
-local function merge(table1, table2)
-  local merged = {}
-  for key, value in pairs(table1) do
-    merged[key] = value
-  end
-  for key, value in pairs(table2) do
-    merged[key] = value
-  end
-  return merged
-end
-
-local function has(table, key)
-  return table[key] ~= nil
-end
-
-
+local utils     = require('utils')
 local lspconfig = require("lspconfig")
 local cmp       = require("cmp")
 local luasnip   = require("luasnip")
@@ -169,8 +152,10 @@ for _, language_server in pairs(language_servers) do
   local config = default_lsp_config
 
   -- @NOTE Merging extra configurations
-  if has(expanded_lsp_config, language_server) then
-    config = merge(default_lsp_config, expanded_lsp_config[language_server])
+  if utils.has(expanded_lsp_config, language_server) then
+    config = utils.merge(
+      default_lsp_config, expanded_lsp_config[language_server]
+      )
   end
 
   lspconfig[language_server].setup(config)
