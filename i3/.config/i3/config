@@ -134,6 +134,7 @@ mode "launcher" {
 
   bindsym $mod+d exec discord
   bindsym $mod+t exec telegram-desktop
+  bindsym $mod+v exec neovide
 
   bindsym $mod+w exec $term --title iwctl        iwctl
   bindsym $mod+l exec $term --title bluetoothctl bluetoothctl
