@@ -122,16 +122,7 @@ local default_lsp_config = {
   capabilities = capabilities,
 }
 
-local language_servers = {
-  "angularls",
-  "gdscript",
-  "emmet_ls",
-  "tsserver",
-  "pyright",
-  "clangd",
-  "rust_analyzer",
-  "sumneko_lua",
-}
+local language_servers = require('lsps')
 
 -- @TODO Find way to detect lua-language-serer automaticly
 local sumneko_root_path = "/usr/lib/lua-language-server"

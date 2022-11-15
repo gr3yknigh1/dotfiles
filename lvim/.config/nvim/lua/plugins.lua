@@ -1,6 +1,7 @@
 -- @gr3yknigh1
 -- 2022
 --
+-- Plugins
 -- Packer setup
 
 
@@ -17,27 +18,31 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+
 require('packer').startup(function(use)
 
   use 'wbthomason/packer.nvim'
 
-  -- Colorschemes
-  use "Mofiqul/dracula.nvim"
+  -- Colorscheme
+  use 'Mofiqul/dracula.nvim'
   use 'arcticicestudio/nord-vim'
 
   -- LSP
-  use "neovim/nvim-lspconfig"
-  use "tpope/vim-fugitive"
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use "williamboman/mason-lspconfig.nvim"
+
+  use 'tpope/vim-fugitive'
 
   -- Debugging
   use 'mfussenegger/nvim-dap'
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
   use 'theHamsta/nvim-dap-virtual-text'
 
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
-  use "p00f/nvim-ts-rainbow"
-  use "lukas-reineke/indent-blankline.nvim"
+  use 'p00f/nvim-ts-rainbow'
+  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
@@ -47,7 +52,6 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
 
   -- Snippets
-
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
 
@@ -64,19 +68,18 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { 'nvim-telescope/telescope-file-browser.nvim' }
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
-  use { 'kdheepak/lazygit.nvim' }
-  -- use { 'vifm/vifm.vim' }
+  use 'kdheepak/lazygit.nvim'
 
-  use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'romgrk/barbar.nvim'
-  use 'gpanders/editorconfig.nvim'
 
   -- Etc
+  use 'gpanders/editorconfig.nvim'
   use 'glepnir/dashboard-nvim'
+  use 'kyazdani42/nvim-web-devicons'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
