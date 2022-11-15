@@ -1,6 +1,6 @@
 return {
     "clangd",
-    "csharp_ls",
+    -- "csharp_ls",
     "cmake",
     "cssls",
     "cssmodules_ls",
