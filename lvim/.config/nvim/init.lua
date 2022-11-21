@@ -14,7 +14,6 @@ require('emmbedding.vscode')
 require('emmbedding.neovide')
 
 -- Plugins
-
 require('plugins.ui')
 require('plugins.tools.telescope')
 require('plugins.tools.lazygit')

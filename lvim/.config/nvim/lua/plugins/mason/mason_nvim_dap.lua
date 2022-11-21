@@ -27,29 +27,62 @@ require("mason-nvim-dap").setup({
     automatic_setup = true,
 })
 
+require 'mason-nvim-dap'.setup_handlers({
+  function(source_name)
+    -- all sources with no handler get passed here
 
-require 'mason-nvim-dap'.setup_handlers {
-    function(source_name)
-      -- all sources with no handler get passed here
-      -- Keep original functionality of `automatic_setup = true`
-      require('mason-nvim-dap.automatic_setup')(source_name)
-    end,
-    python = function(source_name)
-        dap.adapters.python = {
-            type = "executable",
-            command = "/usr/bin/python3",
-            args = {
-                "-m",
-                "debugpy.adapter",
-            },
-        }
-        dap.configurations.python = {
-            {
-                type = "python",
-                request = "launch",
-                name = "Launch file",
-                program = "${file}", -- This configuration will launch the current file if used.
-            },
-        }
-    end,
-}
+    -- Keep original functionality of `automatic_setup = true`
+    require('mason-nvim-dap.automatic_setup')(source_name)
+  end,
+
+  python = function(source_name)
+    dap.adapters.python = {
+      type = "executable",
+      command = "/usr/bin/python3",
+      args = {
+        "-m",
+        "debugpy.adapter",
+      },
+    }
+    dap.configurations.python = {
+      {
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}", -- This configuration will launch the current file if used.
+      },
+    }
+  end,
+
+  lldb = function(source_name)
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = '/usr/bin/lldb-vscode',
+      name = 'lldb'
+    }
+    dap.configurations.cpp = {
+      {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        runInTerminal = false,
+        env = function()
+          local variables = {}
+          for k, v in pairs(vim.fn.environ()) do
+            table.insert(variables, string.format('%s=%s', k, v))
+          end
+          return variables
+        end,
+      },
+    }
+
+    dap.configurations.c = dap.configurations.cpp
+  end,
+})
+
