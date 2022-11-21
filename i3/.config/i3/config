@@ -139,7 +139,7 @@ mode "launcher" {
   bindsym $mod+w exec $term --title iwctl        iwctl
   bindsym $mod+l exec $term --title bluetoothctl bluetoothctl
   bindsym $mod+f exec $term --title vifm         vifm
-  bindsym $mod+h exec $term --title htop         htop
+  bindsym $mod+h exec $term --title btop         btop
 }
 
 
@@ -169,8 +169,8 @@ for_window [class="^.*"] floating_border pixel 1
 for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
 for_window [title="^iwctl$"]        floating enable, resize set 900px 600px,  move position center
 for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
-for_window [title="^vifm$"]         floating enable, resize set 900px 600px,  move position center
-for_window [title="^htop$"]         floating enable, resize set 1200px 600px, move position center
+for_window [title="^vifm$"]         floating enable, resize set 1200px 600px, move position center
+for_window [title="^btop$"]         floating enable, resize set 1200px 900px, move position center
 
 # Gapping
 gaps inner 10
