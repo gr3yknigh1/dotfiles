@@ -41,8 +41,11 @@ set trash
 
 " What should be saved automatically on restarting vifm.  Drop "savedirs"
 " value if you don't want vifm to remember last visited directories for you.
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-            \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+" Default:
+" set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+"            \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=dhistory,chistory,state,tui,shistory,
+           \phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
 " This is how many directories to store in the directory history.
 set history=100
@@ -543,7 +546,7 @@ set vicmd=nvim
 
 
 " @SECTION Keybindings
-nmap <C-h> :set dotfiles<CR>
+nmap <C-h> :set dotfiles!<CR>
 
 
 " @SECTION Dev Icons
