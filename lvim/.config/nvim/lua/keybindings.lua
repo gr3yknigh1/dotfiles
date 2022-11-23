@@ -1,6 +1,6 @@
 -- @gr3yknigh1
 -- 2022
--- 
+--
 -- Keybindings
 
 local utils = require("utils")
@@ -83,3 +83,8 @@ nmap("<C-A-l>", step .. "<C-W>>")
 
 -- Seach selected
 vim.keymap.set("v", "/", "y/<C-r>0<cr>")
+
+
+-- Toogle nowrap
+vim.keymap.set("n", "<Leader>W", "<cmd>set wrap!<cr>")
+

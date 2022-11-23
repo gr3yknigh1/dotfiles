@@ -20,6 +20,7 @@ require('plugins.tools.lazygit')
 
 require('plugins.mason')
 require('plugins.lang.nvim_lspconfig')
+require('plugins.lang.luasnip')
 require('plugins.lang.treesitter')
 require('plugins.dap')
 
