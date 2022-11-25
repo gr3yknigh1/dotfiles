@@ -99,5 +99,29 @@ au.BufLeave = {
 }
 
 -- Folding
-
 -- vim.opt.foldmethod="expr"
+
+-- @TODO Move to `ftdetect`
+-- @TODO Fix file detection
+-- Filetype detection
+au({"BufRead", "BufNewFile"}, {
+  "vifmrc",
+  function()
+    print(1)
+    vim.cmd("set filetype=vim");
+  end
+})
+
+au("BufEnter", {
+  "*.{jpg,png}",
+  function ()
+    vim.cmd("terminal timg %")
+    vim.cmd("set nonumber")
+    vim.cmd("set norelativenumber")
+    vim.cmd("startinsert")
+  end
+})
+
+-- vim.cmd([[
+--   au BufEnter *.jpg,*.png terminal timg %
+-- ]])
