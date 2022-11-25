@@ -253,8 +253,18 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ gpicview %c,
         \ {View in shotwell}
         \ shotwell,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
+" fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+"          \ identify %f
+
+" Pictures 
+" @NOTE Tryied with `kitty +kitten icat` command but it doesn't work in tmux
+" filetype *.bmp,*.jpg,*.jpeg,*.png,*.xpm open -a Preview %f &
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+"     \ kitty +kitten icat --clear --transfer-mode=file --place=%pwx%ph@%pxx%py %c
+"     \ %pc
+"     \ kitty +kitten icat --transfer-mode=file --place=%pwx%ph@%pxx%py --clear
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.xpm open -a Preview %f &
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm catimg -r 1 %c
 
 " OpenRaster
 filextype *.ora
