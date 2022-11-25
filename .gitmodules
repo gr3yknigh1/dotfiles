@@ -7,3 +7,6 @@
 [submodule "neofetch/.config/neofetch/themes"]
 	path = neofetch/.config/neofetch/themes
 	url = https://github.com/Chick2D/neofetch-themes
+[submodule "ranger/.config/ranger/plugins/ranger_devicons"]
+	path = ranger/.config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons
