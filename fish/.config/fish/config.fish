@@ -23,7 +23,7 @@ alias tls="tmux ls"
 alias tkr="tmux kill-server"
 alias tks="tmux kill-session"
 
-alias f="vifm"
+alias f="ranger"
 alias v="neovide"
 
 # start x-server
