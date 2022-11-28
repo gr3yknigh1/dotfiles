@@ -25,7 +25,7 @@ bindsym $mod+Shift+l exec i3exit suspend
 bindsym $mod+Shift+f floating toggle
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
-# bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
+bindsym $mod+m exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
 
 bindsym $mod+z focus mode_toggle
 
@@ -137,6 +137,7 @@ mode "launcher" {
   bindsym $mod+w exec $term --title iwctl  iwctl
   bindsym $mod+f exec $term --title ranger ranger
   bindsym $mod+h exec $term --title btop   btop
+  bindsym $mod+p exec $term --title python python 
 
   bindsym $mod+Shift+w exec bitwarden-desktop
   bindsym $mod+Shift+s exec pavucontrol
@@ -173,11 +174,12 @@ for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  mo
 for_window [title="^iwctl$"]        floating enable, resize set 900px 600px,  move position center
 for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
 for_window [title="^Terminal$"]     floating enable, resize set 900px 600px,  move position center
-for_window [title="^ranger$"]         floating enable, resize set 1200px 600px, move position center
+for_window [title="^python$"]       floating enable, resize set 900px 600px,  move position center
+for_window [title="^ranger$"]       floating enable, resize set 1200px 600px, move position center
 for_window [title="^btop$"]         floating enable, resize set 1200px 900px, move position center
 
 # Gapping
-gaps inner 10
+gaps inner 0
 
 # Multimonitor configuration
 workspace 3 output HDMI-1
