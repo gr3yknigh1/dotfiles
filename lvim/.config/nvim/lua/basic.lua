@@ -112,15 +112,15 @@ au({"BufRead", "BufNewFile"}, {
   end
 })
 
-au("BufEnter", {
-  "*.{jpg,png}",
-  function ()
-    vim.cmd("terminal timg %")
-    vim.cmd("set nonumber")
-    vim.cmd("set norelativenumber")
-    vim.cmd("startinsert")
-  end
-})
+-- au("BufEnter", {
+--   "*.{jpg,png}",
+--   function ()
+--     vim.cmd("terminal timg %")
+--     vim.cmd("set nonumber")
+--     vim.cmd("set norelativenumber")
+--     vim.cmd("startinsert")
+--   end
+-- })
 
 -- vim.cmd([[
 --   au BufEnter *.jpg,*.png terminal timg %

@@ -75,15 +75,12 @@ nmap("<C-A-l>", step .. "<C-W>>")
 -- nmap("<S-A-h>", "<C-W><S-h>")
 -- nmap("<S-A-l>", "<C-W><S-l>")
 
-
 -- Moving lines
 -- nmap("<S-k>", "<S-v>xkP")
 -- nmap("<S-j>", "<S-v>xp")
 
-
 -- Seach selected
 vim.keymap.set("v", "/", "y/<C-r>0<cr>")
-
 
 -- Toogle nowrap
 vim.keymap.set("n", "<Leader>W", "<cmd>set wrap!<cr>")
