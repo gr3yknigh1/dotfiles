@@ -38,10 +38,10 @@ icons[shutdown]="\uf011"
 icons[cancel]="\u00d7"
 
 declare -A actions
-actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
-#actions[switchuser]="???"
+actions[lockscreen]="~/.local/bin/lock.sh"
+actions[switchuser]="dm-tool switch-user"
 actions[logout]="loginctl terminate-session ${XDG_SESSION_ID-}"
-actions[suspend]="systemctl suspend"
+actions[suspend]="~/.local/bin/suspend.sh"
 actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"
 actions[shutdown]="systemctl poweroff"
@@ -230,7 +230,7 @@ else
                 echo "Selected: $entry" >&2
             else
                 # Perform the action
-                ${actions[$entry]}
+                exec ${actions[$entry]}
             fi
             exit 0
         fi
