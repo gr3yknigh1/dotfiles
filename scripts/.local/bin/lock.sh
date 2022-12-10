@@ -2,5 +2,11 @@
 
 echo 'Locking'
 
-xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.dotfiles/wallpapers/nord-wallpapers/wallpapers/ign-0002.png
+PICTURE=/tmp/i3lock.png
+BLUR="5x5"
 
+rm $PICTURE
+scrot -z $PICTURE
+convert $PICTURE -blur $BLUR $PICTURE
+
+xss-lock --transfer-sleep-lock -- i3lock --nofork -f -i $PICTURE &
