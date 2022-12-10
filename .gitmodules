@@ -10,3 +10,6 @@
 [submodule "ranger/.config/ranger/plugins/ranger_devicons"]
 	path = ranger/.config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule "grub/grub2-nord-theme"]
+	path = grub/grub2-nord-theme
+	url = https://github.com/stevendejongnl/grub2-nord-theme
