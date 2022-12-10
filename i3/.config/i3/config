@@ -21,7 +21,7 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+l exec i3exit suspend
+bindsym $mod+Shift+l exec ~/.local/bin/lock.sh
 bindsym $mod+Shift+f floating toggle
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
