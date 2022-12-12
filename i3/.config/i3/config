@@ -32,6 +32,9 @@ bindsym $mod+z focus mode_toggle
 bindsym Mod1+Tab focus next
 bindsym Mod1+Shift+Tab focus prev
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -103,6 +106,7 @@ mode "resize" {
 
   set $resize_step 2
   set $shift_resize_step 100
+
   bindsym $mod+r mode "default"
   bindsym Escape mode "default"
 
@@ -125,25 +129,23 @@ mode "launcher" {
   bindsym $mod+o mode "default"
   bindsym Escape mode "default"
 
-  bindsym $mod+b exec $browser
-  bindsym $mod+n exec obsidian
-
   bindsym $mod+e exec rofimoji
 
-  bindsym $mod+d exec discord
-  bindsym $mod+t exec telegram-desktop
-  bindsym $mod+v exec neovide
+  bindsym $mod+Shift+b exec $browser
+  bindsym $mod+Shift+n exec obsidian
 
-  bindsym $mod+w exec $term --title iwctl  iwctl
-  bindsym $mod+f exec $term --title ranger ranger
-  bindsym $mod+h exec $term --title btop   btop
-  bindsym $mod+p exec $term --title python python 
-
+  bindsym $mod+Shift+d exec discord
+  bindsym $mod+Shift+t exec telegram-desktop
+  bindsym $mod+Shift+v exec neovide
   bindsym $mod+Shift+w exec bitwarden-desktop
   bindsym $mod+Shift+s exec pavucontrol
 
-  bindsym $mod+Shift+b exec $term --title bluetoothctl bluetoothctl
-  bindsym $mod+Shift+t exec $term --title Terminal
+  bindsym $mod+w exec kitty --title iwctl  iwctl
+  bindsym $mod+b exec kitty --title bluetoothctl bluetoothctl
+  bindsym $mod+f exec kitty --title ranger ranger
+  bindsym $mod+h exec kitty --title btop   btop
+  bindsym $mod+p exec kitty --title python python 
+  bindsym $mod+t exec kitty --title Terminal
 }
 
 
