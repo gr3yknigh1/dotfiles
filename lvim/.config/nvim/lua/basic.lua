@@ -82,6 +82,8 @@ vim.opt.softtabstop = -1
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 
+-- Undo
+
 -- Terminal autoinsert
 
 au({ "BufWinEnter", "WinEnter" }, {

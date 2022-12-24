@@ -71,8 +71,10 @@ require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use "LinArcX/telescope-command-palette.nvim"
 
   use 'kdheepak/lazygit.nvim'
+  use 's1n7ax/nvim-terminal'
 
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
