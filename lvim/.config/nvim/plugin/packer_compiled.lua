@@ -85,6 +85,11 @@ _G.packer_plugins = {
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -185,6 +190,11 @@ _G.packer_plugins = {
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-terminal"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-terminal",
+    url = "https://github.com/s1n7ax/nvim-terminal"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -214,6 +224,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["telescope-command-palette.nvim"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/telescope-command-palette.nvim",
+    url = "https://github.com/LinArcX/telescope-command-palette.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
