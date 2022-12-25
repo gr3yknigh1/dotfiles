@@ -20,7 +20,7 @@ alias tks="tmux kill-session"
 alias e="nvim"
 alias f="ranger"
 alias v="neovide"
-alias lg="lasygit"
+alias lg="lazygit"
 
 if [ $(tty) = "/dev/tty1" ]
     startx
