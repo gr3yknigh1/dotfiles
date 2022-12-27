@@ -129,7 +129,7 @@ mode "launcher" {
   bindsym $mod+o mode "default"
   bindsym Escape mode "default"
 
-  bindsym $mod+e exec rofimoji
+  bindsym $mod+e exec rofi -modi "emoji:~/.local/bin/rofimoji" -show emoji
 
   bindsym $mod+Shift+b exec $browser
   bindsym $mod+Shift+n exec obsidian
@@ -141,7 +141,8 @@ mode "launcher" {
 
   bindsym $mod+v exec neovide
   bindsym $mod+w exec kitty --title iwctl  iwctl
-  bindsym $mod+b exec kitty --title bluetoothctl bluetoothctl
+  # bindsym $mod+b exec kitty --title bluetoothctl bluetoothctl
+  bindsym $mod+b exec kitty --title bluetuith bluetuith
   bindsym $mod+f exec kitty --title ranger ranger
   bindsym $mod+h exec kitty --title btop   btop
   bindsym $mod+p exec kitty --title python python 
@@ -183,7 +184,8 @@ for_window [class="^.*"] floating_border pixel 1
 
 for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
 for_window [title="^iwctl$"]        floating enable, resize set 900px 600px,  move position center
-for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
+# for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
+for_window [title="^bluetuith$"] floating enable, resize set 900px 600px,  move position center
 for_window [title="^Terminal$"]     floating enable, resize set 900px 600px,  move position center
 for_window [title="^python$"]       floating enable, resize set 900px 600px,  move position center
 for_window [title="^ranger$"]       floating enable, resize set 1200px 600px, move position center
