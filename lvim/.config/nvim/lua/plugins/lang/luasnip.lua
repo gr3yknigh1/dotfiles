@@ -32,7 +32,7 @@ ls.add_snippets(nil, {
   cpp = {
     snip({
       trig = "#ifndef",
-      namr = "include guards",
+      namr = "inclusion guard",
       dscr = "#ifndef HEADER; #define HEADER; #endif",
     },
     {
