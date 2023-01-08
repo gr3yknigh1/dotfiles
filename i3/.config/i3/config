@@ -129,7 +129,6 @@ mode "launcher" {
   bindsym $mod+o mode "default"
   bindsym Escape mode "default"
 
-  bindsym $mod+e exec rofi -modi "emoji:~/.local/bin/rofimoji" -show emoji
 
   bindsym $mod+Shift+b exec $browser
   bindsym $mod+Shift+n exec obsidian
@@ -138,15 +137,18 @@ mode "launcher" {
   bindsym $mod+Shift+t exec telegram-desktop
   bindsym $mod+Shift+w exec bitwarden-desktop
   bindsym $mod+Shift+s exec pavucontrol
+  bindsym $mod+Shift+e exec rofi -modi "emoji:~/.local/bin/rofimoji" -show emoji
 
-  bindsym $mod+v exec neovide
-  bindsym $mod+w exec kitty --title iwctl  iwctl
   # bindsym $mod+b exec kitty --title bluetoothctl bluetoothctl
-  bindsym $mod+b exec kitty --title bluetuith bluetuith
-  bindsym $mod+f exec kitty --title ranger ranger
-  bindsym $mod+h exec kitty --title btop   btop
-  bindsym $mod+p exec kitty --title python python 
-  bindsym $mod+t exec kitty --title Terminal
+  bindsym $mod+v exec neovide
+
+  bindsym $mod+t exec kitty --class "floating"      --title Terminal
+  bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
+  bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
+  bindsym $mod+p exec kitty --class "floating"      --title python    python 
+  bindsym $mod+e exec kitty --class "floating"      --title Neovim    nvim
+  bindsym $mod+f exec kitty --class "floating-long" --title ranger    ranger
+  bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
 }
 
 
@@ -160,10 +162,10 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggle_touchpad.sh
 
 # Media player
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay  exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPrev  exec playerctl previous
 
 # Brightness
 set $brightness_step 20
@@ -183,13 +185,9 @@ for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] floating_border pixel 1
 
 for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
-for_window [title="^iwctl$"]        floating enable, resize set 900px 600px,  move position center
-# for_window [title="^bluetoothctl$"] floating enable, resize set 900px 600px,  move position center
-for_window [title="^bluetuith$"] floating enable, resize set 900px 600px,  move position center
-for_window [title="^Terminal$"]     floating enable, resize set 900px 600px,  move position center
-for_window [title="^python$"]       floating enable, resize set 900px 600px,  move position center
-for_window [title="^ranger$"]       floating enable, resize set 1200px 600px, move position center
-for_window [title="^btop$"]         floating enable, resize set 1200px 900px, move position center
+
+for_window [class="^floating$"]      floating enable, resize set 900px 600px,  move position center
+for_window [class="^floating-long$"] floating enable, resize set 1200px 600px, move position center
 
 # Gapping
 gaps inner 0
