@@ -1,6 +1,6 @@
 # dotfiles
 
-In order to install configs, you must install GNU Stow.
+In order to install configs, you must install `GNU Stow`.
 
 Install config example:
 
