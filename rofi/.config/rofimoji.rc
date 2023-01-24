@@ -1,4 +1,0 @@
-action = clipboard
-files = [emojis, hebrew]
-skin-tone = moderate
-clipboard = xclip
