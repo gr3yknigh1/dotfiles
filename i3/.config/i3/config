@@ -183,7 +183,7 @@ for_window [class="^floating$"]      floating enable, resize set 900px 600px,  m
 for_window [class="^floating-long$"] floating enable, resize set 1200px 600px, move position center
 
 # Gapping
-gaps inner 0
+gaps inner 20
 
 # Multimonitor configuration
 workspace 3 output HDMI-1
