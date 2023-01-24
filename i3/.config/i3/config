@@ -3,17 +3,10 @@ set $term    kitty
 
 font pango:Iosevka 9
 
-
-set $pictures    "$HOME/Pictures"
-set $screenshots "$HOME/Pictures/Screenshots"
-set $wallpapers  "$HOME/Pictures/Wallpapers"
-
-
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-# exec --no-startup-id nm-applet
 
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec --no-startup-id nm-applet
 
 set $mod Mod4
 floating_modifier $mod
@@ -21,11 +14,11 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+l exec ~/.local/bin/lock.sh
 bindsym $mod+Shift+f floating toggle
 
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+m exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
+bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-12' -nb "#2E3440" -sb "#5C6F7B"
+# bindsym $mod+d exec --no-startup-id rofi -show drun
+# bindsym $mod+m exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
 
 bindsym $mod+z focus mode_toggle
 
