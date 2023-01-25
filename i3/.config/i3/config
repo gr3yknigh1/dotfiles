@@ -174,7 +174,7 @@ bindsym Ctrl+$mod+Print  exec --no-startup-id maim -m 1 --window $(xdotool getac
 bindsym Ctrl+Shift+Print exec --no-startup-id maim -m 1 --select | xclip -selection clipboard -t image/png
 
 # Window rules
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 for_window [class="^.*"] floating_border pixel 1
 
 for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
