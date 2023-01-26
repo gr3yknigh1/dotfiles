@@ -100,7 +100,7 @@ nmap("<Leader>ff", tbuiltin.find_files)
 nmap("<Leader>fg", tbuiltin.live_grep)
 nmap("<Leader>fs", tbuiltin.buffers)
 nmap("<Leader>fh", tbuiltin.help_tags)
-nmap("<Leader>fc", tbuiltin.commands)
+nmap("<Leader>p", tbuiltin.commands)
 nmap("<Leader>fb", "<cmd>Telescope file_browser<CR>")
 
 

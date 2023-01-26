@@ -16,10 +16,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+f floating toggle
 
-bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-12' -nb "#2E3440" -sb "#5C6F7B"
-# bindsym $mod+d exec --no-startup-id rofi -show drun
-# bindsym $mod+m exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu 
-
+bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16' -nb "#2E3440" -sb "#5C6F7B"
 bindsym $mod+z focus mode_toggle
 
 bindsym Mod1+Tab focus next
@@ -126,20 +123,10 @@ mode "launcher" {
   bindsym $mod+Shift+b exec $browser
   bindsym $mod+Shift+n exec obsidian
 
-  bindsym $mod+Shift+d exec discord
-  bindsym $mod+Shift+t exec telegram-desktop
-  bindsym $mod+Shift+w exec bitwarden-desktop
-  bindsym $mod+Shift+s exec pavucontrol
-  bindsym $mod+Shift+e exec rofi -modi "emoji:~/.local/bin/rofimoji" -show emoji
-
-  # bindsym $mod+b exec kitty --title bluetoothctl bluetoothctl
-  bindsym $mod+v exec neovide
-
   bindsym $mod+t exec kitty --class "floating"      --title kitty
   bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
   bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
-  bindsym $mod+p exec kitty --class "floating"      --title python    python 
-  bindsym $mod+e exec kitty --class "floating"      --title Neovim    nvim
+  bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
   bindsym $mod+f exec kitty --class "floating-long" --title ranger    ranger
   bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
 }
