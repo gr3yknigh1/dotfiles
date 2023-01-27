@@ -26,6 +26,7 @@ require('packer').startup(function(use)
   -- Colorscheme
   use 'Mofiqul/dracula.nvim'
   use 'arcticicestudio/nord-vim'
+  use { "ellisonleao/gruvbox.nvim" }
 
   -- LSP
   use 'neovim/nvim-lspconfig'
