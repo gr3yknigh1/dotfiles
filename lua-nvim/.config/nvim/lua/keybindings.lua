@@ -25,7 +25,19 @@ nmap("<C-s>", "<cmd>write<CR>")
 -- Coping
 vmap("<C-y>", "\"+y")
 nmap("<C-p>", "\"+p")
+vmap("<C-Y>", "\"+Y")
+nmap("<C-P>", "\"+P")
 
+nmap("p", "\"0p");
+vmap("p", "\"0p");
+nmap("P", "\"0P");
+vmap("P", "\"0P");
+
+vmap("x", "y<ESC>`<v`>d");
+
+-- New lines
+nmap("mm", "o<Esc>k");
+nmap("MM", "O<Esc>j");
 
 -- Tabs
 nmap("<Leader><C-t>", "<cmd>tabnew<CR>")
