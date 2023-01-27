@@ -37,13 +37,14 @@ ls.add_snippets(nil, {
     },
     {
       text({"#ifndef "}),
-      insert(1, "header_name"),
+      insert(1, "HEADER_NAME"),
       text({
         "", "#define ",
       }),
-      insert(2, "header_name"),
-      text({"", "", "#endif",
+      insert(2, "HEADER_NAME"),
+      text({"", "", "#endif // ",
       }),
+      insert(3, "HEADER_NAME"),
     }),
   }
 })

@@ -2,12 +2,6 @@ local cmp       = require("cmp")
 local luasnip   = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- Utils
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 -- Setup
 cmp.setup({
   snippet = {
@@ -31,12 +25,6 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
           cmp.select_next_item()
-      -- elseif luasnip.expandable() then
-      --     luasnip.expand()
-      -- elseif luasnip.expand_or_jumpable() then
-      --     luasnip.expand_or_jump()
-      -- elseif check_backspace() then
-      --     fallback()
       else
           fallback()
       end
@@ -45,12 +33,6 @@ cmp.setup({
   ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
           cmp.select_next_item()
-      elseif luasnip.expandable() then
-          luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-      elseif check_backspace() then
-          fallback()
       else
           fallback()
       end
