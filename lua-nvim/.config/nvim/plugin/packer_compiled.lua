@@ -195,11 +195,6 @@ _G.packer_plugins = {
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-terminal"] = {
-    loaded = true,
-    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-terminal",
-    url = "https://github.com/s1n7ax/nvim-terminal"
-  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -209,11 +204,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
-  ["nvim-ts-rainbow"] = {
-    loaded = true,
-    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
-    url = "https://github.com/p00f/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

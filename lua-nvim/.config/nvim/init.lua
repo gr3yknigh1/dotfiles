@@ -17,7 +17,6 @@ require('emmbedding.neovide')
 require('plugins.ui')
 require('plugins.tools.telescope')
 require('plugins.tools.lazygit')
--- require('plugins.tools.terminal')
 
 require('plugins.mason')
 require('plugins.lang.nvim_lspconfig')
