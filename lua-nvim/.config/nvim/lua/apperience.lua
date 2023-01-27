@@ -1,5 +1,7 @@
+vim.o.background = "dark" -- or "light" for light mode
+
 vim.cmd('syntax enable')
-vim.cmd('colorscheme nord')
+vim.cmd('colorscheme gruvbox')
 
 vim.g.nord_contrast = false
 vim.g.nord_borders = true
