@@ -178,20 +178,45 @@ workspace 3 output HDMI-1
 # Title align
 title_align center
 
-# Colors
+############################### Colors ###############################
 
-# Nord Theme
-set $background_color          #88C0D0
-set $inactive_background_color #2E3440
-set $text_color                #F5F5F5
-set $inactive_text_color       #D8DEE9
-set $urgent_background_color   #BF616A
+####### Nord theme
+# set $nord_regul_bg_clr  #88C0D0
+# set $nord_inact_bg_clr  #2E3440
+# set $nord_regul_tx_clr  #F5F5F5
+# set $nord_inact_tx_clr #D8DEE9
+# set $nord_urgen_bg_clr  #BF616A
 
-#                       border                     background                 text                       indicator
-client.focused          $background_color          $background_color          $inactive_background_color $background_color
-client.unfocused        $inactive_background_color $inactive_background_color $inactive_text_color       $inactive_background_color
-client.focused_inactive $inactive_background_color $inactive_background_color $inactive_text_color       $inactive_background_color
-client.urgent           $urgent_background_color   $urgent_background_color   $text_color                $urgent_background_color
+# client.focused          $nord_regul_bg_clr $nord_regul_bg_clr $nord_inact_bg_clr $nord_regul_bg_clr
+# client.unfocused        $nord_inact_bg_clr $nord_inact_bg_clr $nord_inact_tx_clr $nord_inact_bg_clr
+# client.focused_inactive $nord_inact_bg_clr $nord_inact_bg_clr $nord_inact_tx_clr $nord_inact_bg_clr
+# client.urgent           $nord_urgen_bg_clr $nord_urgen_bg_clr $nord_regul_tx_clr $nord_urgen_bg_clr
+
+####### Gruvbox theme
+
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+# client.focused          $blue $blue $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent           $red $red $white $red $red
 
 # # Default               border  backgr. text    indicator child_border
 # client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
