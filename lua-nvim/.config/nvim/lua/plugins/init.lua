@@ -44,7 +44,6 @@ require('packer').startup(function(use)
 
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
-  use 'p00f/nvim-ts-rainbow'
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- Completion
@@ -75,7 +74,6 @@ require('packer').startup(function(use)
   use "LinArcX/telescope-command-palette.nvim"
 
   use 'kdheepak/lazygit.nvim'
-  use 's1n7ax/nvim-terminal'
 
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
