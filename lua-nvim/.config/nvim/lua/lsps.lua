@@ -16,4 +16,5 @@ return {
   "vimls",
   "rust_analyzer",
   "yamlls",
+  "asm_lsp",
 }
