@@ -8,7 +8,7 @@ return {
   "emmet_ls",
   "html",
   "jsonls",
-  "sumneko_lua",
+  "luau_lsp",
   "marksman",
   "pyright",
   "taplo",
