@@ -56,8 +56,8 @@ local default_lsp_config = {
 local language_servers = require('lsps')
 
 -- @TODO Find way to detect lua-language-serer automaticly
-local sumneko_root_path = "/usr/lib/lua-language-server"
-local sumneko_binary = "/usr/bin/lua-language-server"
+-- local sumneko_root_path = "/usr/lib/lua-language-server"
+-- local sumneko_binary = "/usr/bin/lua-language-server"
 
 local expanded_lsp_config = {
   emmet_ls = {
@@ -72,26 +72,26 @@ local expanded_lsp_config = {
       },
     }
   },
-  sumneko_lua = {
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
-    settings = {
-      Lua = {
-        runtime = {
-          version = "LuaJIT",
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-          globals = {"vim"},
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-          },
-        },
-      }
-    },
-  }
+  -- sumneko_lua = {
+  --   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
+  --   settings = {
+  --     Lua = {
+  --       runtime = {
+  --         version = "LuaJIT",
+  --         path = vim.split(package.path, ";"),
+  --       },
+  --       diagnostics = {
+  --         globals = {"vim"},
+  --       },
+  --       workspace = {
+  --         library = {
+  --           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+  --           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+  --         },
+  --       },
+  --     }
+  --   },
+  -- }
 }
 
 
