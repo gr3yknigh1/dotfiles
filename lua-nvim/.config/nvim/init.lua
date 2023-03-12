@@ -24,5 +24,6 @@ require('plugins.lang.nvim_lspconfig')
 require('plugins.lang.cmp')
 require('plugins.lang.luasnip')
 require('plugins.lang.treesitter')
+-- require('plugins.presence')
 -- require('plugins.dap')
 

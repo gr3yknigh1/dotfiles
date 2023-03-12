@@ -116,7 +116,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\2\0\0\5\0\16\0\0316\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0006\3\4\0>\3\1\0026\3\5\0>\3\2\0024\3\0\0=\3\6\0024\3\4\0006\4\a\0>\4\1\0036\4\b\0>\4\2\0036\4\t\0>\4\3\3=\3\n\0024\3\5\0006\4\v\0>\4\1\0036\4\f\0>\4\2\0036\4\r\0>\4\3\0036\4\14\0>\4\4\3=\3\15\2B\0\2\1K\0\1\0\fpreview\15file_width\16file_height\14file_path\fcommand\thide\vwinbar\ftabline\15statusline\vconfig\18shortcut_type\17disable_move\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\ngroup\vNumber\bkey\6d\vaction\23Telescope dotfiles\tdesc\17 dotfiles\1\0\4\ngroup\19DiagnosticHint\bkey\6a\vaction\18Telescope app\tdesc\r Apps\1\0\6\ngroup\nLabel\bkey\6f\tdesc\nFiles\vaction\25Telescope find_files\ficon_hl\14@variable\ticon\t \1\0\4\ngroup\14@property\bkey\6u\vaction\16Lazy update\tdesc\15 Update\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -228,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["presence.nvim"] = {
+    loaded = true,
+    path = "/home/gr3yknigh1/.local/share/nvim/site/pack/packer/start/presence.nvim",
+    url = "https://github.com/andweeb/presence.nvim"
   },
   ["telescope-command-palette.nvim"] = {
     loaded = true,
