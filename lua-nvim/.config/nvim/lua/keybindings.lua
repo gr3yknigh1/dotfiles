@@ -14,13 +14,18 @@ local tmap = utils.tmap
 
 vim.g.mapleader = "\\"
 
-vnmap("<Leader>R", "<cmd>set list!<CR>")
-nmap("<Leader>h", "<cmd>noh<CR>")
+-- Unmapping
+-- vim.keymap.del('n', '<C-w><C-s')
 
-map("t", "ZZ", "<cmd>q<CR>")
+-- Mapping
+vim.keymap.set('t', 'ZZ', '<cmd>q<CR>')
+
+vim.keymap.set({'n', 'v'}, '<leader>R', '<cmd>set list!<CR>')
+vim.keymap.set('n', '<leader>h', '<cmd>noh<CR>')
 
 -- Saving
-nmap("<C-s>", "<cmd>write<CR>")
+vim.keymap.set("n", "<C-w>s", "<cmd>w<CR>")
+vim.keymap.set("n", "<C-w>S", "<cmd>wa<CR>")
 
 -- Coping
 vmap("<C-y>", "\"+y")
