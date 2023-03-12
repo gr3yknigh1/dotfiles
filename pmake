@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+from __future__ import annotations
+import argparse
+import os
+import os.path
+
+HOME_DIRECTORY: str = os.path.expanduser("~")
+DESKTOP_DIRECTORIES: list[str] = [
+    os.path.join(HOME_DIRECTORY, "Workspace"),
+    os.path.join(HOME_DIRECTORY, "Documents"),
+    os.path.join(HOME_DIRECTORY, "Downloads"),
+    os.path.join(HOME_DIRECTORY, "Pictures/Wallpapers"),
+    os.path.join(HOME_DIRECTORY, "Pictures/Screenshots"),
+    os.path.join(HOME_DIRECTORY, "Videos"),
+    os.path.join(HOME_DIRECTORY, "Music"),
+    os.path.join(HOME_DIRECTORY, "Public"),
+    os.path.join(HOME_DIRECTORY, "Templates"),
+]
+
+def directories() -> None:
+    for directory in DESKTOP_DIRECTORIES:
+        if os.path.exists(directory):
+            continue
+        os.mkdir(directory)
+
+RULES = [directories]
+
+def main() -> int:
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("rule")
+    args = parser.parse_args()
+
+    rule: str = args.rule
+    rules = { rule.__name__ : rule for rule in RULES }
+
+    if rule == "all":
+        for _, action in rules.items():
+            action()
+    elif rule in rules.keys():
+        rules[rule]()
+    else:
+        print(f"Error: no such rule '{rule}'")
+        return 1
+
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
