@@ -79,6 +79,8 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
   use 'romgrk/barbar.nvim'
 
+  use 'stevearc/vim-arduino'
+
   -- Etc
   use 'gpanders/editorconfig.nvim'
   use {
