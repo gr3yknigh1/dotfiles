@@ -6,6 +6,7 @@
 require('basic')
 require('keybindings')
 require('utils')
+require('makebinds')
 
 require('plugins')
 require('apperience')
