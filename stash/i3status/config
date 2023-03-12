@@ -1,0 +1,79 @@
+general {
+        output_format = "i3bar"
+        color_good = "#a3be8c"
+        color_bad  = "#bf616a"
+        color_degraded = "#ebcb8b"
+        colors = true
+        interval = 10
+}
+
+order += "wireless wlan0"
+order += "disk /"
+order += "battery 0"
+order += "memory"
+order += "cpu_usage"
+order += "tztime moscow"
+
+
+wireless wlan0 {
+        format_up = " %essid (%bitrate) :: %ip"
+        format_down = "睊 down"
+}
+
+ethernet eth0 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = ""
+        status_bat = ""
+        status_unk = ""
+        status_full = ""
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime moscow {
+        format = "%d/%m/%Y [%H:%M:%S] %Z"
+        timezone = "Europe/Moscow"
+}
+
+load {
+        format = "%5min"
+}
+
+memory {
+        format = "﫭 %used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = " %free"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+cpu_usage {
+    format = " %usage"
+}

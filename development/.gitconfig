@@ -1,0 +1,24 @@
+[include]
+    path = ~/.config/delta/themes.gitconfig
+[core]
+    autocrlf = false
+    editor = nvim
+    commentChar = ";"
+[user]
+    email = gr3yknigh1@gmail.com
+    name = Ilya Akkuzin
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[init]
+    defaultBranch = master
+[pull]
+    rebase = false
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[alias]
+    tree = log --oneline --graph --decorate --all

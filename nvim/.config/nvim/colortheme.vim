@@ -1,2 +1,0 @@
-" -- Colorschemes
-colorscheme nord
