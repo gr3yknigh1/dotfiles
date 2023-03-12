@@ -21,8 +21,9 @@
 -- tabs (shows currently available tabs)
 -- windows (shows currently available windows)
 
+local lualine = require('lualine')
 
-require('lualine').setup {
+lualine.setup {
     options = {
         icons_enabled = true,
         theme = 'gruvbox',
@@ -44,7 +45,7 @@ require('lualine').setup {
         lualine_a = {'mode'},
         lualine_b = {},
         lualine_c = {'filename'},
-        lualine_x = {},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {},
         lualine_z = {'location'}
     },
@@ -52,7 +53,7 @@ require('lualine').setup {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {'filename'},
-        lualine_x = {},
+        lualine_x = {'location'},
         lualine_y = {},
         lualine_z = {'location'}
     },
@@ -65,4 +66,21 @@ require('lualine').setup {
     extensions = {}
 }
 
+local lualine_is_hide = false
+local default_laststatus_value = vim.o.laststatus
+local default_cmdheight_value = vim.o.cmdheight
 
+local function toggle_lualine()
+  if lualine_is_hide then
+    vim.o.laststatus = 2
+    vim.o.cmdheight = default_cmdheight_value
+    lualine.hide({unhide=true})
+  else
+    vim.o.laststatus = 0
+    vim.o.cmdheight = 0
+    lualine.hide({unhide=false})
+  end
+  lualine_is_hide = not lualine_is_hide
+end
+
+vim.keymap.set("n", "<leader>lh", toggle_lualine)
