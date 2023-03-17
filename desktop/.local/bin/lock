@@ -1,6 +1,8 @@
 #!/bin/sh
 
-dm-tool lock
+xsecurelock -- systemctl suspend
+
+# dm-tool lock
 
 # echo 'Locking'
 #
