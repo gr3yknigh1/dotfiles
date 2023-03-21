@@ -1,9 +1,5 @@
--- @gr3yknigh1
--- 2022
+-- https://gist.github.com/numToStr/1ab83dd2e919de9235f9f774ef8076da
 --
--- Autocommand
--- References:
---   - https://gist.github.com/numToStr/1ab83dd2e919de9235f9f774ef8076da
 -- @NOTE Move this file to your neovim lua runtime path ie. ~/.config/nvim/lua/au.lua
 -- Simple autocmd with one event: au.<event> = string | fn | { pattern: string, action: string | fn }
 --

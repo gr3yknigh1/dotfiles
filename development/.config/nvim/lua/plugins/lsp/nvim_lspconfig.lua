@@ -6,9 +6,7 @@
 -- <https://github.com/sbulav/dotfiles/blob/master/nvim/lua/config/cmp.lua>
 
 local utils     = require('utils')
-local lspconfig = require("lspconfig")
-
--- LSP's configuration
+local lspconfig = require('lspconfig')
 
 local function custom_lsp_attach(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -52,48 +50,6 @@ local default_lsp_config = {
   },
   capabilities = capabilities,
 }
-
-local language_servers = require('lsps')
-
--- @TODO Find way to detect lua-language-serer automaticly
--- local sumneko_root_path = "/usr/lib/lua-language-server"
--- local sumneko_binary = "/usr/bin/lua-language-server"
-
-local expanded_lsp_config = {
-  emmet_ls = {
-    filetypes = {
-      "html",
-      "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
-    init_options = {
-      html = {
-        options = {
-          ["bem.enabled"] = true,
-        },
-      },
-    }
-  },
-  -- sumneko_lua = {
-  --   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
-  --   settings = {
-  --     Lua = {
-  --       runtime = {
-  --         version = "LuaJIT",
-  --         path = vim.split(package.path, ";"),
-  --       },
-  --       diagnostics = {
-  --         globals = {"vim"},
-  --       },
-  --       workspace = {
-  --         library = {
-  --           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-  --           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-  --         },
-  --       },
-  --     }
-  --   },
-  -- }
-}
-
 
 -- @NOTE Configuring language servers
 for _, language_server in pairs(language_servers) do

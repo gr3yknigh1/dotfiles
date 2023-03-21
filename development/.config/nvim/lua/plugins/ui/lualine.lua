@@ -83,4 +83,4 @@ local function toggle_lualine()
   lualine_is_hide = not lualine_is_hide
 end
 
-vim.keymap.set("n", "<leader>lh", toggle_lualine)
+vim.keymap.set('n', '<leader>lh', toggle_lualine)
