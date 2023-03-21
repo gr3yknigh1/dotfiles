@@ -1,13 +1,13 @@
-" Change these as desired
 nnoremap <buffer> <leader>aa <cmd>ArduinoAttach<CR>
 nnoremap <buffer> <leader>ai <cmd>ArduinoInfo<CR>
 nnoremap <buffer> <leader>av <cmd>ArduinoVerify<CR>
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
 nnoremap <buffer> <leader>as <cmd>ArduinoSerial<CR>
-" nnoremap <buffer> <leader>ad <cmd>ArduinoUploadAndSerial<CR>
+nnoremap <buffer> <leader>ad <cmd>ArduinoUploadAndSerial<CR>
 nnoremap <buffer> <leader>ab <cmd>ArduinoChooseBoard<CR>
 nnoremap <buffer> <leader>ap <cmd>ArduinoChooseProgrammer<CR>
 
+" TODO: [optionaly] Reformat for lualine
 " my_file.ino [arduino:avr:uno] [arduino:usbtinyisp] (/dev/ttyACM0:9600)
 " function! ArduinoStatusLine()
 "   let port = arduino#GetPort()
