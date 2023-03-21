@@ -9,7 +9,6 @@ local au = require('au')
 
 vim.opt.shell = 'fish'
 
--- vim.opt.termguicolors = true
 if vim.fn.has('termguicolors') then
   vim.opt.termguicolors = true
 end
