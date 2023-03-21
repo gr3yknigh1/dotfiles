@@ -17,37 +17,15 @@ telescope.setup({
         ["<esc>"] = tactions.close
       },
     },
-    -- vimgrep_arguments = {
-    --   'rg',
-    --   '--color=always',
-    --   '--no-heading',
-    --   '--with-filename',
-    --   '--line-number',
-    --   '--column',
-    --   '--smart-case',
-    --   '--ignore-file',
-    --   '.gitignore',
-    -- }
-  }, -- defaults
+  },
 
   pickers = {
     find_files = {
-      -- find_command = { "fd", "--strip-cwd-prefix", "-t", "f"},
       hidden = true,
     }
-  }, -- pickers
+  },
 
   extentions = {
-    file_browser = {
-      theme = "ivy",
-      hijack_netrw = true,
-      mappings = {
-        ["i"] = {
-        },
-        ["n"] = {
-        },
-      },
-    }, -- file_browser
     command_palette = {
       {"File",
         { "entire selection (C-a)", ':call feedkeys("GVgg")' },
