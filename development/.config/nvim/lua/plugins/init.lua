@@ -36,7 +36,6 @@ require('packer').startup(function(use)
 
   -- Syntax (Treesitter)
   use 'nvim-treesitter/nvim-treesitter'
-  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
@@ -62,70 +61,25 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'LinArcX/telescope-command-palette.nvim'
-
   use 'kdheepak/lazygit.nvim'
-
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
-  use 'romgrk/barbar.nvim'
 
-  use 'stevearc/vim-arduino'
 
   -- Etc
   use 'gpanders/editorconfig.nvim'
-  use {
-    'glepnir/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        theme = 'hyper',
-        config = {
-          week_header = {
-           enable = true,
-          },
-          shortcut = {
-            { desc = ' Update', group = '@property', action = 'Lazy update', key = 'u' },
-            {
-              icon = ' ',
-              icon_hl = '@variable',
-              desc = 'Files',
-              group = 'Label',
-              action = 'Telescope find_files',
-              key = 'f',
-            },
-            {
-              desc = ' Apps',
-              group = 'DiagnosticHint',
-              action = 'Telescope app',
-              key = 'a',
-            },
-            {
-              desc = ' dotfiles',
-              group = 'Number',
-              action = 'Telescope dotfiles',
-              key = 'd',
-            },
-          },
-        },
-      }
-    end,
-    requires = {'nvim-tree/nvim-web-devicons'}
-  }
   use 'kyazdani42/nvim-web-devicons'
+  use 'stevearc/vim-arduino'
+
   use({
       "kylechui/nvim-surround",
-      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      tag = "*",
       config = function()
           require("nvim-surround").setup({
-              -- Configuration here, or leave empty to use defaults
           })
       end
   })
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end

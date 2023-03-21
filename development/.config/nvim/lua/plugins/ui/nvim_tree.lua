@@ -200,72 +200,72 @@ nvim_tree.setup({
     exclude = { },
   },
   filesystem_watchers = {
-      enable = true,
-      debounce_delay = 50,
+    enable = true,
+    debounce_delay = 50,
   },
   git = {
-      enable = true,
-      ignore = true,
-      show_on_dirs = true,
-      timeout = 400,
+    enable = true,
+    ignore = true,
+    show_on_dirs = true,
+    timeout = 400,
   },
   actions = {
-      use_system_clipboard = true,
-      change_dir = {
+    use_system_clipboard = true,
+    change_dir = {
+    enable = true,
+    global = false,
+    restrict_above_cwd = false,
+    },
+    expand_all = {
+    max_folder_discovery = 300,
+    exclude = {},
+    },
+    open_file = {
+      quit_on_open = false,
+      resize_window = true,
+      window_picker = {
         enable = true,
-        global = false,
-        restrict_above_cwd = false,
-      },
-      expand_all = {
-        max_folder_discovery = 300,
-        exclude = {},
-      },
-      open_file = {
-          quit_on_open = false,
-          resize_window = true,
-          window_picker = {
-              enable = true,
-              chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-              exclude = {
-                  filetype = {
-                    "notify",
-                    "packer",
-                    "qf",
-                    "diff",
-                    "fugitive",
-                    "fugitiveblame"
-                  },
-                  buftype = { "nofile", "terminal", "help" },
-              },
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        exclude = {
+          filetype = {
+          "notify",
+          "packer",
+          "qf",
+          "diff",
+          "fugitive",
+          "fugitiveblame"
           },
+          buftype = { "nofile", "terminal", "help" },
+        },
       },
-      remove_file = {
-          close_window = true,
-      },
+    },
+    remove_file = {
+      close_window = true,
+    },
   },
   trash = {
-      cmd = "gio trash",
-      require_confirm = true,
+    cmd = "gio trash",
+    require_confirm = true,
   },
   live_filter = {
-      prefix = "[FILTER]: ",
-      always_show_folders = false,
+    prefix = "[FILTER]: ",
+    always_show_folders = false,
   },
   log = {
-      enable = false,
-      truncate = false,
-      types = {
-          all = false,
-          config = false,
-          copy_paste = false,
-          dev = false,
-          diagnostics = false,
-          git = false,
-          profile = false,
-          watcher = false,
+    enable = false,
+    truncate = false,
+    types = {
+      all = false,
+      config = false,
+      copy_paste = false,
+      dev = false,
+      diagnostics = false,
+      git = false,
+      profile = false,
+      watcher = false,
       },
   },
-}) -- END_DEFAULT_OPTS
+})
 
 
 vim.keymap.set("n", "<Leader><Space>", "<cmd>NvimTreeFocus<CR>")
