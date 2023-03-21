@@ -1,27 +1,12 @@
 -- Nvim Tree
+-- https://github.com/nvim-tree/nvim-tree.lua
 
-local nvim_tree = require("nvim-tree")
-
+local nvim_tree      = require("nvim-tree")
 local nvim_tree_lib  = require("nvim-tree.lib")
 local nvim_tree_view = require("nvim-tree.view")
 
-local HEIGHT_RATIO = 0.8  -- You can change this
-local WIDTH_RATIO = 0.5   -- You can change this too
-
-local git_add = function()
-  local node = nvim_tree_lib.get_node_at_cursor()
-  local gs = node.git_status
-
-  -- If the file is untracked, unstaged or partially staged, we stage it
-  if gs == "??" or gs == "MM" or gs == "AM" or gs == " M" then
-    vim.cmd("silent !git add " .. node.absolute_path)
-
-  -- If the file is staged, we unstage
-  elseif gs == "M " or gs == "A " then
-    vim.cmd("silent !git restore --staged " .. node.absolute_path)
-  end
-  nvim_tree_lib.refresh_tree()
-end
+local HEIGHT_RATIO = 0.8
+local WIDTH_RATIO  = 0.5
 
 local function collapse_all()
   require("nvim-tree.actions.tree-modifiers.collapse-all").fn()

@@ -1,10 +1,10 @@
-local dap       = require('dap')
-local debuggers = require('debuggers')
+local dap = require('dap')
+local mason_nvim_dap = require("mason-nvim-dap")
 
-require("mason-nvim-dap").setup({
+mason_nvim_dap.setup({
     -- A list of adapters to install if they're not already installed.
     -- This setting has no relation with the `automatic_installation` setting.
-    ensure_installed = debuggers,
+    ensure_installed = {},
 
     -- NOTE: this is left here for future porting in case needed
     -- Whether adapters that are set up (via dap) should be automatically installed if they're not already installed.

@@ -1,8 +1,5 @@
 -- Telescope
 
-local utils = require("utils")
-local nmap = utils.nmap
-
 local telescope = require("telescope")
 local tactions  = require("telescope.actions")
 local tbuiltin  = require("telescope.builtin")
@@ -96,11 +93,11 @@ telescope.setup({
 require('telescope').load_extension("file_browser")
 require('telescope').load_extension('command_palette')
 
-nmap("<Leader>ff", tbuiltin.find_files)
-nmap("<Leader>fg", tbuiltin.live_grep)
-nmap("<Leader>fs", tbuiltin.buffers)
-nmap("<Leader>fh", tbuiltin.help_tags)
-nmap("<Leader>p", tbuiltin.commands)
-nmap("<Leader>fb", "<cmd>Telescope file_browser<CR>")
+vim.keymap.set('n', "<Leader>ff", tbuiltin.find_files)
+vim.keymap.set('n', "<Leader>fg", tbuiltin.live_grep)
+vim.keymap.set('n', "<Leader>fs", tbuiltin.buffers)
+vim.keymap.set('n', "<Leader>fh", tbuiltin.help_tags)
+vim.keymap.set('n', "<Leader>p", tbuiltin.commands)
+vim.keymap.set('n', "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 
 
