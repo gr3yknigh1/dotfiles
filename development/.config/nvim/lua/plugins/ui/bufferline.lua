@@ -102,42 +102,23 @@ require('bufferline').setup {
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<A-,>", "<Cmd>BufferLineCyclePrev<CR>", opts)
-vim.keymap.set("n", "<A-.>", "<Cmd>BufferLineCycleNext<CR>", opts)
+vim.keymap.set('n', '<A-,>', '<cmd>BufferLineCyclePrev<cr>', opts)
+vim.keymap.set('n', '<A-.>', '<cmd>BufferLineCycleNext<cr>', opts)
 
-vim.keymap.set("n", "<A-<>", "<Cmd>BufferLineMovePrevs<CR>", opts)
-vim.keymap.set("n", "<A->>", "<Cmd>BufferLineMoveNext<CR>", opts)
+vim.keymap.set('n', '<A-<>', '<cmd>BufferLineMovePrevs<cr>', opts)
+vim.keymap.set('n', '<A->>', '<cmd>BufferLineMoveNext<cr>', opts)
 
-vim.keymap.set("n", "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
-vim.keymap.set("n", "<A-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
-vim.keymap.set("n", "<A-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
-vim.keymap.set("n", "<A-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", opts)
-vim.keymap.set("n", "<A-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", opts)
-vim.keymap.set("n", "<A-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
-vim.keymap.set("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
-vim.keymap.set("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
-vim.keymap.set("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
+vim.keymap.set('n', '<A-1>', '<cmd>BufferLineGoToBuffer 1<cr>', opts)
+vim.keymap.set('n', '<A-2>', '<cmd>BufferLineGoToBuffer 2<cr>', opts)
+vim.keymap.set('n', '<A-3>', '<cmd>BufferLineGoToBuffer 3<cr>', opts)
+vim.keymap.set('n', '<A-4>', '<cmd>BufferLineGoToBuffer 4<cr>', opts)
+vim.keymap.set('n', '<A-5>', '<cmd>BufferLineGoToBuffer 5<cr>', opts)
+vim.keymap.set('n', '<A-6>', '<cmd>BufferLineGoToBuffer 6<cr>', opts)
+vim.keymap.set('n', '<A-7>', '<cmd>BufferLineGoToBuffer 7<cr>', opts)
+vim.keymap.set('n', '<A-8>', '<cmd>BufferLineGoToBuffer 8<cr>', opts)
+vim.keymap.set('n', '<A-9>', '<cmd>BufferLineGoToBuffer 9<cr>', opts)
 
-vim.keymap.set("n", "<A-p>", "<Cmd>BufferLineTogglePin<CR>", opts)
+vim.keymap.set('n', '<A-p>', '<cmd>BufferLineTogglePin<cr>', opts)
 
-vim.keymap.set("n", "<A-g>", "<Cmd>BufferLinePick<CR>", opts)
-vim.keymap.set("n", "<A-c>", "<Cmd>BufferLinePickClose<CR>", opts)
-
--- local nvim_tree_events = require('nvim-tree.events')
--- local bufferline_api = require('bufferline.api')
---
--- local function get_tree_size()
---   return require'nvim-tree.view'.View.width
--- end
---
--- nvim_tree_events.subscribe('TreeOpen', function()
---   bufferline_api.set_offset(get_tree_size())
--- end)
---
--- nvim_tree_events.subscribe('Resize', function()
---   bufferline_api.set_offset(get_tree_size())
--- end)
---
--- nvim_tree_events.subscribe('TreeClose', function()
---   bufferline_api.set_offset(0)
--- end)
+vim.keymap.set('n', '<A-g>', '<cmd>BufferLinePick<cr>', opts)
+vim.keymap.set('n', '<A-c>', '<cmd>BufferLinePickClose<cr>', opts)
