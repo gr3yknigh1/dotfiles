@@ -151,3 +151,19 @@ require('cokeline').setup({
     components.space,
   },
 })
+
+local opts = { silent = true }
+vim.keymap.set('n', '<A-,>', '<Plug>(cokeline-focus-prev)', opts)
+vim.keymap.set('n', '<A-.>', '<Plug>(cokeline-focus-next)', opts)
+vim.keymap.set('n', '<A-<>', '<Plug>(cokeline-switch-prev)', opts)
+vim.keymap.set('n', '<A->>', '<Plug>(cokeline-switch-next)', opts)
+
+for i = 1,9 do
+  vim.keymap.set('n', ('<A-%s>'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), opts)
+end
+
+vim.keymap.set('n', '<A-c>', '<cmd>bdelete<cr>', opts)
+vim.keymap.set('n', '<A-C>', '<cmd>bdelete!<cr>', opts)
+
+vim.keymap.set('n', '<A-p>c', '<Plug>(cokeline-pick-close)', opts)
+vim.keymap.set('n', '<A-p>f', '<Plug>(cokeline-pick-focus)', opts)
