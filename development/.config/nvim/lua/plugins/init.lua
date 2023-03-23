@@ -1,10 +1,19 @@
--- Packer setup
+-- lua/plugins/init.lua
+-- packer install pkgs
+
 
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+
+  local packer_script_path = '/site/pack/packer/start/packer.nvim'
+  local packer_repo_url = 'https://github.com/wbthomason/packer.nvim'
+  local packer_install_path = vim.fn.stdpath('data') .. packer_script_path
+  local packer_install_cmd = {
+    'git', 'clone', '--depth', '1', packer_repo_url, packer_install_path
+  }
+
+  if fn.empty(fn.glob(packer_install_path)) > 0 then
+    fn.system(packer_install_cmd)
     vim.cmd('packadd packer.nvim')
     return true
   end
