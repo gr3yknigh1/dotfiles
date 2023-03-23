@@ -26,9 +26,9 @@ local lualine = require('lualine')
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    theme = 'auto',
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {"NvimTree"},
       winbar = {},
@@ -66,6 +66,7 @@ lualine.setup {
   extensions = {}
 }
 
+-- Statusline toggling
 local lualine_is_hide = false
 local default_laststatus_value = vim.o.laststatus
 local default_cmdheight_value = vim.o.cmdheight
