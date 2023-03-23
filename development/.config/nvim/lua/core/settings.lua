@@ -3,9 +3,9 @@
 
 vim.opt.shell = 'fish'
 
-if vim.fn.has('termguicolors') then
-  vim.opt.termguicolors = true
-end
+vim.opt.termguicolors = true
+-- if vim.fn.has('termguicolors') then
+-- end
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.colorcolumn='80'

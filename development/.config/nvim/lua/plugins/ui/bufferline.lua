@@ -10,17 +10,13 @@ require('bufferline').setup {
     middle_mouse_command = nil,      -- can be a string | function, see "Mouse actions"
     indicator = {
       icon = '▎', -- this should be omitted if indicator style is not 'icon'
-      style = 'icon' -- | 'underline' | 'none',
+      style = 'underline' -- 'icon', 'underline', 'none'
     },
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
     left_trunc_marker = '',
     right_trunc_marker = '',
-    --- name_formatter can be used to change the buffer's label in the bufferline.
-    --- Please note some names can/will break the
-    --- bufferline so use this at your discretion knowing that it has
-    --- some limitations that will *NOT* be fixed.
     name_formatter = function(buf)  -- buf contains:
         -- name        | str    | the basename of the active file
         -- path        | str    | the full path of the active file
