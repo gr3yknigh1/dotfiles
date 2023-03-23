@@ -1,6 +1,8 @@
 -- lua/plugins/init.lua
 -- packer install pkgs
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local ensure_packer = function()
   local fn = vim.fn
