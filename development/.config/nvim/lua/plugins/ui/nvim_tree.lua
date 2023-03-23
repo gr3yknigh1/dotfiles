@@ -1,20 +1,20 @@
 -- Nvim Tree
 -- https://github.com/nvim-tree/nvim-tree.lua
 
-local nvim_tree      = require("nvim-tree")
-local nvim_tree_lib  = require("nvim-tree.lib")
-local nvim_tree_view = require("nvim-tree.view")
+local nvim_tree      = require('nvim-tree')
+local nvim_tree_lib  = require('nvim-tree.lib')
+local nvim_tree_view = require('nvim-tree.view')
 
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO  = 0.5
 
 local function collapse_all()
-  require("nvim-tree.actions.tree-modifiers.collapse-all").fn()
+  require('nvim-tree.actions.tree-modifiers.collapse-all').fn()
 end
 
 local function edit_or_open()
   -- open as vsplit on current node
-  local action = "edit"
+  local action = 'edit'
   local node = nvim_tree_lib.get_node_at_cursor()
   -- Just copy what's done normally with vsplit
   if node.link_to and not node.nodes then
@@ -30,7 +30,7 @@ end
 
 local function vsplit_preview()
   -- open as vsplit on current node
-  local action = "vsplit"
+  local action = 'vsplit'
   local node = nvim_tree_lib.get_node_at_cursor()
   -- Just copy what's done normally with vsplit
   if node.link_to and not node.nodes then
@@ -56,7 +56,7 @@ nvim_tree.setup({
   open_on_setup_file = false,
   open_on_tab = false,
   ignore_buf_on_tab_change = {},
-  sort_by = "name",
+  sort_by = 'name',
   root_dirs = {},
   prefer_startup_root = false,
   sync_root_with_cwd = false,
@@ -71,11 +71,11 @@ nvim_tree.setup({
     adaptive_size = false,
     centralize_selection = false,
     hide_root_folder = false,
-    side = "left",
+    side = 'left',
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
-    signcolumn = "yes",
+    signcolumn = 'yes',
     float = {
       enable = true,
       open_win_config = function()
@@ -99,17 +99,15 @@ nvim_tree.setup({
         end,
     },
     width = math.floor(vim.opt.columns:get() * WIDTH_RATIO),
-    -- width = 30,
+    -- width  = 30,
     -- height = 30,
     mappings = {
       custom_only = false,
       list = {
-        { key = "/", action = "live_filter" },
-        { key = "l", action = "edit", action_cb = edit_or_open },
-        { key = "L", action = "vsplit_preview", action_cb = vsplit_preview },
-        { key = "h", action = "close_node" },
-        { key = "H", action = "collapse_all", action_cb = collapse_all },
-        { key = "ga", action = "git_add", action_cb = git_add },
+        { key = '/', action = 'live_filter' },
+        { key = 'l', action = 'edit', action_cb = edit_or_open },
+        { key = 'h', action = 'close_node' },
+        { key = 'H', action = 'collapse_all', action_cb = collapse_all },
       },
     },
   },
@@ -118,23 +116,23 @@ nvim_tree.setup({
     group_empty = false,
     highlight_git = false,
     full_name = false,
-    highlight_opened_files = "none",
-    root_folder_modifier = ":~",
+    highlight_opened_files = 'none',
+    root_folder_modifier = ':~',
     indent_markers = {
       enable = false,
       inline_arrows = true,
       icons = {
-        corner = "└",
-        edge = "│",
-        item = "│",
-        none = " ",
+        corner = '└',
+        edge = '│',
+        item = '│',
+        none = ' ',
       },
     },
     icons = {
       webdev_colors = true,
-      git_placement = "before",
-      padding = " ",
-      symlink_arrow = " ➛ ",
+      git_placement = 'before',
+      padding = ' ',
+      symlink_arrow = ' ➛ ',
       show = {
         file = true,
         folder = true,
@@ -142,31 +140,31 @@ nvim_tree.setup({
         git = true,
       },
       glyphs = {
-        default = "",
-        symlink = "",
-        bookmark = "",
+        default = '',
+        symlink = '',
+        bookmark = '',
         folder = {
-          arrow_closed = "",
-          arrow_open = "",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-          symlink_open = "",
+          arrow_closed = '',
+          arrow_open = '',
+          default = '',
+          open = '',
+          empty = '',
+          empty_open = '',
+          symlink = '',
+          symlink_open = '',
         },
         git = {
-          unstaged = "✗",
-          staged = "✓",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "★",
-          deleted = "",
-          ignored = "◌",
+          unstaged = '✗',
+          staged = '✓',
+          unmerged = '',
+          renamed = '➜',
+          untracked = '★',
+          deleted = '',
+          ignored = '◌',
         },
       },
     },
-    special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+    special_files = { 'Cargo.toml', 'Makefile', 'README.md', 'readme.md' },
     symlink_destination = true,
   },
   hijack_directories = {
@@ -180,7 +178,7 @@ nvim_tree.setup({
   },
   ignore_ft_on_setup = {},
   system_open = {
-    cmd = "",
+    cmd = 'xdg-open',
     args = {},
   },
   diagnostics = {
@@ -188,15 +186,15 @@ nvim_tree.setup({
     show_on_dirs = false,
     debounce_delay = 50,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = '',
+      info = '',
+      warning = '',
+      error = '',
     },
   },
   filters = {
     dotfiles = false,
-    custom = { "^.git$", "^/node_modules" },
+    custom = { '^.git$', '^/node_modules' },
     exclude = { },
   },
   filesystem_watchers = {
@@ -225,17 +223,17 @@ nvim_tree.setup({
       resize_window = true,
       window_picker = {
         enable = true,
-        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         exclude = {
           filetype = {
-          "notify",
-          "packer",
-          "qf",
-          "diff",
-          "fugitive",
-          "fugitiveblame"
+          'notify',
+          'packer',
+          'qf',
+          'diff',
+          'fugitive',
+          'fugitiveblame'
           },
-          buftype = { "nofile", "terminal", "help" },
+          buftype = { 'nofile', 'terminal', 'help' },
         },
       },
     },
@@ -244,11 +242,11 @@ nvim_tree.setup({
     },
   },
   trash = {
-    cmd = "gio trash",
+    cmd = 'gio trash',
     require_confirm = true,
   },
   live_filter = {
-    prefix = "[FILTER]: ",
+    prefix = '[FILTER]: ',
     always_show_folders = false,
   },
   log = {
@@ -268,5 +266,5 @@ nvim_tree.setup({
 })
 
 
-vim.keymap.set("n", "<Leader><Space>", "<cmd>NvimTreeFocus<CR>")
-vim.keymap.set("n", "<Leader><Space>", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeFocus<cr>')
+vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeToggle<cr>')
