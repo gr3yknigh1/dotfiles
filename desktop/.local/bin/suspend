@@ -1,5 +1,3 @@
 #!/bin/sh
 
-# dm-tool lock && systemctl suspend
-
-xsecurelock -- systemctl suspend
+xsecurelock -- systemctl suspend &

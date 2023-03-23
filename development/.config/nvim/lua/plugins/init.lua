@@ -64,7 +64,7 @@ require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
-
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- Etc
   use 'gpanders/editorconfig.nvim'
