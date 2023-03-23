@@ -164,7 +164,9 @@ nvim_tree.setup({
         },
       },
     },
-    special_files = { 'Cargo.toml', 'Makefile', 'README.md', 'readme.md' },
+    special_files = {
+      'Cargo.toml', 'Makefile', 'README.md', 'readme.md', 'CMakeLists.txt'
+    },
     symlink_destination = true,
   },
   hijack_directories = {
@@ -195,7 +197,7 @@ nvim_tree.setup({
   filters = {
     dotfiles = false,
     custom = { '^.git$', '^/node_modules' },
-    exclude = { },
+    exclude = {},
   },
   filesystem_watchers = {
     enable = true,
@@ -210,13 +212,13 @@ nvim_tree.setup({
   actions = {
     use_system_clipboard = true,
     change_dir = {
-    enable = true,
-    global = false,
-    restrict_above_cwd = false,
+      enable = true,
+      global = true,
+      restrict_above_cwd = false,
     },
     expand_all = {
-    max_folder_discovery = 300,
-    exclude = {},
+      max_folder_discovery = 300,
+      exclude = {},
     },
     open_file = {
       quit_on_open = false,
@@ -226,12 +228,12 @@ nvim_tree.setup({
         chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         exclude = {
           filetype = {
-          'notify',
-          'packer',
-          'qf',
-          'diff',
-          'fugitive',
-          'fugitiveblame'
+            'notify',
+            'packer',
+            'qf',
+            'diff',
+            'fugitive',
+            'fugitiveblame'
           },
           buftype = { 'nofile', 'terminal', 'help' },
         },
@@ -248,20 +250,6 @@ nvim_tree.setup({
   live_filter = {
     prefix = '[FILTER]: ',
     always_show_folders = false,
-  },
-  log = {
-    enable = false,
-    truncate = false,
-    types = {
-      all = false,
-      config = false,
-      copy_paste = false,
-      dev = false,
-      diagnostics = false,
-      git = false,
-      profile = false,
-      watcher = false,
-      },
   },
 })
 
