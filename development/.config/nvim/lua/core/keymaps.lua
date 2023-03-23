@@ -1,4 +1,7 @@
-vim.g.mapleader = "\\"
+-- lua/core/apperience.lua
+-- keymapping
+
+vim.g.mapleader = '\\'
 
 -- close terminal
 vim.keymap.set('t', 'ZZ', '<cmd>q<CR>')
@@ -70,26 +73,33 @@ vim.keymap.set('n', '<A-K>', '<C-W>K');
 vim.keymap.set('n', '<A-L>', '<C-W>L');
 
 -- TODO: move line
--- nmap("<S-k>", "<S-v>xkP")
--- nmap("<S-j>", "<S-v>xp")
+-- nmap('<S-k>', '<S-v>xkP')
+-- nmap('<S-j>', '<S-v>xp')
 
 -- MAKE KEYBINDS
+local au = require('au')
+
 local function file_exists(name)
-  local f = io.open(name, "r")
+  local f = io.open(name, 'r')
   if f ~= nil then io.close(f) return true else return false end
 end
 
 local function set_make_keybinds()
-  vim.keymap.set("n", "<leader>mf", "<cmd>make format<cr>")
-  vim.keymap.set("n", "<leader>ma", "<cmd>make all<cr>")
-  vim.keymap.set("n", "<leader>mc", "<cmd>make clean<cr>")
-  vim.keymap.set("n", "<leader>mr", "<cmd>make run<cr>")
-  vim.keymap.set("n", "<leader>mt", "<cmd>make tests<cr>")
+  vim.keymap.set('n', '<leader>mf', '<cmd>make format<cr>')
+  vim.keymap.set('n', '<leader>ma', '<cmd>make all<cr>')
+  vim.keymap.set('n', '<leader>mc', '<cmd>make clean<cr>')
+  vim.keymap.set('n', '<leader>mr', '<cmd>make run<cr>')
+  vim.keymap.set('n', '<leader>mt', '<cmd>make tests<cr>')
 end
 
-if file_exists(vim.fn.getcwd() .. "/Makefile") then
-  set_make_keybinds()
-end
+au({ 'DirChanged' } , {
+  '*',
+  function()
+    if file_exists(vim.fn.getcwd() .. '/Makefile') then
+      set_make_keybinds()
+    end
+  end
+})
 
 -- unmapping default maps
 vim.keymap.set('n', '<C-w>s', '')
