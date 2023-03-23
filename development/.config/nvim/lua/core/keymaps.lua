@@ -95,6 +95,7 @@ end
 au({ 'DirChanged' } , {
   '*',
   function()
+    -- TODO: Replace with `plenary.lua` func from `path` module
     if file_exists(vim.fn.getcwd() .. '/Makefile') then
       set_make_keybinds()
     end
