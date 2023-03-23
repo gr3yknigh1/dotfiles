@@ -6,7 +6,12 @@
 
 local utils     = require('utils')
 local lspconfig = require('lspconfig')
-local language_servers = {}
+local language_servers = {
+  'pyright', 'asm_lsp', 'bashls', 'clangd',
+  'cmake', 'jsonls', 'lua_ls',
+  'marksman', 'rust_analyzer', 'taplo', 'vimls',
+  'yamlls',
+}
 
 local function custom_lsp_attach(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -49,6 +54,31 @@ local default_lsp_config = {
     debounce_text_changes = 150,
   },
   capabilities = capabilities,
+}
+
+local expanded_lsp_config = {
+  lua_ls = {
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    }
+  } -- lua_ls
 }
 
 -- NOTE: Configuring language servers

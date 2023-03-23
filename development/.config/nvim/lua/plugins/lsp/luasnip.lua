@@ -28,6 +28,14 @@ ls.add_snippets(nil, {
         return { os.date('%Y-%m-%d') }
       end, {}),
     }),
+    -- snip({
+    --   trig = 'crpath',
+    --   namr = 'File path',
+    --   dscr = 'Relative to cwd file path'
+    -- }, {
+    --   func(function()
+    --   return, {}),
+    -- }),
   },
   cpp = {
     snip({
