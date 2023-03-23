@@ -78,11 +78,7 @@ vim.keymap.set('n', '<A-L>', '<C-W>L');
 
 -- MAKE KEYBINDS
 local au = require('au')
-
-local function file_exists(name)
-  local f = io.open(name, 'r')
-  if f ~= nil then io.close(f) return true else return false end
-end
+local utils = require('utils')
 
 local function set_make_keybinds()
   vim.keymap.set('n', '<leader>mf', '<cmd>make format<cr>')
@@ -96,7 +92,7 @@ au({ 'DirChanged' } , {
   '*',
   function()
     -- TODO: Replace with `plenary.lua` func from `path` module
-    if file_exists(vim.fn.getcwd() .. '/Makefile') then
+    if utils.file_exists(vim.fn.getcwd() .. '/Makefile') then
       set_make_keybinds()
     end
   end
