@@ -114,7 +114,7 @@ nvim_tree.setup({
   renderer = {
     add_trailing = false,
     group_empty = false,
-    highlight_git = false,
+    highlight_git = true,
     full_name = false,
     highlight_opened_files = 'none',
     root_folder_modifier = ':~',
@@ -205,7 +205,7 @@ nvim_tree.setup({
     enable = true,
     ignore = true,
     show_on_dirs = true,
-    timeout = 400,
+    timeout = 100,
   },
   actions = {
     use_system_clipboard = true,
