@@ -4,6 +4,7 @@ import argparse
 import os
 import os.path
 
+
 HOME_DIRECTORY: str = os.path.expanduser("~")
 DESKTOP_DIRECTORIES: list[str] = [
     os.path.join(HOME_DIRECTORY, "Workspace"),
