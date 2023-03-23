@@ -1,12 +1,18 @@
-vim.o.background = "dark" -- or "light" for light mode
+-- lua/core/apperience.lua
+-- apperience settings
+
+vim.g.colorscheme = 'gruvbox' -- 'nord'
+vim.o.background  = 'dark' -- 'light'
 
 vim.cmd('syntax enable')
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme ' .. vim.g.colorscheme)
 
--- vim.g.nord_contrast = false
--- vim.g.nord_borders = true
--- vim.g.nord_cursorline_transparent = false
--- vim.g.nord_disable_background = true
--- vim.g.nord_enable_sidebar_background = true
--- vim.g.nord_italic = true
--- vim.g.nord_uniform_diff_background = true
+if vim.g.colorscheme == 'nord' then
+  vim.g.nord_contrast = false
+  vim.g.nord_borders = true
+  vim.g.nord_cursorline_transparent = false
+  vim.g.nord_disable_background = true
+  vim.g.nord_enable_sidebar_background = true
+  vim.g.nord_italic = true
+  vim.g.nord_uniform_diff_background = true
+end
