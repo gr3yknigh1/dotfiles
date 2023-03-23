@@ -1,8 +1,7 @@
-local cmp       = require("cmp")
-local luasnip   = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
+local cmp       = require('cmp')
+local luasnip   = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
 
--- Setup
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -17,60 +16,60 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
           cmp.select_next_item()
       else
           fallback()
       end
-  end, { "i", "s" }),
+  end, { 'i', 's' }),
 
-  ["<S-Tab>"] = cmp.mapping(function(fallback)
+  ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
           cmp.select_next_item()
       else
           fallback()
       end
-  end, { "i", "s" }),
+  end, { 'i', 's' }),
 
   }),
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "luasnip"  },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip'  },
   }, {
-    { name = "buffer" },
+    { name = 'buffer' },
   }, {
-    { name = "path" }
+    { name = 'path' }
   })
 })
 
-cmp.setup.filetype("gitcommit", {
+cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = "cmp_git" },
+    { name = 'cmp_git' },
   }, {
-    { name = "buffer" },
+    { name = 'buffer' },
   })
 })
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = "buffer" }
+    { name = 'buffer' }
   }
 })
 
--- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore).
-cmp.setup.cmdline(":", {
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" }
+    { name = 'path' }
   }, {
-    { name = "cmdline" }
+    { name = 'cmdline' }
   })
 })
 
