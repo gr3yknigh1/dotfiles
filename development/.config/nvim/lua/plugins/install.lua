@@ -45,6 +45,11 @@ require('packer').startup(function(use)
   use 'theHamsta/nvim-dap-virtual-text'
 
   use 'nvim-treesitter/nvim-treesitter'
+  use({
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+    requires = 'nvim-treesitter/nvim-treesitter',
+  })
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -72,10 +77,9 @@ require('packer').startup(function(use)
   -- UI
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
-  -- use {'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons'}
   use({
     'willothy/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require('cokeline').setup()
     end
@@ -85,6 +89,30 @@ require('packer').startup(function(use)
   use 'gpanders/editorconfig.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'stevearc/vim-arduino'
+  use 'lewis6991/gitsigns.nvim'
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup({
+        disable_filetype = { "TelescopePrompt", "spectre_panel" },
+        disable_in_macro = false, -- disable when recording or executing a macro
+        disable_in_visualblock = false, -- disable when insert after visual block mode
+        disable_in_replace_mode = true,
+        ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
+        enable_moveright = true,
+        enable_afterquote = true , -- add bracket pairs after quote
+        enable_check_bracket_line = true , --- check bracket in same line
+        enable_bracket_in_quote = true, --
+        enable_abbr = false, -- trigger abbreviation
+        break_undo = true, -- switch for basic rule break undo sequence
+        check_ts = false,
+        map_cr = true,
+        map_bs = true , -- map the <BS> key
+        map_c_h = false , -- Map the <C-h> key to delete a pair
+        map_c_w = false, -- map <c-w> to delete a pair if possible
+      })
+    end
+  }
 
   use({
       'kylechui/nvim-surround',
