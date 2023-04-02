@@ -207,7 +207,7 @@ nvim_tree.setup({
     enable = true,
     ignore = true,
     show_on_dirs = true,
-    timeout = 100,
+    timeout = 1000,
   },
   actions = {
     use_system_clipboard = true,
