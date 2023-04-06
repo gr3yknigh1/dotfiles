@@ -3,7 +3,7 @@
 #
 
 if [ -f ~/.bash_aliases ]; then 
-    . ~/.bash_aliases 
+    source ~/.bash_aliases 
 fi
 
 # TODO: Add special colours when running from
@@ -15,7 +15,7 @@ fi
 # fi
 
 # TODO: Add this to your notes
-# How to change color of text: \[\033[<ATTR>;<COLOR>m\] 
+# How to change color of text: \[\e[<ATTR>;<COLOR>m\] 
 # >> FG Colors:
 #  Black: 30
 #   Blue: 34
@@ -42,5 +42,11 @@ fi
 #      Blinking: 5 (may not work in some terminal emulators)
 #      Reversed: 7
 #        Hidden: 8
-PS1='\n\[\e[1;34m\] \w \[\e[0;32m\]'
+
+PS1='\n\[\e[1;34m\] \w $ \[\e[0;37m\]'
+
+# Start Xorg Server
+if [ $(tty) = "/dev/tty1" ]; then
+    exec startx
+fi
 
