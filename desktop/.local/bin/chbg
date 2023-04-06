@@ -15,7 +15,7 @@ def main():
     if not os.path.exists(image_path):
         raise FileExistsError(f"File doesn't exists: {image_path}")
 
-    cmd = f"feh --no-fehbg --bg-fill {image_path}"
+    cmd = f"feh --bg-scale {image_path}"
     os.system(cmd)
 
     fehrc_path = os.path.join(os.path.expanduser("~"), ".wallpaper")
