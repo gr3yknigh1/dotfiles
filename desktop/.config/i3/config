@@ -4,8 +4,10 @@ set $term    kitty
 font pango:JetBrains Mono Nerd Font 10
 
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
+exec --no-startup-id xset s 300 5
+exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id nm-applet
 
 exec --no-startup-id source ~/.wallpaper
 exec --no-startup-id picom -b
