@@ -3,7 +3,7 @@
 
 configuration {
  modi: [window, drun, ssh, combi ];
- font: "Iosevka 16";
+ font: "JetBrains Mono Nerd Font 13";
  icon-theme: "Papirus";
  combi-modi: [ window, drun, ssh ];
 }
