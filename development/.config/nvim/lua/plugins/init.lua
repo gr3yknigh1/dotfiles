@@ -6,7 +6,6 @@ require('plugins.install')
 require('plugins.lazygit')
 require('plugins.telescope')
 require('plugins.treesitter')
-require('plugins.gitsigns')
 
 -- Submodules
 require('plugins.ui')
