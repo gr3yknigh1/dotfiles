@@ -142,7 +142,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# Touchpad
+# No notifications
+# bindcode 73 exec --no-startup-id dunstctl set-paused toggle
+
+# TODO: Touchpad
 bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggle_touchpad.sh
 
 # Media player
