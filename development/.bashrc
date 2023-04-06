@@ -6,10 +6,6 @@
 [[ $- != *i* ]] && return
 
 if [ -f ~/.bash_profile ]; then
-    . ~/.bash_profile
+    source ~/.bash_profile
 fi
 
-# Start Xorg Server
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    exec startx
-fi
