@@ -1,7 +1,7 @@
 set $browser vivaldi-stable
 set $term    kitty
 
-font pango:Iosevka 9
+font pango:JetBrains Mono Nerd Font 10
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -20,7 +20,10 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+f floating toggle
 
-bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16' -nb "#2E3440" -sb "#5C6F7B"
+
+# bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16' -nb "#2E3440" -sb "#5C6F7B"
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
 bindsym $mod+z focus mode_toggle
 
 bindsym Mod1+Tab focus next
