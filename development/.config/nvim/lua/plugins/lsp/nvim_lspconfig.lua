@@ -6,12 +6,7 @@
 
 local utils     = require('utils')
 local lspconfig = require('lspconfig')
-local language_servers = {
-  'pyright', 'asm_lsp', 'bashls', 'clangd',
-  'cmake', 'jsonls', 'lua_ls',
-  'marksman', 'rust_analyzer', 'taplo', 'vimls',
-  'yamlls',
-}
+local language_servers = require('plugins.lsp.language_servers')
 
 local function custom_lsp_attach(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
