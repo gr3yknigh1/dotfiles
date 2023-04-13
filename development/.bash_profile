@@ -2,6 +2,15 @@
 # ~/.bash_profile
 #
 
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
 if [ -f ~/.bash_aliases ]; then 
     source ~/.bash_aliases 
 fi
