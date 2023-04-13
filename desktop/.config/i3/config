@@ -185,7 +185,7 @@ for_window [class="^floating-long$"] floating enable, resize set 1200px 600px, m
 gaps inner 0
 
 # Multimonitor configuration
-workspace 3 output HDMI-1
+workspace 1 output HDMI-1
 
 # Title align
 title_align center
