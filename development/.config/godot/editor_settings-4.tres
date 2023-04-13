@@ -1,10 +1,10 @@
 [gd_resource type="EditorSettings" format=3]
 
 [resource]
-interface/editor/code_font_size = 18.0
 interface/theme/base_color = Color(0.21, 0.24, 0.29, 1)
 interface/theme/accent_color = Color(0.44, 0.73, 0.98, 1)
 interface/theme/contrast = 0.3
+filesystem/file_dialog/show_hidden_files = true
 text_editor/theme/highlighting/symbol_color = Color(0.67, 0.79, 1, 1)
 text_editor/theme/highlighting/keyword_color = Color(1, 0.44, 0.52, 1)
 text_editor/theme/highlighting/control_flow_keyword_color = Color(1, 0.55, 0.8, 1)
@@ -145,7 +145,10 @@ text_editor/theme/highlighting/gdscript/node_reference_color = Color(0.39, 0.76,
 text_editor/theme/highlighting/gdscript/annotation_color = Color(1, 0.7, 0.45, 1)
 text_editor/theme/highlighting/gdscript/string_name_color = Color(1, 0.76, 0.65, 1)
 text_editor/help/sort_functions_alphabetically = true
+aseprite/general/command_path = "aseprite"
 metadata/script_setup_templates_dictionary = {
+"Camera2D": "0NodeDefault",
+"CharacterBody2D": "0CharacterBody2DBasic Movement",
 "Node": "0NodeDefault",
 "Node2D": "0NodeDefault",
 "State": "0NodeDefault"
