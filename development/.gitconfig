@@ -1,5 +1,3 @@
-[include]
-    path = ~/.config/delta/themes.gitconfig
 [core]
     autocrlf = false
     editor = nvim
@@ -16,8 +14,6 @@
     defaultBranch = master
 [pull]
     rebase = false
-[merge]
-    conflictstyle = diff3
 [diff]
     colorMoved = default
 [alias]
