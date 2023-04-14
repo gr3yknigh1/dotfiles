@@ -4,10 +4,6 @@
 
 alias fcd='cd $(find . -type d -print | fzf)'
 
-# alias ls="exa --icons --group-directories-first $argv"
-# alias l1="exa -1 --icons --group-directories-first $argv"
-# alias ll="exa -l --icons --group-directories-first $argv"
-# alias lt="exa -T --icons --group-directories-first $argv"
 alias ls='exa --group-directories-first $argv'
 alias l1='exa -1 --group-directories-first $argv'
 alias ll='exa -l --group-directories-first $argv'
