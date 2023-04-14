@@ -1,0 +1,20 @@
+[core]
+    autocrlf = false
+    editor = vim
+    commentChar = ";"
+[user]
+    email = gr3yknigh1@gmail.com
+    name = Ilya Akkuzin
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[init]
+    defaultBranch = master
+[pull]
+    rebase = false
+[diff]
+    colorMoved = default
+[alias]
+    tree = log --oneline --graph --decorate --all
