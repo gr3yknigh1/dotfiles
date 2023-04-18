@@ -1,5 +1,5 @@
 
-@theme "theme/nord"
+@theme "theme/gruvbox/light-soft.rasi"
 
 configuration {
  modi: [window, drun, ssh, combi ];
