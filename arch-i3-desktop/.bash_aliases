@@ -4,10 +4,10 @@
 
 alias fcd='cd $(find . -type d -print | fzf)'
 
-alias ls='exa --group-directories-first $argv'
-alias l1='exa -1 --group-directories-first $argv'
-alias ll='exa -l --group-directories-first $argv'
-alias lt='exa -T --group-directories-first $argv'
+alias ls='exa --icons --group-directories-first $argv'
+alias l1='exa --icons -1 --group-directories-first $argv'
+alias ll='exa --icons -l --group-directories-first $argv'
+alias lt='exa --icons -T --group-directories-first $argv'
 
 alias t='tmux'
 alias tal='tmux attach'
