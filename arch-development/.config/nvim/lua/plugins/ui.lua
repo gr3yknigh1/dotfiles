@@ -1,5 +1,7 @@
 -- lua/plugins/ui.lua
 
+-- COKELINE
+require('cokeline').setup()
 
 -- LUALINE
 local lualine = require('lualine')
@@ -14,11 +16,11 @@ local function toggle_lualine()
   if lualine_is_hide then
     vim.o.laststatus = 2
     vim.o.cmdheight = default_cmdheight_value
-    lualine.hide({unhide=true})
+    lualine.hide({ unhide = true })
   else
     vim.o.laststatus = 0
     vim.o.cmdheight = 0
-    lualine.hide({unhide=false})
+    lualine.hide({ unhide = false })
   end
   lualine_is_hide = not lualine_is_hide
 end
@@ -41,48 +43,43 @@ local components = {
     text = ' ',
     truncation = { priority = 1 }
   },
-
   two_spaces = {
     text = '  ',
     truncation = { priority = 1 },
   },
-
   separator = {
     text = function(buffer)
       return buffer.index ~= 1 and '▏' or ''
     end,
     truncation = { priority = 1 }
   },
-
   devicon = {
     text = function(buffer)
       return
-        (mappings.is_picking_focus() or mappings.is_picking_close())
+          (mappings.is_picking_focus() or mappings.is_picking_close())
           and buffer.pick_letter .. ' '
-           or buffer.devicon.icon
+          or buffer.devicon.icon
     end,
     fg = function(buffer)
       return
-        (mappings.is_picking_focus() and yellow)
-        or (mappings.is_picking_close() and red)
-        or buffer.devicon.color
+          (mappings.is_picking_focus() and yellow)
+          or (mappings.is_picking_close() and red)
+          or buffer.devicon.color
     end,
     style = function(_)
       return
-        (mappings.is_picking_focus() or mappings.is_picking_close())
-        and 'italic,bold'
-         or nil
+          (mappings.is_picking_focus() or mappings.is_picking_close())
+          and 'italic,bold'
+          or nil
     end,
     truncation = { priority = 1 }
   },
-
   index = {
     text = function(buffer)
       return buffer.index .. ': '
     end,
     truncation = { priority = 1 }
   },
-
   unique_prefix = {
     text = function(buffer)
       return buffer.unique_prefix
@@ -94,41 +91,38 @@ local components = {
       direction = 'left',
     },
   },
-
   filename = {
     text = function(buffer)
       return buffer.filename
     end,
     style = function(buffer)
       return
-        ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
+          ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
           and 'bold,underline')
-        or (buffer.is_focused and 'bold')
-        or (buffer.diagnostics.errors ~= 0 and 'underline')
-        or nil
+          or (buffer.is_focused and 'bold')
+          or (buffer.diagnostics.errors ~= 0 and 'underline')
+          or nil
     end,
     truncation = {
       priority = 2,
       direction = 'left',
     },
   },
-
   diagnostics = {
     text = function(buffer)
       return
-        (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
-        or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
-        or ''
+          (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
+          or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
+          or ''
     end,
     fg = function(buffer)
       return
-        (buffer.diagnostics.errors ~= 0 and errors_fg)
-        or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-        or nil
+          (buffer.diagnostics.errors ~= 0 and errors_fg)
+          or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+          or nil
     end,
     truncation = { priority = 1 },
   },
-
   close_or_unsaved = {
     text = function(buffer)
       return buffer.is_modified and '●' or ''
@@ -143,27 +137,23 @@ local components = {
 
 require('cokeline').setup({
   show_if_buffers_are_at_least = 2,
-
   buffers = {
     -- filter_valid = function(buffer) return buffer.type ~= 'terminal' end,
     -- filter_visible = function(buffer) return buffer.type ~= 'terminal' end,
     new_buffers_position = 'next',
   },
-
   rendering = {
     max_buffer_width = 30,
   },
-
   default_hl = {
     fg = function(buffer)
       return
-        buffer.is_focused
-        and get_hex('Normal', 'fg')
-         or get_hex('Comment', 'fg')
+          buffer.is_focused
+          and get_hex('Normal', 'fg')
+          or get_hex('Comment', 'fg')
     end,
     bg = get_hex('ColorColumn', 'bg'),
   },
-
   components = {
     components.space,
     components.separator,
@@ -186,7 +176,7 @@ vim.keymap.set('n', '<A-.>', '<Plug>(cokeline-focus-next)', opts)
 vim.keymap.set('n', '<A-<>', '<Plug>(cokeline-switch-prev)', opts)
 vim.keymap.set('n', '<A->>', '<Plug>(cokeline-switch-next)', opts)
 
-for i = 1,9 do
+for i = 1, 9 do
   vim.keymap.set('n', ('<A-%s>'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), opts)
 end
 
@@ -204,8 +194,8 @@ local nvim_tree      = require('nvim-tree')
 local nvim_tree_lib  = require('nvim-tree.lib')
 local nvim_tree_view = require('nvim-tree.view')
 
-local HEIGHT_RATIO = 0.8
-local WIDTH_RATIO  = 0.5
+local HEIGHT_RATIO   = 0.8
+local WIDTH_RATIO    = 0.5
 
 local function collapse_all()
   require('nvim-tree.actions.tree-modifiers.collapse-all').fn()
@@ -286,7 +276,7 @@ nvim_tree.setup({
         local window_h_int = math.floor(window_h)
         local center_x = (screen_w - window_w) / 2
         local center_y = ((vim.opt.lines:get() - window_h) / 2)
-                         - vim.opt.cmdheight:get()
+            - vim.opt.cmdheight:get()
         return {
           border = 'rounded',
           relative = 'editor',
@@ -295,7 +285,7 @@ nvim_tree.setup({
           width = window_w_int,
           height = window_h_int,
         }
-        end,
+      end,
     },
     width = math.floor(vim.opt.columns:get() * WIDTH_RATIO),
     -- width  = 30,
@@ -304,7 +294,7 @@ nvim_tree.setup({
       custom_only = false,
       list = {
         { key = '/', action = 'live_filter' },
-        { key = 'l', action = 'edit', action_cb = edit_or_open },
+        { key = 'l', action = 'edit',         action_cb = edit_or_open },
         { key = 'h', action = 'close_node' },
         { key = 'H', action = 'collapse_all', action_cb = collapse_all },
       },
