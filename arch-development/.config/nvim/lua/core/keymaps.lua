@@ -88,6 +88,10 @@ local function set_make_keybinds()
   vim.keymap.set('n', '<leader>mt', '<cmd>make tests<cr>')
 end
 
+if utils.file_exists(vim.fn.getcwd() .. '/Makefile') then
+  set_make_keybinds()
+end
+
 au({ 'DirChanged' } , {
   '*',
   function()

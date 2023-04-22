@@ -1,12 +1,8 @@
 -- lua/plugins/init.lua
 
 require('plugins.install')
-
--- Tools
-require('plugins.lazygit')
-require('plugins.telescope')
-require('plugins.treesitter')
-
--- Submodules
+require('plugins.tools')
+require('plugins.mason')
 require('plugins.ui')
 require('plugins.lsp')
+require('plugins.dap')
