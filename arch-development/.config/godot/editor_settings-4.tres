@@ -1,6 +1,7 @@
 [gd_resource type="EditorSettings" format=3]
 
 [resource]
+interface/editor/code_font_size = 23.0
 interface/theme/base_color = Color(0.21, 0.24, 0.29, 1)
 interface/theme/accent_color = Color(0.44, 0.73, 0.98, 1)
 interface/theme/contrast = 0.3
@@ -151,5 +152,6 @@ metadata/script_setup_templates_dictionary = {
 "CharacterBody2D": "0CharacterBody2DBasic Movement",
 "Node": "0NodeDefault",
 "Node2D": "0NodeDefault",
+"Node3D": "0NodeDefault",
 "State": "0NodeDefault"
 }
