@@ -1,5 +1,4 @@
 -- lua/plugins/init.lua
--- packer install pkgs
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -71,13 +70,7 @@ require('packer').startup(function(use)
   -- UI
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
-  use({
-    'willothy/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('cokeline').setup()
-    end
-  })
+  use { 'willothy/nvim-cokeline', requires = 'kyazdani42/nvim-web-devicons', }
 
   -- Etc
   use 'gpanders/editorconfig.nvim'
