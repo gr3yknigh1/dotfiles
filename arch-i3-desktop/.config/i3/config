@@ -138,6 +138,8 @@ mode "launcher" {
   bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
   bindsym $mod+f exec kitty --class "floating-long" --title ranger    ranger
   bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
+
+  bindsym $mod+shift+n exec obsidian
 }
 
 
