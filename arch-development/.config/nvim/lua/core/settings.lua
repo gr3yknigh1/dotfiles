@@ -16,7 +16,7 @@ vim.opt.cursorline = true
 vim.opt.encoding='utf-8'
 vim.opt.fileformat='unix'
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 5
 
 vim.opt.relativenumber = true
