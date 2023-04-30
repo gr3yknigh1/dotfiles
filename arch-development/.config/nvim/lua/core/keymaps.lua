@@ -23,6 +23,7 @@ vim.keymap.set('v', '/', 'y/<C-r>0<cr>')
 -- SAVING
 -- saving
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>')
+vim.keymap.set('n', '<leader>s', '<cmd>wa<CR>')
 
 -- append new lines
 vim.keymap.set('n', 'mm', 'o<Esc>k');
