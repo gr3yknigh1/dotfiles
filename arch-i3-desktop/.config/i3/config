@@ -1,4 +1,4 @@
-set $browser vivaldi-stable
+set $browser firefox
 set $term    kitty
 
 font pango:JetBrains Mono Nerd Font 10
@@ -6,12 +6,9 @@ font pango:JetBrains Mono Nerd Font 10
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xset s 1200 5
 exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-# exec --no-startup-id nm-applet
 
 exec --no-startup-id source ~/.wallpaper
-# exec --no-startup-id picom -b
-exec --no-startup-id polybar
+exec --no-startup-id i3bar
 exec --no-startup-id dunst
 
 set $mod Mod4
@@ -136,7 +133,7 @@ mode "launcher" {
   bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
   bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
   bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
-  bindsym $mod+f exec kitty --class "floating-long" --title ranger    ranger
+  bindsym $mod+f exec kitty --class "floating-long" --title lf        lf
   bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
 
   bindsym $mod+shift+n exec obsidian
@@ -192,6 +189,31 @@ workspace 1 output HDMI-1
 # Title align
 title_align center
 
+bar {
+    status_command i3status
+    position bottom
+
+    tray_padding 0
+    font pango:JetBrains Mono Nerd Font 11
+
+    workspace_buttons yes
+    workspace_min_width 20
+    binding_mode_indicator yes
+    separator_symbol "|"
+
+    colors {
+        background #000000  # #00000000 - add two digits for transparency
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+    }
+}
+
 ############################### Colors ###############################
 
 ####### Nord theme
@@ -208,22 +230,22 @@ title_align center
 
 ####### Gruvbox theme
 
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+# set $bg #282828
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
+# set $aqua #689d68
+# set $gray #a89984
+# set $darkgray #1d2021
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+# client.focused          $green $green $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent           $red $red $white $red $red
 
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
@@ -233,10 +255,9 @@ client.urgent           $red $red $white $red $red
 # client.urgent           $red $red $white $red $red
 
 # # Default               border  backgr. text    indicator child_border
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-# client.urgent           #2f343a #900000 #ffffff #900000   #900000
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
