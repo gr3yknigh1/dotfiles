@@ -63,3 +63,4 @@ au.BufLeave = {
   end
 }
 
+vim.cmd[[let g:c_syntax_for_h = 1]];
