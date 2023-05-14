@@ -137,7 +137,7 @@ mode "launcher" {
   bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
   bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
   bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
-  bindsym $mod+f exec kitty --class "floating-long" --title lf        lf
+  bindsym $mod+f exec kitty --class "floating-long" --title ranger        ranger
   bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
 
   bindsym $mod+shift+n exec obsidian
