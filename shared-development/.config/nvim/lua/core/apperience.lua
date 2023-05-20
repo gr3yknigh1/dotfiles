@@ -2,7 +2,7 @@
 -- apperience settings
 
 vim.g.colorscheme = 'gruvbox' -- 'gruvbox', 'gracula', 'nord'
-vim.o.background  = 'light' -- 'dark', 'light'
+vim.o.background  = 'dark' -- 'dark', 'light'
 
 vim.cmd('syntax enable')
 vim.cmd('colorscheme ' .. vim.g.colorscheme)
