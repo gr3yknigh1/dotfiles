@@ -1,0 +1,266 @@
+set $browser firefox
+set $term    kitty
+
+font pango:JetBrains Mono Nerd Font 10
+
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xset s 1200 5
+exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+
+exec --no-startup-id source ~/.wallpaper
+exec --no-startup-id dunst
+
+set $mod Mod4
+floating_modifier $mod
+
+bindsym $mod+Return exec $term
+
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+f floating toggle
+
+
+# bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16' -nb "#2E3440" -sb "#5C6F7B"
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
+bindsym $mod+z focus mode_toggle
+
+bindsym $mod+Shift+l exec --no-startup-id xsecurelock -- systemctl suspend
+
+bindsym Mod1+Tab focus next
+bindsym Mod1+Shift+Tab focus prev
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Ctrl+h move left  10 px
+bindsym $mod+Ctrl+j move down  10 px
+bindsym $mod+Ctrl+k move up    10 px
+bindsym $mod+Ctrl+l move right 10 px
+
+bindsym $mod+Ctrl+Shift+h move left  100 px
+bindsym $mod+Ctrl+Shift+j move down  100 px
+bindsym $mod+Ctrl+Shift+k move up    100 px
+bindsym $mod+Ctrl+Shift+l move right 100 px
+
+bindsym $mod+c split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+a focus parent
+bindsym $mod+i focus child
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym $mod+Shift+q kill
+
+  set $resize_step 2
+  set $shift_resize_step 100
+
+  bindsym $mod+r mode "default"
+  bindsym Escape mode "default"
+
+  bindsym $mod+h resize shrink width  $resize_step px or $resize_step ppt
+  bindsym $mod+j resize grow   height $resize_step px or $resize_step ppt
+  bindsym $mod+k resize shrink height $resize_step px or $resize_step ppt
+  bindsym $mod+l resize grow   width  $resize_step px or $resize_step ppt
+
+  bindsym $mod+Shift+h resize shrink width  $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+j resize grow   height $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+k resize shrink height $shift_resize_step px or $shift_resize_step ppt
+  bindsym $mod+Shift+l resize grow   width  $shift_resize_step px or $shift_resize_step ppt
+}
+
+
+bindsym $mod+g exec --no-startup-id emacs
+
+bindsym $mod+o mode "launcher"
+
+mode "launcher" {
+  bindsym $mod+Shift+q kill
+
+  bindsym $mod+o mode "default"
+  bindsym Escape mode "default"
+
+
+  bindsym $mod+Shift+b exec $browser
+  bindsym $mod+Shift+n exec obsidian
+
+  bindsym $mod+t exec kitty --class "floating"      --title kitty
+  bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
+  bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
+  bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
+  bindsym $mod+f exec kitty --class "floating-long" --title ranger        ranger
+  bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
+
+  bindsym $mod+shift+n exec obsidian
+}
+
+
+# Sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# No notifications
+bindsym $mod+Shift+n exec --no-startup-id dunstctl set-paused toggle
+
+# TODO: Touchpad
+bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggle_touchpad.sh
+
+# Media player
+bindsym XF86AudioPlay  exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPrev  exec playerctl previous
+
+# Brightness
+set $brightness_step 20
+bindsym XF86MonBrightnessUp   exec brightnessctl set +$brightness_step
+bindsym XF86MonBrightnessDown exec brightnessctl set  $brightness_step-
+
+# Screenshots
+bindsym Print            exec --no-startup-id maim -m 1           "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym $mod+Print       exec --no-startup-id maim -m 1 --window  $(xdotool getactivewindow) "$HOME/Pictures/Screenshots/$screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym Shift+Print      exec --no-startup-id maim -m 1 --select  "$HOME/Pictures/Screenshots/$(date +"%y-%m-%d - %H-%M-%S").png"
+bindsym Ctrl+Print       exec --no-startup-id maim -m 1 | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print  exec --no-startup-id maim -m 1 --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim -m 1 --select | xclip -selection clipboard -t image/png
+
+# Window rules
+for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] floating_border pixel 1
+
+for_window [class="^Bitwarden$"]    floating enable, resize set 900px 600px,  move position center
+for_window [class="^floating$"]      floating enable, resize set 900px 600px,  move position center
+for_window [class="^floating-long$"] floating enable, resize set 1200px 600px, move position center
+
+# Gapping
+gaps inner 0
+
+# Multimonitor configuration
+workspace 1 output HDMI-1
+
+# Title align
+title_align center
+
+bar {
+    status_command i3status
+    position bottom
+
+    tray_padding 0
+    font pango:JetBrains Mono Nerd Font 11
+
+    workspace_buttons yes
+    workspace_min_width 20
+    binding_mode_indicator yes
+    separator_symbol "|"
+
+    colors {
+        background #000000  # #00000000 - add two digits for transparency
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+    }
+}
+
+############################### Colors ###############################
+
+####### Nord theme
+# set $nord_regul_bg_clr  #88C0D0
+# set $nord_inact_bg_clr  #2E3440
+# set $nord_regul_tx_clr  #F5F5F5
+# set $nord_inact_tx_clr #D8DEE9
+# set $nord_urgen_bg_clr  #BF616A
+#
+# client.focused          $nord_regul_bg_clr $nord_regul_bg_clr $nord_inact_bg_clr $nord_regul_bg_clr
+# client.unfocused        $nord_inact_bg_clr $nord_inact_bg_clr $nord_inact_tx_clr $nord_inact_bg_clr
+# client.focused_inactive $nord_inact_bg_clr $nord_inact_bg_clr $nord_inact_tx_clr $nord_inact_bg_clr
+# client.urgent           $nord_urgen_bg_clr $nord_urgen_bg_clr $nord_regul_tx_clr $nord_urgen_bg_clr
+
+####### Gruvbox theme
+
+# set $bg #282828
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
+# set $aqua #689d68
+# set $gray #a89984
+# set $darkgray #1d2021
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+# client.focused          $green $green $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+# client.focused          $blue $blue $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent           $red $red $white $red $red
+
+# # Default               border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
