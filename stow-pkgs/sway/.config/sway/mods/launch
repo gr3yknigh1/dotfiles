@@ -1,0 +1,19 @@
+# ~/.config/sway/mods/launch
+#
+# Launcher mode
+
+include ~/.config/sway/defaults
+include ~/.config/sway/globals
+
+mode "launch" {
+    bindsym $mod+b exec firefox; mode "default"
+    bindsym $mod+c exec wl-color-picker; mode "default"
+
+    bindsym $mod+grave mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+grave mode "launch"
+
+# vim: set filetype=swayconfig:

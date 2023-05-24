@@ -11,6 +11,7 @@ include ./font
 include ./launchers/bemenu
 include ./bars/swaybar
 include ./mods/resize
+include ./mods/launch
 
 include ./cfgs/workspaces
 include ./cfgs/bindings

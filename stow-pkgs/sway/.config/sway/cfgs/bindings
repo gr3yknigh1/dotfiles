@@ -70,4 +70,9 @@ bindsym $mod+Mod1+Shift+Right move right 100 px
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+### Sound
+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
 # vim: set filetype=swayconfig:
