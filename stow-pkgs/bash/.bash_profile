@@ -32,6 +32,10 @@ fi
 
 export XGD_CURRENT_DESKTOP=sway
 
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec sway
+fi
+
 # Start Xorg Server
 # if [ $(tty) = "/dev/tty1" ]; then
 #     exec startx

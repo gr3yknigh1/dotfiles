@@ -12,7 +12,8 @@ set $right l
 set $term    alacritty
 set $browser firefox
 
-set $font "Monospace 14"
+set $font "JetBrains Mono Nerd Font 14"
+font pango:JetBrains Mono Nerd Font 10
 
 set $menu bemenu-run --fn $font -p "▶" -l 10  | xargs swaymsg exec
 
