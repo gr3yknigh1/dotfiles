@@ -1,0 +1,13 @@
+# ~/.config/sway/defaults
+#
+# Defualt variables
+# Include this before any configurations
+
+set $fontname Monospace
+set $fontsize 10
+
+set $mod     Mod4
+set $term    foot
+set $browser firefox
+
+# vim: set filetype=swayconfig:
