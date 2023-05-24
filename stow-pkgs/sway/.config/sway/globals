@@ -1,0 +1,9 @@
+# ~/.config/sway/globals
+#
+# Global configration variables
+
+set $mod     Mod4
+set $term    alacritty
+set $browser firefox
+
+# vim: set filetype=swayconfig:

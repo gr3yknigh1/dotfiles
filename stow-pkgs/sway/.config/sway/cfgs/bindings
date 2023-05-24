@@ -1,0 +1,73 @@
+# ~/.config/sway/cfgs/bindings
+#
+# Bindings
+
+include ~/.config/sway/defaults
+include ~/.config/sway/globals
+
+### Main bindings
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+### Modes and layouts
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+###  Focusing
+bindsym $mod+a focus parent
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym Mod1+Tab focus next
+bindsym Mod1+Shift+Tab focus prev
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+### Moving panes
+bindsym $mod+Shift+h  move left  10 px
+bindsym $mod+Shift+j  move down  10 px
+bindsym $mod+Shift+k    move up    10 px
+bindsym $mod+Shift+l move right 10 px
+
+bindsym $mod+Shift+Left  move left  10 px
+bindsym $mod+Shift+Down  move down  10 px
+bindsym $mod+Shift+Up    move up    10 px
+bindsym $mod+Shift+Right move right 10 px
+
+### Moving panes faster
+bindsym $mod+Mod1+Shift+h  move left  100 px
+bindsym $mod+Mod1+Shift+j  move down  100 px
+bindsym $mod+Mod1+Shift+k    move up    100 px
+bindsym $mod+Mod1+Shift+l move right 100 px
+
+bindsym $mod+Mod1+Shift+Left  move left  100 px
+bindsym $mod+Mod1+Shift+Down  move down  100 px
+bindsym $mod+Mod1+Shift+Up    move up    100 px
+bindsym $mod+Mod1+Shift+Right move right 100 px
+
+### Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# vim: set filetype=swayconfig:

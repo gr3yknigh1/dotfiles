@@ -1,0 +1,10 @@
+# ~/.config/sway/launchers/bemenu
+#
+# bemenu
+
+include ~/.config/sway/defaults
+include ~/.config/sway/font
+
+set $menu bemenu-run --fn "$fontname 14" -p "▶" -l 10  | xargs swaymsg exec
+
+# vim: set filetype=swayconfig:
