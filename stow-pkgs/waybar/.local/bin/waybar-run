@@ -1,0 +1,13 @@
+#/bin/env bash
+#
+# This program checks if waybar is already running. If it is not,
+# runs it. Otherwise exit.
+
+__is_waybar_not_running=$(ps -A | grep "waybar")
+
+if $__is_waybar_not_running
+then
+    exec waybar
+fi
+
+# vim: set filetype=bash:

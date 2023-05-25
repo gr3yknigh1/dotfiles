@@ -12,6 +12,7 @@ exec --no-startup-id dunst
 
 set $mod Mod4
 floating_modifier $mod
+title_align right
 
 bindsym $mod+Return exec $term
 

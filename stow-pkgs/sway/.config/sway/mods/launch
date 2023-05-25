@@ -6,8 +6,11 @@ include ~/.config/sway/defaults
 include ~/.config/sway/globals
 
 mode "launch" {
-    bindsym $mod+b exec firefox; mode "default"
-    bindsym $mod+c exec wl-color-picker; mode "default"
+    bindsym b exec firefox; mode "default"
+
+    bindsym Shift+b exec $term --title "Bluetooth" --class "tui" -e "bluetuith" ; mode "default"
+    bindsym Shift+c exec wl-color-picker; mode "default"
+    # bindsym s exec ; mode "default"
 
     bindsym $mod+grave mode "default"
     bindsym Return mode "default"

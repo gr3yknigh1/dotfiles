@@ -1,0 +1,10 @@
+#
+# ~/.bash_globals
+#
+
+# NOTE: This is my public information btw
+export USER_NAME="gr3yknigh1"
+export USER_FULLNAME="Ilya Akkuzin"
+export USER_EMAIL="gr3yknigh1@gmail.com"
+
+# vim: set filetype=bash:

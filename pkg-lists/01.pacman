@@ -1,0 +1,56 @@
+# Sway default kit
+sway
+swaybg
+swayidle
+swaylock
+bemenu
+foot
+polkit
+
+# Ricing things
+alacritty
+waybar
+wofi
+
+# Audio
+pipewire
+pipewire-alsa
+
+# Text editors
+vi
+vim
+nvim
+
+# Browser
+firefox
+
+# Utils
+slurp
+grim
+imagemagick
+playerctl
+brightnessctl
+
+# Terminal utils
+tree
+which
+
+# Sound
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-audio
+wireplumber
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Package managers
+flatpack
+nodejs
+npm
+rustup
+
+# Fonts
+noto-fonts
