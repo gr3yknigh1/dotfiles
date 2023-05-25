@@ -1,8 +1,8 @@
 # ~/.config/sway/swaybar
 #
-# sway-bar
+# swaybar
 
-include ../theme
+include ~/.config/sway/theme
 
 # NOTE: Read `man 5 sway-bar` for more information about this section.
 bar {

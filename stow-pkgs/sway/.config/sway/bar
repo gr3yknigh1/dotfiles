@@ -1,0 +1,7 @@
+# ~/.config/sway/bar
+#
+# Include bar confugration here
+
+include ./bars/waybar
+
+# vim: set filetype=swayconfig:

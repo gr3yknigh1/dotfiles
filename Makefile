@@ -14,7 +14,8 @@ STOW_PKGS = sway nvim lazygit tmux bash alacritty ranger
 DIRS = Desktop Downloads Documents Templates
 DIRS += Pictures Pictures/Camera Pictures/Wallpapers
 DIRS += Videos Videos/OBS Videos/Films
-DIRS += Workspace Workspace/Projects Workspace/Forks Workspace/AVSoft Workspace/Testing Workspace/Chaos
+DIRS += Workspace Workspace/Projects Workspace/Forks Workspace/AVSoft
+DIRS += Workspace/Testing Workspace/Chaos Workspace/Notes
 DIRS += .config .local .local/bin .local/share
 
 default:
@@ -25,6 +26,7 @@ dirs:
 	done
 
 ## PARU - AUR Helper
+PARU_URL := https://aur.archlinux.org/paru.git
 PARU_DIR := /opt/paru
 
 install-paru:
@@ -34,13 +36,14 @@ install-paru:
 		git -C $(PARU_DIR) fetch; \
 		git -C $(PARU_DIR) pull; \
 	else \
-		sudo git clone https://aur.archlinux.org/paru.git $(PARU_DIR); \
+		sudo git clone $(PARU_URL) $(PARU_DIR); \
 		sudo chown -R $(USER) $(PARU_DIR); \
 	fi
 	cd $(PARU_DIR); makepkg -si --noconfirm --needed
 
 
 ### NERD FONTS
+NERD_FONTS_URL := https://github.com/ryanoasis/nerd-fonts.git
 NERD_FONTS_DIR := /opt/nerd-fonts
 NERD_FONTS_TAG := v3.0.1
 
@@ -50,14 +53,48 @@ install-nerd-fonts:
 		git -C $(NERD_FONTS_DIR) fetch; \
 		git -C $(NERD_FONTS_DIR) pull; \
 	else \
-		sudo git clone --depth 1 -b $(NERD_FONTS_TAG) -- https://github.com/ryanoasis/nerd-fonts.git $(NERD_FONTS_DIR); \
+		sudo git clone --depth 1 -b $(NERD_FONTS_TAG) -- $(NERD_FONTS_URL) $(NERD_FONTS_DIR); \
 		sudo chown -R $(USER) $(NERD_FONTS_DIR); \
 	fi
 	sh $(NERD_FONTS_DIR)/install.sh
 
 
 install-stow-pkgs: dirs
-	@for pkg in $(STOW_PKGS); do \
+	@ for pkg in $(STOW_PKGS); do \
 		$(STOW_CMD) -S $$pkg; \
 	done
+
+### SSH for git
+GIT_SSH_PRIVATE_KEY=$(HOME)/.ssh/id_rsa
+GIT_SSH_PUBLIC_KEY=$(HOME)/.ssh/id_rsa.pub
+# TODO: Find way to check what clipping util is installed
+COPY_TO_CLIPBOARD=wl-copy
+CAT=cat
+
+# TODO: Exit if `USER_EMAIL` not setted
+# TODO: Run `ssh-agent` only if it's not already running
+# NOTE: ^^^ When I running it several times it not running twice
+ssh-key:
+	@ if [ ! -z $(USER_EMAIL) ]; then                                                         \
+		if [ ! -f $(GIT_SSH_PRIVATE_KEY) ] || [ ! -f $(GIT_SSH_PUBLIC_KEY) ]; then            \
+			echo "Regenerating public key...";                                                \
+			                                                                                  \
+			if [ -f $(GIT_SSH_PUBLIC_KEY) ]; then                                             \
+				echo "Backup $(GIT_SSH_PUBLIC_KEY) -> $(GIT_SSH_PUBLIC_KEY).old";             \
+				mv $(GIT_SSH_PUBLIC_KEY) $(GIT_SSH_PUBLIC_KEY).old;                           \
+			fi;                                                                               \
+			                                                                                  \
+			if [ -f $(GIT_SSH_PRIVATE_KEY) ]; then                                            \
+				echo "Backup $(GIT_SSH_PRIVATE_KEY) -> $(GIT_SSH_PRIVATE_KEY).old";           \
+				mv $(GIT_SSH_PRIVATE_KEY) $(GIT_SSH_PRIVATE_KEY).old;                         \
+			fi;                                                                               \
+			                                                                                  \
+			ssh-keygen -t rsa -b 4096 -C "$(USER_EMAIL)" -N "" -f $(GIT_SSH_PRIVATE_KEY) -q ; \
+		fi;                                                                                   \
+		eval "$(ssh-agent -s)";                                                               \
+		echo "Copied public key to clipboard";                                                \
+		$(CAT) $(GIT_SSH_PUBLIC_KEY) | $(COPY_TO_CLIPBOARD);                                  \
+	else                                                                                      \
+		echo "USER_EMAIL variable not found";                                                 \
+	fi
 

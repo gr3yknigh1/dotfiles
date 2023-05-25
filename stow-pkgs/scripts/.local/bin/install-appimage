@@ -1,0 +1,35 @@
+#!/bin/env bash
+#
+# This program installs .AppImage file in `~/.local/lib` directory and adds
+# symlink in `~/.local/bin` directory
+
+echo "Not implmeneted"
+exit
+
+__install_dest="~/.local/lib"
+__link_dest="~/.local/bin"
+
+function is_root() {
+    local _user_id=$(id -u)
+    local _is_root=$(test $_user_id -eq 0)
+    return $_user_id
+}
+
+if is_root
+then
+    echo "Run as root is dangeorus. Exit."
+    exit
+fi
+
+__prog_path=$__install_dest/$(basename $1)
+__is_prog_installed=$(test -e $__prog_path)
+echo $__is_prog_installed
+
+if $__is_prog_installed
+then
+    echo "Already installed..."
+else
+    cp $1 ~/.local/lib
+fi
+
+# vim: set filetype=bash:

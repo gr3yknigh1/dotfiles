@@ -28,6 +28,13 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+## Variables
+
+__globals_path=$HOME/.bash_globals
+if [ -f "$__globals_path" ]; then
+    . $__globals_path
+fi
+
 ### Desktop
 
 export XGD_CURRENT_DESKTOP=sway

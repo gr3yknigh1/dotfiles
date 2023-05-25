@@ -7,9 +7,10 @@
 include ./defaults
 include ./globals
 include ./font
+include ./theme
 
 include ./launchers/bemenu
-include ./bars/swaybar
+include ./bar
 include ./mods/resize
 include ./mods/launch
 
