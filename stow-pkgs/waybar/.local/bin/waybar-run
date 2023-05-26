@@ -5,8 +5,13 @@
 
 __is_waybar_not_running=$(ps -A | grep "waybar")
 
+# NOTE: I'm too lazy to optimize this if statement
 if $__is_waybar_not_running
 then
+    exec waybar
+else
+    __pid_of_waybar=$(pidof "waybar")
+    kill $__pid_of_waybar
     exec waybar
 fi
 
