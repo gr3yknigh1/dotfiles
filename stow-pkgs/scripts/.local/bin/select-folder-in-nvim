@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Reference:
+# <https://stackoverflow.com/questions/59692211/selecting-folder-using-ranger-file-manager-using-bash-hanging>
+
+__tmp="$(mktemp)"
+
+ranger --show-only-dirs --choosedir="$__tmp" 1>&2
+
+cat $__tmp | xargs nvim
+rm -f $__tmp

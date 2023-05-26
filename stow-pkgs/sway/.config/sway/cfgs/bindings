@@ -16,7 +16,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 
 ### Modes and layouts
 bindsym $mod+Shift+f floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+z focus mode_toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -86,5 +86,16 @@ bindsym XF86AudioPrev  exec playerctl previous
 set $brightness_step 20
 bindsym XF86MonBrightnessUp   exec brightnessctl set +$brightness_step
 bindsym XF86MonBrightnessDown exec brightnessctl set  $brightness_step-
+
+### Screenshots
+# capture all screens to clipboard
+bindsym Print exec grim - | wl-copy
+
+# capture the specified screen area to clipboard
+bindsym Control+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+
+# capture the focused monitor to clipboard
+bindsym Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+
 
 # vim: set filetype=swayconfig:

@@ -24,6 +24,15 @@ floating_modifier $mod normal
 
 font pango:$fontname $fontsize
 
+default_border pixel 1
+default_floating_border none
+titlebar_padding 1
+titlebar_border_thickness 0
+hide_edge_borders smart
+gaps inner 0
+# smart_gaps on
+smart_borders on
+
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \

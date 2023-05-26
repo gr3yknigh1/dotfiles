@@ -5,17 +5,28 @@
 include ~/.config/sway/defaults
 include ~/.config/sway/globals
 
+
 mode "launch" {
     bindsym b exec firefox; mode "default"
+    bindsym t exec $term --title "Terminal (alacritty)" --class "tui" -o font.size=13; mode "default"
 
-    bindsym Shift+b exec $term --title "Bluetooth" --class "tui" -e "bluetuith" ; mode "default"
+    bindsym f exec $term --title "Files (ranger)" --class "tui long" -o font.size=12 -e "ranger"; mode "default"
+    bindsym s exec $term --title "Sound (pulsemixer)" --class "tui" -o font.size=12 -e "pulsemixer"; mode "default"
+
+
+    bindsym Shift+n exec $term --title "Nvim" --class "tui long" -o font.size=13 -e 'select-folder-in-nvim'; mode "default"
+    bindsym Shift+h exec $term --title "Tasks (btop)" --class "tui long" -o font.size=13 -e "btop"; mode "default"
+    bindsym Shift+b exec $term --title "Bluetooth (bluetuith)" --class "tui" -o font.size=12 -e "bluetuith"; mode "default"
+    bindsym Shift+w exec $term --title "Wifi (iwctl)" --class "tui" -o font.size=12 -e "iwctl"; mode "default"
     bindsym Shift+c exec wl-color-picker; mode "default"
-    # bindsym s exec ; mode "default"
 
     bindsym $mod+grave mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+for_window [app_id="^tui"] floating enable; resize set 900px 600px; move position center
+for_window [app_id="long"] resize set 1200px 800px;
 
 bindsym $mod+grave mode "launch"
 
