@@ -23,4 +23,8 @@ input type:touchpad {
     middle_emulation enabled
 }
 
+input type:tablet_tool {
+    tool_mode * relative
+}
+
 # vim: set filetype=swayconfig:
