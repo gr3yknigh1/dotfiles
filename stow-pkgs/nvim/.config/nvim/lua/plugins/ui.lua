@@ -3,6 +3,10 @@
 -- LUALINE
 local lualine = require('lualine')
 
+-- NOTE: Too heavy
+-- local navic   = require('nvim-navic')
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -26,8 +30,8 @@ lualine.setup({
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { 'filename' },
-    lualine_x = { 'encoding', 'fileformat' },
-    lualine_y = { 'progress' },
+    lualine_x = {},
+    lualine_y = {},
     lualine_z = { 'location' }
   },
   inactive_sections = {
@@ -39,7 +43,9 @@ lualine.setup({
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
+  winbar = {
+    lualine_c = { 'navic' },
+  },
   inactive_winbar = {},
   extensions = {}
 })
@@ -70,7 +76,7 @@ local bufferline = require('bufferline')
 bufferline.setup {
   options = {
     mode = "buffers",                               -- set to "tabs" to only show tabpages instead
-    style_preset = bufferline.style_preset.minimal, -- bufferline.style_preset.default | bufferline.style_preset.minimal,
+    style_preset = bufferline.style_preset.no_italic, -- bufferline.style_preset.default | bufferline.style_preset.minimal,
     themable = true,                                --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
     numbers = "none",                               -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "bdelete! %d",                  -- can be a string | function, | false see "Mouse actions"
@@ -78,7 +84,7 @@ bufferline.setup {
     left_mouse_command = "buffer %d",               -- can be a string | function, | false see "Mouse actions"
     middle_mouse_command = nil,                     -- can be a string | function, | false see "Mouse actions"
     indicator = {
-      icon = '▎',                                 -- this should be omitted if indicator style is not 'icon'
+      icon = ' ',                                 -- this should be omitted if indicator style is not 'icon'
       style = 'icon'                                -- 'icon' | 'underline' | 'none',
     },
     buffer_close_icon = '󰅖',
@@ -105,8 +111,8 @@ bufferline.setup {
     diagnostics_update_in_insert = false,
     -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      local icon = level:match("error") and " " or " "
-      return "" .. icon .. count
+      -- local icon = level:match("error") and " " or " "
+      return "" -- .. icon .. count
     end,
     -- NOTE: this will be called a lot so don't do any heavy processing here
     custom_filter = function(buf_number, buf_numbers)
@@ -127,6 +133,8 @@ bufferline.setup {
       if buf_numbers[1] ~= buf_number then
         return true
       end
+
+      return true
     end,
     offsets = {
       {

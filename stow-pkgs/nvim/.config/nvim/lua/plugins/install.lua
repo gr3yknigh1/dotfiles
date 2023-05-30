@@ -79,6 +79,21 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'skywind3000/vim-cppman'
 
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim",          -- Optional
+      "nvim-telescope/telescope.nvim"   -- Optional
+    }
+  }
+
   use 'windwp/nvim-autopairs'
 
   use { 'kylechui/nvim-surround', tag = '*', }
