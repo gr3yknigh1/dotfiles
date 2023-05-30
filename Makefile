@@ -98,3 +98,10 @@ ssh-key:
 		echo "USER_EMAIL variable not found";                                                 \
 	fi
 
+### TPM for tmux
+TPM_URL := https://github.com/tmux-plugins/tpm
+TPM_DIR := ~/.config/tmux/plugins/tpm
+
+install-tpm:
+	git clone $(TPM_URL) $(TPM_DIR)
+
