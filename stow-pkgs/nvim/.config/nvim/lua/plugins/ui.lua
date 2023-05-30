@@ -24,176 +24,129 @@ end
 
 vim.keymap.set('n', '<leader>lh', toggle_lualine)
 
--- Cokeline
-local get_hex = require('cokeline/utils').get_hex
-local mappings = require('cokeline/mappings')
 
-local comments_fg = get_hex('Comment', 'fg')
-local errors_fg = get_hex('DiagnosticError', 'fg')
-local warnings_fg = get_hex('DiagnosticWarn', 'fg')
+-- Bufferline
 
-local red = vim.g.terminal_color_1
-local yellow = vim.g.terminal_color_3
-
-local components = {
-  space = {
-    text = ' ',
-    truncation = { priority = 1 }
-  },
-
-  two_spaces = {
-    text = '  ',
-    truncation = { priority = 1 },
-  },
-
-  separator = {
-    text = function(buffer)
-      return buffer.index ~= 1 and '▏' or ''
-    end,
-    truncation = { priority = 1 }
-  },
-
-  devicon = {
-    text = function(buffer)
-      return
-          (mappings.is_picking_focus() or mappings.is_picking_close())
-          and buffer.pick_letter .. ' '
-          or buffer.devicon.icon
-    end,
-    fg = function(buffer)
-      return
-          (mappings.is_picking_focus() and yellow)
-          or (mappings.is_picking_close() and red)
-          or buffer.devicon.color
-    end,
-    style = function(_)
-      return
-          (mappings.is_picking_focus() or mappings.is_picking_close())
-          and 'italic,bold'
-          or nil
-    end,
-    truncation = { priority = 1 }
-  },
-
-  index = {
-    text = function(buffer)
-      return buffer.index .. ': '
-    end,
-    truncation = { priority = 1 }
-  },
-
-  unique_prefix = {
-    text = function(buffer)
-      return buffer.unique_prefix
-    end,
-    fg = comments_fg,
-    style = 'italic',
-    truncation = {
-      priority = 3,
-      direction = 'left',
+local bufferline = require('bufferline')
+bufferline.setup {
+  options = {
+    mode = "buffers",                                   -- set to "tabs" to only show tabpages instead
+    style_preset = bufferline.style_preset.minimal,     -- bufferline.style_preset.default | bufferline.style_preset.minimal,
+    themable = true,                                    --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
+    numbers = "none",                                   -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "bdelete! %d",                      -- can be a string | function, | false see "Mouse actions"
+    right_mouse_command = "bdelete! %d",                -- can be a string | function | false, see "Mouse actions"
+    left_mouse_command = "buffer %d",                   -- can be a string | function, | false see "Mouse actions"
+    middle_mouse_command = nil,                         -- can be a string | function, | false see "Mouse actions"
+    indicator = {
+      icon = '▎',                                     -- this should be omitted if indicator style is not 'icon'
+      style = 'icon'                                    -- 'icon' | 'underline' | 'none',
     },
-  },
-
-  filename = {
-    text = function(buffer)
-      return buffer.filename
+    buffer_close_icon = '󰅖',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    --- name_formatter can be used to change the buffer's label in the bufferline.
+    --- Please note some names can/will break the
+    --- bufferline so use this at your discretion knowing that it has
+    --- some limitations that will *NOT* be fixed.
+    name_formatter = function(buf)     -- buf contains:
+      -- name                | str        | the basename of the active file
+      -- path                | str        | the full path of the active file
+      -- bufnr (buffer only) | int        | the number of the active buffer
+      -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
+      -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
     end,
-    style = function(buffer)
-      return
-          ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
-            and 'bold,underline')
-          or (buffer.is_focused and 'bold')
-          or (buffer.diagnostics.errors ~= 0 and 'underline')
-          or nil
+    max_name_length = 18,
+    max_prefix_length = 15,       -- prefix used when a buffer is de-duplicated
+    truncate_names = true,        -- whether or not tab names should be truncated
+    tab_size = 18,
+    diagnostics = 'nvim_lsp',     -- false | "nvim_lsp" | "coc",
+    diagnostics_update_in_insert = false,
+    -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      local icon = level:match("error") and " " or ""
+      return " " .. icon .. count
     end,
-    truncation = {
-      priority = 2,
-      direction = 'left',
+    -- NOTE: this will be called a lot so don't do any heavy processing here
+    custom_filter = function(buf_number, buf_numbers)
+      -- filter out filetypes you don't want to see
+      if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+        return true
+      end
+      -- filter out by buffer name
+      if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+        return true
+      end
+      -- filter out based on arbitrary rules
+      -- e.g. filter out vim wiki buffer from tabline in your work repo
+      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+        return true
+      end
+      -- filter out by it's index number in list (don't show first buffer)
+      if buf_numbers[1] ~= buf_number then
+        return true
+      end
+    end,
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "File Explorer",         -- "File Explorer" | function ,
+        text_align = "left",            -- "left" | "center" | "right"
+        separator = true
+      }
     },
-  },
-
-  diagnostics = {
-    text = function(buffer)
-      return
-          (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
-          or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
-          or ''
+    color_icons = true,     -- true | false, -- whether or not to add the filetype icon highlights
+    get_element_icon = function(element)
+      -- element consists of {filetype: string, path: string, extension: string, directory: string}
+      -- This can be used to change how bufferline fetches the icon
+      -- for an element e.g. a buffer or a tab.
+      -- e.g.
+      local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
+      return icon, hl
+      -- or
+      -- local custom_map = {my_thing_ft: {icon = "my_thing_icon", hl}}
+      -- return custom_map[element.filetype]
     end,
-    fg = function(buffer)
-      return
-          (buffer.diagnostics.errors ~= 0 and errors_fg)
-          or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-          or nil
-    end,
-    truncation = { priority = 1 },
-  },
-
-  close_or_unsaved = {
-    text = function(buffer)
-      return buffer.is_modified and '●' or ''
-    end,
-    fg = function(buffer)
-      return buffer.is_modified and green or nil
-    end,
-    delete_buffer_on_left_click = true,
-    truncation = { priority = 1 },
-  },
+    show_buffer_icons = true,           --  true | false, -- disable filetype icons for buffers
+    show_buffer_close_icons = true,     -- true | false,
+    show_close_icon = true,             -- true | false,
+    show_tab_indicators = true,         -- true | false,
+    show_duplicate_prefix = true,       -- true | false, -- whether to show duplicate buffer prefix
+    persist_buffer_sort = true,         -- whether or not custom sorted buffers should persist
+    -- can also be a table containing 2 custom separators
+    -- [focused and unfocused]. eg: { '|', '|' }
+    separator_style = "thin",          -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = false,      -- false | true,
+    always_show_bufferline = true,     -- true | false,
+    hover = {
+      enabled = true,
+      delay = 200,
+      reveal = { 'close' }
+    },
+    sort_by = 'insert_after_current',     -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+    --     -- add custom logic
+    --     return buffer_a.modified > buffer_b.modified
+    -- end
+  }
 }
 
-require('cokeline').setup({
-  show_if_buffers_are_at_least = 2,
-
-  buffers = {
-    -- filter_valid = function(buffer) return buffer.type ~= 'terminal' end,
-    -- filter_visible = function(buffer) return buffer.type ~= 'terminal' end,
-    new_buffers_position = 'next',
-  },
-
-  rendering = {
-    max_buffer_width = 30,
-  },
-
-  default_hl = {
-    fg = function(buffer)
-      return
-          buffer.is_focused
-          and get_hex('Normal', 'fg')
-          or get_hex('Comment', 'fg')
-    end,
-    bg = get_hex("GruvboxBg0"),
-  },
-
-  components = {
-    components.space,
-    components.separator,
-    components.space,
-    components.devicon,
-    components.space,
-    components.index,
-    components.unique_prefix,
-    components.filename,
-    components.diagnostics,
-    components.two_spaces,
-    components.close_or_unsaved,
-    components.space,
-  },
-})
-
-local opts = { silent = true }
-vim.keymap.set('n', '<A-,>', '<Plug>(cokeline-focus-prev)', opts)
-vim.keymap.set('n', '<A-.>', '<Plug>(cokeline-focus-next)', opts)
-vim.keymap.set('n', '<A-<>', '<Plug>(cokeline-switch-prev)', opts)
-vim.keymap.set('n', '<A->>', '<Plug>(cokeline-switch-next)', opts)
-
-for i = 1, 9 do
-  vim.keymap.set('n', ('<A-%s>'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), opts)
-end
-
-vim.keymap.set('n', '<A-c>', '<cmd>bdelete<cr>', opts)
-vim.keymap.set('n', '<A-C>', '<cmd>bdelete!<cr>', opts)
-
-vim.keymap.set('n', '<A-p>c', '<Plug>(cokeline-pick-close)', opts)
-vim.keymap.set('n', '<A-p>f', '<Plug>(cokeline-pick-focus)', opts)
+-- local opts = { silent = true }
+-- vim.keymap.set('n', '<A-,>', '<Plug>(cokeline-focus-prev)', opts)
+-- vim.keymap.set('n', '<A-.>', '<Plug>(cokeline-focus-next)', opts)
+-- vim.keymap.set('n', '<A-<>', '<Plug>(cokeline-switch-prev)', opts)
+-- vim.keymap.set('n', '<A->>', '<Plug>(cokeline-switch-next)', opts)
+--
+-- for i = 1, 9 do
+--   vim.keymap.set('n', ('<A-%s>'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), opts)
+-- end
+--
+-- vim.keymap.set('n', '<A-c>', '<cmd>bdelete<cr>', opts)
+-- vim.keymap.set('n', '<A-C>', '<cmd>bdelete!<cr>', opts)
+--
+-- vim.keymap.set('n', '<A-p>c', '<Plug>(cokeline-pick-close)', opts)
+-- vim.keymap.set('n', '<A-p>f', '<Plug>(cokeline-pick-focus)', opts)
 
 
 
@@ -214,7 +167,7 @@ nvim_tree.setup({
   },
   diagnostics = {
     enable = true,
-    show_on_dirs = true,
+    show_on_dirs = false,
     debounce_delay = 50,
   },
   filters = {

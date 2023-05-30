@@ -70,7 +70,7 @@ require('packer').startup(function(use)
   -- UI
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
-  use { 'willothy/nvim-cokeline', requires = 'kyazdani42/nvim-web-devicons', }
+  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
   -- Etc
   use 'gpanders/editorconfig.nvim'

@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/i_akkuzin/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/i_akkuzin/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/i_akkuzin/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -168,11 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/i_akkuzin/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-cokeline"] = {
-    loaded = true,
-    path = "/home/i_akkuzin/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
-    url = "https://github.com/willothy/nvim-cokeline"
   },
   ["nvim-dap"] = {
     loaded = true,
