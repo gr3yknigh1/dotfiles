@@ -3,7 +3,46 @@
 -- LUALINE
 local lualine = require('lualine')
 
-lualine.setup({})
+lualine.setup({
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      statusline = { 'quickfix', 'packer', 'NvimTree' },
+      winbar = { 'quickfix', 'packer', 'NvimTree' },
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'fileformat' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+})
 
 local lualine_is_hide = false
 -- local default_laststatus_value = vim.o.laststatus
@@ -30,17 +69,17 @@ vim.keymap.set('n', '<leader>lh', toggle_lualine)
 local bufferline = require('bufferline')
 bufferline.setup {
   options = {
-    mode = "buffers",                                   -- set to "tabs" to only show tabpages instead
-    style_preset = bufferline.style_preset.minimal,     -- bufferline.style_preset.default | bufferline.style_preset.minimal,
-    themable = true,                                    --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
-    numbers = "none",                                   -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-    close_command = "bdelete! %d",                      -- can be a string | function, | false see "Mouse actions"
-    right_mouse_command = "bdelete! %d",                -- can be a string | function | false, see "Mouse actions"
-    left_mouse_command = "buffer %d",                   -- can be a string | function, | false see "Mouse actions"
-    middle_mouse_command = nil,                         -- can be a string | function, | false see "Mouse actions"
+    mode = "buffers",                               -- set to "tabs" to only show tabpages instead
+    style_preset = bufferline.style_preset.minimal, -- bufferline.style_preset.default | bufferline.style_preset.minimal,
+    themable = true,                                --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
+    numbers = "none",                               -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "bdelete! %d",                  -- can be a string | function, | false see "Mouse actions"
+    right_mouse_command = "bdelete! %d",            -- can be a string | function | false, see "Mouse actions"
+    left_mouse_command = "buffer %d",               -- can be a string | function, | false see "Mouse actions"
+    middle_mouse_command = nil,                     -- can be a string | function, | false see "Mouse actions"
     indicator = {
-      icon = '▎',                                     -- this should be omitted if indicator style is not 'icon'
-      style = 'icon'                                    -- 'icon' | 'underline' | 'none',
+      icon = '▎',                                 -- this should be omitted if indicator style is not 'icon'
+      style = 'icon'                                -- 'icon' | 'underline' | 'none',
     },
     buffer_close_icon = '󰅖',
     modified_icon = '●',
@@ -51,7 +90,7 @@ bufferline.setup {
     --- Please note some names can/will break the
     --- bufferline so use this at your discretion knowing that it has
     --- some limitations that will *NOT* be fixed.
-    name_formatter = function(buf)     -- buf contains:
+    name_formatter = function(buf) -- buf contains:
       -- name                | str        | the basename of the active file
       -- path                | str        | the full path of the active file
       -- bufnr (buffer only) | int        | the number of the active buffer
@@ -59,10 +98,10 @@ bufferline.setup {
       -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
     end,
     max_name_length = 18,
-    max_prefix_length = 15,       -- prefix used when a buffer is de-duplicated
-    truncate_names = true,        -- whether or not tab names should be truncated
+    max_prefix_length = 15,   -- prefix used when a buffer is de-duplicated
+    truncate_names = true,    -- whether or not tab names should be truncated
     tab_size = 18,
-    diagnostics = 'nvim_lsp',     -- false | "nvim_lsp" | "coc",
+    diagnostics = 'nvim_lsp', -- false | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -92,12 +131,12 @@ bufferline.setup {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "File Explorer",         -- "File Explorer" | function ,
-        text_align = "left",            -- "left" | "center" | "right"
+        text = "File Explorer", -- "File Explorer" | function ,
+        text_align = "left",    -- "left" | "center" | "right"
         separator = true
       }
     },
-    color_icons = true,     -- true | false, -- whether or not to add the filetype icon highlights
+    color_icons = true, -- true | false, -- whether or not to add the filetype icon highlights
     get_element_icon = function(element)
       -- element consists of {filetype: string, path: string, extension: string, directory: string}
       -- This can be used to change how bufferline fetches the icon
@@ -109,23 +148,23 @@ bufferline.setup {
       -- local custom_map = {my_thing_ft: {icon = "my_thing_icon", hl}}
       -- return custom_map[element.filetype]
     end,
-    show_buffer_icons = true,           --  true | false, -- disable filetype icons for buffers
-    show_buffer_close_icons = true,     -- true | false,
-    show_close_icon = true,             -- true | false,
-    show_tab_indicators = true,         -- true | false,
-    show_duplicate_prefix = true,       -- true | false, -- whether to show duplicate buffer prefix
-    persist_buffer_sort = true,         -- whether or not custom sorted buffers should persist
+    show_buffer_icons = true,       --  true | false, -- disable filetype icons for buffers
+    show_buffer_close_icons = true, -- true | false,
+    show_close_icon = true,         -- true | false,
+    show_tab_indicators = true,     -- true | false,
+    show_duplicate_prefix = true,   -- true | false, -- whether to show duplicate buffer prefix
+    persist_buffer_sort = true,     -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thin",          -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-    enforce_regular_tabs = false,      -- false | true,
-    always_show_bufferline = true,     -- true | false,
+    separator_style = "thin",      -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = false,  -- false | true,
+    always_show_bufferline = true, -- true | false,
     hover = {
       enabled = true,
       delay = 200,
       reveal = { 'close' }
     },
-    sort_by = 'insert_after_current',     -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+    sort_by = 'insert_after_current', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
     --     -- add custom logic
     --     return buffer_a.modified > buffer_b.modified
     -- end

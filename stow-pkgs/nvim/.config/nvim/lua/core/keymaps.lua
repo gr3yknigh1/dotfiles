@@ -43,10 +43,10 @@ vim.keymap.set('n', '<leader>\\', '<cmd>vsplit<CR>')
 vim.keymap.set('n', '<leader>-', '<cmd>split<CR>')
 
 -- pane switching
-vim.keymap.set('n', '<A-j>', '<C-W>j')
-vim.keymap.set('n', '<A-k>', '<C-W>k')
-vim.keymap.set('n', '<A-h>', '<C-W>h')
-vim.keymap.set('n', '<A-l>', '<C-W>l')
+vim.keymap.set('n', '<A-j>', '<C-W>j', { silent = true })
+vim.keymap.set('n', '<A-k>', '<C-W>k', { silent = true })
+vim.keymap.set('n', '<A-h>', '<C-W>h', { silent = true })
+vim.keymap.set('n', '<A-l>', '<C-W>l', { silent = true })
 
 -- pane switching terminal
 vim.keymap.set('t', '<A-j>', '<C-\\><C-n><C-W>j')
