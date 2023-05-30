@@ -8,6 +8,12 @@ fi
 
 PS1='\n\[\e[1;34m\] \w $ \[\e[0;37m\]'
 
+### Rust setup
+
+if [ -f "$HOME/.cargo/env" ]; then
+    . $HOME/.cargo/env
+fi
+
 ### Python configuration
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
