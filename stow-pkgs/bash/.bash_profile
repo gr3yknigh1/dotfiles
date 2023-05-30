@@ -40,7 +40,10 @@ fi
 export XGD_CURRENT_DESKTOP=sway
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec sway
+  if [ -x "/bin/sway" ]; then
+    exec sway
+  fi
+  echo "No sway found"
 fi
 
 # Start Xorg Server
