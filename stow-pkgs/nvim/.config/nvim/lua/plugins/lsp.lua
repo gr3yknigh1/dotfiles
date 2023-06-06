@@ -7,25 +7,25 @@
 local lspconfig        = require('lspconfig')
 local cmp              = require('cmp')
 local luasnip          = require('luasnip')
-local navic            = require('nvim-navic')
+-- local navic            = require('nvim-navic')
 local navbuddy         = require('nvim-navbuddy')
 local navbuddy_actions = require("nvim-navbuddy.actions")
 
 local utils            = require('utils')
 local language_servers = require('plugins.language_servers')
 
-navic.setup({
-  lsp = {
-    auto_attach = false,
-    preference = nil,
-  },
-  highlight = false,
-  separator = " > ",
-  depth_limit = 0,
-  depth_limit_indicator = "..",
-  safe_output = true,
-  click = false
-})
+-- navic.setup({
+--   lsp = {
+--     auto_attach = false,
+--     preference = nil,
+--   },
+--   highlight = false,
+--   separator = " > ",
+--   depth_limit = 0,
+--   depth_limit_indicator = "..",
+--   safe_output = true,
+--   click = false
+-- })
 
 navbuddy.setup({
   window = {
@@ -163,7 +163,7 @@ vim.keymap.set('n', 'gs', navbuddy.open, { silent = true })
 
 local function custom_lsp_attach(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
+    -- navic.attach(client, bufnr)
     navbuddy.attach(client, bufnr)
   end
 

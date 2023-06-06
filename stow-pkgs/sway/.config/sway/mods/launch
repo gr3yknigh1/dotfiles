@@ -9,7 +9,7 @@ include ~/.config/sway/globals
 mode "launch" {
     bindsym --to-code {
 
-        b exec firefox; mode "default"
+        b exec $browser; mode "default"
         t exec $term --title "Terminal (alacritty)" --class "tui" -o font.size=13; mode "default"
 
         f exec $term --title "Files (ranger)" --class "tui long" -o font.size=12 -e "ranger"; mode "default"
