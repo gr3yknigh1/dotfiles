@@ -7,7 +7,7 @@
 local lspconfig        = require('lspconfig')
 local cmp              = require('cmp')
 local luasnip          = require('luasnip')
--- local navic            = require('nvim-navic')
+local navic            = require('nvim-navic')
 local navbuddy         = require('nvim-navbuddy')
 local navbuddy_actions = require("nvim-navbuddy.actions")
 
@@ -29,7 +29,7 @@ local language_servers = require('plugins.language_servers')
 
 navbuddy.setup({
   window = {
-    border = "single", -- "rounded", "double", "solid", "none"
+    border = "rounded", -- "rounded", "double", "solid", "none"
     -- or an array with eight chars building up the border in a clockwise fashion
     -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
     size = "60%",     -- Or table format example: { height = "40%", width = "100%"}
@@ -280,7 +280,7 @@ cmp.setup({
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_prev_item()
       else
         fallback()
       end

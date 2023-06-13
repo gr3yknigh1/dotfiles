@@ -79,6 +79,8 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'skywind3000/vim-cppman'
 
+  use "lukas-reineke/indent-blankline.nvim"
+
   use {
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig"
@@ -89,8 +91,8 @@ require('packer').startup(function(use)
       "neovim/nvim-lspconfig",
       "SmiteshP/nvim-navic",
       "MunifTanjim/nui.nvim",
-      "numToStr/Comment.nvim",          -- Optional
-      "nvim-telescope/telescope.nvim"   -- Optional
+      "numToStr/Comment.nvim",        -- Optional
+      "nvim-telescope/telescope.nvim" -- Optional
     }
   }
 
