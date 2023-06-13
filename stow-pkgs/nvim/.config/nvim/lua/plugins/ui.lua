@@ -77,17 +77,17 @@ vim.keymap.set('n', '<leader>lh', toggle_lualine)
 local bufferline = require('bufferline')
 bufferline.setup {
   options = {
-    mode = "buffers",                               -- set to "tabs" to only show tabpages instead
+    mode = "buffers",                                 -- set to "tabs" to only show tabpages instead
     style_preset = bufferline.style_preset.no_italic, -- bufferline.style_preset.default | bufferline.style_preset.minimal,
-    themable = true,                                --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
-    numbers = "none",                               -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-    close_command = "bdelete! %d",                  -- can be a string | function, | false see "Mouse actions"
-    right_mouse_command = "bdelete! %d",            -- can be a string | function | false, see "Mouse actions"
-    left_mouse_command = "buffer %d",               -- can be a string | function, | false see "Mouse actions"
-    middle_mouse_command = nil,                     -- can be a string | function, | false see "Mouse actions"
+    themable = true,                                  --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
+    numbers = "none",                                 -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "bdelete! %d",                    -- can be a string | function, | false see "Mouse actions"
+    right_mouse_command = "bdelete! %d",              -- can be a string | function | false, see "Mouse actions"
+    left_mouse_command = "buffer %d",                 -- can be a string | function, | false see "Mouse actions"
+    middle_mouse_command = nil,                       -- can be a string | function, | false see "Mouse actions"
     indicator = {
-      icon = ' ',                                 -- this should be omitted if indicator style is not 'icon'
-      style = 'icon'                                -- 'icon' | 'underline' | 'none',
+      icon = ' ',                                     -- this should be omitted if indicator style is not 'icon'
+      style = 'icon'                                  -- 'icon' | 'underline' | 'none',
     },
     buffer_close_icon = '󰅖',
     modified_icon = '●',
@@ -190,9 +190,9 @@ vim.keymap.set('n', '<A->>', function() bufferline.move(1) end, opts)
 for i = 1, 9 do
   vim.keymap.set('n', ('<A-%s>'):format(i), function() bufferline.go_to(i, true) end, opts)
 end
+vim.keymap.set('n', ('<A-$>'), function() bufferline.go_to(-1, true) end, opts)
 
-vim.keymap.set('n', '<A-c>', '<cmd>bdelete<cr>', opts)
-vim.keymap.set('n', '<A-C>', '<cmd>bdelete!<cr>', opts)
+vim.keymap.set('n', '<A-c>', function() bufferline.close_with_pick() end, opts)
 
 
 -- NVIM TREE
@@ -344,5 +344,5 @@ nvim_tree.setup({
 })
 
 
-vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeFocus<cr>')
+vim.keymap.set('n', '<leader>]', '<cmd>NvimTreeFocus<cr>')
 vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeToggle<cr>')
