@@ -141,8 +141,8 @@ key_bindings:
   - { key: F7,                            chars: "\x1b[18~"                    }
   - { key: F8,                            chars: "\x1b[19~"                    }
   - { key: F9,                            chars: "\x1b[20~"                    }
-  - { key: F10,                           chars: "\x1b[21~"                    }
-  - { key: F11,                           chars: "\x1b[23~"                    }
+  - { key: F10, chars: "\x1b[21~"                    }
+  - { key: F11, action: ToggleFullscreen                                       }
   - { key: F12,                           chars: "\x1b[24~"                    }
   - { key: Back,                          chars: "\x7f"                        }
   - { key: Back,     mods: Alt,           chars: "\x1b\x7f"                    }
