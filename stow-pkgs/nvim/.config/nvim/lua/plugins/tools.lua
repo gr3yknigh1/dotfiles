@@ -3,7 +3,7 @@
 -- LAZYGIT
 vim.g['lazygit_floating_window_winblend'] = 0
 vim.g['lazygit_floating_window_scaling_factor'] = 0.9
-vim.g['lazygit_floating_window_border_chars'] = {'╭', '╮', '╰', '╯'}
+vim.g['lazygit_floating_window_border_chars'] = { '╭', '╮', '╰', '╯' }
 vim.g['lazygit_floating_window_use_plenary'] = 0
 vim.g['lazygit_use_neovim_remote'] = 0
 vim.g['lazygit_use_custom_config_file_path'] = 0
@@ -137,3 +137,23 @@ gitsigns.setup({
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 })
+
+
+-- Hop
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', 'f', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', 'F', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', 't', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set('', 'T', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })
+vim.keymap.set('n', '<C-j>', function()
+  hop.hint_words()
+end, { remap = true })
