@@ -18,7 +18,8 @@ vim.keymap.set('n', '<leader>W', '<cmd>set wrap!<cr>')
 -- disable search hightlight
 vim.keymap.set('n', '<ESC>', '<cmd>noh<CR>')
 -- seach selected
-vim.keymap.set('v', '/', 'y/<C-r>0<cr>')
+-- NOTE: You can search with `*` key
+-- vim.keymap.set('v', '/', 'y/<C-r>0<cr>')
 
 -- SAVING
 -- saving
