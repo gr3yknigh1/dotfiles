@@ -20,6 +20,12 @@ alias lg="lazygit"
 
 alias pacman="pacman --color=always"
 
+set -g PATH "$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+set -e VIRTUAL_ENV_DISABLE_PROMPT 0
+
 # NOTE: Start XOrg session
 # if [ $(tty) = "/dev/tty1" ]
 #     startx
