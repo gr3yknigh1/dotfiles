@@ -9,7 +9,7 @@ MKDIR = mkdir -p
 
 STOW_PKGS_DIR = $(CURDIR)/stow-pkgs
 STOW_CMD  = /bin/stow -t $(HOME) -d $(STOW_PKGS_DIR) --verbose=0
-STOW_PKGS = sway nvim lazygit tmux bash alacritty ranger
+STOW_PKGS = sway nvim lazygit tmux bash kitty ranger fish waybar dunst
 
 DIRS = Desktop Downloads Documents Templates
 DIRS += Pictures Pictures/Camera Pictures/Wallpapers
@@ -62,6 +62,12 @@ install-nerd-fonts:
 install-stow-pkgs: dirs
 	@ for pkg in $(STOW_PKGS); do \
 		$(STOW_CMD) -S $$pkg; \
+	done
+
+
+uninstall-stow-pkgs:
+	@ for pkg in $(STOW_PKGS); do \
+		$(STOW_CMD) -D $$pkg; \
 	done
 
 ### SSH for git
