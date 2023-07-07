@@ -1,8 +1,0 @@
-# ~/.config/sway/font
-#
-# Font
-
-set $fontname JetBrains Mono Nerd Font
-set $fontsize 10
-
-# vim: set filetype=swayconfig:

@@ -1,7 +1,0 @@
-# ~/.config/sway/waybar
-#
-# waybar
-
-exec_always waybar-run
-
-# vim: set filetype=swayconfig:

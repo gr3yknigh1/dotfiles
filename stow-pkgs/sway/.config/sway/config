@@ -4,19 +4,60 @@
 #
 # NOTE: Read `man 5 sway` for a complete reference.
 
-include ./defaults
-include ./globals
-include ./font
-include ./theme
+# == BASE ==
+set $mod     Mod4
+set $term    kitty
+set $browser google-chrome-stable
 
-include ./launchers/bemenu
-include ./bar
+# == FONTS ==
+set $fontname JetBrains Mono Nerd Font
+set $fontsize 10
+
+# == THEME ==
+include ./themes/base16-gruvbox-dark-hard.config
+
+#                       Border  BG      Text    Ind     Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+
+# == LAUNCHER ==
+set $menu bemenu-run --fn "$fontname 14" -p "▶" -l 10  | xargs swaymsg exec
+
+# == BAR ==
+# waybar
+exec_always waybar-run
+
+# swaybar
+# bar {
+#     position bottom
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#
+#     colors {
+#
+#         background $base00
+#         separator  $base01
+#         statusline $base04
+#
+#         #                   Border  BG      Text
+#         focused_workspace   $base05 $base0D $base00
+#         active_workspace    $base05 $base03 $base00
+#         inactive_workspace  $base03 $base01 $base05
+#         urgent_workspace    $base08 $base08 $base00
+#         binding_mode        $base00 $base0A $base00
+#     }
+# }
+
+# Etc
 include ./mods/resize
 include ./mods/launch
 
-include ./cfgs/workspaces
-include ./cfgs/bindings
-include ./cfgs/output
+include ./workspaces
+include ./bindings
+include ./output
 
 include /etc/sway/config.d/*
 
