@@ -12,8 +12,6 @@ bindsym --to-code {
     $mod+Return exec $term
     $mod+d exec $menu
 
-    $mod+Shift+s exec systemctl suspend
-
     $mod+Shift+q kill
 
     $mod+Shift+c reload

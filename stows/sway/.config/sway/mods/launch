@@ -2,7 +2,6 @@
 #
 # Launcher mode
 
-include ~/.config/sway/defaults
 include ~/.config/sway/globals
 
 
