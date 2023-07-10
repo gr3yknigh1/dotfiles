@@ -9,7 +9,7 @@ MKDIR = mkdir -p
 
 STOW_PKGS_DIR = $(CURDIR)/stows
 STOW_CMD  = /bin/stow -t $(HOME) -d $(STOW_PKGS_DIR) --verbose=0
-STOW_PKGS = sway nvim lazygit tmux bash kitty ranger fish waybar dunst
+STOW_PKGS = sway nvim lazygit tmux bash kitty ranger fish waybar dunst templates vim
 
 DIRS = Desktop Downloads Documents Templates
 DIRS += Pictures Pictures/Camera Pictures/Wallpapers
