@@ -66,7 +66,6 @@ vim.api.nvim_create_autocmd(
     pattern = { "*" },
     callback = function(ev)
       local opts = { buffer = ev.buf }
-      print(1)
 
       -- NOTE Fixing bug with missing keymapping which is trying to deleting on
       -- changing buffer and closing hover_doc with ++keep flag
