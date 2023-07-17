@@ -6,7 +6,6 @@ if (has("termguicolors"))
     colorscheme base16-gruvbox-dark-medium
 endif
 
-
 set encoding=utf-8
 set fileformat=unix
 filetype on
@@ -61,4 +60,17 @@ nmap <C-A-l> 2<C-W><
 nnoremap <silent> <A-,>  <cmd>bprevious<CR>
 nnoremap <silent> <A-.>  <cmd>bnext<CR>
 nnoremap <silent> <leader><C-d> <cmd>bdelete<CR>
+
+" NOTE Thanks TJ
+nnoremap <Up>          :echom "--> k <-- "<CR>
+nnoremap <Down>        :echom "--> j <-- "<CR>
+nnoremap <Right>       :echom "--> l <-- "<CR>
+nnoremap <Left>        :echom "--> h <-- "<CR>
+
+inoremap <Up>     <C-o>:echom "--> k <-- "<CR>
+inoremap <Down>   <C-o>:echom "--> j <-- "<CR>
+inoremap <Right>  <C-o>:echom "--> l <-- "<CR>
+inoremap <Left>   <C-o>:echom "--> h <-- "<CR>
+
+nnoremap ; :
 
