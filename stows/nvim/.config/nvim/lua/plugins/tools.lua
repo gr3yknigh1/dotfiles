@@ -75,7 +75,7 @@ telescope.setup({
     },
   },
   pickers = {
-    find_files = { hidden = true, },
+    find_files = { hidden = true, layout_strategy='center' },
     live_grep = {
       additional_args = function(opts)
         return { "--hidden" }

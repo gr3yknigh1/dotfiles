@@ -80,7 +80,7 @@ bufferline.setup {
   options = {
     mode = "buffers",                                 -- set to "tabs" to only show tabpages instead
     style_preset = bufferline.style_preset.no_italic, -- bufferline.style_preset.default | bufferline.style_preset.minimal,
-    themable = false,                                  --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
+    themable = false,                                 --  true | false, -- allows highlight groups to be overriden i.e. sets highlights as default
     numbers = "none",                                 -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "bdelete! %d",                    -- can be a string | function, | false see "Mouse actions"
     right_mouse_command = "bdelete! %d",              -- can be a string | function | false, see "Mouse actions"
@@ -109,7 +109,7 @@ bufferline.setup {
         separator = true
       }
     },
-    color_icons = true, -- true | false, -- whether or not to add the filetype icon highlights
+    color_icons = true,             -- true | false, -- whether or not to add the filetype icon highlights
     show_buffer_icons = true,       --  true | false, -- disable filetype icons for buffers
     show_buffer_close_icons = true, -- true | false,
     show_close_icon = true,         -- true | false,
@@ -118,7 +118,7 @@ bufferline.setup {
     persist_buffer_sort = true,     -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style =  "slant",      -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+    separator_style = "slant",     -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = false,  -- false | true,
     always_show_bufferline = true, -- true | false,
     hover = {
@@ -299,6 +299,6 @@ vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeToggle<cr>')
 
 --- INDENT BLANKLINE
 require("indent_blankline").setup {
-    show_end_of_line = true,
-    space_char_blankline = " ",
+  show_end_of_line = true,
+  space_char_blankline = " ",
 }
