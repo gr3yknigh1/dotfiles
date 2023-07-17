@@ -8,8 +8,6 @@ local lspconfig        = require('lspconfig')
 local cmp              = require('cmp')
 local luasnip          = require('luasnip')
 
-require('plugins.nav')
-
 local utils            = require('utils')
 local language_servers = require('plugins.language_servers')
 
@@ -32,23 +30,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 
     if package.loaded['lspsaga'] ~= nil then
-      -- NOTE Fixing bug with missing keymapping which is trying to deleting on
-      -- changing buffer and closing hover_doc with ++keep flag
-      local lspsaga = require('lspsaga')
-      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_down, function()
-        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(1)
-      end, opts)
-      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_up, function()
-        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(-1)
-      end, opts)
-
       vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc ++keep<cr>', opts)
     else
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     end
 
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set({'n', 'i'}, '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, opts)
 
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -71,6 +59,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+vim.api.nvim_create_autocmd(
+  { "BufEnter", "BufNewFile" },
+  {
+    pattern = { "*" },
+    callback = function(ev)
+      local opts = { buffer = ev.buf }
+      print(1)
+
+      -- NOTE Fixing bug with missing keymapping which is trying to deleting on
+      -- changing buffer and closing hover_doc with ++keep flag
+      local lspsaga = require('lspsaga')
+      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_down, function()
+        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(1)
+      end, opts)
+      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_up, function()
+        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(-1)
+      end, opts)
+    end,
+  }
+)
 
 local navbuddy = require('nvim-navbuddy')
 
