@@ -26,6 +26,9 @@ eval "$(pyenv virtualenv-init -)"
 
 set -e VIRTUAL_ENV_DISABLE_PROMPT 0
 
+# FZF Plugin
+set -g EDITOR nvim
+
 # NOTE: Start XOrg session
 # if [ $(tty) = "/dev/tty1" ]
 #     startx
