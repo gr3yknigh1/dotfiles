@@ -47,6 +47,7 @@ vim.opt.smartindent = true
 vim.opt.expandtab   = true
 
 -- AUTOCOMMANDS
+-- TODO Replace with default nvim api calls
 local au = require('au')
 
 au({ 'BufWinEnter', 'WinEnter' }, {
