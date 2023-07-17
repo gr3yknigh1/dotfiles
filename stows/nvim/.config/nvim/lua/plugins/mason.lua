@@ -1,6 +1,5 @@
 -- lua/plugins/mason.lua
 
-local language_servers = require('plugins.language_servers')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 
@@ -18,7 +17,4 @@ mason.setup({
   },
 })
 
-mason_lspconfig.setup({
-  ensure_installed = language_servers,
-  automatic_installation = false,
-})
+mason_lspconfig.setup({})

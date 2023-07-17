@@ -6,6 +6,9 @@ local lualine = require('lualine')
 -- NOTE: Too heavy
 -- local navic   = require('nvim-navic')
 -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+--   winbar = {
+--     lualine_c = { },
+--   },
 
 lualine.setup({
   options = {
@@ -45,9 +48,7 @@ lualine.setup({
     lualine_z = {}
   },
   tabline = {},
-  winbar = {
-    lualine_c = { 'navic' },
-  },
+  winbar = {},
   inactive_winbar = {},
   extensions = {}
 })

@@ -7,195 +7,78 @@
 local lspconfig        = require('lspconfig')
 local cmp              = require('cmp')
 local luasnip          = require('luasnip')
-local navic            = require('nvim-navic')
-local navbuddy         = require('nvim-navbuddy')
-local navbuddy_actions = require("nvim-navbuddy.actions")
+
+require('plugins.nav')
 
 local utils            = require('utils')
 local language_servers = require('plugins.language_servers')
 
--- navic.setup({
---   lsp = {
---     auto_attach = false,
---     preference = nil,
---   },
---   highlight = false,
---   separator = " > ",
---   depth_limit = 0,
---   depth_limit_indicator = "..",
---   safe_output = true,
---   click = false
--- })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>dt', '<cmd>Telescope diagnostics<CR>')
 
-navbuddy.setup({
-  window = {
-    border = "rounded", -- "rounded", "double", "solid", "none"
-    -- or an array with eight chars building up the border in a clockwise fashion
-    -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
-    size = "60%",     -- Or table format example: { height = "40%", width = "100%"}
-    position = "50%", -- Or table format example: { row = "100%", col = "0%"}
-    scrolloff = nil,  -- scrolloff value within navbuddy window
-    sections = {
-      left = {
-        size = "20%",
-        border = nil, -- You can set border style for each section individually as well.
-      },
-      mid = {
-        size = "40%",
-        border = nil,
-      },
-      right = {
-        -- No size option for right most section. It fills to
-        -- remaining area.
-        border = nil,
-        preview = "leaf", -- Right section can show previews too.
-        -- Options: "leaf", "always" or "never"
-      }
-    },
-  },
-  node_markers = {
-    enabled = true,
-    icons = {
-      leaf = "  ",
-      leaf_selected = " → ",
-      branch = " ",
-    },
-  },
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-  icons = {
-    File          = "󰈙 ",
-    Module        = " ",
-    Namespace     = "󰌗 ",
-    Package       = " ",
-    Class         = "󰌗 ",
-    Method        = "󰆧 ",
-    Property      = " ",
-    Field         = " ",
-    Constructor   = " ",
-    Enum          = "󰕘 ",
-    Interface     = "󰕘 ",
-    Function      = "󰊕 ",
-    Variable      = "󰆧 ",
-    Constant      = "󰏿 ",
-    String        = " ",
-    Number        = "󰎠 ",
-    Boolean       = "◩ ",
-    Array         = "󰅪 ",
-    Object        = "󰅩 ",
-    Key           = "󰌋 ",
-    Null          = "󰟢 ",
-    EnumMember    = " ",
-    Struct        = "󰌗 ",
-    Event         = " ",
-    Operator      = "󰆕 ",
-    TypeParameter = "󰊄 ",
-  },
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 
-  use_default_mappings = true, -- If set to false, only mappings set
-  -- by user are set. Else default
-  -- mappings are used for keys
-  -- that are not set by user
-  mappings = {
-    ["<esc>"] = navbuddy_actions.close(), -- Close and cursor to original location
-    ["q"] = navbuddy_actions.close(),
+    if package.loaded['lspsaga'] ~= nil then
+      -- NOTE Fixing bug with missing keymapping which is trying to deleting on
+      -- changing buffer and closing hover_doc with ++keep flag
+      local lspsaga = require('lspsaga')
+      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_down, function()
+        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(1)
+      end, opts)
+      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_up, function()
+        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(-1)
+      end, opts)
 
-    ["j"] = navbuddy_actions.next_sibling(),     -- down
-    ["k"] = navbuddy_actions.previous_sibling(), -- up
+      vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc ++keep<cr>', opts)
+    else
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    end
 
-    ["h"] = navbuddy_actions.parent(),           -- Move to left panel
-    ["l"] = navbuddy_actions.children(),         -- Move to right panel
-    ["0"] = navbuddy_actions.root(),             -- Move to first panel
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set({'n', 'i'}, '<C-k>', vim.lsp.buf.signature_help, opts)
 
-    ["v"] = navbuddy_actions.visual_name(),      -- Visual selection of name
-    ["V"] = navbuddy_actions.visual_scope(),     -- Visual selection of scope
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
 
-    ["y"] = navbuddy_actions.yank_name(),        -- Yank the name to system clipboard "+
-    ["Y"] = navbuddy_actions.yank_scope(),       -- Yank the scope to system clipboard "+
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
-    ["i"] = navbuddy_actions.insert_name(),      -- Insert at start of name
-    ["I"] = navbuddy_actions.insert_scope(),     -- Insert at start of scope
+    if package.loaded['lspsaga'] ~= nil then
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', opts)
+    else
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    end
 
-    ["a"] = navbuddy_actions.append_name(),      -- Insert at end of name
-    ["A"] = navbuddy_actions.append_scope(),     -- Insert at end of scope
-
-    ["r"] = navbuddy_actions.rename(),           -- Rename currently focused symbol
-
-    ["d"] = navbuddy_actions.delete(),           -- Delete scope
-
-    ["f"] = navbuddy_actions.fold_create(),      -- Create fold of current scope
-    ["F"] = navbuddy_actions.fold_delete(),      -- Delete fold of current scope
-
-    ["c"] = navbuddy_actions.comment(),          -- Comment out current scope
-
-    ["<enter>"] = navbuddy_actions.select(),     -- Goto selected symbol
-    ["o"] = navbuddy_actions.select(),
-
-    ["J"] = navbuddy_actions.move_down(), -- Move focused node down
-    ["K"] = navbuddy_actions.move_up(),   -- Move focused node up
-
-    ["t"] = navbuddy_actions.telescope({  -- Fuzzy finder at current level.
-      layout_config = {
-        -- All options that can be
-        height = 0.60, -- passed to telescope.nvim's
-        width = 0.60,  -- default can be passed here.
-        prompt_position = "top",
-        preview_width = 0.50
-      },
-      layout_strategy = "horizontal"
-    }),
-
-    ["g?"] = navbuddy_actions.help(), -- Open mappings help window
-  },
-  lsp = {
-    auto_attach = false, -- If set to true, you don't need to manually use attach function
-    preference = nil,    -- list of lsp server names in order of preference
-  },
-  source_buffer = {
-    follow_node = true, -- Keep the current node in focus on the source buffer
-    highlight = true,   -- Highlight the currently focused node
-    reorient = "smart", -- "smart", "top", "mid" or "none"
-    scrolloff = nil     -- scrolloff value when navbuddy is open
-  }
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
 })
 
-
-vim.keymap.set('n', 'gs', navbuddy.open, { silent = true })
+local navbuddy = require('nvim-navbuddy')
 
 local function custom_lsp_attach(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     -- navic.attach(client, bufnr)
     navbuddy.attach(client, bufnr)
   end
-
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-
-  vim.keymap.set('n', '<Leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-
-  vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-  -- Diagnostic
-  vim.keymap.set('n', '<Leader>dn', vim.diagnostic.goto_next, { buffer = 0 })
-  vim.keymap.set('n', '<Leader>dN', vim.diagnostic.goto_prev, { buffer = 0 })
-  vim.keymap.set('n', '<Leader>dt', '<cmd>Telescope diagnostics<CR>', { buffer = 0 })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

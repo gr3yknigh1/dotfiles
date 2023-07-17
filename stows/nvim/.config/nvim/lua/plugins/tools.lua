@@ -38,6 +38,7 @@ treesitter_configs.setup({
     'markdown',
     'python',
     'rust',
+    'markdown_inline',
   },
   sync_install = false,
   auto_install = false,
@@ -142,16 +143,16 @@ gitsigns.setup({
 -- Hop
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
-vim.keymap.set('', 'f', function()
+vim.keymap.set('n', 'f', function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 'F', function()
+vim.keymap.set('n', 'F', function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 't', function()
+vim.keymap.set('n', 't', function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
 end, { remap = true })
-vim.keymap.set('', 'T', function()
+vim.keymap.set('n', 'T', function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, { remap = true })
 vim.keymap.set('n', '<C-j>', function()
