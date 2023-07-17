@@ -78,9 +78,15 @@ vim.keymap.set('n', '<A-L>', '<C-W>L');
 -- nmap('<S-k>', '<S-v>xkP')
 -- nmap('<S-j>', '<S-v>xp')
 
-vim.keymap.set('n', '<leader>rp', function()
+vim.keymap.set('n', '<leader>pmr', function()
   vim.cmd('vsplit')
   vim.cmd('term python -ic "exec(open(\\"%\\").read(), globals())"')
+  vim.cmd('startinsert')
+end)
+
+vim.keymap.set('n', '<leader>psr', function()
+  vim.cmd('vsplit')
+  vim.cmd('term python %')
   vim.cmd('startinsert')
 end)
 

@@ -43,7 +43,7 @@ vim.opt.tabstop     = indentation_size
 vim.opt.shiftwidth  = indentation_size
 vim.opt.softtabstop = indentation_size
 vim.opt.autoindent  = true
-vim.opt.smartindent  = true
+vim.opt.smartindent = true
 vim.opt.expandtab   = true
 
 -- AUTOCOMMANDS
