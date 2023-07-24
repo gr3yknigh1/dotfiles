@@ -92,6 +92,12 @@ vim.keymap.set('n', '<leader>psr', function()
   vim.cmd('startinsert')
 end)
 
+vim.keymap.set('n', '<leader>csr', function()
+  vim.cmd('vsplit')
+  vim.cmd('term gcc % -o /tmp/a.out && /tmp/a.out')
+  vim.cmd('startinsert')
+end)
+
 -- MAKE KEYBINDS
 local au = require('au')
 local utils = require('utils')
