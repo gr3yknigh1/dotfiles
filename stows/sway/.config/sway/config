@@ -14,7 +14,7 @@ set $fontname JetBrains Mono Nerd Font
 set $fontsize 10
 
 # == THEME ==
-include ./themes/base16-gruvbox-dark-hard.config
+include ./themes/base16-nord.config
 
 #                       Border  BG      Text    Ind     Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0D
