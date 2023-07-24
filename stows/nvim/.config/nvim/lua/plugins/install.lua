@@ -33,17 +33,17 @@ require('packer').startup(function(use)
 
   -- LSP
   use 'neovim/nvim-lspconfig'
-  use({
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
-    config = function()
-      require('lspsaga').setup({
-        lightbulb = {
-          enable = true,
-        },
-      })
-    end,
-  })
+  -- use({
+  --   'nvimdev/lspsaga.nvim',
+  --   after = 'nvim-lspconfig',
+  --   config = function()
+  --     require('lspsaga').setup({
+  --       lightbulb = {
+  --         enable = true,
+  --       },
+  --     })
+  --   end,
+  -- })
 
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'

@@ -80,9 +80,25 @@ vim.keymap.set('n', '<A-L>', '<C-W>L');
 -- nmap('<S-k>', '<S-v>xkP')
 -- nmap('<S-j>', '<S-v>xp')
 
-vim.keymap.set('n', '<leader>pmr', function()
+
+
+vim.keymap.set('n', '<leader>prm', function()
   vim.cmd('vsplit')
-  vim.cmd('term python -ic "exec(open(\\"%\\").read(), globals())"')
+  if vim.fn.executable("bpython") == 1 then
+    vim.cmd('term bpython -q -i %')
+  else
+    vim.cmd('term python -ic "exec(open(\\"%\\").read(), globals())"')
+  end
+  vim.cmd('startinsert')
+end)
+
+vim.keymap.set('n', '<leader>prr', function()
+  vim.cmd('vsplit')
+  if vim.fn.executable("bpython") == 1 then
+    vim.cmd('term bpython -q')
+  else
+    vim.cmd('term python')
+  end
   vim.cmd('startinsert')
 end)
 
@@ -113,6 +129,7 @@ end
 if utils.file_exists(vim.fn.getcwd() .. '/Makefile') then
   set_make_keybinds()
 end
+
 
 au({ 'DirChanged' } , {
   '*',
