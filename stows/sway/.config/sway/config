@@ -4,16 +4,15 @@
 #
 # NOTE: Read `man 5 sway` for a complete reference.
 
-# == BASE ==
+include /etc/sway/config.d/*
+
 set $mod     Mod4
-set $term    kitty
+set $term    foot
 set $browser google-chrome-stable
 
-# == FONTS ==
 set $fontname JetBrains Mono Nerd Font
 set $fontsize 10
 
-# == THEME ==
 include ./themes/base16-nord.config
 
 #                       Border  BG      Text    Ind     Child Border
@@ -22,44 +21,208 @@ client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 
-# == LAUNCHER ==
 set $menu bemenu-run --fn "$fontname 14" -p "▶" -l 10  | xargs swaymsg exec
 
 # == BAR ==
 # waybar
 exec_always waybar-run
 
-# swaybar
-# bar {
-#     position bottom
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-#
-#     colors {
-#
-#         background $base00
-#         separator  $base01
-#         statusline $base04
-#
-#         #                   Border  BG      Text
-#         focused_workspace   $base05 $base0D $base00
-#         active_workspace    $base05 $base03 $base00
-#         inactive_workspace  $base03 $base01 $base05
-#         urgent_workspace    $base08 $base08 $base00
-#         binding_mode        $base00 $base0A $base00
-#     }
-# }
 
-# Etc
-include ./mods/resize
-include ./mods/launch
+mode "resize" {
+    bindsym --to-code {
+        h resize shrink width 10px
+        j resize grow height 10px
+        k resize shrink height 10px
+        l resize grow width 10px
 
-include ./workspaces
-include ./bindings
-include ./output
+        Left resize shrink width 10px
+        Down resize grow height 10px
+        Up resize shrink height 10px
+        Right resize grow width 10px
 
-include /etc/sway/config.d/*
+        $mod+r mode "default"
+        Return mode "default"
+        Escape mode "default"
+    }
+}
+
+bindsym --to-code $mod+r mode "resize"
+
+
+# TODO(gr3yknigh1): Add error dialog if command isn't successful
+mode "launch" {
+    bindsym --to-code {
+
+        b exec $browser; mode "default"
+
+        t exec $term --title "Terminal (alacritty)" --app-id "tui"                ; mode "default"
+        f exec $term --title "Files (ranger)"       --app-id "tui long" ranger    ; mode "default"
+        s exec $term --title "Sound (pulsemixer)"   --app-id "tui"      pulsemixer; mode "default"
+
+        Shift+n exec $term --title "Nvim"                  --app-id "tui long" nvim      ; mode "default"
+        Shift+h exec $term --title "Tasks (btop)"          --app-id "tui long" btop      ; mode "default"
+        Shift+b exec $term --title "Bluetooth (bluetuith)" --app-id "tui"      bluetuith ; mode "default"
+        Shift+w exec $term --title "Wifi (iwctl)"          --app-id "tui"      iwctl     ; mode "default"
+        Shift+c exec wl-color-picker; mode "default"
+
+        $mod+grave mode "default"
+        Return mode "default"
+        Escape mode "default"
+    }
+}
+
+for_window [app_id="^tui"] floating enable; resize set 900px 600px; move position center
+for_window [app_id="long"] resize set 1200px 800px;
+
+bindsym --to-code $mod+grave mode "launch"
+
+bindsym --to-code {
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
+    $mod+0 workspace number 10
+
+    $mod+Shift+1 move container to workspace number 1
+    $mod+Shift+2 move container to workspace number 2
+    $mod+Shift+3 move container to workspace number 3
+    $mod+Shift+4 move container to workspace number 4
+    $mod+Shift+5 move container to workspace number 5
+    $mod+Shift+6 move container to workspace number 6
+    $mod+Shift+7 move container to workspace number 7
+    $mod+Shift+8 move container to workspace number 8
+    $mod+Shift+9 move container to workspace number 9
+    $mod+Shift+0 move container to workspace number 10
+}
+
+
+set $brightness_step 20
+
+bindsym --to-code {
+    ### Main bindings
+    $mod+Return exec $term
+    $mod+d exec $menu
+
+    $mod+Shift+q kill
+
+    $mod+Shift+s exec systemctl suspend
+
+    $mod+Shift+c reload
+    $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    ### Modes and layouts
+    $mod+Shift+f floating toggle
+    $mod+z focus mode_toggle
+    $mod+s layout stacking
+    $mod+w layout tabbed
+    $mod+e layout toggle split
+    $mod+f fullscreen
+
+    $mod+b splith
+    $mod+v splitv
+
+    ### Focusing
+    $mod+a focus parent
+
+    $mod+h focus left
+    $mod+j focus down
+    $mod+k focus up
+    $mod+l focus right
+
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
+
+    Mod1+Tab focus next
+    Mod1+Shift+Tab focus prev
+
+    $mod+Tab workspace next
+    $mod+Shift+Tab workspace prev
+
+    ### Moving panes
+    $mod+Shift+h  move left  10 px
+    $mod+Shift+j  move down  10 px
+    $mod+Shift+k    move up    10 px
+    $mod+Shift+l move right 10 px
+
+    $mod+Shift+Left  move left  10 px
+    $mod+Shift+Down  move down  10 px
+    $mod+Shift+Up    move up    10 px
+    $mod+Shift+Right move right 10 px
+
+    ### Moving panes faster
+    $mod+Mod1+Shift+h  move left  100 px
+    $mod+Mod1+Shift+j  move down  100 px
+    $mod+Mod1+Shift+k    move up    100 px
+    $mod+Mod1+Shift+l move right 100 px
+
+    $mod+Mod1+Shift+Left  move left  100 px
+    $mod+Mod1+Shift+Down  move down  100 px
+    $mod+Mod1+Shift+Up    move up    100 px
+    $mod+Mod1+Shift+Right move right 100 px
+
+    ### Scratchpad
+    $mod+Shift+minus move scratchpad
+    $mod+minus scratchpad show
+
+    ### Sound
+    XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%
+    XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10%
+    XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
+    XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    ### Media
+    XF86AudioPlay  exec playerctl play
+    XF86AudioPause exec playerctl pause
+    XF86AudioNext  exec playerctl next
+    XF86AudioPrev  exec playerctl previous
+
+    ### Brightness
+    XF86MonBrightnessUp   exec brightnessctl set +$brightness_step
+    XF86MonBrightnessDown exec brightnessctl set  $brightness_step-
+
+    ### Screenshots
+    # capture all screens to clipboard
+    Print exec grim - | wl-copy
+
+    # capture the specified screen area to clipboard
+    Control+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+
+    # capture the focused monitor to clipboard
+    Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+}
+
+# NOTE: Outputs & Inputs
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+# Read `man 5 sway-input` for more information about this section.
+
+output * bg ~/Pictures/Wallpapers/ign_unsplash9.png fill
+output eDP-1 resolution 1920x1080 position 0,0
+
+# TODO: Move input configuration to separate file
+input type:keyboard {
+    xkb_layout 'us,ru'
+    xkb_options 'grp:win_space_toggle'
+    xkb_switch_layout next
+}
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input type:tablet_tool {
+    tool_mode * relative
+}
+
 
 floating_modifier $mod normal
 
