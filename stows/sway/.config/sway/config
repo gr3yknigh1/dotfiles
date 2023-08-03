@@ -23,9 +23,11 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 
 set $menu bemenu-run --fn "$fontname 14" -p "▶" -l 10  | xargs swaymsg exec
 
-# == BAR ==
-# waybar
+# https://github.com/Biont/sway-launcher-desktop
+for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+
 exec_always waybar-run
+exec_always dunst
 
 
 mode "resize" {
@@ -107,6 +109,7 @@ bindsym --to-code {
     ### Main bindings
     $mod+Return exec $term
     $mod+d exec $menu
+    $mod+i exec $term --app-id launcher $HOME/.local/bin/sway-launcher-desktop
 
     $mod+Shift+q kill
 
