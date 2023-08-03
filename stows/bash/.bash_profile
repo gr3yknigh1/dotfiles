@@ -41,7 +41,6 @@ if [ -f "$__globals_path" ]; then
     . $__globals_path
 fi
 
-### Desktop
 
 # export XGD_CURRENT_DESKTOP=sway
 
@@ -57,3 +56,4 @@ fi
 #     exec startx
 # fi
 
+# vim: set filetype=bash:
