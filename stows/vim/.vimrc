@@ -19,9 +19,9 @@ set number
 set numberwidth=2
 set relativenumber
 set cursorline
-set colorcolumn="80"
+set colorcolumn="0"
 
-set wrap
+set nowrap
 set scrolloff=5
 
 retab
@@ -33,7 +33,7 @@ set smartindent
 set expandtab
 
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
-set nolist
+set list
 
 set splitbelow
 set splitright
