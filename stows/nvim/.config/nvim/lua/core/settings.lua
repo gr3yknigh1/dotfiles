@@ -8,7 +8,7 @@ vim.opt.termguicolors = true
 -- end
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.colorcolumn='80'
+vim.opt.colorcolumn='0'
 
 vim.opt.numberwidth = 2
 vim.opt.cursorline = true
@@ -16,7 +16,7 @@ vim.opt.cursorline = true
 vim.opt.encoding='utf-8'
 vim.opt.fileformat='unix'
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 5
 
 vim.opt.relativenumber = true
