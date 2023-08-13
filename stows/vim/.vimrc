@@ -6,6 +6,8 @@ if (has("termguicolors"))
     colorscheme base16-nord
 endif
 
+set clipboard=autoselect
+
 set encoding=utf-8
 set fileformat=unix
 filetype on
