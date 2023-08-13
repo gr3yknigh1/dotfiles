@@ -14,8 +14,8 @@ STOW_PKGS = sway nvim lazygit tmux bash foot kitty ranger fish dunst templates v
 DIRS = Desktop Downloads Documents Templates
 DIRS += Pictures Pictures/Camera Pictures/Wallpapers
 DIRS += Videos Videos/OBS Videos/Films
-DIRS += Workspace Workspace/Projects Workspace/Forks Workspace/AVSoft
-DIRS += Workspace/Testing Workspace/Chaos Workspace/Notes
+dirs += workspace workspace/projects workspace/forks workspace/avsoft
+dirs += workspace/testing workspace/chaos workspace/notes
 DIRS += .config .local .local/bin .local/share
 
 default:
