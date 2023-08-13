@@ -33,3 +33,5 @@ alias lg='lazygit'
 alias e='nvim'
 alias f='ranger'
 
+alias apt='nala'
+

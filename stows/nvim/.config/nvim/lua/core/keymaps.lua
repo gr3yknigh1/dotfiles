@@ -142,10 +142,10 @@ au({ 'DirChanged' } , {
 })
 
 -- Very important bindings
-vim.keymap.set('', '<Up>',     ';echom ---> k <---')
-vim.keymap.set('', '<Down>',   ';echom ---> j <---')
-vim.keymap.set('', '<Left>',   ';echom ---> h <---')
-vim.keymap.set('', '<Right>',  ';echom ---> l <---')
+vim.keymap.set('', '<Up>',     '<cmd>echo "---> k <---"<CR>')
+vim.keymap.set('', '<Down>',   '<cmd>echo "---> j <---"<CR>')
+vim.keymap.set('', '<Left>',   '<cmd>echo "---> h <---"<CR>')
+vim.keymap.set('', '<Right>',  '<cmd>echo "---> l <---"<CR>')
 
 -- unmapping default maps
 vim.keymap.set('n', '<C-w>s', '')

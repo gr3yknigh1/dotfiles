@@ -24,6 +24,9 @@ set -g PATH "$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+
+set -g PATH "$HOME/go/bin:$PATH"
+
 set -e VIRTUAL_ENV_DISABLE_PROMPT 0
 
 # FZF Plugin

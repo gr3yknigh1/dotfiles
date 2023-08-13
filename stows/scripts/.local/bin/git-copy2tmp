@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $(basename $0) <repo-path>"
+    exit 1
+fi
+
+
+if [ ! -d "$1/.git" ]; then
+    echo "This isn't a git repo"
+    exit 1
+fi
+
+dest=$(mktemp -d)
+git clone --quiet --shared --local $1 "$dest"
+
+cd $dest
+
+$SHELL
+
+rm -rf $dest
+
+# :vim set filetype=bash:
+
