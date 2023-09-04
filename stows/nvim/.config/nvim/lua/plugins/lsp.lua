@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --     pattern = { "*" },
 --     callback = function(ev)
 --       local opts = { buffer = ev.buf }
--- 
+--
 --       -- NOTE Fixing bug with missing keymapping which is trying to deleting on
 --       -- changing buffer and closing hover_doc with ++keep flag
 --       local lspsaga = require('lspsaga')
@@ -91,6 +91,14 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.diagnostic.config({
+  virtual_text = false
+})
+
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 local default_lsp_config = {
   on_attach = custom_lsp_attach,
@@ -144,6 +152,9 @@ end
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   snippet = {
     expand = function(args)
       if not luasnip then
@@ -182,9 +193,18 @@ cmp.setup({
     { name = 'luasnip' },
   }, {
     { name = 'buffer' },
-  }, {
-    { name = 'path' }
-  })
+  }),
+  enabled = function()
+    -- disable completion in comments
+    local context = require 'cmp.config.context'
+    -- keep command mode completion enabled when cursor is in a comment
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture("comment")
+        and not context.in_syntax_group("Comment")
+    end
+  end
 })
 
 cmp.setup.filetype('gitcommit', {
@@ -248,5 +268,24 @@ luasnip.add_snippets(nil, {
         }),
         insert(3, 'HEADER_NAME'),
       }),
+  },
+  python = {
+    snip({
+      trig = "main",
+      namr = "entry point",
+      dscr = "main function",
+    },
+    {
+      text({ "from __future__ import annotations" }),
+      text({ "", "" }),
+      text({ "", "" }),
+      text({ "", "def main() -> int:" }),
+      text({ "", "    print(\"Hello world\")" }),
+      text({ "", "    return 0" }),
+      text({ "", "" }),
+      text({ "", "" }),
+      text({ "", "if __name__ == \"__main__\":"}),
+      text({ "", "    raise SystemExit(main())" }),
+    }),
   }
 })
