@@ -78,6 +78,12 @@ vim.keymap.set('n', '<A-L>', '<C-W>L');
 -- nmap('<S-k>', '<S-v>xkP')
 -- nmap('<S-j>', '<S-v>xp')
 
+vim.keymap.set('n', '<leader>rp', function()
+  vim.cmd('vsplit')
+  vim.cmd('term python -ic "exec(open(\\"%\\").read(), globals())"')
+  vim.cmd('startinsert')
+end)
+
 -- MAKE KEYBINDS
 local au = require('au')
 local utils = require('utils')
