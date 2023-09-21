@@ -99,7 +99,7 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'skywind3000/vim-cppman'
 
-  use "lukas-reineke/indent-blankline.nvim"
+  -- use "lukas-reineke/indent-blankline.nvim"
 
   use {
     "SmiteshP/nvim-navic",
