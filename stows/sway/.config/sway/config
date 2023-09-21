@@ -57,7 +57,7 @@ mode "launch" {
 
         b exec $browser; mode "default"
 
-        t exec $term --title "Terminal (alacritty)" --app-id "tui"                ; mode "default"
+        t exec $term --title "Terminal (foot)" --app-id "tui"                     ; mode "default"
         f exec $term --title "Files (ranger)"       --app-id "tui long" ranger    ; mode "default"
         s exec $term --title "Sound (pulsemixer)"   --app-id "tui"      pulsemixer; mode "default"
 
