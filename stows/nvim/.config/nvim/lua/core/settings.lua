@@ -7,6 +7,8 @@ vim.opt.termguicolors = true
 -- if vim.fn.has('termguicolors') then
 -- end
 
+vim.cmd[[set autoread]]
+
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.colorcolumn='0'
 
