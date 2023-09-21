@@ -29,11 +29,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 
-    if package.loaded['lspsaga'] ~= nil then
-      vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc ++keep<cr>', opts)
-    else
+    -- if package.loaded['lspsaga'] ~= nil then
+    --   vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc ++keep<cr>', opts)
+    -- else
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    end
+    -- end
 
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -47,11 +47,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
-    if package.loaded['lspsaga'] ~= nil then
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', opts)
-    else
+    -- if package.loaded['lspsaga'] ~= nil then
+    --   vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', opts)
+    -- else
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-    end
+    -- end
 
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>f', function()
@@ -60,25 +60,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.api.nvim_create_autocmd(
-  { "BufEnter", "BufNewFile" },
-  {
-    pattern = { "*" },
-    callback = function(ev)
-      local opts = { buffer = ev.buf }
-
-      -- NOTE Fixing bug with missing keymapping which is trying to deleting on
-      -- changing buffer and closing hover_doc with ++keep flag
-      local lspsaga = require('lspsaga')
-      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_down, function()
-        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(1)
-      end, opts)
-      vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_up, function()
-        -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(-1)
-      end, opts)
-    end,
-  }
-)
+-- vim.api.nvim_create_autocmd(
+--   { "BufEnter", "BufNewFile" },
+--   {
+--     pattern = { "*" },
+--     callback = function(ev)
+--       local opts = { buffer = ev.buf }
+-- 
+--       -- NOTE Fixing bug with missing keymapping which is trying to deleting on
+--       -- changing buffer and closing hover_doc with ++keep flag
+--       local lspsaga = require('lspsaga')
+--       vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_down, function()
+--         -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(1)
+--       end, opts)
+--       vim.keymap.set('n', lspsaga.config.scroll_preview.scroll_up, function()
+--         -- lspsaga.diagnostics.code_action_cb.scroll_with_preview(-1)
+--       end, opts)
+--     end,
+--   }
+-- )
 
 local navbuddy = require('nvim-navbuddy')
 
