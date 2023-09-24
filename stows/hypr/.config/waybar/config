@@ -1,0 +1,107 @@
+{
+    "position": "bottom",
+    "layer": "bottom",
+    "height": 25,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+
+    "modules-center": [
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "network",
+        "hyprland/language",
+        "battery",
+        "wireplumber",
+        "clock",
+        "tray"
+    ],
+
+    "wireplumber": {
+        "format": "VOL: {volume}%",
+        "format-muted": "VOL: MUT",
+        "on-click": "helvum",
+        "max-volume": 150,
+        "scroll-step": 0.2
+    },
+
+    "hyprland/workspaces": {
+         "format": "{name}",
+         "on-scroll-up": "hyprctl dispatch workspace e+1",
+         "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "hyprland/submap": {
+        "format": "Map: {}",
+        "max-length": 8,
+        "tooltip": false
+    },
+
+    "hyprland/language": {
+        "format": "Lang: {}",
+        "format-en": "US",
+        "format-ru": "RU"
+    },
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<span size='10pt'>{calendar}</span>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀 {ifname} ",
+        "format-disconnected": " ",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "eth {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "interval": 1,
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            " "
+        ],
+        "max-length": 25
+    }
+}
+// vim: set filetype=jsonc:

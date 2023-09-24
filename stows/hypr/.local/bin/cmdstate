@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -eo pipefail
+
+ARGC=$#
+
+print_usage() {
+    echo "usage: $(basename $0) [name] [on] [off]"
+    echo "args:"
+    echo "  * string name: unique name for state-file"
+    echo "  * string on: command which will be executed when ON"
+    echo "  * string off: command which will be executed when OFF"
+}
+
+
+if [[ ! $ARGC -eq 4 ]]; then
+    echo "error: invalid parameters"
+    print_usage
+    exit 1
+fi
+
+NAME=$1
+CMD_ON=$2
+CMD_OFF=$3
+
+APP_DIR=$HOME/.cmdstate
+STATE_DIR=$APP_DIR/states
+
+if [[ ! -d $STATE_DIR ]]; then
+    mkdir -p $STATE_DIR
+fi
+
+STATE_FILE=$STATE_DIR/$NAME
+
+if [[ -f $STATE_FILE ]]
+
+# vim: set filetype=bash :
