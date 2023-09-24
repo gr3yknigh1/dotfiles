@@ -9,14 +9,14 @@ MKDIR = mkdir -p
 
 STOW_PKGS_DIR = $(CURDIR)/stows
 STOW_CMD  = /bin/stow -t $(HOME) -d $(STOW_PKGS_DIR) --verbose=0
-STOW_PKGS = sway nvim lazygit tmux bash foot kitty ranger fish dunst templates vim
+STOW_PKGS = nvim lazygit tmux bash kitty ranger fish dunst templates vim
 
 DIRS = Desktop Downloads Documents Templates
 DIRS += Pictures Pictures/Camera Pictures/Wallpapers
 DIRS += Videos Videos/OBS Videos/Films
-dirs += workspace workspace/projects workspace/forks workspace/avsoft
-dirs += workspace/testing workspace/chaos workspace/notes
-DIRS += .config .local .local/bin .local/share
+DIRS += workspace workspace/projects workspace/forks workspace/avsoft
+DIRS += workspace/testing workspace/notes
+DIRS += .config .local .local/bin .local/share .local/share/applications
 
 default:
 
