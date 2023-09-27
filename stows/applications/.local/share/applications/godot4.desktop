@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Godot4 (CUSTOM)
-Comment=Godot4
+Name=Godot4
 Terminal=false
 Exec=/home/gr3yknigh1/.local/bin/godot-mono4
+Keywords=Games;Development
