@@ -1,8 +1,8 @@
 -- lua/core/apperience.lua
 -- apperience settings
 
-vim.g.colorscheme = 'nord' -- 'gruvbox', 'gracula', 'nord'
-vim.o.background  = 'dark' -- 'dark', 'light'
+vim.g.colorscheme = 'gruvbox' -- 'gruvbox', 'gracula', 'nord'
+vim.o.background  = 'light' -- 'dark', 'light'
 
 vim.cmd('syntax enable')
 vim.cmd('colorscheme ' .. vim.g.colorscheme)
