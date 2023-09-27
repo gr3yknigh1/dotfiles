@@ -57,3 +57,4 @@ fi
 # fi
 
 # vim: set filetype=bash:
+. "$HOME/.cargo/env"
