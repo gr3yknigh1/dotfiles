@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=iwctl
+Comment=Wifi util
+Icon=utilities-terminal
+Terminal=false
+Exec=kitty iwctl
+Categories=System;Wi-Fi;
+Keywords=Wifi
