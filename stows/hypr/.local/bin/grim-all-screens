@@ -1,0 +1,20 @@
+#!/bin/env bash
+
+set -eu pipefail
+
+# MODES
+#     * 0: save to file (default)
+#     * 1: save to clipboard
+#     * 2: save both in file and in clipboard
+#
+
+SCREENSHOTS_DIR="$(xdg-user-dir PICTURES)/Screenshots""$(xdg-user-dir PICTURES)/Screenshots"
+[[ ! -d $SCREENSHOTS_DIR ]] && mkdir -p $SCREENSHOTS_DIR
+
+SCREENSHOT_FILEPATH="$SCREENSHOTS_DIR/$(date +'%Y-%m-%d_%H-%M-%S.png')"
+
+if $1 -eq 0; then
+fi
+
+
+# vim: set filetype=bash :

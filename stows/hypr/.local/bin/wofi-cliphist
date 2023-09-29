@@ -1,0 +1,10 @@
+#!/bin/env bash
+#
+# Runs wofi with list of recently copied values
+#
+
+set -eu pipefail
+
+exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
+# vim: set filetype=bash :
