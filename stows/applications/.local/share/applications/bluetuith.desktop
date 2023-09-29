@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetuith
+Comment=Bluetooth util
+Icon=utilities-terminal
+Terminal=false
+Exec=kitty bluetuith
+Categories=System;Bluetooth;
+Keywords=Bluetooth
