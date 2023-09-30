@@ -2,6 +2,9 @@
 
 set -eo pipefail
 
+echo "error: unimplemented"
+exit 1
+
 ARGC=$#
 
 print_usage() {
