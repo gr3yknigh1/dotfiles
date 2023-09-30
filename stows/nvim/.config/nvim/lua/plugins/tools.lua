@@ -162,6 +162,7 @@ end, { remap = true })
 vim.keymap.set('n', 'T', function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, { remap = true })
-vim.keymap.set('n', '<C-j>', function()
+vim.keymap.set({'n', 'v'}, '<C-j>', function()
   hop.hint_words()
 end, { remap = true })
+
