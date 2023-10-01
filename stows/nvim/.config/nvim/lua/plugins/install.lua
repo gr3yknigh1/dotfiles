@@ -98,6 +98,7 @@ require('packer').startup(function(use)
   use 'stevearc/vim-arduino'
   use 'lewis6991/gitsigns.nvim'
   use 'skywind3000/vim-cppman'
+  use 'RaafatTurki/hex.nvim'
 
   -- use "lukas-reineke/indent-blankline.nvim"
 
