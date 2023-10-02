@@ -109,6 +109,11 @@ local default_lsp_config = {
 }
 
 local expanded_lsp_config = {
+  pyright = {
+    settings = {
+      strict = true,
+    },
+  },
   lua_ls = {
     settings = {
       Lua = {
@@ -122,7 +127,7 @@ local expanded_lsp_config = {
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          -- library = vim.api.nvim_get_runtime_file("", true),
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
