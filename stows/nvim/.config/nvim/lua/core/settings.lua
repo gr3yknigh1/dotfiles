@@ -7,7 +7,11 @@ vim.opt.termguicolors = true
 -- if vim.fn.has('termguicolors') then
 -- end
 
-vim.cmd[[set autoread]]
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.colorcolumn='0'
