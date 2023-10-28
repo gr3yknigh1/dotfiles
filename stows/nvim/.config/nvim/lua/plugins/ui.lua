@@ -214,7 +214,7 @@ nvim_tree.setup({
   },
   live_filter = {
     prefix = '[FILTER]: ',
-    always_show_folders = false,
+    always_show_folders = true,
   },
   on_attach = function(bufnr)
     local api = require('nvim-tree.api')
