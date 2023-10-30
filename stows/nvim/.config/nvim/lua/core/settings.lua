@@ -1,7 +1,7 @@
 -- lua/core/settings.lua
 -- basic editor's settings
 
--- vim.opt.shell = 'bash'
+vim.opt.shell = 'bash'
 
 vim.opt.termguicolors = true
 -- if vim.fn.has('termguicolors') then
