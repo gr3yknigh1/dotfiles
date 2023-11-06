@@ -5,6 +5,12 @@ alias ls="exa --icons --group-directories-first $argv"
 alias l1="exa -1 --icons --group-directories-first $argv"
 alias ll="exa -l --icons --group-directories-first $argv"
 alias lt="exa -T --icons --group-directories-first $argv"
+alias lt2="exa -T -L 2 --icons --group-directories-first $argv"
+alias lt3="exa -T -L 3 --icons --group-directories-first $argv"
+
+if [ -x "$(which batcat)" ]
+    alias cat="batcat"
+end
 
 alias t="tmux"
 alias tal="tmux attach"

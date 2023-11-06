@@ -81,6 +81,9 @@ vim.keymap.set('n', '<A-L>', '<C-W>L');
 -- nmap('<S-j>', '<S-v>xp')
 
 
+vim.keymap.set('v', '<C-]>', "<cmd>s/'/\"/g<cr>")
+vim.keymap.set('n', '<C-]>', "v<cmd>s/'/\"/g<cr><Esc>")
+
 
 vim.keymap.set('n', '<leader>prm', function()
   vim.cmd('vsplit')
