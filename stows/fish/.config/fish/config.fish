@@ -29,7 +29,9 @@ pyenv init - | source
 set -g PATH "$HOME/go/bin:$PATH"
 set -g PATH "$HOME/.cargo/bin:$PATH"
 
-set -e VIRTUAL_ENV_DISABLE_PROMPT 0
+set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+
+pyenv init - | source
 
 # FZF Plugin
 set -g EDITOR nvim

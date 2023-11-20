@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.colorcolumn='0'
+vim.opt.colorcolumn='120'
 
 vim.opt.numberwidth = 2
 vim.opt.cursorline = true
@@ -30,9 +30,11 @@ vim.opt.number = true
 
 vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'trail:~'
-vim.opt.listchars:append 'eol:¶'
-vim.opt.listchars:append 'tab:>~'
-vim.opt.list = false
+-- vim.opt.listchars:append 'eol:¶'
+vim.opt.listchars:append 'eol:↲'
+vim.opt.listchars:append 'tab:» '
+-- vim.opt.listchars:append 'tab:>~'
+vim.opt.list = true
 
 vim.opt.clipboard:append 'unnamedplus'
 
