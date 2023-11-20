@@ -1,5 +1,6 @@
 -- lua/plugins/ui.lua
 
+
 -- LUALINE
 local lualine = require('lualine')
 
@@ -14,10 +15,10 @@ lualine.setup({
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    -- component_separators = { left = '', right = '' },
-    -- section_separators = { left = '', right = '' },
+    -- component_separators = { left = '', right = '' },
+    -- section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = { 'quickfix', 'packer', 'NvimTree' },
       winbar = { 'quickfix', 'packer', 'NvimTree' },
@@ -104,8 +105,8 @@ bufferline.setup {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "File Explorer", -- "File Explorer" | function ,
-        text_align = "left",    -- "left" | "center" | "right"
+        text = "Tree", -- "File Explorer" | function ,
+        text_align = "center",    -- "left" | "center" | "right"
         separator = true
       }
     },
@@ -118,7 +119,7 @@ bufferline.setup {
     persist_buffer_sort = true,     -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "slant",     -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+    separator_style = "thin",     -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = false,  -- false | true,
     always_show_bufferline = true, -- true | false,
     hover = {
@@ -142,6 +143,7 @@ end
 vim.keymap.set('n', ('<A-$>'), function() bufferline.go_to(-1, true) end, opts)
 
 vim.keymap.set('n', '<A-c>', function() bufferline.close_with_pick() end, opts)
+vim.keymap.set('n', '<Leader>c', '<cmd>Bdelete<CR>', opts)
 
 
 -- NVIM TREE
@@ -296,9 +298,3 @@ nvim_tree.setup({
 vim.keymap.set('n', '<leader>]', '<cmd>NvimTreeFocus<cr>')
 vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeToggle<cr>')
 
-
---- INDENT BLANKLINE
--- require("indent_blankline").setup {
---   show_end_of_line = true,
---   space_char_blankline = " ",
--- }

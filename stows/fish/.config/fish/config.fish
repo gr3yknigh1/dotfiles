@@ -26,15 +26,12 @@ alias lg="lazygit"
 
 alias pacman="pacman --color=always"
 
-set -g PATH "$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
 set -g PATH "$HOME/go/bin:$PATH"
 set -g PATH "$HOME/.cargo/bin:$PATH"
 
-set -e VIRTUAL_ENV_DISABLE_PROMPT 0
+set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+
+pyenv init - | source
 
 # FZF Plugin
 set -g EDITOR nvim
