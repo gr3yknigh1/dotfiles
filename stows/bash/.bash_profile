@@ -58,3 +58,5 @@ fi
 
 # vim: set filetype=bash:
 . "$HOME/.cargo/env"
+
+DEBUGINFOD_URLS="https://debuginfod.archlinux.org/"

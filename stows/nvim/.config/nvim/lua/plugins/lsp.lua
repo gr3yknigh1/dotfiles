@@ -172,11 +172,18 @@ cmp.setup({
     -- disable completion in comments
     local context = require 'cmp.config.context'
     -- keep command mode completion enabled when cursor is in a comment
+
+    -- NOTE(i.akkuzin): Fixes problem in Telescope prompt (when it suddenly starting to popup autocompletions)
+    local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+    if buftype == "prompt" then
+      return false
+    end
+
     if vim.api.nvim_get_mode().mode == 'c' then
       return true
     else
       return not context.in_treesitter_capture("comment")
-        and not context.in_syntax_group("Comment")
+          and not context.in_syntax_group("Comment")
     end
   end
 })
@@ -245,21 +252,21 @@ luasnip.add_snippets(nil, {
   },
   python = {
     snip({
-      trig = "main",
-      namr = "entry point",
-      dscr = "main function",
-    },
-    {
-      text({ "from __future__ import annotations" }),
-      text({ "", "" }),
-      text({ "", "" }),
-      text({ "", "def main() -> int:" }),
-      text({ "", "    print(\"Hello world\")" }),
-      text({ "", "    return 0" }),
-      text({ "", "" }),
-      text({ "", "" }),
-      text({ "", "if __name__ == \"__main__\":"}),
-      text({ "", "    raise SystemExit(main())" }),
-    }),
+        trig = "main",
+        namr = "entry point",
+        dscr = "main function",
+      },
+      {
+        text({ "from __future__ import annotations" }),
+        text({ "", "" }),
+        text({ "", "" }),
+        text({ "", "def main() -> int:" }),
+        text({ "", "    print(\"Hello world\")" }),
+        text({ "", "    return 0" }),
+        text({ "", "" }),
+        text({ "", "" }),
+        text({ "", "if __name__ == \"__main__\":" }),
+        text({ "", "    raise SystemExit(main())" }),
+      }),
   }
 })

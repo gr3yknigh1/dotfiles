@@ -8,9 +8,7 @@ alias lt="exa -T --icons --group-directories-first $argv"
 alias lt2="exa -T -L 2 --icons --group-directories-first $argv"
 alias lt3="exa -T -L 3 --icons --group-directories-first $argv"
 
-if [ -x "$(which batcat)" ]
-    alias cat="batcat"
-end
+alias cat="bat"
 
 alias t="tmux"
 alias tal="tmux attach"
@@ -26,10 +24,7 @@ alias lg="lazygit"
 
 alias pacman="pacman --color=always"
 
-set -g PATH "$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
+pyenv init - | source
 
 set -g PATH "$HOME/go/bin:$PATH"
 set -g PATH "$HOME/.cargo/bin:$PATH"
@@ -48,3 +43,4 @@ set -g EDITOR nvim
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+set -g DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
