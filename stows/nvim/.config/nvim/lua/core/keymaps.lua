@@ -127,7 +127,7 @@ vim.keymap.set('n', '<C-w>l', '')
 vim.keymap.set('n', '<C-\\><C-n>', '')
 
 
-vim.keymap.set('n', '<leader>hh', '<cmd>!google-chrome https://hh.ru/vacancies/c_plus_plus_developer<CR>')
+vim.keymap.set('n', '<leader>hh', '<cmd>!xdg-open https://hh.ru/vacancies/c_plus_plus_developer<CR>')
 
 
 
