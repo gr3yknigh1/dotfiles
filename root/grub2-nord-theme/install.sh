@@ -4,14 +4,14 @@
 set -o errexit
 
 readonly ROOT_UID=0
-readonly Project_Name="GRUB2::NORD-THEME"
+readonly Project_Name="GRUB2::THEMES"
 readonly MAX_DELAY=20                               # max delay for user to enter root password
 tui_root_login=
 
 THEME_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 
-THEME_VARIANTS=('nord')
+THEME_VARIANTS=('nord', 'stylish', 'tela', 'vimix', 'whitesur')
 ICON_VARIANTS=('white')
 SCREEN_VARIANTS=('1080p' '2k' '4k' 'ultrawide' 'ultrawide2k')
 
@@ -252,7 +252,7 @@ run_dialog() {
       fi
     fi
 
-    theme="nord"
+    theme="vimix"
     icon="white"
 
     tui=$(dialog --backtitle ${Project_Name} \
@@ -449,7 +449,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     -t|--theme)
       shift
-      theme='nord'
+      theme='vimix'
       ;;
     -i|--icon)
       shift
