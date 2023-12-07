@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -eou pipefail
+
+/bin/ls -1 $PWD | xargs -I '{}' sh -c "echo && echo && echo 'REPO: {} ' && git -C '{}' status"
+
+# :vim set filetype=bash:
+
