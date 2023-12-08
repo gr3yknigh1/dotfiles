@@ -1,4 +1,5 @@
-# Fork of grub2-themes inspired by nord theme.
+# Fork of grub2-themes with additional nord theme for 1080p
+
 [nordtheme.com](https://www.nordtheme.com/)
 
 ## Installation:
