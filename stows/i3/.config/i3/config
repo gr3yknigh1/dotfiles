@@ -7,7 +7,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xset s 1200 5
 exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
-exec --no-startup-id source ~/.wallpaper
+# TODO: Find the way to handle wallpapers properly
+# exec --no-startup-id source ~/.wallpaper
 exec --no-startup-id dunst
 
 set $mod Mod4
@@ -20,8 +21,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+f floating toggle
 
 
-# bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16' -nb "#2E3440" -sb "#5C6F7B"
-bindsym $mod+d exec --no-startup-id rofi -show drun
+# Flags for nord theme
+# -nb "#2E3440" -sb "#5C6F7B"
+bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font-16'
+# bindsym $mod+d exec --no-startup-id rofi -show drun
 
 bindsym $mod+z focus mode_toggle
 
@@ -119,30 +122,30 @@ mode "resize" {
   bindsym $mod+Shift+l resize grow   width  $shift_resize_step px or $shift_resize_step ppt
 }
 
-
-bindsym $mod+g exec --no-startup-id emacs
-
-bindsym $mod+o mode "launcher"
-
-mode "launcher" {
-  bindsym $mod+Shift+q kill
-
-  bindsym $mod+o mode "default"
-  bindsym Escape mode "default"
-
-
-  bindsym $mod+Shift+b exec $browser
-  bindsym $mod+Shift+n exec obsidian
-
-  bindsym $mod+t exec kitty --class "floating"      --title kitty
-  bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
-  bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
-  bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
-  bindsym $mod+f exec kitty --class "floating-long" --title ranger        ranger
-  bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
-
-  bindsym $mod+shift+n exec obsidian
-}
+# NOTE: I think that this is overhead
+# bindsym $mod+g exec --no-startup-id emacs
+# 
+# bindsym $mod+o mode "launcher"
+# 
+# mode "launcher" {
+#   bindsym $mod+Shift+q kill
+# 
+#   bindsym $mod+o mode "default"
+#   bindsym Escape mode "default"
+# 
+# 
+#   bindsym $mod+Shift+b exec $browser
+#   bindsym $mod+Shift+n exec obsidian
+# 
+#   bindsym $mod+t exec kitty --class "floating"      --title kitty
+#   bindsym $mod+w exec kitty --class "floating"      --title iwctl     iwctl
+#   bindsym $mod+b exec kitty --class "floating"      --title bluetuith bluetuith
+#   bindsym $mod+e exec kitty --class "floating"      --title nvim      nvim
+#   bindsym $mod+f exec kitty --class "floating-long" --title ranger    ranger
+#   bindsym $mod+h exec kitty --class "floating-long" --title btop      btop
+# 
+#   bindsym $mod+shift+n exec obsidian
+# }
 
 
 # Sound

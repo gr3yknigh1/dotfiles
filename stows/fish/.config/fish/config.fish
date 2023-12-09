@@ -1,6 +1,7 @@
 if status is-interactive
 end
 
+# TODO: Handle lack of exa on system
 alias ls="exa --icons --group-directories-first $argv"
 alias l1="exa -1 --icons --group-directories-first $argv"
 alias ll="exa -l --icons --group-directories-first $argv"
@@ -8,6 +9,7 @@ alias lt="exa -T --icons --group-directories-first $argv"
 alias lt2="exa -T -L 2 --icons --group-directories-first $argv"
 alias lt3="exa -T -L 3 --icons --group-directories-first $argv"
 
+# TODO: Handle Debian and Arch aliases for bat | batcat
 alias cat="bat"
 
 alias t="tmux"
@@ -42,7 +44,4 @@ set -g EDITOR nvim
 # end
 
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
 set -g DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
