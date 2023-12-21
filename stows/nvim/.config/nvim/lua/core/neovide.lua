@@ -17,8 +17,8 @@ if vim.fn.exists('g:neovide') and vim.g.neovide then
   vim.opt.guifont = get_guifont(font_name, font_size)
 
   vim.g.neovide_scale_factor = 1.0
-  vim.g.neovide_transparency = 0.9
-  vim.g.transparency         = 0.9
+  vim.g.neovide_transparency = 0.98
+  vim.g.transparency         = 0.98
 
   -- vim.g.neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:transparency))
 
