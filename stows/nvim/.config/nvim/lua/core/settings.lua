@@ -22,6 +22,10 @@ vim.opt.cursorline = true
 vim.opt.encoding='utf-8'
 vim.opt.fileformat='unix'
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd[[set nofoldenable]]
+
 vim.opt.wrap = false
 vim.opt.scrolloff = 5
 
