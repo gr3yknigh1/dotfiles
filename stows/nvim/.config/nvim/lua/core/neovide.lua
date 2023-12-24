@@ -10,7 +10,7 @@ if vim.fn.exists('g:neovide') and vim.g.neovide then
   end
 
   -- local font_name         = 'Iosevka Nerd Font'
-  local font_name         = 'JetBrainsMono Nerd Font'
+  local font_name         = 'Agave Nerd Font'
   local default_font_size = 20
   local font_size         = default_font_size
 
