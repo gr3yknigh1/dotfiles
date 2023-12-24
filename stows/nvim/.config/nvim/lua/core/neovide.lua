@@ -1,7 +1,7 @@
 -- lua/core/neovide.lua
 -- https://neovide.dev/configuration.html
 
-if vim.fn.exists('g:neovide') and vim.g.neovide then
+if vim.g.neovide then
 
   local function get_guifont(font_name, font_size)
     -- <font_name>:h<font_size>
@@ -28,6 +28,7 @@ if vim.fn.exists('g:neovide') and vim.g.neovide then
 
   vim.g.neovide_fullscreen              = false
   vim.g.neovide_cursor_trail_size       = 0.4
+  vim.g.neovide_hide_mouse_when_typing  = true
 
   -- @NOTE Avaiable options for vim.g.neovide_cursor_vfx_mode:
   --   - railgun
@@ -50,5 +51,8 @@ if vim.fn.exists('g:neovide') and vim.g.neovide then
     font_size = default_font_size;
     vim.opt.guifont = get_guifont(font_name, font_size)
   end)
+
+  vim.keymap.set('t', '<S-Space>', '<Space>')
+  vim.keymap.set('t', '<C-S-Space>', '<Space>')
 end
 
