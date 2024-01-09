@@ -103,6 +103,13 @@ require('packer').startup(function(use)
   use 'moll/vim-bbye'
 
   use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("ibl").setup()
+    end,
+  }
+
+  use {
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig"
   }
