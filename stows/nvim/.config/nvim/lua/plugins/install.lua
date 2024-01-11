@@ -92,6 +92,7 @@ require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Etc
   use 'gpanders/editorconfig.nvim'
