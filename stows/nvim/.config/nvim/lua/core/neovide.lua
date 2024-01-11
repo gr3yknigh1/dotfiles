@@ -10,7 +10,17 @@ if vim.g.neovide then
   end
 
   -- local font_name         = 'Iosevka Nerd Font'
-  local font_name         = 'Agave Nerd Font'
+  local font_name         = 'JetBrainsMono Nerd Font'
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_refresh_rate_idle = 5
+
+  vim.g.neovide_profiler = false
+
   local default_font_size = 20
   local font_size         = default_font_size
 

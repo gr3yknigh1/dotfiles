@@ -298,3 +298,4 @@ nvim_tree.setup({
 vim.keymap.set('n', '<leader>]', '<cmd>NvimTreeFocus<cr>')
 vim.keymap.set('n', '<leader><Space>', '<cmd>NvimTreeToggle<cr>')
 
+require("ibl").setup()

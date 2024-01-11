@@ -3,7 +3,7 @@
 if (has("termguicolors"))
     syntax on
     set termguicolors
-    colorscheme base16-gruvbox-dark-medium
+    colorscheme base16-nord
 endif
 
 set clipboard=autoselect

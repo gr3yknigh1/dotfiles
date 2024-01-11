@@ -56,7 +56,7 @@ install-nerd-fonts:
 		sudo git clone --depth 1 -b $(NERD_FONTS_TAG) -- $(NERD_FONTS_URL) $(NERD_FONTS_DIR); \
 		sudo chown -R $(USER) $(NERD_FONTS_DIR); \
 	fi
-	sh $(NERD_FONTS_DIR)/install.sh
+	$(NERD_FONTS_DIR)/install.sh --install-to-user-path --link --clean
 
 
 install-stow-pkgs: dirs
