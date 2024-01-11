@@ -107,14 +107,32 @@ telescope.setup({
       end
     },
   },
-  extentions = {}
+  extentions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
+
+  }
 })
+
+telescope.load_extension("file_browser")
 
 vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files)
 -- vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<CR>')
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers)
 vim.keymap.set('n', '<leader>fl', telescope_builtin.lsp_document_symbols)
 vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep)
+vim.keymap.set('n', '<leader>fe', telescope.extensions.file_browser.file_browser)
 
 
 -- ETC Plugins
@@ -188,7 +206,6 @@ end, { remap = true })
 vim.keymap.set('n', 'T', function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, { remap = true })
-vim.keymap.set({'n', 'v'}, '<C-j>', function()
+vim.keymap.set({ 'n', 'v' }, '<C-j>', function()
   hop.hint_words()
 end, { remap = true })
-

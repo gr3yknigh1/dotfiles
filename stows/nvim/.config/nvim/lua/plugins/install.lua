@@ -88,6 +88,11 @@ require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
 
   use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
+
+  use {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
     config = function()
