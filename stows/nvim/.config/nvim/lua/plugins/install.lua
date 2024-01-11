@@ -49,6 +49,14 @@ require('packer').startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'jayp0521/mason-nvim-dap.nvim'
 
+  use({
+    'https://gitlab.com/itaranto/plantuml.nvim',
+    tag = '*',
+    config = function()
+      require('plantuml').setup()
+    end
+  })
+
   use 'mfussenegger/nvim-dap'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
   use 'theHamsta/nvim-dap-virtual-text'
@@ -102,6 +110,13 @@ require('packer').startup(function(use)
   use 'skywind3000/vim-cppman'
   use 'RaafatTurki/hex.nvim'
   use 'moll/vim-bbye'
+
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("ibl").setup()
+    end,
+  }
 
   use {
     "SmiteshP/nvim-navic",

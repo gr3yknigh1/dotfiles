@@ -27,20 +27,22 @@ if vim.g.neovide then
   vim.opt.guifont = get_guifont(font_name, font_size)
 
   vim.g.neovide_scale_factor = 1.0
-  vim.g.neovide_transparency = 0.98
-  vim.g.transparency         = 0.98
+  vim.g.neovide_transparency = 1.0
+  vim.g.transparency         = 1.0
 
   -- vim.g.neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:transparency))
 
   vim.g.neovide_floating_blur_amount_x  = 2.0
   vim.g.neovide_floating_blur_amount_y  = 2.0
-  vim.g.neovide_scroll_animation_length = 0.3
+
+  -- vim.g.neovide_scroll_animation_length = 0.3
+  vim.g.neovide_scroll_animation_length = 1
 
   vim.g.neovide_fullscreen              = false
   vim.g.neovide_cursor_trail_size       = 0.4
   vim.g.neovide_hide_mouse_when_typing  = true
 
-  -- @NOTE Avaiable options for vim.g.neovide_cursor_vfx_mode:
+  -- NOTE: Avaiable options for vim.g.neovide_cursor_vfx_mode:
   --   - railgun
   --   - torpedo
   --   - pixiedust
