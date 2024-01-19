@@ -1,2 +1,5 @@
 plugin/packer_compiled.lua
 
+spell/*
+!spell/.gitkeep
+
