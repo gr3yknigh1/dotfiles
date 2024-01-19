@@ -21,6 +21,25 @@ require("lazy").setup({
   -- lsp
   { "neovim/nvim-lspconfig" },
 
+  -- ui
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+  },
+
+  -- tools
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
   -- colors
   {
     "nordtheme/vim",
@@ -65,6 +84,42 @@ require("lazy").setup({
     end
   },
 
+  -- etc
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      padding = true, -- Add a space b/w comment and the line
+      sticky = true,  -- Whether the cursor should stay at its position
+
+      -- LHS of toggle mappings in NORMAL mode
+      toggler = {
+        line = 'gcc',  -- Line-comment toggle keymap
+        block = 'gbc', -- Block-comment toggle keymap
+      },
+
+      -- LHS of operator-pending mappings in NORMAL and VISUAL mode
+      opleader = {
+        line = 'gc',  -- Line-comment keymap
+        block = 'gb', -- Block-comment keymap
+      },
+
+      -- LHS of extra mappings
+      extra = {
+        above = 'gcO', -- Add comment on the line above
+        below = 'gco', -- Add comment on the line below
+        eol = 'gcA',   -- Add comment at the end of line
+      },
+    },
+    lazy = false,
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {}
+  },
+
   -- etc/folke
   { "folke/which-key.nvim" },
   { "folke/neoconf.nvim",   cmd = "Neoconf" },
@@ -88,7 +143,7 @@ vim.opt.cursorline = true
 
 -- Format and encoding
 vim.opt.encoding = 'utf-8'
-vim.opt.fileformat = 'unix'
+-- vim.opt.fileformat = 'unix'
 
 -- Folding
 -- vim.opt.foldmethod = "expr"
@@ -173,7 +228,9 @@ local function is_file_exists(name)
   if f ~= nil then
     io.close(f)
     return true
-  else return false end
+  else
+    return false
+  end
 end
 
 -- NOTE: Makefile bindings
@@ -225,6 +282,7 @@ else
 end
 
 
+-- NOTE: Move to custom plugin
 if vim.g.neovide then
   local function get_guifont(font_name, font_size)
     return font_name .. ':h' .. tostring(font_size)
