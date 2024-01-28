@@ -1,0 +1,4 @@
+import = ["/home/gr3yknigh1/.config/alacritty/opts/window.toml", "/home/gr3yknigh1/.config/alacritty/opts/font.toml", "/home/gr3yknigh1/.config/alacritty/opts/keys.toml", "/home/gr3yknigh1/.config/alacritty/opts/mouse.toml", "/home/gr3yknigh1/.config/alacritty/opts/etc.toml", "/home/gr3yknigh1/.config/alacritty/themes/nord.toml"]
+
+[env]
+TERM = "alacritty"

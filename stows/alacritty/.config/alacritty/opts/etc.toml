@@ -1,0 +1,10 @@
+dynamic_title = true
+live_config_reload = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Debug"
+print_events = false
