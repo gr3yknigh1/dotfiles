@@ -1,4 +1,4 @@
-dynamic_title = true
+# dynamic_title = true
 live_config_reload = true
 
 [cursor]

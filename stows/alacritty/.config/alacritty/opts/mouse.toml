@@ -5,11 +5,11 @@ hide_when_typing = true
 action = "PasteSelection"
 mouse = "Middle"
 
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
+# [mouse.double_click]
+# threshold = 300
+# 
+# [mouse.triple_click]
+# threshold = 300
 
 [selection]
 save_to_clipboard = false
