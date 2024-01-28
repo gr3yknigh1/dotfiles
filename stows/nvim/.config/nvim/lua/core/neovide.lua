@@ -9,7 +9,6 @@ if vim.g.neovide then
     return font_name .. ':h' .. tostring(font_size)
   end
 
-  -- local font_name         = 'Iosevka Nerd Font'
   local font_name         = 'JetBrainsMono Nerd Font'
   vim.g.neovide_padding_top = 0
   vim.g.neovide_padding_bottom = 0
