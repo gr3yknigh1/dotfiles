@@ -5,7 +5,7 @@ draw_bold_text_with_bright_colors = false
 size = 15
 
 [font.bold]
-family = "Iosevka Nerd Font"
+family = "JetbrainsMono Nerd Font"
 style = "Medium"
 
 [font.glyph_offset]
@@ -13,11 +13,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Iosevka Nerd Font"
+family = "JetbrainsMono Nerd Font"
 style = "Light"
 
 [font.normal]
-family = "Iosevka Nerd Font"
+family = "JetbrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
