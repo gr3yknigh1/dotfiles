@@ -18,29 +18,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- lsp
-  { "neovim/nvim-lspconfig" },
+  -- LSP
+  require("gr3yknigh1.lazy.nvim-lspconfig"),
 
-  -- ui
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
-    }
-  },
+  -- UI
+  require("gr3yknigh1.lazy.neo-tree"),
 
-  -- tools
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
+  -- Tools
+  require("gr3yknigh1.lazy.telescope"),
 
-  -- colors
+  -- Colors
   {
     "nordtheme/vim",
     name = "nordtheme",
@@ -50,75 +37,11 @@ require("lazy").setup({
   },
 
   -- syntax
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdateSync",
-    config = function()
-      local configs = require("nvim-treesitter.configs")
-
-      -- NOTE: Thanks.
-      -- <https://github.com/nvim-treesitter/nvim-treesitter/issues/3605#issuecomment-1644591006>
-      local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter"
-
-      vim.opt.runtimepath:append(parser_install_dir)
-
-      for _, v in ipairs(vim.opt.runtimepath:get()) do
-        if (string.match(v, "lazy/nvim%-treesitter")) then
-          vim.opt.runtimepath:remove(v)
-        end
-      end
-
-      configs.setup({
-        ensure_installed = "all",
-        sync_install = false,
-        auto_install = false,
-        highlight = {
-          enable = true,
-        },
-        additional_vim_regex_highlighting = false,
-        indent = {
-          enable = true
-        },
-        parser_install_dir = parser_install_dir,
-      })
-    end
-  },
+  require("gr3yknigh1.lazy.nvim-treesitter"),
 
   -- etc
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      padding = true, -- Add a space b/w comment and the line
-      sticky = true,  -- Whether the cursor should stay at its position
-
-      -- LHS of toggle mappings in NORMAL mode
-      toggler = {
-        line = 'gcc',  -- Line-comment toggle keymap
-        block = 'gbc', -- Block-comment toggle keymap
-      },
-
-      -- LHS of operator-pending mappings in NORMAL and VISUAL mode
-      opleader = {
-        line = 'gc',  -- Line-comment keymap
-        block = 'gb', -- Block-comment keymap
-      },
-
-      -- LHS of extra mappings
-      extra = {
-        above = 'gcO', -- Add comment on the line above
-        below = 'gco', -- Add comment on the line below
-        eol = 'gcA',   -- Add comment at the end of line
-      },
-    },
-    lazy = false,
-  },
-
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    opts = {}
-  },
+  require("gr3yknigh1.lazy.Comment"),
+  require("gr3yknigh1.lazy.nvim-surround"),
 
   -- etc/folke
   { "folke/which-key.nvim" },
@@ -151,7 +74,7 @@ vim.opt.encoding = 'utf-8'
 -- vim.cmd[[set nofoldenable]]
 
 -- Scrolling and wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 5
 
 -- Mouse
