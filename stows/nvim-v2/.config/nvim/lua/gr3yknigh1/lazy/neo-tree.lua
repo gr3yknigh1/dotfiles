@@ -338,7 +338,7 @@ local config = {
       ["p"] = "paste_from_clipboard",
       ["c"] = "copy", -- takes text input for destination, also accepts the config.show_path and config.insert_as options
       ["m"] = "move", -- takes text input for destination, also accepts the config.show_path and config.insert_as options
-      ["e"] = "toggle_auto_expand_width",
+      -- ["e"] = "toggle_auto_expand_width",
       ["q"] = "close_window",
       ["?"] = "show_help",
       ["<"] = "prev_source",
@@ -372,7 +372,7 @@ local config = {
         ["H"] = "toggle_hidden",
         ["/"] = "fuzzy_finder",
         ["D"] = "fuzzy_finder_directory",
-        ["/"] = "filter_as_you_type", -- this was the default until v1.28
+        -- ["/"] = "filter_as_you_type", -- this was the default until v1.28
         ["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
         -- ["D"] = "fuzzy_sorter_directory",
         ["f"] = "filter_on_submit",
@@ -484,11 +484,15 @@ local config = {
       --               -- the current file is changed while the tree is open.
       leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
     },
-    hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-                                            -- in whatever position is specified in window.position
-                          -- "open_current",-- netrw disabled, opening a directory opens within the
-                                            -- window like netrw would, regardless of window.position
-                          -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+
+    -- hijack_netrw_behavior:
+    --   * open_default: netrw disabled, opening a directory opens neo-tree in whatever position is specified in
+    --                   window.position
+    --   * open_current: netrw disabled, opening a directory opens within the window like netrw would, regardless of
+    --                   window.position
+    --   * disabled:     netrw left alone, neo-tree does not handle opening dirs
+    hijack_netrw_behavior = "open_current",
+
     use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
                                     -- instead of relying on nvim autocmd events.
   },
@@ -589,24 +593,18 @@ return {
     "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     "s1n7ax/nvim-window-picker",  -- NOTE(gr3yknigh1): For window picking
   },
-  config = function(opts)
+  config = function()
+
+    -- NOTE: Disable netrw
+    vim.g.loaded_netrw = 0
+    vim.g.loaded_netrwPlugin = 0
+
     vim.keymap.set('n', '-', function()
-      local reveal_file = vim.fn.expand('%:p')
-      if (reveal_file == '') then
-        reveal_file = vim.fn.getcwd()
-      else
-        local f = io.open(reveal_file, "r")
-        if (f) then
-          f.close(f)
-        else
-          reveal_file = vim.fn.getcwd()
-        end
-      end
       require('neo-tree.command').execute({
         action = "focus",          -- OPTIONAL, this is the default value
         source = "filesystem",     -- OPTIONAL, this is the default value
         position = "left",         -- OPTIONAL, this is the default value
-        reveal_file = reveal_file, -- path to file or folder to reveal
+        reveal_file = require("nostdlib.fs").reveal_file_or_directory(), -- path to file or folder to reveal
         reveal_force_cwd = true,   -- change cwd without asking if needed
       })
     end);
