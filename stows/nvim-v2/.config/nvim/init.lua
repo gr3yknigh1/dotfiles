@@ -4,7 +4,7 @@
 
 vim.g.mapleader = '\\'
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = require("nostdlib.fs").path_join(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -17,7 +17,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(require("gr3yknigh1.lazy.setup"))
+---@diagnostic disable-next-line: different-requires
+require("lazy").setup(require("gr3yknigh1.plugins"), require("gr3yknigh1.plugins.lazy"))
 
 require("gr3yknigh1.settings")
 require("gr3yknigh1.keymaps")

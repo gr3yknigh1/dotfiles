@@ -1,6 +1,13 @@
+if vim.fn.has("nvim-0.8") == 1 then
+  vim.opt.backup = true
+  vim.opt.cmdheight = 0
+  vim.opt.backupdir = require("nostdlib.fs").path_join(vim.fn.stdpath("state"), "backup")
+end
 
--- vim.g.loaded_netrw = 0
-vim.g.loaded_netrwPlugin = 0
+vim.g.c_syntax_for_h = true
+
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.colorcolumn = { "80", "120" }
 
 -- Colors and syntax
 if vim.fn.has('termguicolors') then
@@ -55,4 +62,3 @@ vim.opt.softtabstop    = indentation_size
 vim.opt.autoindent     = true
 vim.opt.smartindent    = true
 vim.opt.expandtab      = true
-
