@@ -1,0 +1,17 @@
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "full"
+dynamic_padding = false
+opacity = 0.9
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 0
+y = 0
