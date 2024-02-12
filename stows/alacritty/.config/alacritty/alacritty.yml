@@ -19,7 +19,7 @@ import:
     - ~/.config/alacritty/opts/keys.yml
     - ~/.config/alacritty/opts/mouse.yml
     - ~/.config/alacritty/opts/etc.yml
-    - ~/.config/alacritty/themes/nord.yaml
+    - ~/.config/alacritty/themes/gruvbox_light.yaml
 
 
 # vim: nospell
