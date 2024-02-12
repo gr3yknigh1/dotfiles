@@ -1,4 +1,3 @@
-
 -- NOTE: Move to custom plugin
 if vim.g.neovide then
   local function get_guifont(font_name, font_size)
@@ -28,7 +27,7 @@ if vim.g.neovide then
   vim.g.neovide_floating_blur_amount_x  = 2.0
   vim.g.neovide_floating_blur_amount_y  = 2.0
 
-  vim.g.neovide_scroll_animation_length = 0.3
+  vim.g.neovide_scroll_animation_length = 0.0
 
   vim.g.neovide_fullscreen              = false
   vim.g.neovide_cursor_trail_size       = 0.4
@@ -52,4 +51,3 @@ if vim.g.neovide then
   vim.keymap.set('t', '<S-Space>', '<Space>')
   vim.keymap.set('t', '<C-S-Space>', '<Space>')
 end
-

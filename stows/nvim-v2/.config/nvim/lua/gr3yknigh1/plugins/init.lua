@@ -1,6 +1,7 @@
 return {
   -- LSP
   require("gr3yknigh1.plugins.nvim-lspconfig"),
+  require("gr3yknigh1.plugins.nvim-cmp"),
   require("gr3yknigh1.plugins.williamboman.mason"),
   require("gr3yknigh1.plugins.williamboman.mason-lsp"),
 
@@ -17,6 +18,7 @@ return {
   -- UI
   require("gr3yknigh1.plugins.neo-tree"),
   require("gr3yknigh1.plugins.lualine"),
+  require("gr3yknigh1.plugins.ibl"),
 
   -- Tools
   require("gr3yknigh1.plugins.telescope"),
@@ -30,14 +32,16 @@ return {
     end
   },
 
-  -- syntax
+  -- Syntax
   require("gr3yknigh1.plugins.nvim-treesitter"),
+  require("gr3yknigh1.plugins.nvim-tree-docs"),
+  require("gr3yknigh1.plugins.nvim-treesitter-textobjects"),
 
-  -- etc
+  -- Etc
   require("gr3yknigh1.plugins.Comment"),
   require("gr3yknigh1.plugins.nvim-surround"),
+  require("gr3yknigh1.plugins.nvim-autopairs"),
 
-  -- etc/folke
   { "folke/which-key.nvim" },
   { "folke/neoconf.nvim",  cmd = "Neoconf" },
   {

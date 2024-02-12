@@ -27,7 +27,12 @@ return {
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
       function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup({})
+        require("lspconfig")[server_name].setup(
+          {
+            on_attach = function(client, bufnr) end,
+            capabilities = vim.lsp.protocol.make_client_capabilities(),
+          }
+        )
       end,
     },
   },
