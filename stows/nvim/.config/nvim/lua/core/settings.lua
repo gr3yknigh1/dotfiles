@@ -3,7 +3,7 @@
 
 vim.opt.shell = 'fish'
 
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.termguicolors = true
 
 -- if vim.fn.has('termguicolors') then
