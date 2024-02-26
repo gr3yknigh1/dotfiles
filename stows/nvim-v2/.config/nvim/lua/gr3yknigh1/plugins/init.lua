@@ -21,6 +21,9 @@ return {
   require("gr3yknigh1.plugins.ibl"),
 
   -- Tools
+  require("gr3yknigh1.plugins.lewis6991.gitsigns"),
+  require("gr3yknigh1.plugins.phaazon.hop"),
+  require("gr3yknigh1.plugins.kdheepak.lazygit"),
   require("gr3yknigh1.plugins.telescope"),
 
   -- Colors
@@ -51,10 +54,5 @@ return {
 
   { "folke/which-key.nvim" },
   { "folke/neoconf.nvim",  cmd = "Neoconf" },
-  {
-    "folke/neodev.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig"
-    }
-  },
+  require("gr3yknigh1.plugins.folke.neodev"),
 }
