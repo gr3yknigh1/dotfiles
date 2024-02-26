@@ -28,7 +28,14 @@ return {
     "nordtheme/vim",
     name = "nordtheme",
     init = function()
-      vim.cmd [[colorscheme nord]]
+      -- vim.cmd [[colorscheme nord]]
+    end
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    init = function()
+      vim.o.background = "dark"
+      vim.cmd([[colorscheme gruvbox]])
     end
   },
 
