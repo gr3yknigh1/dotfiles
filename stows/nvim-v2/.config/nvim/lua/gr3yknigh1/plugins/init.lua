@@ -24,7 +24,9 @@ return {
   require("gr3yknigh1.plugins.lewis6991.gitsigns"),
   require("gr3yknigh1.plugins.phaazon.hop"),
   require("gr3yknigh1.plugins.kdheepak.lazygit"),
+  require("gr3yknigh1.plugins.RaafatTurki.hex"),
   require("gr3yknigh1.plugins.telescope"),
+
 
   -- Colors
   {
