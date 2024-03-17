@@ -10,7 +10,7 @@ alias lt2="exa -T -L 2 --icons --group-directories-first $argv"
 alias lt3="exa -T -L 3 --icons --group-directories-first $argv"
 
 # TODO: Handle Debian and Arch aliases for bat | batcat
-alias cat="batcat --theme gruvbox-dark"
+alias cat="bat --theme gruvbox-dark"
 
 alias t="tmux"
 alias tal="tmux attach"
