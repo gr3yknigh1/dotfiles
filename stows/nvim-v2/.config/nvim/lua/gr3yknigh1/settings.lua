@@ -17,11 +17,11 @@ end
 vim.cmd [[syntax enable]]
 
 -- Cursor
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Format and encoding
 vim.opt.encoding = 'utf-8'
--- vim.opt.fileformat = 'unix'
+vim.opt.fileformat = 'unix'
 
 -- Folding
 -- vim.opt.foldmethod = "expr"
@@ -45,7 +45,7 @@ vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'trail:~'
 vim.opt.listchars:append 'eol:↲'
 vim.opt.listchars:append 'tab:» '
-vim.opt.list = true
+vim.opt.list = false
 
 -- Use system clipboard
 vim.opt.clipboard:append 'unnamedplus'

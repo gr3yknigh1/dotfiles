@@ -43,6 +43,18 @@ return {
       vim.cmd([[colorscheme gruvbox]])
     end
   },
+  {
+      "ARivottiC/rivotti256.vim",
+      init = function ()
+          -- vim.cmd([[colorscheme rivotti256]])
+      end
+  },
+  {
+      "zefei/simple-dark",
+      init = function ()
+          -- vim.cmd([[colorscheme simple-dark]])
+      end
+  },
 
   -- Syntax
   require("gr3yknigh1.plugins.nvim-treesitter"),
