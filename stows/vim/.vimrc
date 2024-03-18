@@ -3,7 +3,7 @@
 if (has("termguicolors"))
     syntax on
     set termguicolors
-    colorscheme base16-gruvbox-dark-medium
+    " colorscheme base16-gruvbox-dark-medium
 endif
 
 set clipboard=autoselect
@@ -20,7 +20,7 @@ set colorcolumn=80
 set number
 set numberwidth=2
 set relativenumber
-set cursorline
+" set cursorline
 set colorcolumn="0"
 
 set nowrap
@@ -35,7 +35,7 @@ set smartindent
 set expandtab
 
 set listchars=eol:¶,tab:>-,trail:~,extends:>,precedes:<,space:·
-set list
+" set list
 
 set splitbelow
 set splitright
