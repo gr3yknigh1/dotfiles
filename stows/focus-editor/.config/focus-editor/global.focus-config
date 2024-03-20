@@ -20,6 +20,7 @@ __pycache__
 # whether it should ignore these or not (if a file is not explicitly allowed or ignored,
 # it will be read to determine if it's binary or not).
 .jai .c .cpp .h .hpp .cc .cs .txt .md .focus-* .ini .csv .log .sql .py .m .html .xml .plist .js .ts .yml .yaml .toml
+.glsl .vert .frag
 Makefile .mk
 
 [ignore file extensions]
@@ -306,7 +307,8 @@ Ctrl-MouseMiddle            reset_font_size_to_default
 
 [[style]]
 
-theme: halogen
+# This works strangely
+# theme: halogen
 
 
 [fonts]
@@ -314,6 +316,7 @@ font:       Jetbrains Mono
 font_size:  40
 
 [colors]
+
 background0:                            15212AFF
 background1:                            10191FFF
 background2:                            18262FFF

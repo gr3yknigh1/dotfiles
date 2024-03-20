@@ -11,12 +11,15 @@ STOW_PKGS_DIR = $(CURDIR)/stows
 STOW_CMD  = /bin/stow -t $(HOME) -d $(STOW_PKGS_DIR) --verbose=0
 STOW_PKGS = nvim lazygit tmux bash kitty ranger fish dunst templates vim
 
-DIRS = Desktop Downloads Documents Templates
-DIRS += Pictures Pictures/Camera Pictures/Wallpapers
-DIRS += Videos Videos/OBS Videos/Films
-DIRS += workspace workspace/projects workspace/scratchpad
-DIRS += workspace/notes
-DIRS += .config .local .local/bin .local/share .local/share/applications
+DIRS :=
+DIRS += \
+	Desktop Downloads Documents Templates \
+	Pictures Pictures/Camera Pictures/Wallpapers \
+	Videos Videos/OBS Videos/Films \
+	Workspace Workspace/Repos Workspace/Scratchpad Workspace/Templates \
+	Workspace/Repos/github.com Workspace/Repos/gitlab.com Workspace/Repos/gitlab.avsw.ru \
+	Workspace/Notes \
+	.config .local .local/bin .local/share .local/share/applications
 
 default:
 

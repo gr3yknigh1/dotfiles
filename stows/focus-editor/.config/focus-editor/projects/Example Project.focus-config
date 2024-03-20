@@ -1,0 +1,45 @@
+[2]  # Version number. Do not delete.
+
+[[workspace]]
+
+[workspace dirs]
+# These directories will be scanned when a workspace is opened so that search etc. works.
+# Example:
+# C:/projects/my-project
+# C:/jai
+
+
+# IMPORTANT:
+# You can override any section from the global config in your project and it will be used when your project is active.
+# Please note that some of the sections will completely replace the ones in the global config, while other sections
+# will try to merge with the global config. E.g. the workspace sections such as [ignore dirs] will completely
+# override the global [ignore dirs], which allows you to "unignore" some dirs just for your project!
+# Empty sections are ignored.
+
+
+
+# This is an example configuration for build commands
+
+[[build commands]]
+# build_working_dir:      <build working dir for all commands>
+# open_panel_on_build:    true  #  <- any settings specified here will apply to all commands unless overridden
+# close_panel_on_success: false
+
+# [Debug Build And Run]   # <- command name. Can be arbitrary
+# build_command:          jai main.jai  # should be an executable or a script
+# build_working_dir:      <build working dir for this command only>
+# timeout_in_seconds:     5             # if you don't want a timeout, don't specify it
+# run_command:            test.exe      # will be run if build succeeds
+# run_working_dir:        W:/focus      # working dir for the run command
+# key_binding:            F5
+
+# [Run]                   # <- You could have commands that don't build anything and just run something
+# run_command:            test.exe
+# run_working_dir:        /home/user/test
+# key_binding:            Ctrl-F5
+
+# [Release]
+# build_command:          jai first.jai - release
+# key_binding:            F9
+
+
