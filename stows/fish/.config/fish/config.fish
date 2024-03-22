@@ -134,10 +134,18 @@ if [ $(has_executable pyenv) ]
     pyenv init - | source
 end
 
+
+# TODO: Handle Arch Linux version of `fdfind`
+if [ $(has_executable fzf) ] && [ $(has_executable fdfind) ]
+    function fcd 
+        cd $(fdfind --type directory | fzf)
+    end
+end
+
+
 if [ $LAUNCH_XORG_ON_STARTUP = "yes" ] && [ $(has_executable startx) ]
     if [ $(tty) = "/dev/tty1" ]
         startx
     end
 end
-
 

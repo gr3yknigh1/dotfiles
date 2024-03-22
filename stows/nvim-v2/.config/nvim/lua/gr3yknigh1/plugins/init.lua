@@ -44,16 +44,25 @@ return {
     end
   },
   {
-      "ARivottiC/rivotti256.vim",
-      init = function ()
-          -- vim.cmd([[colorscheme rivotti256]])
-      end
+    "ARivottiC/rivotti256.vim",
+    init = function ()
+      -- vim.cmd([[colorscheme rivotti256]])
+    end
   },
   {
-      "zefei/simple-dark",
-      init = function ()
-          -- vim.cmd([[colorscheme simple-dark]])
-      end
+    "zefei/simple-dark",
+    init = function ()
+      -- vim.cmd([[colorscheme simple-dark]])
+    end
+  },
+  {
+    "navarasu/onedark.nvim",
+    opts = {
+      style = 'darker',
+    },
+    init = function ()
+      vim.cmd([[colorscheme onedark]])
+    end,
   },
 
   -- Syntax

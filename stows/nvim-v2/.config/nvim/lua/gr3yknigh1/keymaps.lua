@@ -1,6 +1,9 @@
 -- -- Keymaps -- --
 vim.keymap.set('n', ';', ':')
 
+-- Deleting one character left of cursor
+vim.keymap.set('i', '<C-d>', '<Del>')
+
 -- Saving
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>')
 vim.keymap.set('n', '<leader>s', '<cmd>wa<CR>')
@@ -31,6 +34,12 @@ vim.keymap.set('n', '<A-H>', '<C-W>H');
 vim.keymap.set('n', '<A-J>', '<C-W>J');
 vim.keymap.set('n', '<A-K>', '<C-W>K');
 vim.keymap.set('n', '<A-L>', '<C-W>L');
+
+-- Tabs movement
+vim.keymap.set('n', '<C-n>', '<cmd>tabnew<cr>')
+vim.keymap.set('n', '<C-]>', '<cmd>tabnext<cr>')
+vim.keymap.set('n', '<C-[>', '<cmd>tabprevious<cr>')
+vim.keymap.set('n', '<C-c>', '<cmd>tabclose<cr>')
 
 -- TODO: move line
 -- nmap('<S-k>', '<S-v>xkP')
