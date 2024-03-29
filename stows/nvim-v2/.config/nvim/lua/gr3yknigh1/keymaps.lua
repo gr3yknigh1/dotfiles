@@ -36,14 +36,19 @@ vim.keymap.set('n', '<A-K>', '<C-W>K');
 vim.keymap.set('n', '<A-L>', '<C-W>L');
 
 -- Tabs movement
-vim.keymap.set('n', '<C-n>', '<cmd>tabnew<cr>')
-vim.keymap.set('n', '<C-]>', '<cmd>tabnext<cr>')
-vim.keymap.set('n', '<C-[>', '<cmd>tabprevious<cr>')
+vim.keymap.set('n', '<C-t>', '<cmd>tabnew<cr>')
+vim.keymap.set('n', '<C-n>', '<cmd>tabnext<cr>')
+vim.keymap.set('n', '<C-p>', '<cmd>tabprevious<cr>')
 vim.keymap.set('n', '<C-c>', '<cmd>tabclose<cr>')
 
 -- TODO: move line
 -- nmap('<S-k>', '<S-v>xkP')
 -- nmap('<S-j>', '<S-v>xp')
+
+
+vim.keymap.set('n', '<ESC>', '<cmd>noh<cr>')
+vim.keymap.set('n', '<BS>', '<cmd>set list!<cr>')
+vim.keymap.set('n', '<Enter>', '<cmd>set wrap!<cr>')
 
 
 -- Very important bindings, thanks tj
