@@ -39,7 +39,7 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     init = function()
-      -- vim.o.background = "dark"
+      -- vim.o.background = "light"
       -- vim.cmd([[colorscheme gruvbox]])
     end
   },
@@ -79,3 +79,4 @@ return {
   { "folke/neoconf.nvim",  cmd = "Neoconf" },
   require("gr3yknigh1.plugins.folke.neodev"),
 }
+>>>>>>> fb2a90d2ece96765bfae6480770a2ce5f5be8baa

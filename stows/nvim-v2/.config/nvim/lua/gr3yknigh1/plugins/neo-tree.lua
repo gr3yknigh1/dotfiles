@@ -17,7 +17,7 @@ return {
       require('neo-tree.command').execute({
         action = "focus",                                                -- OPTIONAL, this is the default value
         source = "filesystem",                                           -- OPTIONAL, this is the default value
-        position = "float",                                               -- OPTIONAL, this is the default value
+        position = "right",                                              -- OPTIONAL, this is the default value
         reveal_file = require("nostdlib.fs").reveal_file_or_directory(), -- path to file or folder to reveal
         reveal_force_cwd = true,                                         -- change cwd without asking if needed
       })
@@ -27,7 +27,7 @@ return {
       require("neo-tree.command").execute({
         toggle = true,
         source = "filesystem",
-        position = "float",
+        position = "right",
       })
     end)
 
