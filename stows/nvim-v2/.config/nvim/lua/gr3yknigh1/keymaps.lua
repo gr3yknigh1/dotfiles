@@ -48,7 +48,6 @@ vim.keymap.set('n', '<C-c>', '<cmd>tabclose<cr>')
 
 vim.keymap.set('n', '<ESC>', '<cmd>noh<cr>')
 vim.keymap.set('n', '<BS>', '<cmd>set list!<cr>')
-vim.keymap.set('n', '<Enter>', '<cmd>set wrap!<cr>')
 
 
 -- Very important bindings, thanks tj
