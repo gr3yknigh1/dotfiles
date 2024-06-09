@@ -93,7 +93,7 @@ function BuildSystem_Win32_BuildBat(root)
     endif
 
     let build_script = FileSystem_JoinPath(a:root, g:buildsystem_win32_buildscript_name)
-    execute '!' build_script
+    execute '!' "start " . build_script 
 endfunction
 
 function BuildSystem_Win32_RunRemedyBG(root, remedybg, config)
@@ -109,7 +109,7 @@ function BuildSystem_Win32_RunRemedyBG(root, remedybg, config)
         throw "Invalid argument: invalid config"
     endif
 
-    execute '!' a:remedybg . ' -g -q ' . a:config
+    execute '!' "start cmd /c " .  a:remedybg . ' -g -q ' . a:config
 endfunction
 
 au VimEnter *        call BuildSystem_SetKeybindings()
