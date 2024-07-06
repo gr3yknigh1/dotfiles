@@ -40,7 +40,7 @@ return {
     "ellisonleao/gruvbox.nvim",
     init = function()
       -- vim.o.background = "light"
-      -- vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[colorscheme gruvbox]])
     end
   },
   {
@@ -61,7 +61,7 @@ return {
       style = 'darker',
     },
     init = function ()
-      vim.cmd([[colorscheme onedark]])
+      -- vim.cmd([[colorscheme onedark]])
     end,
   },
 
