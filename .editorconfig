@@ -10,6 +10,9 @@ indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.bat]
+end_of_line = crlf
+
 [*.lua]
 indent_size = 4
 
