@@ -4,6 +4,8 @@
 ;;
 ;; Basic settings
 
+(setq default-directory "P:\\")
+
 ;; Stops starting message
 (setq inhibit-splash-screen t)
 
@@ -16,6 +18,10 @@
 ;; TODO(gr3yknigh1): Check if this is working on Linux [2024/07/29]
 (set-face-attribute 'default nil
   :family "JetBrainsMono NF" :height 140)
+
+;; Word wrap
+(setq word-wrap t)
+(toggle-word-wrap)
 
 ;; Maximize screen on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -41,9 +47,18 @@
 ;; Makes ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Pair mode
+(electric-pair-mode 1)
+
 ;; Set "GNU" style indenting for C lang
 (setq c-default-style "linux"
       c-basic-offset 4)
+
+;; Copy & paste
+(cua-mode t)
+(setq cua-auto-tabify-rectangles nil)
+(transient-mark-mode 1)
+(setq cua-keep-region-after-copy t)
 
 ;; Number lines while in programming mode
 ;;(add-hook 'prog-mode-hook #'display-line-numbers-mode)
@@ -52,37 +67,21 @@
 	    (display-line-numbers-mode)
 	    (setq display-line-numbers 'relative)))
 
+;; Yaml mode (should be inside ~/.emacs.d/)
+;; Source: https://github.com/yoshiki/yaml-mode
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+(require 'cmake-mode)
+
 (load-theme 'wombat)
 
-;;;; Themes
-;;(custom-set-variables
-;; ;; custom-set-variables was added by Custom.
-;; ;; If you edit it by hand, you could mess it up, so be careful.
-;; ;; Your init file should contain only one such instance.
-;; ;; If there is more than one, they won't work right.
-;; '(custom-safe-themes
-;;   '("3e374bb5eb46eb59dbd92578cae54b16de138bc2e8a31a2451bf6fdb0f3fd81b" default))
-;; '(package-selected-packages
-;;   '(ivy lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode)))
-;;(custom-set-faces
-;; ;; custom-set-faces was added by Custom.
-;; ;; If you edit it by hand, you could mess it up, so be careful.
-;; ;; Your init file should contain only one such instance.
-;; ;; If there is more than one, they won't work right.
-;; )
-;; 
-;;(load-theme 'gruvbox-dark-medium t)
-;;
-;;(electric-pair-mode 1)
-;;
-;;;; Copy and paste
-;;(cua-mode t)
-;;(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-;;(transient-mark-mode 1)               ;; No region when it is not highlighted
-;;(setq cua-keep-region-after-copy t)   ;; Standard Windows behaviour(global-cua-moded)
-
-
-;; =============================== Packaging configuration =================================== ;;
+;; Packaging configuration
 
 (require 'package)
 
@@ -129,49 +128,18 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
-
-;;(setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
-;;    projectile hydra flycheck company avy which-key helm-xref dap-mode))
-;;
-;;(when (cl-find-if-not #'package-installed-p package-selected-packages)
-;;  (package-refresh-contents)
-;;  (mapc #'package-install package-selected-packages))
-
-;; HELM
-
-;; sample `helm' configuration use https://github.com/emacs-helm/helm/ for details
-;;(helm-mode)
-;;(require 'helm-xref)
-;;(define-key global-map [remap find-file] #'helm-find-files)
-;;(define-key global-map [remap execute-extended-command] #'helm-M-x)
-;;(define-key global-map [remap switch-to-buffer] #'helm-mini)
-
-;; LSP
-
-;;(which-key-mode)
-;;(add-hook 'c-mode-hook 'lsp)
-;;(add-hook 'c++-mode-hook 'lsp)
-;;
-;;(setq gc-cons-threshold (* 100 1024 1024)
-;;      read-process-output-max (* 1024 1024)
-;;      treemacs-space-between-root-nodes nil
-;;      company-idle-delay 0.0
-;;      company-minimum-prefix-length 1
-;;      lsp-idle-delay 0.1)  ;; clangd is fast
-;;
-;;(with-eval-after-load 'lsp-mode
-;;  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-;;  (require 'dap-cpptools)
-;;  (yas-global-mode))
-;;
-;;(setq lsp-keymap-prefix "\\")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(swiper ivy command-log-mode)))
+ '(package-selected-packages
+   '(editorconfig cua-mode swiper doom-modeline diminish command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
