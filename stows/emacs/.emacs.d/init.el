@@ -6,6 +6,7 @@
 
 (setq default-directory "P:\\")
 (setq explicit-shell-file-name "pwsh")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; Stops starting message
 (setq inhibit-splash-screen t)
@@ -71,7 +72,6 @@
 ;; Yaml mode (should be inside ~/.emacs.d/)
 ;; Source: https://github.com/yoshiki/yaml-mode
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-hook 'yaml-mode-hook
@@ -79,8 +79,6 @@
             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 (require 'cmake-mode)
-
-;;(load-theme 'wombat)
 
 ;; Packaging configuration
 
@@ -150,10 +148,14 @@
   :bind (("M-x" . counsel-M-x)
 	 ("C-x b" . counsel-ibuffer)
 	 ("C-x C-f" . counsel-find-file)
+	 ("C-x C-b" . counsel-switch-buffer)
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history))
   :config
-  (setq ivy-initial-inputs-alist nil))
+  (setq ivy-initial-inputs-alist nil)
+  ;; Second bind for buffer switching
+  ;; TODO(gr3yknigh1): Deside leave that or remove [2024/07/30]
+  (global-set-key (kbd "C-M-j") 'counsel-switch-buffer))
 
 (use-package ivy-rich
   :init (ivy-rich-mode 1))
