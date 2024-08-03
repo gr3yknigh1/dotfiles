@@ -19,7 +19,8 @@
 ;; Windows
 ;; TODO(gr3yknigh1): Check if this is working on Linux [2024/07/29]
 (set-face-attribute 'default nil
-  :family "JetBrainsMono NF" :height 140)
+  ;;:family "JetBrainsMono NF" :height 140)
+  :family "0xProto Nerd Font" :height 140)
 
 ;; Word wrap
 (setq word-wrap t)
@@ -52,15 +53,24 @@
 ;; Pair mode
 (electric-pair-mode 1)
 
+;; Grep mode
+;; TODO(gr3yknigh1): Make it optional for GNU/Linux.
+(setenv "PATH"
+	(concat
+	 "C:\\cygwin64\\bin;"
+	 (getenv "PATH")))
+
 ;; Set "GNU" style indenting for C lang
 (setq c-default-style "linux"
       c-basic-offset 4)
 
 ;; Copy & paste
-(cua-mode t)
-(setq cua-auto-tabify-rectangles nil)
-(transient-mark-mode 1)
-(setq cua-keep-region-after-copy t)
+
+;; NOTE(gr3yknigh1): Conflicts with evil mode's visual C-v. [2024/08/03]
+;;(cua-mode t)
+;;(setq cua-auto-tabify-rectangles nil)
+;;(transient-mark-mode 1)
+;;(setq cua-keep-region-after-copy t)
 
 ;; Number lines while in programming mode
 ;;(add-hook 'prog-mode-hook #'display-line-numbers-mode)
@@ -133,7 +143,7 @@
 
 (use-package gruvbox-theme
   :config
-  (load-theme 'gruvbox-dark-medium 1))
+  (load-theme 'gruvbox-light-medium 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -170,6 +180,44 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+(use-package general
+  :config
+  (general-evil-setup t)
+  (general-create-definer rune/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+  (general-define-key
+   "C-x g" 'grep
+   "C-x f" 'grep-find
+   "C-x s" 'counsel-grep-or-swiper))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+
+  (setq evil-auto-balance-windows t)
+  (setq evil-split-window-below t)
+  (setq evil-vsplit-window-right t)
+
+  (setq evil-want-C-u-scroll nil)
+  (setq evil-want-C-i-jump nil)
+  ;; :hook (evil-mode . rune/evil-hook)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  (evil-set-initial-state 'eshell-mode 'insert)  ;; NOTE: Unable to change?
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -178,7 +226,7 @@
  '(custom-safe-themes
    '("046a2b81d13afddae309930ef85d458c4f5d278a69448e5a5261a5c78598e012" default))
  '(package-selected-packages
-   '(councel ivy-rich which-key rainbow-delimiters gruvbox-theme editorconfig cua-mode swiper doom-modeline diminish command-log-mode)))
+   '(general councel ivy-rich which-key rainbow-delimiters gruvbox-theme editorconfig cua-mode swiper doom-modeline diminish command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
