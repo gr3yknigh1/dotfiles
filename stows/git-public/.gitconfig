@@ -1,5 +1,5 @@
 [core]
-    autocrlf = false
+    autocrlf = input
     editor = vim 
     commentChar = "#"
 [user]
