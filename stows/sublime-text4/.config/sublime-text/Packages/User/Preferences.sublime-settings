@@ -1,0 +1,41 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"font_face": "Iosevka Nerd Font",
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium) NDC.sublime-color-scheme",
+	"theme": "gruvbox.sublime-theme",
+	"font_size": 16,
+	"index_files": true,
+	"rulers": [80, 120],
+
+
+  	"hardware_acceleration": "opengl",
+
+    "folder_exclude_patterns": [
+      ".svn", ".git", ".hg", "CVS", ".Trash", ".Trash-*", "$RECYCLE.BIN",
+      ".vs", "System Volume Information", "out", "build"
+    ],
+
+    "file_exclude_patterns": [
+      "*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib",
+      "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb",
+      ".DS_Store", ".directory", "desktop.ini", "*.class", "*.psd", "*.db",
+      "*.sublime-workspace"
+    ],
+
+    // These files will still show up in the sidebar, but won't be included in
+    // Goto Anything or Find in Files
+    "binary_file_patterns": ["*.jpg", "*.jpeg", "*.png", "*.gif",
+      "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar",
+      "*.zip"
+    ],
+
+
+    "relative_line_numbers": false,
+
+    "show_full_path": true,
+    "show_rel_path": true,
+    "auto_complete": true,
+}
