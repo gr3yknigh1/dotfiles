@@ -21,7 +21,7 @@ end
 set -g LAUNCH_XORG_ON_STARTUP no
 
 set -g USE_FUNC_ALIASES yes
-set -g BATCAT_THEME gruvbox-dark
+set -g BATCAT_THEME Nord
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -g DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
@@ -29,7 +29,7 @@ set -g DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
 set -g PATH "$HOME/go/bin:$PATH"
 set -g PATH "$HOME/.cargo/bin:$PATH"
 
-set -u EDITOR nvim
+set -u EDITOR vim
 
 if [ $USE_FUNC_ALIASES = "yes" ] 
 
@@ -82,7 +82,6 @@ if [ $USE_FUNC_ALIASES = "yes" ]
     end
 
     function cat
-        echo 1
         if [ $(has_executable bat) ]
             bat --theme $BATCAT_THEME $argv
         else if [ $(has_executable batcat) ]
@@ -112,7 +111,7 @@ else
     if [ $(has_executable bat) ]
         alias cat="bat --theme $BATCAT_THEME"
     else if [ $(has_executable batcat) ]
-        alias cat="batcat --theme gruvbox-dark"
+        alias cat="batcat --theme $BATCAT_THEME"
     end
 end
 
@@ -130,8 +129,13 @@ cond_alias ranger    f
 cond_alias neovide   v
 cond_alias lazygit   lg
 
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin 
+
 if [ $(has_executable pyenv) ]
     pyenv init - | source
+
+    status --is-interactive; and pyenv virtualenv-init - | source
 end
 
 
