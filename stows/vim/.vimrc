@@ -4,6 +4,8 @@
 " My simple vim configuration.
 "
 
+colorscheme base16-gruvbox-dark-medium
+
 if (has("termguicolors"))
     syntax on
     set termguicolors
@@ -12,11 +14,11 @@ endif
 if has("gui_running")
     syntax on
 
-    let g:gui_fontname = "Consolas"
-    let g:gui_fontsize = 14
+    let g:gui_fontname = "Agave Nerd Font"
+    let g:gui_fontsize = 23
 
     function GUI_SetFont(fontname, fontsize)
-        execute "set guifont=" . a:fontname . ":h" . a:fontsize . ""
+        execute "set guifont=\"" . a:fontname . ":h" . a:fontsize . "\""
     endfunction
 
     function GUI_IncreaseFontSize()
@@ -29,13 +31,11 @@ if has("gui_running")
         call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
     endfunction
 
-    set guifont="" . g:gui_fontname . ":h" . g:gui_fontsize
+    " set guifont="" . g:gui_fontname . ":h" . g:gui_fontsize
     call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
 
     nmap <silent> <C-kPlus> <cmd>call GUI_IncreaseFontSize()<CR>
     nmap <silent> <C-kMinus> <cmd>call GUI_DecreaseFontSize()<CR>
-
-    colorscheme koehler
 
     set guioptions-=m  " Menu bar
     set guioptions-=T  " Toolbar
@@ -56,11 +56,12 @@ if has("win32")
 
     " Making backspace working on Windows.
     set backspace=indent,eol,start
-
 endif
 
 if has("unix")
     set fileformat=unix
+
+    set clipboard^=unnamedplus
 endif
 
 
