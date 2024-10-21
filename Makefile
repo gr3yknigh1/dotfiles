@@ -48,7 +48,7 @@ install-paru:
 ### NERD FONTS
 NERD_FONTS_URL := https://github.com/ryanoasis/nerd-fonts.git
 NERD_FONTS_DIR := /opt/nerd-fonts
-NERD_FONTS_TAG := v3.0.1
+NERD_FONTS_TAG := v3.2.1
 
 install-nerd-fonts:
 	@ if [ -d $(NERD_FONTS_DIR) ]; then \
