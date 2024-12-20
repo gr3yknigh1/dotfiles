@@ -5,8 +5,21 @@
 ;; Basic settings
 
 (setq default-directory "P:\\")
-(setq explicit-shell-file-name "pwsh")
+
+;; Setting up shell
+(setq explicit-shell-file-name "cmdproxy")
+;; (setq explicit-shell-file-name "cmd")
+;; (setq shell-command-switch "/c")
+;; (setq w32-quote-process-args nil)
+
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; Bind zoom keys
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+(global-set-key [?\C-\=] 'text-scale-increase)
+(global-set-key [?\C-\-] 'text-scale-decrease)
 
 ;; Stops starting message
 (setq inhibit-splash-screen t)
@@ -20,11 +33,11 @@
 ;; TODO(gr3yknigh1): Check if this is working on Linux [2024/07/29]
 (set-face-attribute 'default nil
   ;;:family "JetBrainsMono NF" :height 140)
-  :family "0xProto Nerd Font" :height 140)
+  :family "Iosevka NF" :height 120)
 
 ;; Word wrap
-(setq word-wrap t)
-(toggle-word-wrap)
+(setq word-wrap 1)
+;; (toggle-word-wrap)
 
 ;; Maximize screen on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -55,10 +68,10 @@
 
 ;; Grep mode
 ;; TODO(gr3yknigh1): Make it optional for GNU/Linux.
-(setenv "PATH"
-	(concat
-	 "C:\\cygwin64\\bin;"
-	 (getenv "PATH")))
+;; (setenv "PATH"
+;; 	(concat
+;; 	 "C:\\cygwin64\\bin;"
+;; 	 (getenv "PATH")))
 
 ;; Set "GNU" style indenting for C lang
 (setq c-default-style "linux"
@@ -143,7 +156,7 @@
 
 (use-package gruvbox-theme
   :config
-  (load-theme 'gruvbox-light-medium 1))
+  (load-theme 'gruvbox-dark-medium 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -192,8 +205,15 @@
    "C-x f" 'grep-find
    "C-x s" 'counsel-grep-or-swiper))
 
+;; (use-package undo-tree
+;;   :config
+;;   (global-undo-tree-mode)
+;;   (setq evil-undo-system 'undo-tree))
+
 (use-package evil
   :init
+  ;; (setq evil-undo-system 'undo-tree)  ;; NOTE: Is this okey?
+
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
 
