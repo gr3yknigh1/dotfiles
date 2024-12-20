@@ -12,6 +12,7 @@
 ;; (setq shell-command-switch "/c")
 ;; (setq w32-quote-process-args nil)
 
+(setq dired-listing-switches "-aBhl  --group-directories-first")
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
