@@ -12,9 +12,14 @@
 ;; (setq shell-command-switch "/c")
 ;; (setq w32-quote-process-args nil)
 
-(setq dired-listing-switches "-aBhl  --group-directories-first")
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+
+(global-auto-revert-mode t)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-file "~/.emacs.d/themes/handmade-theme.el")
+(load-theme 'handmade t)
 
 ;; Bind zoom keys
 (global-set-key [C-mouse-4] 'text-scale-increase)
@@ -70,9 +75,12 @@
 ;; Grep mode
 ;; TODO(gr3yknigh1): Make it optional for GNU/Linux.
 ;; (setenv "PATH"
-;; 	(concat
-;; 	 "C:\\cygwin64\\bin;"
-;; 	 (getenv "PATH")))
+;;   (concat
+;;    "C:\\cygwin64\\bin;"
+;;    (getenv "PATH")))
+
+(setq grep-command "git grep -rn ")
+(setq grep-use-null-device nil)
 
 ;; Set "GNU" style indenting for C lang
 (setq c-default-style "linux"
@@ -157,7 +165,8 @@
 
 (use-package gruvbox-theme
   :config
-  (load-theme 'gruvbox-dark-medium 1))
+  ;; (load-theme 'gruvbox-dark-medium 0)
+  )
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -184,6 +193,8 @@
 (use-package ivy-rich
   :init (ivy-rich-mode 1))
 
+(use-package lua-mode)
+
 (use-package helpful
   :custom
   (counsel-describe-function-function #'helpful-callable)
@@ -201,9 +212,10 @@
     :keymaps '(normal insert visual emacs)
     :prefix "SPC"
     :global-prefix "C-SPC")
+
   (general-define-key
    "C-x g" 'grep
-   "C-x f" 'grep-find
+   "C-x f" 'find-file
    "C-x s" 'counsel-grep-or-swiper))
 
 ;; (use-package undo-tree
@@ -245,9 +257,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("046a2b81d13afddae309930ef85d458c4f5d278a69448e5a5261a5c78598e012" default))
+   '("ca10674ccf34fe5f4d691c5b60fb0813d3f753b63f8dbede90ee4df909a3083c" "046a2b81d13afddae309930ef85d458c4f5d278a69448e5a5261a5c78598e012" default))
  '(package-selected-packages
-   '(general councel ivy-rich which-key rainbow-delimiters gruvbox-theme editorconfig cua-mode swiper doom-modeline diminish command-log-mode)))
+   '(lua-mode general councel ivy-rich which-key rainbow-delimiters gruvbox-theme editorconfig cua-mode swiper doom-modeline diminish command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
