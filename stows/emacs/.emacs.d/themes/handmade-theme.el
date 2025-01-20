@@ -31,6 +31,9 @@
 (defface handmade-note-face nil "")
 (defface handmade-todo-face nil "")
 (defface gk-docs-tag nil "")
+(defface gk-docs-tag1 nil "")
+(defface gk-docs-tag2 nil "")
+(defface gk-docs-tag3 nil "")
 
 (mapc (lambda (mode)
         (font-lock-add-keywords mode '(("\\<\\(IMPORTANT\\)" 1 'handmade-important-face t)
@@ -38,7 +41,13 @@
                                        ("\\<\\(STUDY\\)" 1 'handmade-important-face t)
                                        ("\\<\\(WARN\\)" 1 'handmade-important-face t)
                                        ("\\<\\(TODO\\)" 1 'handmade-todo-face t)
-				       ("\\<\\(@brief\\)" 1 'gk-docs-tag t)
+				     ("[ \t][@\\]brief" 0 'gk-docs-tag t)
+				     ("[ \t][@\\]param\\(\\[.*\\]\\)?" 0 'gk-docs-tag t)
+				     ("[ \t][@\\]param\\[\\(.*\\)\\]" 1 'gk-docs-tag1 t)
+				     ("[ \t][@\\]param\\[.*\\] \\(.*\\) " 1 'gk-docs-tag2 t)
+				     ("[ \t][@\\]\\(reference\\|ref\\|note\\|todo\\|returns\\|return\\|see\\)" 0 'gk-docs-tag t)
+				     ; TODO(gr3yknigh1): Make it work already... [2025/01/18]
+				     ; ("[ \t][@\\]see \\(\\(\\ca*\\)\\(, \\)?\\)*" 1 'gk-docs-tag3 t)
                                        ("\\<\\(XXX\\)" 1 'handmade-todo-face t))))
       '(c-mode c++-mode emacs-lisp-mode))
 
@@ -73,7 +82,11 @@
    `(handmade-important-face ((t (:foreground ,handmade-yellow :weight bold :underline t))))
    `(handmade-note-face ((t (:foreground ,handmade-dark-green :weight bold :underline t))))
    `(handmade-todo-face ((t (:foreground ,handmade-red :weight bold :underline t))))
+
    `(gk-docs-tag ((t (:foreground ,handmade-gold :slant italic t))))
+   `(gk-docs-tag1 ((t (:foreground ,handmade-gold :weight bold t))))
+   `(gk-docs-tag2 ((t (:foreground ,handmade-light-beige2 :weight bold t))))
+   `(gk-docs-tag3 ((t (:foreground ,handmade-beige t))))
    `(hl-line ((t (:background ,handmade-dark-blue))))))
 
 (provide-theme 'handmade)
