@@ -1,8 +1,10 @@
-;; @file ~/.emacs.d/init.el
-;; @author Ilya Akkuzin <gr3yknigh1@gmail.com>
-;; @copyright 2024 (c) Ilya Akkuzin <gr3yknigh1@gmail.com>, all rights reserved
 ;;
-;; Basic settings
+;; FILE          ~/.emacs.d/init.el
+;;
+;; AUTHOR        Ilya Akkuzin <gr3yknigh1@gmail.com>
+;;
+;; NOTICE        Copyright 2024 (c) Ilya Akkuzin <gr3yknigh1@gmail.com>, all rights reserved
+;;
 
 (setq default-directory "P:\\")
 
@@ -42,8 +44,8 @@
   :family "Iosevka NF" :height 120)
 
 ;; Word wrap
-(setq word-wrap 1)
-;; (toggle-word-wrap)
+;(toggle-truncate-lines)
+(global-set-key (kbd "C-c w") 'toggle-truncate-lines)
 
 ;; Maximize screen on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -70,7 +72,7 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Pair mode
-(electric-pair-mode 1)
+(electric-pair-mode nil)
 
 ;; Grep mode
 ;; TODO(gr3yknigh1): Make it optional for GNU/Linux.
@@ -95,11 +97,10 @@
 ;;(setq cua-keep-region-after-copy t)
 
 ;; Number lines while in programming mode
-;;(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook
 	  (lambda ()
-	    (display-line-numbers-mode)
-	    (setq display-line-numbers 'relative)))
+	    ;(setq display-line-numbers 'relative)
+	    (display-line-numbers-mode -1)))
 
 ;; Yaml mode (should be inside ~/.emacs.d/)
 ;; Source: https://github.com/yoshiki/yaml-mode
