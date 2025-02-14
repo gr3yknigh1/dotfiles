@@ -14,7 +14,8 @@ endif
 if has("gui_running")
     syntax on
 
-    let g:gui_fontname = "Agave Nerd Font"
+    " let g:gui_fontname = "Agave Nerd Font"
+    let g:gui_fontname = "ComicShannsMono Nerd Font"
     let g:gui_fontsize = 23
 
     function GUI_SetFont(fontname, fontsize)
@@ -32,7 +33,19 @@ if has("gui_running")
     endfunction
 
     " set guifont="" . g:gui_fontname . ":h" . g:gui_fontsize
-    call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+    " call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+
+    colorscheme elflord
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+      elseif has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+      elseif has("gui_win32")
+        " set guifont=Consolas:h13:cANSI
+        set guifont=ComicShannsMono\ Nerd\ Font:h15:cANSI
+      endif
+    endif
 
     nmap <silent> <C-kPlus> <cmd>call GUI_IncreaseFontSize()<CR>
     nmap <silent> <C-kMinus> <cmd>call GUI_DecreaseFontSize()<CR>
