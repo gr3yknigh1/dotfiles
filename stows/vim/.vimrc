@@ -4,8 +4,6 @@
 " My simple vim configuration.
 "
 
-colorscheme base16-gruvbox-dark-medium
-
 if (has("termguicolors"))
     syntax on
     set termguicolors
@@ -14,38 +12,68 @@ endif
 if has("gui_running")
     syntax on
 
-    " let g:gui_fontname = "Agave Nerd Font"
-    let g:gui_fontname = "ComicShannsMono Nerd Font"
-    let g:gui_fontsize = 23
+    "
+    " NOTE(gr3yknigh1): Tried to keep font size and font name as separate
+    " variables but because of shitty API that VIM is provided, you can't have
+    " spaces in the name of the font. I have tried to replace " " with "\ ",
+    " but in only works in literals. So it's can't be done programmaticly in the
+    " function.
+    "
+    " Here the old implementation:
+    "
+    "     let g:gui_fontname = "Inconsolata\ Nerd\ Font\ Mono"
+    "     let g:gui_fontname = "Consolas"
+    "
+    "     function GUI_SetFont(fontname, fontsize)
+    "         " This is doesn't work for font names with spaces.
+    "         let l:fontname = substitute(a:fontname, " ", "\\ ", "g") 
+    "         echom "set guifont=" . l:fontname . ":h" . a:fontsize
+    "         execute "set guifont=" . a:fontname . ":h" . a:fontsize
+    "     endfunction
+    "
+    "     function GUI_IncreaseFontSize()
+    "         let g:gui_fontsize = g:gui_fontsize + 1
+    "         call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+    "     endfunction
+    "
+    "     function GUI_DecreaseFontSize()
+    "         let g:gui_fontsize = g:gui_fontsize - 1
+    "         call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+    "     endfunction
+    "
+    "
 
-    function GUI_SetFont(fontname, fontsize)
-        execute "set guifont=\"" . a:fontname . ":h" . a:fontsize . "\""
-    endfunction
+    " Thanks: <https://vi.stackexchange.com/a/3104>
+    
+    let &guifont="Inconsolata\ Nerd\ Font\ Mono:h20"
 
     function GUI_IncreaseFontSize()
-        let g:gui_fontsize = g:gui_fontsize + 1
-        call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+        let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
+        let l:gf_size_whole = l:gf_size_whole + 1
+        let l:new_font_size = ':h'.l:gf_size_whole
+        let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
     endfunction
 
     function GUI_DecreaseFontSize()
-        let g:gui_fontsize = g:gui_fontsize - 1
-        call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
+        let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
+        let l:gf_size_whole = l:gf_size_whole - 1
+        let l:new_font_size = ':h'.l:gf_size_whole
+        let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
     endfunction
 
-    " set guifont="" . g:gui_fontname . ":h" . g:gui_fontsize
-    " call GUI_SetFont(g:gui_fontname, g:gui_fontsize)
-
     colorscheme elflord
-    if has("gui_running")
-      if has("gui_gtk2")
-        set guifont=Inconsolata\ 12
-      elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
-      elseif has("gui_win32")
-        " set guifont=Consolas:h13:cANSI
-        set guifont=ComicShannsMono\ Nerd\ Font:h15:cANSI
-      endif
-    endif
+
+    "
+    " if has("gui_running")
+    "   if has("gui_gtk2")
+    "     set guifont=Inconsolata\ 12
+    "   elseif has("gui_macvim")
+    "     set guifont=Menlo\ Regular:h14
+    "   elseif has("gui_win32")
+    "     set guifont=Consolas:h13:cANSI
+    "   endif
+    " endif
+    "
 
     nmap <silent> <C-kPlus> <cmd>call GUI_IncreaseFontSize()<CR>
     nmap <silent> <C-kMinus> <cmd>call GUI_DecreaseFontSize()<CR>
