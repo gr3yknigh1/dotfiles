@@ -1,3 +1,7 @@
 nvim/.local/*
 !nvim/.local/share/nvim/site/autoload/plug.vim
 **/__pycache__/
+
+
+*~
+*.swp
